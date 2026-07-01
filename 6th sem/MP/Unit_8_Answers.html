@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 8: Introduction to iOS Programming</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --card-bg-color: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        h3 {
+            color: #444;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        strong {
+            font-weight: 600;
+        }
+        ol, ul {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 8: Introduction to iOS Programming</h1>
+
+        <div class="card">
+            <h2>What are different types of UI controls used in iOS programming? Write a swift program to find the sum of all elements of a 1-D array.</h2>
+            <h3>Common UI Controls in iOS (UIKit):</h3>
+            <p>iOS provides a rich set of UI controls through the UIKit framework. These are the building blocks for creating user interfaces.</p>
+            <ul>
+                <li><strong>UILabel:</strong> A view that displays one or more lines of static, read-only text.</li>
+                <li><strong>UIButton:</strong> A control that responds to user taps. You can set its title, image, and appearance for different states (e.g., normal, highlighted, disabled).</li>
+                <li><strong>UITextField:</strong> A control that displays an editable text area for user input, typically for a single line of text.</li>
+                <li><strong>UITextView:</strong> Similar to a text field, but it allows for multi-line, scrollable text input and editing.</li>
+                <li><strong>UIImageView:</strong> A view used to display a single image or a sequence of animated images.</li>
+                <li><strong>UISlider:</strong> A control that allows the user to select a single value from a continuous range of values.</li>
+                <li><strong>UISwitch:</strong> A control that shows the on/off state of a setting.</li>
+                <li><strong>UITableView:</strong> A view that manages and displays a scrollable list of items in a single column. It is highly efficient for displaying large data sets.</li>
+                <li><strong>UICollectionView:</strong> A more flexible view for displaying ordered data in a customizable layout, such as a grid.</li>
+            </ul>
+            <h3>Swift Program to Sum Array Elements:</h3>
+            <p>The most idiomatic way to sum elements in a Swift array is using the `reduce` method. This method iterates over a sequence and combines all elements into a single value.</p>
+            <pre><code class="language-swift">import Foundation
+
+// Define a function that takes an array of integers and returns their sum
+func sum(of array: [Int]) -> Int {
+    // The first argument to reduce is the initial value (0 for summation).
+    // The second argument is a closure that combines the running total (`result`) 
+    // with the next element (`x`). The `+` operator is a shorthand for this closure.
+    return array.reduce(0, +)
+}
+
+// Example usage:
+let myNumbers = [10, 20, 30, 40, 50]
+let totalSum = sum(of: myNumbers)
+
+print("The array is: \(myNumbers)")
+print("The sum of all elements is \(totalSum)") // Output: The sum of all elements is 150
+            </code></pre>
+        </div>
+
+        <div class="card">
+            <h2>What do you mean by storyboard? Write a swift program to find the largest and smallest number among three numbers using a ternary operator.</h2>
+            <p>A <strong>storyboard</strong> is a visual representation of the user interface of an iOS application, showing screens of content and the connections between them. It's a file (with a `.storyboard` extension) that you edit in Xcode's Interface Builder.</p>
+            <p>Key aspects of a storyboard include:</p>
+            <ul>
+                <li><strong>Visual Design:</strong> It allows you to design and lay out your UI by dragging and dropping UI controls (like buttons, labels, etc.) onto view controllers without writing code.</li>
+                <li><strong>View Controllers:</strong> Each screen in your app is typically managed by a `UIViewController`. In a storyboard, you can add and configure these controllers.</li>
+                <li><strong>Segues:</strong> These are visual connectors between view controllers that represent transitions (e.g., when a button tap pushes a new screen).</li>
+                <li><strong>Reduces Boilerplate Code:</strong> By visually designing the UI and its flow, you significantly reduce the amount of code needed for UI setup and transitions.</li>
+            </ul>
+            <h3>Swift Program for Largest and Smallest:</h3>
+            <p>While the ternary operator (`condition ? valueIfTrue : valueIfFalse`) can be used, nesting it can make the code hard to read. A more readable approach for this specific problem is to use Swift's built-in `min()` and `max()` functions.</p>
+            <pre><code class="language-swift">import Foundation
+
+let num1 = 25
+let num2 = 15
+let num3 = 30
+
+// Method 1: Using min() and max() (most readable)
+let smallest = min(num1, num2, num3)
+let largest = max(num1, num2, num3)
+
+print("Using min/max functions:")
+print("The numbers are: \(num1), \(num2), \(num3)")
+print("Largest number is \(largest)")   // Output: Largest number is 30
+print("Smallest number is \(smallest)") // Output: Smallest number is 15
+
+// Method 2: Using nested ternary operators (as requested)
+let largestTernary = num1 > num2 ? (num1 > num3 ? num1 : num3) : (num2 > num3 ? num2 : num3)
+let smallestTernary = num1 < num2 ? (num1 < num3 ? num1 : num3) : (num2 < num3 ? num2 : num3)
+
+print("\nUsing ternary operators:")
+print("Largest number is \(largestTernary)")
+print("Smallest number is \(smallestTernary)")
+            </code></pre>
+        </div>
+
+        <div class="card">
+            <h2>What do you mean by View hierarchy in iOS programming? Write a swift function to calculate the factorial of any positive integer.</h2>
+            <p>The <strong>view hierarchy</strong> is the organized, tree-like structure of `UIView` objects that make up your app's user interface on the screen. This hierarchy is crucial for both rendering the UI and handling touch events.</p>
+            <ul>
+                <li><strong>Root View:</strong> Every view hierarchy has a single root view, which is typically the main view of a `UIWindow`.</li>
+                <li><strong>Parent-Child Relationship:</strong> Each view in the hierarchy (except the root) has exactly one parent view (its `superview`). A view can have zero, one, or many child views (its `subviews`).</li>
+                <li><strong>Rendering:</strong> The hierarchy dictates the drawing order. A parent view is drawn before its children, and siblings are drawn in the order they appear in the `subviews` array. This means a view will always appear on top of its parent and behind its later siblings.</li>
+                <li><strong>Event Handling:</strong> When a user touches the screen, iOS uses the view hierarchy to determine which view should receive the event. This process is called "hit-testing."</li>
+            </ul>
+            <h3>Swift Function for Factorial:</h3>
+            <p>A factorial is the product of all positive integers up to a given number. It's often calculated using a recursive function.</p>
+            <pre><code class="language-swift">import Foundation
+
+// A recursive function to calculate the factorial
+func factorial(of number: Int) -> Int {
+    // Base case: The factorial of 0 is 1.
+    if number == 0 {
+        return 1
+    } 
+    // Recursive step: n! = n * (n-1)!
+    else if number > 0 {
+        return number * factorial(of: number - 1)
+    } 
+    // Factorial is not defined for negative numbers
+    else {
+        return 0 // Or handle as an error
+    }
+}
+
+// Example usage:
+let number = 5
+let result = factorial(of: number)
+
+print("The factorial of \(number) is \(result)") // Output: The factorial of 5 is 120
+            </code></pre>
+        </div>
+    </div>
+</body>
+</html>

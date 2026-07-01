@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 5: UI Fragments, Menus and Dialogs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --card-bg-color: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        h3 {
+            color: #444;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        strong {
+            font-weight: 600;
+        }
+        ol, ul {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a7ac0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 5: UI Fragments, Menus and Dialogs</h1>
+
+        <div class="card">
+            <h2>Why is fragment needed in android application? How can a fragment be added to an activity?</h2>
+            <img src="Screenshot From 2025-06-30 04-39-40.png" alt="Question 14">
+            <h3>Why Fragments are Needed:</h3>
+            <p>Fragments represent a reusable portion of your app's UI. A fragment defines and manages its own layout, has its own lifecycle, and can handle its own input events. They are essential for creating flexible and adaptive UIs that can be used across a variety of screen sizes, like phones and tablets. Key benefits include:</p>
+            <ul>
+                <li><strong>Modularity:</strong> You can break down a complex activity into smaller, reusable, and more manageable pieces.</li>
+                <li><strong>Reusability:</strong> A single fragment can be used in multiple activities.</li>
+                <li><strong>Adaptability:</strong> You can design multi-pane layouts for tablets while using the same fragments in a single-pane layout for phones.</li>
+            </ul>
+            <h3>Adding a Fragment to an Activity:</h3>
+            <p>You can add a fragment to an activity either statically in the XML layout file or dynamically using Java/Kotlin code.</p>
+            
+            <h4>1. Static Addition (in XML):</h4>
+            <p>You use the <code>&lt;fragment></code> tag directly in your activity's layout file.</p>
+            <strong>activity_main.xml:</strong>
+            <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    &lt;fragment
+        android:id="@+id/my_static_fragment"
+        android:name="com.example.myapp.MyFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+&lt;/LinearLayout>
+            </code></pre>
+
+            <h4>2. Dynamic Addition (in Java/Kotlin):</h4>
+            <p>You use the <code>FragmentManager</code> to add, remove, or replace fragments at runtime. This provides more flexibility.</p>
+            <strong>activity_main.xml (with a container for the fragment):</strong>
+            <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+            </code></pre>
+            <strong>MainActivity.java:</strong>
+            <pre><code class="language-java">public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.fragment_container, MyFragment.class, null)
+                .commit();
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="card">
+            <h2>What is menu? Develop an android application to create a popup menu having menu item "Edit", "Copy", "Paste", "Redo" and "Undo.".</h2>
+            <img src="Screenshot From 2025-06-30 04-40-16.png" alt="Question 15">
+            <h3>What is a Menu:</h3>
+            <p>A menu is a common UI component that presents a list of options to the user. Android provides a framework for several types of menus:</p>
+            <ul>
+                <li><strong>Options Menu:</strong> The primary collection of menu items for an activity, typically placed in the app bar.</li>
+                <li><strong>Context Menu:</strong> A floating menu that appears when a user performs a long-press on a view.</li>
+                <li><strong>Popup Menu:</strong> A modal menu anchored to a specific view, useful for providing an overflow of actions.</li>
+            </ul>
+            <h3>Popup Menu Example:</h3>
+            <h4>1. Define the layout (e.g., <code>activity_main.xml</code>):</h4>
+            <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    &lt;Button
+        android:id="@+id/show_popup_menu_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Show Popup Menu" />
+
+&lt;/RelativeLayout>
+            </code></pre>
+            <h4>2. Create a menu resource file (e.g., <code>res/menu/popup_menu.xml</code>):</h4>
+            <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android">
+    &lt;item android:id="@+id/menu_edit" android:title="Edit" />
+    &lt;item android:id="@+id/menu_copy" android:title="Copy" />
+    &lt;item android:id="@+id/menu_paste" android:title="Paste" />
+    &lt;item android:id="@+id/menu_redo" android:title="Redo" />
+    &lt;item android:id="@+id/menu_undo" android:title="Undo" />
+&lt;/menu>
+            </code></pre>
+            <h4>3. In your activity, create and show the popup menu:</h4>
+            <pre><code class="language-java">public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button button = findViewById(R.id.show_popup_menu_button);
+        button.setOnClickListener(v -> {
+            PopupMenu popup = new PopupMenu(MainActivity.this, v);
+            popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+
+            popup.setOnMenuItemClickListener(item -> {
+                int itemId = item.getItemId();
+                if (itemId == R.id.menu_edit) {
+                    Toast.makeText(MainActivity.this, "Edit clicked", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (itemId == R.id.menu_copy) {
+                    Toast.makeText(MainActivity.this, "Copy clicked", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (itemId == R.id.menu_paste) {
+                    Toast.makeText(MainActivity.this, "Paste clicked", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (itemId == R.id.menu_redo) {
+                    Toast.makeText(MainActivity.this, "Redo clicked", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (itemId == R.id.menu_undo) {
+                    Toast.makeText(MainActivity.this, "Undo clicked", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                return false;
+            });
+            popup.show();
+        });
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="card">
+            <h2>Develop an android application to display an alert dialog box.</h2>
+            <img src="Screenshot From 2025-06-30 04-40-08.png" alt="Question 15">
+            <h3>Full Code Example:</h3>
+            <h4>1. Define the layout (e.g., <code>activity_main.xml</code>):</h4>
+             <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    &lt;Button
+        android:id="@+id/show_alert_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Show Alert" />
+
+&lt;/RelativeLayout>
+            </code></pre>
+            <h4>2. In your activity, create and show the AlertDialog:</h4>
+            <pre><code class="language-java">public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button showAlertButton = findViewById(R.id.show_alert_button);
+        showAlertButton.setOnClickListener(v -> {
+            showAlertDialog();
+        });
+    }
+
+    private void showAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Alert");
+        builder.setMessage("This is a standard alert dialog.");
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            Toast.makeText(getApplicationContext(), "OK button clicked", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+        });
+
+        builder.setNegativeButton("Cancel", (dialog, which) -> {
+            Toast.makeText(getApplicationContext(), "Cancel button clicked", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+        });
+        
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+}
+            </code></pre>
+        </div>
+    </div>
+</body>
+</html>

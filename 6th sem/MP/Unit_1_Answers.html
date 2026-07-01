@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 1: Introduction to Mobile and Mobile Programming</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --card-bg-color: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        h3 {
+            color: #444;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        strong {
+            font-weight: 600;
+        }
+        ol, ul {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a7ac0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 1: Introduction to Mobile and Mobile Programming</h1>
+
+        <div class="card">
+            <h2>What do you mean by mobile device? List and explain any four popular programming languages used for developing mobile applications.</h2>
+            <img src="Screenshot From 2025-06-30 04-39-40.png" alt="Question 11">
+            <p>A <strong>mobile device</strong> is a small, handheld computing device, typically with a display screen and a compact form factor, designed for portability and ease of use. These devices are often equipped with wireless connectivity (Wi-Fi, Bluetooth, cellular) and can perform a variety of functions, including communication, internet browsing, multimedia playback, and running applications.</p>
+            <p>Four popular programming languages used for developing mobile applications are:</p>
+            <ol>
+                <li><strong>Java:</strong> Primarily used for native Android app development. It's a robust, object-oriented language with a large community and extensive libraries.</li>
+                <li><strong>Kotlin:</strong> A modern, statically typed programming language that runs on the Java Virtual Machine (JVM). It is fully interoperable with Java and is now the preferred language for Android app development by Google.</li>
+                <li><strong>Swift:</strong> Apple's powerful and intuitive programming language for building apps across all Apple platforms (iOS, macOS, watchOS, tvOS). It's designed for safety, performance, and modern software design patterns.</li>
+                <li><strong>Dart:</strong> The language used by Flutter, a UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. Dart is optimized for UI development, offering features like hot-reload and a reactive programming style.</li>
+                <li><strong>JavaScript (with frameworks like React Native or Ionic):</strong> While not a native mobile language, JavaScript can be used for cross-platform mobile development through frameworks. React Native allows building native mobile apps using React, while Ionic enables hybrid app development using web technologies (HTML, CSS, JavaScript).</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>What is Android? Explain different categories of mobile devices.</h2>
+            <img src="Screenshot From 2025-06-30 04-40-16.png" alt="Question 11">
+            <p><strong>Android</strong> is a mobile operating system developed by Google, based on a modified version of the Linux kernel and other open-source software, designed primarily for touchscreen mobile devices such as smartphones and tablets. Android is the most widely used mobile operating system globally.</p>
+            <p>Different categories of mobile devices include:</p>
+            <ol>
+                <li><strong>Smartphones:</strong> These are mobile phones built on a mobile operating system, with advanced computing capabilities and connectivity. They typically feature a large touchscreen, internet access, and the ability to run a wide variety of applications.</li>
+                <li><strong>Tablets:</strong> Larger than smartphones but smaller than laptops, tablets are portable personal computers with a touchscreen interface, primarily used for media consumption, web browsing, and light productivity tasks.</li>
+                <li><strong>Wearable Devices:</strong> These are electronic devices that can be worn on the body, often incorporating sensors and connectivity for health monitoring, fitness tracking, and notifications. Examples include smartwatches, fitness trackers, and smart glasses.</li>
+                <li><strong>Feature Phones:</strong> These are basic mobile phones that offer limited functionality compared to smartphones. They typically support voice calls, text messaging, and some basic internet access, but lack advanced app ecosystems.</li>
+                <li><strong>E-readers:</strong> Devices primarily designed for reading digital books and periodicals, often featuring e-ink displays for a paper-like reading experience and long battery life.</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>What is a smart mobile device? Explain different platforms used in mobile devices.</h2>
+            <img src="Screenshot From 2025-06-30 04-40-01.png" alt="Question 11">
+            <p>A <strong>smart mobile device</strong> is a portable electronic device that goes beyond the capabilities of a traditional mobile phone, offering advanced computing abilities, internet connectivity, and the capacity to run a wide range of applications (apps). These devices typically feature a sophisticated operating system, a touchscreen interface, and various sensors.</p>
+            <p>Different platforms used in mobile devices include:</p>
+            <ol>
+                <li><strong>Android:</strong> Developed by Google, Android is an open-source, Linux-based operating system widely used in smartphones, tablets, smart TVs, and other devices from various manufacturers. It offers a highly customizable interface and a vast app ecosystem through the Google Play Store.</li>
+                <li><strong>iOS:</strong> Developed by Apple Inc., iOS is the proprietary mobile operating system that powers Apple's iPhone, iPad, and iPod Touch devices. Known for its user-friendly interface, strong security, and seamless integration with Apple's hardware and services.</li>
+                <li><strong>HarmonyOS:</strong> Developed by Huawei, HarmonyOS is a distributed operating system designed for various devices, including smartphones, tablets, smartwatches, and IoT devices. It aims to provide a seamless experience across different hardware.</li>
+                <li><strong>KaiOS:</strong> A lightweight mobile operating system based on Linux, designed for feature phones. It brings smartphone-like functionalities (e.g., 4G, Wi-Fi, app store) to affordable devices, bridging the gap between feature phones and smartphones.</li>
+                <li><strong>Tizen:</strong> An open-source, Linux-based operating system backed by Samsung and Intel. It's used in a variety of devices, including smart TVs, smartwatches, smartphones (though less common now), and other IoT devices.</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>What are different mobile application development approaches? Explain in detail.</h2>
+            <img src="Screenshot From 2025-06-30 04-40-08.png" alt="Question 11">
+            <p>There are several approaches to mobile application development, each with its own advantages and disadvantages:</p>
+            <ol>
+                <li>
+                    <h3>Native App Development:</h3>
+                    <p>Native apps are built specifically for a particular mobile operating system (e.g., Android or iOS) using the platform's native programming languages (Java/Kotlin for Android, Swift/Objective-C for iOS) and development tools (Android Studio, Xcode). They offer the best performance, access to all device features, and a highly optimized user experience that adheres to platform-specific design guidelines.</p>
+                    <ul>
+                        <li><strong>Pros:</strong> High performance, excellent user experience, full access to device features (camera, GPS, sensors), better security, and offline capabilities.</li>
+                        <li><strong>Cons:</strong> Higher development cost and time (separate codebases for each platform), requires specialized skills for each platform, and longer release cycles for updates across platforms.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Hybrid App Development:</h3>
+                    <p>Hybrid apps are essentially web applications wrapped in a native container. They are built using web technologies like HTML, CSS, and JavaScript, and then deployed as native apps using frameworks like Apache Cordova (PhoneGap) or Ionic. These apps run inside a WebView, which is a native component that displays web content.</p>
+                    <ul>
+                        <li><strong>Pros:</strong> Single codebase for multiple platforms, faster development, lower cost, easier maintenance, and access to web developers' skill sets.</li>
+                        <li><strong>Cons:</strong> Performance can be slower than native apps, limited access to device features (often requiring plugins), and a less "native" look and feel.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Cross-Platform App Development:</h3>
+                    <p>Cross-platform development involves writing code once and deploying it on multiple platforms (Android and iOS) using frameworks that compile the code into native or near-native applications. Popular frameworks include React Native, Flutter, and Xamarin.</p>
+                    <ul>
+                        <li><strong>Pros:</strong> Code reusability across platforms, faster development than native, often better performance than hybrid apps, and a more native-like UI/UX compared to hybrid.</li>
+                        <li><strong>Cons:</strong> May not have full access to all native device features without custom bridges, performance can sometimes be an issue for highly complex apps, and reliance on the framework's capabilities and updates.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Progressive Web Apps (PWAs):</h3>
+                    <p>PWAs are web applications that are designed to be reliable, fast, and engaging. They are built using standard web technologies but offer an app-like experience, including offline capabilities, push notifications, and the ability to be added to the home screen without an app store. They run in a web browser.</p>
+                    <ul>
+                        <li><strong>Pros:</strong> No app store submission required, accessible via a URL, single codebase, low development cost, and automatic updates.</li>
+                        <li><strong>Cons:</strong> Limited access to device hardware, no presence in app stores (which can affect discoverability), and performance can vary depending on the browser and device.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

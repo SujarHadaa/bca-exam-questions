@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 4: Android Activity</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mobile Programming Study Guide</h1>
+        <p>Unit 4: Android Activity</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="unit1.html">Unit 1</a>
+        <a href="unit2.html">Unit 2</a>
+        <a href="unit3.html">Unit 3</a>
+        <a href="unit4.html">Unit 4</a>
+        <a href="unit5.html">Unit 5</a>
+        <a href="unit6.html">Unit 6</a>
+        <a href="unit7.html">Unit 7</a>
+        <a href="unit8.html">Unit 8</a>
+    </nav>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">Write Java code only to send data from one activity to another activity using an implicit intent.</div>
+        <div class="answer">
+            <p>An <strong>Implicit Intent</strong> doesn't specify the exact component to start; instead, it declares an action to perform. For example, sharing text:</p>
+            <pre><code>// Java code to send data using Implicit Intent
+String message = "Hello from Activity 1";
+Intent intent = new Intent();
+intent.setAction(Intent.ACTION_SEND);
+intent.putExtra(Intent.EXTRA_TEXT, message);
+intent.setType("text/plain");
+
+// Verify that the intent will resolve to an activity
+if (intent.resolveActivity(getPackageManager()) != null) {
+    startActivity(intent);
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group C</div>
+        <div class="question-text">Develop an android application to input your Name, Age, gender and other personal information. Pass and display this information in another activity.</div>
+        <div class="answer">
+            <h3>Activity 1: Input Screen (activity_main.xml)</h3>
+            <pre><code>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="16dp"&gt;
+    &lt;EditText android:id="@+id/etName" android:hint="Enter Name" android:layout_width="match_parent" android:layout_height="wrap_content" /&gt;
+    &lt;EditText android:id="@+id/etAge" android:hint="Enter Age" android:inputType="number" android:layout_width="match_parent" android:layout_height="wrap_content" /&gt;
+    &lt;RadioGroup android:id="@+id/rgGender" android:layout_width="match_parent" android:layout_height="wrap_content"&gt;
+        &lt;RadioButton android:id="@+id/rbMale" android:text="Male" /&gt;
+        &lt;RadioButton android:id="@+id/rbFemale" android:text="Female" /&gt;
+    &lt;/RadioGroup&gt;
+    &lt;Button android:id="@+id/btnSubmit" android:text="Submit" android:layout_width="match_parent" android:layout_height="wrap_content" /&gt;
+&lt;/LinearLayout&gt;</code></pre>
+
+            <h3>MainActivity.java</h3>
+            <pre><code>public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        EditText etName = findViewById(R.id.etName);
+        EditText etAge = findViewById(R.id.etAge);
+        RadioGroup rgGender = findViewById(R.id.rgGender);
+        Button btnSubmit = findViewById(R.id.btnSubmit);
+
+        btnSubmit.setOnClickListener(v -> {
+            String name = etName.getText().toString();
+            String age = etAge.getText().toString();
+            int selectedId = rgGender.getCheckedRadioButtonId();
+            RadioButton rb = findViewById(selectedId);
+            String gender = rb.getText().toString();
+
+            Intent i = new Intent(MainActivity.this, SecondActivity.class);
+            i.putExtra("USER_NAME", name);
+            i.putExtra("USER_AGE", age);
+            i.putExtra("USER_GENDER", gender);
+            startActivity(i);
+        });
+    }
+}</code></pre>
+
+            <h3>Activity 2: Display Screen (SecondActivity.java)</h3>
+            <pre><code>public class SecondActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        TextView tv = new TextView(this);
+        setContentView(tv);
+
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("USER_NAME");
+        String age = intent.getStringExtra("USER_AGE");
+        String gender = intent.getStringExtra("USER_GENDER");
+
+        tv.setText("Details:\nName: " + name + "\nAge: " + age + "\nGender: " + gender);
+        tv.setTextSize(20);
+    }
+}</code></pre>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mobile Programming Exam Prep</p>
+    </footer>
+</body>
+</html>

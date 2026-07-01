@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 8: Introduction to iOS Programming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mobile Programming Study Guide</h1>
+        <p>Unit 8: Introduction to iOS Programming</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="unit1.html">Unit 1</a>
+        <a href="unit2.html">Unit 2</a>
+        <a href="unit3.html">Unit 3</a>
+        <a href="unit4.html">Unit 4</a>
+        <a href="unit5.html">Unit 5</a>
+        <a href="unit6.html">Unit 6</a>
+        <a href="unit7.html">Unit 7</a>
+        <a href="unit8.html">Unit 8</a>
+    </nav>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">What are different types of UI controls used in IOS programming? Write a swift program to find the sum of all elements of a 1-D array.</div>
+        <div class="answer">
+            <h3>iOS UI Controls:</h3>
+            <ul>
+                <li><strong>UILabel:</strong> Displays static text.</li>
+                <li><strong>UIButton:</strong> Triggers actions when tapped.</li>
+                <li><strong>UITextField:</strong> Allows single-line text input.</li>
+                <li><strong>UISwitch:</strong> A toggle switch for binary choices.</li>
+                <li><strong>UISlider:</strong> Allows selecting a value from a continuous range.</li>
+                <li><strong>UIImageView:</strong> Displays images.</li>
+                <li><strong>UITableView:</strong> Displays a list of items in a single column.</li>
+            </ul>
+
+            <h3>Swift Code (Sum of 1-D Array):</h3>
+            <pre><code>let numbers = [10, 20, 30, 40, 50]
+var sum = 0
+for num in numbers {
+    sum += num
+}
+print("Sum is: \(sum)")</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">What do you mean by View hierarchy in IOS programming? Write a swift function to calculate the factorial.</div>
+        <div class="answer">
+            <p><strong>View Hierarchy:</strong> In iOS, views are arranged in a tree-like structure. Every view has exactly one <strong>superview</strong> (except the root view) and can have multiple <strong>subviews</strong>. When a superview is moved or hidden, its subviews are also affected. This hierarchy determines the layout and the order in which views are rendered and receive events.</p>
+
+            <h3>Swift Code (Factorial Function):</h3>
+            <pre><code>func factorial(n: Int) -> Int {
+    if n == 0 { return 1 }
+    var res = 1
+    for i in 1...n {
+        res *= i
+    }
+    return res
+}
+print(factorial(n: 5)) // Output: 120</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">What do you mean by storyboard? Write a Swift program to find the largest and smallest number among three numbers using a ternary operator.</div>
+        <div class="answer">
+            <p><strong>Storyboard:</strong> A Storyboard is a visual representation of the user interface of an iOS application, showing screens of content and the transitions between them. It allows developers to design the UI and define the flow of the app without writing much code.</p>
+
+            <h3>Swift Code (Largest and Smallest of 3 Numbers):</h3>
+            <pre><code>let a = 10, b = 25, c = 15
+let largest = (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c)
+let smallest = (a < b) ? ((a < c) ? a : c) : ((b < c) ? b : c)
+
+print("Largest: \(largest), Smallest: \(smallest)")</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">Define ViewController.</div>
+        <div class="answer">
+            <p><strong>ViewController (UIViewController):</strong> It is a fundamental building block of any iOS app. It manages a single view hierarchy (usually one screen) and acts as the "glue" between the Model (data) and the View (UI). Its responsibilities include updating the UI, handling user interactions, and managing memory.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mobile Programming Exam Prep</p>
+    </footer>
+</body>
+</html>

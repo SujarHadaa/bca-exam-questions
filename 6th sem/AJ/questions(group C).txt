@@ -1,0 +1,24 @@
+Here's a breakdown of the Group C questions from the provided images, categorized by the units they relate to based on the "Course Contents" image:
+
+**Unit 1: GUI Programming**
+* **How a frame can be created in Java? Explain. Write a program to create a GUI application in Java that identifies the smaller and greater number between two input numbers taken through two text fields and displays the result in a label. If the user presses the mouse it should display the smaller number and if the user releases the mouse it should display the greater number.** (From "Screenshot 2025-07-14 230259.png")
+* **Write a GUI application to find the sum and difference of two integer numbers. Use two text fields for input and a third text field for output. Your program should display the sum if the user presses the mouse and the difference if the user releases the mouse.** (From "Screenshot 2025-07-14 230232.png")
+* **Why do we need to use layout managers in GUI programming? Write a program to create a GUI form that takes data about a customer including cid, name, address, email and age and insert these data into the Customer table of the Shop database.** (From "Screenshot 2025-07-14 230312.png") - *This question also involves Database Programming (Unit 2).*
+* **Why do we need to use Layout managers while creating GUI application in Java? Explain the key interfaces required to develop any database application using Java. Also, write a program to display the records from the table Students who have got distinction and have a major subject Data science. Assume that the Student table is in the database College and contains the columns Rollno, Name, Level, Division and Major.** (From "Screenshot 2025-07-14 230248.png") - *This question also involves Database Programming (Unit 2).*
+
+**Unit 2: Database Programming**
+* **Explain JDBC Architecture. Write a program to insert three records into a table Item which is in the database Shop and contains the columns ItemID, Name, UnitPrice, Units and ExpiryDate.** (From "Screenshot 2025-07-14 230259.png")
+* *(As noted above, questions from "Screenshot 2025-07-14 230312.png" and "Screenshot 2025-07-14 230248.png" also involve Database Programming.)*
+
+**Unit 3: JavaBeans**
+* **What is a bean design pattern? Explain simple, Boolean, and indexed property design patterns with suitable examples in detail.** (From "Screenshot 2025-07-14 230232.png")
+
+**Unit 4: Servlets and JSP**
+* **Differentiate between servlet and JSP. Create a servlet that computes and displays the factorial of an input number entered from a page when the button from that page is pressed by the user.** (From "Screenshot 2025-07-14 230259.png")
+* **Explain the lifecycle of a Java Servlet. Write a servlet program that takes three numbers from an HTML page and computes the sum of natural numbers up to the greatest number among the three numbers.** (From "Screenshot 2025-07-14 230312.png")
+* **What is directive element in JSP? Explain in detail. Create a JSP page that verifies the username and password entered form an HTML file and if the username and password are correct it displays a greetings message. Otherwise, it redirects to the register page.** (From "Screenshot 2025-07-14 230312.png")
+* **Differentiate between declaration and expression tags used in JSP. Also create a JSP page that contains three textboxes to input three numbers and a button. It should display the greatest number among three numbers when the button is clicked.** (From "Screenshot 2025-07-14 230248.png")
+
+**Unit 5: RMI**
+* **Define RMI. What is stub and parameter marshalling? Write a client/server application using RMI to find the product of two numbers.** (From "Screenshot 2025-07-14 230232.png")
+* **What is RMI? Explain its components. Write a client-server application in RMI to find the selling price of an item with cost price Rs. 5000 after a discount of Rs. 50.** (From "Screenshot 2025-07-14 230248.png")

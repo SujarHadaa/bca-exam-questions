@@ -1,0 +1,1 @@
+Place your dotnet-framework.png image in this folder!

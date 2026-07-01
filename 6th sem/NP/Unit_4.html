@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 4: HTTP</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .question-block {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+        .question {
+            background: #e9ecef;
+            padding: 15px;
+            border-left: 5px solid #0056b3;
+            margin-bottom: 20px;
+        }
+        .answer, .summary, .code-example {
+            margin-bottom: 20px;
+        }
+        .summary {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 5px solid #155724;
+            border-radius: 5px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 4: HTTP</h1>
+
+        <div class="question">
+            <h2>HTTP (Hypertext Transfer Protocol)</h2>
+        </div>
+
+        <div class="answer">
+            <h3>What is HTTP?</h3>
+            <p>HTTP is the foundation of data communication for the World Wide Web. It is a stateless, application-layer protocol for transmitting hypermedia documents, such as HTML. It was designed for communication between web browsers and web servers, but it can also be used for other purposes.</p>
+            <h3>HTTP Methods</h3>
+            <p>HTTP defines a set of request methods to indicate the desired action to be performed for a given resource. The most common methods are:</p>
+            <ul>
+                <li><strong>GET:</strong> Requests a representation of the specified resource. Requests using GET should only retrieve data.</li>
+                <li><strong>POST:</strong> Submits an entity to the specified resource, often causing a change in state or side effects on the server.</li>
+                <li><strong>PUT:</strong> Replaces all current representations of the target resource with the request payload.</li>
+                <li><strong>DELETE:</strong> Deletes the specified resource.</li>
+                <li><strong>HEAD:</strong> Asks for a response identical to that of a GET request, but without the response body.</li>
+                <li><strong>OPTIONS:</strong> Describes the communication options for the target resource.</li>
+                <li><strong>PATCH:</strong> Applies partial modifications to a resource.</li>
+            </ul>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: HTTP</h3>
+            <ul>
+                <li>The protocol of the web.</li>
+                <li>Stateless: each request is independent.</li>
+                <li>Uses request methods like GET, POST, PUT, DELETE.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Cookies</h2>
+        </div>
+
+        <div class="answer">
+            <h3>Define Cookies.</h3>
+            <p>A cookie is a small piece of data that a server sends to a user's web browser. The browser may store the cookie and send it back to the same server with later requests. Cookies are used to maintain state in the otherwise stateless HTTP protocol. Common uses for cookies include session management (like keeping a user logged in), personalization, and tracking user behavior.</p>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program to Retrieve Cookie Information</h3>
+            <p>This program demonstrates how to set up a <code>CookieManager</code> to automatically handle cookies and retrieve them after making a connection to a website.</p>
+            <pre><code>
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
+import java.net.HttpCookie;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.List;
+
+public class CookieRetriever {
+
+    public static void main(String[] args) throws Exception {
+        // Create a CookieManager to handle cookies
+        CookieManager cookieManager = new CookieManager();
+        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+        CookieHandler.setDefault(cookieManager);
+
+        // Connect to a website that sets cookies
+        URL url = new URL("https://www.google.com");
+        URLConnection connection = url.openConnection();
+        connection.getContent(); // This triggers the interaction and cookie exchange
+
+        // Retrieve the cookies from the cookie store
+        List<HttpCookie> cookies = cookieManager.getCookieStore().getCookies();
+
+        System.out.println("Cookies retrieved from " + url + ":");
+        if (cookies.isEmpty()) {
+            System.out.println("No cookies found.");
+        } else {
+            for (HttpCookie cookie : cookies) {
+                System.out.println("--------------------------------");
+                System.out.println("Name: " + cookie.getName());
+                System.out.println("Value: " + cookie.getValue());
+                System.out.println("Domain: " + cookie.getDomain());
+                System.out.println("Path: " + cookie.getPath());
+                System.out.println("Version: " + cookie.getVersion());
+                System.out.println("Expires: " + (cookie.getMaxAge() != -1 ? cookie.getMaxAge() + " seconds" : "Session cookie"));
+            }
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Cookies</h3>
+            <ul>
+                <li>Small pieces of data from a server, stored by the browser.</li>
+                <li>Used for session management, personalization, and tracking.</li>
+                <li>In Java, use <code>CookieManager</code> and <code>CookieStore</code> to handle them.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>X-www-form-urlencoded Encoder and Decoder</h2>
+        </div>
+
+        <div class="answer">
+            <h3>Describe X-www-form-urlencoded Encoder and URL Decoder.</h3>
+            <p><code>x-www-form-urlencoded</code> is a format for encoding data in a URL's query string or in the body of an HTTP POST request. It is a way to send key-value pairs. The encoding scheme works as follows:</p>
+            <ul>
+                <li>Alphanumeric characters are not changed.</li>
+                <li>Spaces are converted to plus signs (<code>+</code>).</li>
+                <li>Other non-alphanumeric characters are converted to a <code>%</code> symbol followed by the two-digit hexadecimal representation of the character's ASCII value.</li>
+            </ul>
+            <p>The <code>URLEncoder</code> and <code>URLDecoder</code> classes in Java are used to perform this encoding and decoding.</p>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program for URL Encoding and Decoding</h3>
+            <pre><code>
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+public class FormUrlEncoderDecoder {
+
+    public static void main(String[] args) {
+        try {
+            String originalString = "This is a test string with spaces & special characters.";
+
+            // Encode the string
+            String encodedString = URLEncoder.encode(originalString, StandardCharsets.UTF_8.name());
+            System.out.println("Original: " + originalString);
+            System.out.println("Encoded:  " + encodedString);
+
+            // Decode the string
+            String decodedString = URLDecoder.decode(encodedString, StandardCharsets.UTF_8.name());
+            System.out.println("Decoded:  " + decodedString);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: URL Encoding/Decoding</h3>
+            <ul>
+                <li>Used to safely transmit data in URLs.</li>
+                <li>Spaces become <code>+</code>, special characters become <code>%xx</code>.</li>
+                <li>Use <code>URLEncoder.encode()</code> and <code>URLDecoder.decode()</code>.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>HTTP Keep-Alive</h2>
+        </div>
+
+        <div class="answer">
+            <h3>What is the significance of controlling HTTP Keep-Alive?</h3>
+            <p>HTTP Keep-Alive, also known as a persistent connection, is a feature that allows a single TCP connection to remain open for multiple HTTP requests and responses. The significance of controlling this feature is primarily related to performance and resource management:</p>
+            <ul>
+                <li><strong>Performance Boost:</strong> By keeping the connection open, it avoids the overhead of establishing a new TCP connection for each request, which involves a three-way handshake. This significantly reduces latency, especially for websites with many small resources like images and scripts.</li>
+                <li><strong>Resource Management:</strong> While beneficial, persistent connections consume server resources (memory and sockets). On a very busy server, having too many open, idle connections can lead to resource exhaustion. Therefore, it's important to configure the Keep-Alive timeout (how long an idle connection is kept open) and the maximum number of requests per connection to balance performance and resource usage.</li>
+            </ul>
+            <p>In Java, you can influence Keep-Alive behavior by setting system properties like <code>http.keepAlive</code>, <code>http.maxConnections</code>, <code>http.keepAlive.time.server</code>, and <code>http.keepAlive.time.proxy</code>.</p>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: HTTP Keep-Alive</h3>
+            <ul>
+                <li>Reuses a single TCP connection for multiple HTTP requests.</li>
+                <li>Improves performance by reducing connection setup overhead.</li>
+                <li>Needs careful configuration to avoid server resource exhaustion.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Custom Cookie Policy</h2>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program for a Cookie Policy that Blocks .gov Cookies</h3>
+            <p>This program demonstrates how to create a custom <code>CookiePolicy</code> to filter cookies based on their domain.</p>
+            <pre><code>
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
+import java.net.HttpCookie;
+import java.net.URI;
+
+public class CustomCookiePolicy {
+
+    public static void main(String[] args) {
+        // Create a custom cookie policy
+        CookiePolicy blockGovCookies = (uri, cookie) -> {
+            // Block cookies from .gov domains
+            if (cookie.getDomain() != null && cookie.getDomain().toLowerCase().endsWith(".gov")) {
+                System.out.println("Blocking cookie from: " + cookie.getDomain());
+                return false; // Do not accept the cookie
+            }
+            // Allow all other cookies
+            return true;
+        };
+
+        // Set the custom policy
+        CookieManager cookieManager = new CookieManager();
+        cookieManager.setCookiePolicy(blockGovCookies);
+        CookieHandler.setDefault(cookieManager);
+
+        System.out.println("Custom cookie policy is active. It will block cookies from .gov domains.");
+
+        // Example usage (simulation)
+        try {
+            URI govUri = new URI("https://www.usa.gov");
+            HttpCookie govCookie = new HttpCookie("test", "123");
+            govCookie.setDomain(".gov");
+
+            URI comUri = new URI("https://www.google.com");
+            HttpCookie comCookie = new HttpCookie("pref", "abc");
+            comCookie.setDomain(".google.com");
+
+            // Simulate the cookie manager deciding whether to accept cookies
+            System.out.println("\nChecking a .gov cookie...");
+            if (blockGovCookies.shouldAccept(govUri, govCookie)) {
+                System.out.println("usa.gov cookie accepted (This should not happen).");
+            } else {
+                System.out.println("usa.gov cookie was correctly blocked.");
+            }
+
+            System.out.println("\nChecking a .com cookie...");
+            if (blockGovCookies.shouldAccept(comUri, comCookie)) {
+                System.out.println("google.com cookie was correctly accepted.");
+            } else {
+                System.out.println("google.com cookie was blocked (This should not happen).");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Custom Cookie Policy</h3>
+            <ul>
+                <li>Implement the <code>CookiePolicy</code> interface.</li>
+                <li>The <code>shouldAccept(uri, cookie)</code> method is where you define your logic.</li>
+                <li>Return <code>true</code> to accept the cookie, <code>false</code> to reject it.</li>
+                <li>Set your custom policy on a <code>CookieManager</code>.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

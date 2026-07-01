@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 8: Secure Socket</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .question-block {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+        .question {
+            background: #e9ecef;
+            padding: 15px;
+            border-left: 5px solid #0056b3;
+            margin-bottom: 20px;
+        }
+        .answer, .summary, .code-example {
+            margin-bottom: 20px;
+        }
+        .summary {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 5px solid #155724;
+            border-radius: 5px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+        .repetition-note {
+            font-style: italic;
+            color: #6c757d;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 8: Secure Socket</h1>
+
+        <div class="question">
+            <h2>Secure Sockets and Secure Communication</h2>
+            <p class="repetition-note">This topic is covered by multiple questions.</p>
+        </div>
+
+        <div class="answer">
+            <h3>What is a Secure Socket?</h3>
+            <p>A secure socket is an endpoint for a communication link that is protected by cryptographic protocols, typically TLS (Transport Layer Security) or its predecessor, SSL (Secure Sockets Layer). It ensures that the data transmitted between a client and a server is encrypted, preventing eavesdropping and tampering.</p>
+            
+            <h3>What is Secure Communication?</h3>
+            <p>Secure communication is the practice of protecting information during its transmission. It relies on three main principles:</p>
+            <ul>
+                <li><strong>Confidentiality:</strong> Ensuring that only the intended recipient can read the message. This is achieved through encryption.</li>
+                <li><strong>Integrity:</strong> Ensuring that the message has not been altered during transmission. This is often done using message authentication codes (MACs).</li>
+                <li><strong>Authentication:</strong> Verifying the identity of the communicating parties. This is typically handled by digital certificates.</li>
+            </ul>
+            <p>Secure sockets are the primary mechanism for achieving secure communication in network programming.</p>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Secure Sockets & Communication</h3>
+            <ul>
+                <li><strong>Secure Socket:</strong> A socket that encrypts data using SSL/TLS.</li>
+                <li><strong>Secure Communication Goals:</strong> Confidentiality (encryption), Integrity (no tampering), Authentication (verified identity).</li>
+                <li>Secure sockets provide all three of these security features.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Java Secure Sockets Extension (JSSE)</h2>
+        </div>
+
+        <div class="answer">
+            <h3>What is the Java Secure Sockets Extension?</h3>
+            <p>The Java Secure Socket Extension (JSSE) is a Java library that provides the framework and an implementation for SSL/TLS protocols. It is integrated into the Java Development Kit (JDK) and offers a set of APIs for building secure network applications. JSSE abstracts the complexity of the underlying cryptographic protocols, allowing developers to create secure sockets and manage the security aspects of a connection with relative ease.</p>
+            <p>The main classes you interact with in JSSE are:</p>
+            <ul>
+                <li><code>SSLSocketFactory</code>: Used to create client-side secure sockets (<code>SSLSocket</code>).</li>
+                <li><code>SSLServerSocketFactory</code>: Used to create server-side secure sockets (<code>SSLServerSocket</code>).</li>
+                <li><code>SSLSocket</code> and <code>SSLServerSocket</code>: The secure counterparts of <code>Socket</code> and <code>ServerSocket</code>.</li>
+            </ul>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: JSSE</h3>
+            <ul>
+                <li>The Java library for SSL/TLS.</li>
+                <li>Provides the tools to create secure sockets (<code>SSLSocketFactory</code>, <code>SSLServerSocketFactory</code>).</li>
+                <li>Hides the complex details of encryption and handshaking.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Program for Creating a Secure Socket</h2>
+            <p class="repetition-note">This question is repeated 2 times.</p>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program for Creating a Secure Socket with tufoshss.edu.np</h3>
+            <p>This program demonstrates how to use JSSE to create a secure client socket and connect to the HTTPS port (443) of a specific server, in this case, "tufoshss.edu.np".</p>
+            <pre><code>
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import java.io.*;
+
+public class SecureSocketConnector {
+
+    public static void main(String[] args) {
+        String host = "www.tufoshss.edu.np";
+        int port = 443; // HTTPS port
+
+        try {
+            // Get the default SSLSocketFactory
+            SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+
+            // Create a secure socket and connect
+            System.out.println("Attempting to connect to " + host + ":" + port);
+            try (SSLSocket socket = (SSLSocket) factory.createSocket(host, port)) {
+                System.out.println("Successfully connected.");
+
+                // The SSL handshake is automatically performed when the connection is established
+                // or when you start reading/writing data.
+
+                // You can inspect the SSL session if needed
+                System.out.println("SSL Protocol: " + socket.getSession().getProtocol());
+                System.out.println("Cipher Suite: " + socket.getSession().getCipherSuite());
+
+                // Example: Send a basic HTTP GET request
+                PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+                out.println("GET / HTTP/1.1");
+                out.println("Host: " + host);
+                out.println();
+                out.flush();
+
+                // Read the beginning of the response
+                System.out.println("\n--- Server Response ---");
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                String line;
+                for (int i = 0; i < 10 && (line = in.readLine()) != null; i++) {
+                    System.out.println(line);
+                }
+                System.out.println("-----------------------");
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error connecting to " + host + ":" + port);
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Creating a Secure Client Socket</h3>
+            <ul>
+                <li>Get an <code>SSLSocketFactory</code> instance.</li>
+                <li>Call <code>factory.createSocket(host, port)</code> to create and connect the <code>SSLSocket</code>.</li>
+                <li>The SSL/TLS handshake happens automatically.</li>
+                <li>Once connected, you can use its input and output streams just like a regular socket, but the data will be encrypted.</li>
+                <li>Always connect to the correct port for the secure service (e.g., 443 for HTTPS).</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

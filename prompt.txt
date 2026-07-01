@@ -1,0 +1,9 @@
+I'm preparing for my exams. I will provide a list of units and topics. I want you to explain each unit, topic, and sub-topic in full detail. Explain clearly what each concept does and why it is important. Even tiny explanations are helpful—no detail is too small. Use easy-to-understand language with a focus on clarity.
+
+Please also include simple and concise code examples for each concept—avoid complex or advanced code. Keep everything beginner-friendly and exam-oriented.
+
+Make the content well-structured and readable.
+
+Replace the relevant unit hmtl file if exits and Answser These questions with proper full code examples 
+also prepare a cheat sheet which has these answers in short version right below the answer itself also make the html attractive
+

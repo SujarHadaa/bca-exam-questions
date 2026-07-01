@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 6: Listview, Gridview and Recyclerview</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mobile Programming Study Guide</h1>
+        <p>Unit 6: Listview, Gridview and Recyclerview</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="unit1.html">Unit 1</a>
+        <a href="unit2.html">Unit 2</a>
+        <a href="unit3.html">Unit 3</a>
+        <a href="unit4.html">Unit 4</a>
+        <a href="unit5.html">Unit 5</a>
+        <a href="unit6.html">Unit 6</a>
+        <a href="unit7.html">Unit 7</a>
+        <a href="unit8.html">Unit 8</a>
+    </nav>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">How is List View differ from Recycler View? Explain with an example.</div>
+        <div class="answer">
+            <p><strong>RecyclerView</strong> is a more advanced and flexible version of ListView. Key differences include:</p>
+            <ul>
+                <li><strong>ViewHolder Pattern:</strong> Mandatory in RecyclerView, optional (but recommended) in ListView. It improves performance by avoiding frequent <code>findViewById()</code> calls.</li>
+                <li><strong>Layout Management:</strong> RecyclerView uses a <code>LayoutManager</code> (Linear, Grid, Staggered), while ListView only supports vertical scrolling.</li>
+                <li><strong>Item Animation:</strong> RecyclerView has built-in support for item animations, whereas ListView is much harder to animate.</li>
+                <li><strong>Reusability:</strong> RecyclerView "recycles" views that have scrolled off-screen more efficiently.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">Develop an android application to display 8 programming languages in ListView.</div>
+        <div class="answer">
+            <pre><code>// activity_main.xml
+&lt;ListView android:id="@+id/langList" android:layout_width="match_parent" android:layout_height="match_parent" /&gt;
+
+// MainActivity.java
+ListView langList = findViewById(R.id.langList);
+String[] languages = {"Java", "Kotlin", "Swift", "Dart", "Python", "C++", "JavaScript", "PHP"};
+ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;&gt;(this, android.R.layout.simple_list_item_1, languages);
+langList.setAdapter(adapter);</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">What is JSON? Develop an android application to display 10 different images of fruit in Grid View with two columns.</div>
+        <div class="answer">
+            <p><strong>JSON (JavaScript Object Notation)</strong> is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate. It is widely used for sending data from a server to a mobile app.</p>
+            <h3>Grid View Example:</h3>
+            <pre><code>&lt;!-- activity_main.xml --&gt;
+&lt;GridView android:id="@+id/fruitGrid" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:numColumns="2" android:verticalSpacing="10dp" android:horizontalSpacing="10dp" /&gt;
+
+// ImageAdapter.java (Custom Adapter)
+public class ImageAdapter extends BaseAdapter {
+    private Context mContext;
+    private int[] mThumbIds = {R.drawable.apple, R.drawable.banana, ...}; // 10 images
+
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ImageView imageView = new ImageView(mContext);
+        imageView.setImageResource(mThumbIds[position]);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
+        return imageView;
+    }
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group C</div>
+        <div class="question-text">Difference between ArrayAdapter and CursorAdapter? Application to display Students in ListView and details in Custom Dialog when selected.</div>
+        <div class="answer">
+            <ul>
+                <li><strong>ArrayAdapter:</strong> Used when the data source is an Array or a List. It is simple and easy to use for static or small dynamic datasets.</li>
+                <li><strong>CursorAdapter:</strong> Used when the data source is a database query (Cursor). It is more efficient for large datasets from SQLite.</li>
+            </ul>
+
+            <h3>ListView with Custom Dialog Selection:</h3>
+            <pre><code>listView.setOnItemClickListener((parent, view, position, id) -> {
+    Student s = studentList.get(position);
+    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+    builder.setTitle("Student Details");
+    builder.setMessage("Name: " + s.getName() + "\nRoll: " + s.getRoll() + "\nCollege: " + s.getCollege());
+    builder.setPositiveButton("OK", null);
+    builder.show();
+});</code></pre>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mobile Programming Exam Prep</p>
+    </footer>
+</body>
+</html>

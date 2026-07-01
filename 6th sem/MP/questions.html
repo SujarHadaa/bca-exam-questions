@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Questions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --card-bg-color: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        p.question {
+            margin-bottom: 1rem;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a7ac0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exam Questions</h1>
+        <div class="card">
+<h2>Unit 1: Introduction to Mobile and Mobile Programming</h2>
+<p class="question">What do you mean by mobile device? List and explain any four popular programming languages used for developing mobile applications.</p>
+<p class="question">What is Android? Explain different categories of mobile devices.</p>
+<p class="question">What is a smart mobile device? Explain different platforms used in mobile devices.</p>
+<p class="question">What are different mobile application development approaches? Explain in detail.</p>
+</div>
+<div class="card">
+<h2>Unit 2: Introduction to Android Programming</h2>
+<p class="question">Explain android architecture briefly with a suitable diagram.</p>
+<p class="question">Explain android architecture with a suitable diagram.</p>
+<p class="question">Draw the hierarchical directory structure of an android application. How can you use string and string array in android? Explain.</p>
+</div>
+<div class="card">
+<h2>Unit 3: Designing the User Interface</h2>
+<p class="question">What is an event? How many ways to handle events in android programming?</p>
+<p class="question">What is the difference between android:layout_gravity and android:gravity attribute in linear layout. Create an android application that will convert distance entered into Kilometers into Meters using Table Layout.</p>
+<p class="question">What are important attributes used in Absolute Layout? Develop a simple calculator application with two input fields for inputting numbers and two buttons for performing multiplication and division and display the result in TextView using Absolute Layout.</p>
+<p class="question">How to create AVD's? How to use spinner in Android? Explain with a suitable example.</p>
+<p class="question">What is Toast? Develop an android application to create an alert dialog to input any number and then calculate the factorial of the number and display the result in Toast.</p>
+</div>
+<div class="card">
+<h2>Unit 4: Android Activity</h2>
+<p class="question">How do you find a view element in your program? Which dialog boxes can you use in your android application?</p>
+<p class="question">Why write a java code only to send data from one activity to another activity using implicit intent.</p>
+<p class="question">Develop an android application to input your Name, Age, gender and other personal information. Pass and display this information in another activity.</p>
+</div>
+<div class="card">
+<h2>Unit 5: UI Fragments, Menus and Dialogs</h2>
+<p class="question">Why is fragment needed in android application? How can a fragment be added to an activity?</p>
+<p class="question">What is menu? Develop an android application to create a popup menu having menu item "Edit", "Copy", "Paste", "Redo" and "Undo.".</p>
+<p class="question">What are the uses of fragments? How fragments are differing from activity?</p>
+<p class="question">What is the difference between activity and fragment? Develop an android application to create a user interface for input length, width, and height of a Rectangular box and Button for Volume in one Fragment when the button is clicked then these input data are passed to the second fragment and calculate the volume of the Rectangular box and display the result in TextView.</p>
+<p class="question">Develop an android application to display an alert dialog box.</p>
+<p class="question">Develop an android application to calculate simple interest using a customize dialog box.</p>
+</div>
+<div class="card">
+<h2>Unit 6: Listview, Gridview and Recyclerview</h2>
+<p class="question">How is List View differ from Recycler View? Explain with an example.</p>
+<p class="question">What is [JSON? Develop an android application to display 10 different images of fruit in Grid View with two columns.</p>
+<p class="question">Develop an android application to display 8 programming languages in ListView.</p>
+<p class="question">What is the difference between ArrayAdapter and CursorAdapter? Develop an android application to display the application name with logo (i.e., YouTube, Facebook, Twitter, Tiktok, Snapchat, Telegram etc.) in Grid View and display their site in another activity when a Grid View item is clicked.</p>
+<p class="question">Develop an android application to display a list of Student (Student name) in ListView and display the student details (student image, roll, name and college) in a Custom Dialog when a ListView item is selected.</p>
+<p class="question">Develop an android application to display a list of students (student_name) in ListView and display the student details (roll, name and address) in a fragment when a ListView item is selected.</p>
+</div>
+<div class="card">
+<h2>Unit 7: Advance Android Concepts</h2>
+<p class="question">Provided that a SQLite database named "College" with a table named Student with the following columns (Roll as Integer, Name as Text and Address as Text). Develop an android application to connect to the database and insert five student records and display the student information.</p>
+<p class="question">What are different data types supported by SQLite? How to decode JSON data in an android application? Explain with a suitable example.</p>
+<p class="question">Provided that a MySQL database named "Bank" with table named Customer with following columns (account_no, name, account_type and amount). Develop an android application to connect database remotely and display the Customer details in ListView whose deposit amount is greater than 5000.</p>
+<p class="question">Explain the procedure for generating Google map API key for displaying Google map? Develop an android application to display the Google map with marker TRIBHUVAN UNIVERSITY.</p>
+<p class="question">Develop an android application to demonstrate the retrieval of content from a remote server.</p>
+<p class="question">Why we use API in android? Provided that SQLite database named "Hospital" with table named Doctor with the following columns (Did as Integer, Dname as Text, and Specialization as Text and Experience as Real). Develop an android application to connect to the database and insert records of Doctor and display the Doctor information whose experience is less than 5.5 years.</p>
+<p class="question">How to generate a signed APK? Write a program to locate the user's current location (write only java and manifest file).</p>
+<p class="question">What does android APK file contain? Develop an android application with a context menu having menu items "Red", "Yellow", "Green", "Black" and "Blue" etc. and change the background color of the layout when the user selects a menu item accordingly.</p>
+</div>
+<div class="card">
+<h2>Unit 8: Introduction to iOS Programming</h2>
+<p class="question">What are different types of UI controls used in iOS programming? Write a swift program to find the sum of all elements of a 1-D array.</p>
+<p class="question">What do you mean by storyboard? Write a swift program to find the largest and smallest number among three numbers using a ternary operator.</p>
+<p class="question">What do you mean by View hierarchy in iOS programming? Write a swift function to calculate the factorial of any positive integer.</p>
+<p class="question">What do you mean by View Hierarchy in iOS programming? Write a swift program to find the sum of all elements of a 1-D array.</p>
+</div>
+    </div>
+</body>
+</html>

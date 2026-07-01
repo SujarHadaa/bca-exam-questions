@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Bank - Group B & C</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .tab-btn {
+            padding: 10px 25px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #7f8c8d;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        .tab-btn.active {
+            color: #e67e22;
+            border-bottom: 3px solid #e67e22;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .q-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .unit-label {
+            font-size: 0.8em;
+            color: #95a5a6;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Question Bank</h1>
+        <p>Mobile Programming (CACS351)</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="questions_view.html">Question List</a>
+    </nav>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'groupB')">Group B Questions</button>
+        <button class="tab-btn" onclick="openTab(event, 'groupC')">Group C Questions</button>
+    </div>
+
+    <div id="groupB" class="tab-content active">
+        <div class="q-item"><span class="unit-label">Unit 1</span>What do you mean by mobile device? List and explain any four popular programming languages used for developing mobile applications.</div>
+        <div class="q-item"><span class="unit-label">Unit 1</span>What is a smart mobile device? Explain different platforms used in mobile devices.</div>
+        <div class="q-item"><span class="unit-label">Unit 1</span>What are different mobile application development approaches? Explain in detail.</div>
+        <div class="q-item"><span class="unit-label">Unit 1</span>What is Android? Explain different categories of mobile devices.</div>
+        <div class="q-item"><span class="unit-label">Unit 1</span>What is a mobile device? Explain different features of a mobile device.</div>
+        
+        <div class="q-item"><span class="unit-label">Unit 2</span>Explain android architecture briefly with a suitable diagram. * What is a surface manager library? How is DVM different from ART?</div>
+        <div class="q-item"><span class="unit-label">Unit 2</span>Draw the hierarchical directory structure of an android application.</div>
+        <div class="q-item"><span class="unit-label">Unit 2</span>How to create AVD's?</div>
+        <div class="q-item"><span class="unit-label">Unit 2</span>What does an android APK file contain?</div>
+
+        <div class="q-item"><span class="unit-label">Unit 3</span>What is an event? How many ways to handle events in android programming?</div>
+        <div class="q-item"><span class="unit-label">Unit 3</span>What are important attributes used in Absolute Layout? Develop a simple calculator application with two input fields... using Absolute Layout.</div>
+        <div class="q-item"><span class="unit-label">Unit 3</span>How can you use string and string array in android? Explain.</div>
+        <div class="q-item"><span class="unit-label">Unit 3</span>How to use spinner in android? Explain with a suitable example.</div>
+        <div class="q-item"><span class="unit-label">Unit 3</span>What is the difference between android:layout_gravity and android:gravity attribute in linear layout? Create an android application that will convert distance entered into Kilometers into Meters using Table Layout.</div>
+        <div class="q-item"><span class="unit-label">Unit 3</span>List and explain any five widgets used in android programming.</div>
+        <div class="q-item"><span class="unit-label">Unit 3</span>Differentiate RelativeLayout and ConstraintLayout with suitable example.</div>
+        <div class="q-item"><span class="unit-label">Unit 3</span>Develop an android application to calculate perimeter of rectangle using LinearLayout.</div>
+
+        <div class="q-item"><span class="unit-label">Unit 4</span>Write Java code only to send data from one activity to another activity using an implicit intent.</div>
+
+        <div class="q-item"><span class="unit-label">Unit 5</span>Why is fragment needed in android application? How can a fragment be added to an activity?</div>
+        <div class="q-item"><span class="unit-label">Unit 5</span>What is the difference between activity and fragment?</div>
+        <div class="q-item"><span class="unit-label">Unit 5</span>What is Toast? Develop an android application to create an alert dialog to input any number and then calculate the factorial of the number and display the result in Toast.</div>
+        <div class="q-item"><span class="unit-label">Unit 5</span>What are the uses of fragments? How fragments are differing from activity?</div>
+        <div class="q-item"><span class="unit-label">Unit 5</span>Develop an android application to display an alert dialog box.</div>
+        <div class="q-item"><span class="unit-label">Unit 5</span>Why is a fragment needed in Android?</div>
+        <div class="q-item"><span class="unit-label">Unit 5</span>What is a menu? Develop an android application to create a popup menu having menu items "Edit", "Copy", "Paste", "Redo", and "Undo".</div>
+        <div class="q-item"><span class="unit-label">Unit 5</span>Explain the process of creating options menu in android app with suitable program.</div>
+        <div class="q-item"><span class="unit-label">Unit 5</span>Develop an android application to create two fragments and display it in activity.</div>
+
+        <div class="q-item"><span class="unit-label">Unit 6</span>How is List View differ from Recycler View? Explain with an example.</div>
+        <div class="q-item"><span class="unit-label">Unit 6</span>Develop an android application to display 8 programming languages in ListView.</div>
+        <div class="q-item"><span class="unit-label">Unit 6</span>What is JSON? Develop an android application to display 10 different images of fruit in Grid View with two columns.</div>
+        <div class="q-item"><span class="unit-label">Unit 6</span>List and explain any three features of RecyclerView. Develop an android application to display any five programming languages in GridView.</div>
+
+        <div class="q-item"><span class="unit-label">Unit 7</span>How do you find a view element in your program? Which dialog boxes can you use in your android application?</div>
+        <div class="q-item"><span class="unit-label">Unit 7</span>What are different data types supported by SQLite? How to decode JSON data in an android application? Explain with a suitable example.</div>
+        <div class="q-item"><span class="unit-label">Unit 7</span>Why we use API in android?</div>
+        <div class="q-item"><span class="unit-label">Unit 7</span>How to generate a signed APK? Write a program to locate the user's current location (write only .java and manifest file).</div>
+        <div class="q-item"><span class="unit-label">Unit 7</span>Explain the procedure for generating a Google Maps API key for displaying Google Maps. Develop an android application to display a Google Map with a marker at TRIBHUVAN UNIVERSITY.</div>
+        <div class="q-item"><span class="unit-label">Unit 7</span>Explain different types of API.</div>
+
+        <div class="q-item"><span class="unit-label">Unit 8</span>What are different types of UI controls used in IOS programming? Write a swift program to find the sum of all elements of a 1-D array.</div>
+        <div class="q-item"><span class="unit-label">Unit 8</span>What do you mean by View hierarchy in IOS programming? Write a swift program to find the sum of all elements of a 1-D array.</div>
+        <div class="q-item"><span class="unit-label">Unit 8</span>What do you mean by view hierarchy in iOS programming? Write a swift function to calculate the factorial of any positive integer.</div>
+        <div class="q-item"><span class="unit-label">Unit 8</span>What do you mean by storyboard? Write a Swift program to find the largest and smallest number among three numbers using a ternary operator.</div>
+        <div class="q-item"><span class="unit-label">Unit 8</span>Define ViewController. Write a Swift program to calculate factorial of a number using function.</div>
+    </div>
+
+    <div id="groupC" class="tab-content">
+        <div class="q-item"><span class="unit-label">Unit 4</span>Develop an android application to input your Name, Age, gender and other personal information. Pass and display this information in another activity.</div>
+        <div class="q-item"><span class="unit-label">Unit 4</span>Develop an android application to pass name and age of customer from one activity to another.</div>
+
+        <div class="q-item"><span class="unit-label">Unit 5</span>Develop an android application to calculate simple interest using a customize dialog box.</div>
+        <div class="q-item"><span class="unit-label">Unit 5</span>Develop an android application with a context menu having menu items "Redo", "Yellow", "Green", "Black" and "Blue" etc. and change the background color of the layout when the user selects a menu item accordingly.</div>
+
+        <div class="q-item"><span class="unit-label">Unit 6</span>What is the difference between ArrayAdapter and CursorAdapter? Develop an android application to display the application name with logo in Grid View and display their site in another activity when a Grid View item is clicked.</div>
+        <div class="q-item"><span class="unit-label">Unit 6</span>Develop an android application to display a list of students (student_name) in ListView and display the student details in a fragment when a ListView item is selected.</div>
+        <div class="q-item"><span class="unit-label">Unit 6</span>Develop an android application to display a list of Students (Student name) in ListView and display the student details in a Custom Dialog when a ListView item is selected.</div>
+
+        <div class="q-item"><span class="unit-label">Unit 7</span>Provided that a SQLite database named "College" with a table named Student with the following columns (Roll as Integer, Name as Text and Address as Text). Develop an android application to connect to the database and insert five student records and display the student information.</div>
+        <div class="q-item"><span class="unit-label">Unit 7</span>Provided that SQLite database named "Hospital" with table named Doctor with the following columns (Did as Integer, Dname as Text, and Specialization as Text and Experience as Real). Develop an android application to connect to the database and insert records of Doctor and display the Doctor information whose experience is less than 5.5 years.</div>
+        <div class="q-item"><span class="unit-label">Unit 7</span>Develop an android application to demonstrate the retrieval of content from a remote server.</div>
+        <div class="q-item"><span class="unit-label">Unit 7</span>Provided that a MySQL database named "Bank" with a table named Customer has the following columns: (account_no, name, account_type, and amount). Develop an android application to connect to the database remotely and display the Customer details in a ListView for those whose deposit amount is greater than 5000.</div>
+        <div class="q-item"><span class="unit-label">Unit 7</span>Provided that a SQLite database named "BookStore" with a table named Book with the following columns (book_id as Integer, name as Text and author as Text). Develop an android application to connect to the database and insert three book records and display the book information.</div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2026 Mobile Programming Question Bank</p>
+    </footer>
+</body>
+</html>

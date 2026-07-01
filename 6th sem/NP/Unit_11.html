@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 11: IP Multicast</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .question-block {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+        .question {
+            background: #e9ecef;
+            padding: 15px;
+            border-left: 5px solid #0056b3;
+            margin-bottom: 20px;
+        }
+        .answer, .summary, .code-example {
+            margin-bottom: 20px;
+        }
+        .summary {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 5px solid #155724;
+            border-radius: 5px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+        .repetition-note {
+            font-style: italic;
+            color: #6c757d;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 11: IP Multicast</h1>
+
+        <div class="question">
+            <h2>IP Multicast and Multicast Sockets</h2>
+            <p class="repetition-note">This topic is covered by multiple questions.</p>
+        </div>
+
+        <div class="answer">
+            <h3>Define IP Multicast.</h3>
+            <p>IP Multicast is a network communication method for sending a single datagram (packet) from one source to multiple destinations simultaneously. It is a one-to-many communication model. Instead of sending a separate copy of the data to each recipient, the source sends the data to a special "multicast group" address. Devices that are interested in receiving the data join this group, and the network infrastructure takes care of delivering the data to all members of the group efficiently.</p>
+
+            <h3>What is a Multicast Group?</h3>
+            <p>A multicast group is a logical group of hosts that are interested in receiving the same data. It is identified by a special IP address in the Class D range (224.0.0.0 to 239.255.255.255). When a host joins a multicast group, it tells its local router that it wants to receive packets sent to that group's address.</p>
+
+            <h3>What are Multicast Sockets?</h3>
+            <p>In Java, a multicast socket is a special type of UDP socket used to send and receive multicast datagrams. It is represented by the <code>java.net.MulticastSocket</code> class, which is a subclass of <code>DatagramSocket</code>. A <code>MulticastSocket</code> can join one or more multicast groups and receive all packets sent to those groups.</p>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: IP Multicast</h3>
+            <ul>
+                <li><strong>One-to-many:</strong> Send one packet to many receivers.</li>
+                <li><strong>Multicast Group:</strong> A special IP address (Class D) that receivers subscribe to.</li>
+                <li><strong>MulticastSocket:</strong> The Java class used to join groups and send/receive multicast packets.</li>
+                <li>Efficient for things like online news feeds, stock tickers, or multiplayer games.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Working with Multicast Sockets</h2>
+        </div>
+
+        <div class="answer">
+            <h3>Briefly explain the process of working with Multicast Sockets.</h3>
+            <p>The process involves the following steps:</p>
+            <ol>
+                <li><strong>Create a MulticastSocket:</strong> You create an instance of <code>MulticastSocket</code>, specifying the port number on which it will listen for multicast messages.</li>
+                <li><strong>Join a Multicast Group:</strong> You use the <code>joinGroup(InetAddress groupAddress)</code> method of the <code>MulticastSocket</code> to subscribe to a specific multicast group. Your socket will now receive any packets sent to this group address on the specified port.</li>
+                <li><strong>Send/Receive Data:</strong>
+                    <ul>
+                        <li><strong>To receive:</strong> You create a <code>DatagramPacket</code> with a byte buffer and use the <code>receive()</code> method of the socket. This method will block until a packet for the joined group is received.</li>
+                        <li><strong>To send:</strong> You create a <code>DatagramPacket</code> containing the data and the multicast group address and port. Then you use the <code>send()</code> method of the <code>MulticastSocket</code> to send it.</li>
+                    </ul>
+                </li>
+                <li><strong>Leave the Group:</strong> When you are no longer interested in receiving data, you should call the <code>leaveGroup(InetAddress groupAddress)</code> method to unsubscribe. This is important for conserving network resources.</li>
+                <li><strong>Close the Socket:</strong> Finally, close the <code>MulticastSocket</code> when you are done.</li>
+            </ol>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program to Join a Computer System in a Multicast Group</h3>
+            <p>This program demonstrates how a client can join a multicast group and listen for messages. It doesn't send any messages itself; it only acts as a receiver.</p>
+            <pre><code>
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+
+public class MulticastReceiver {
+
+    public static void main(String[] args) {
+        // Multicast group and port
+        String groupAddress = "230.0.0.0";
+        int port = 4446;
+
+        try {
+            // Get the multicast group address
+            InetAddress group = InetAddress.getByName(groupAddress);
+
+            // Create a multicast socket and bind it to the port
+            try (MulticastSocket socket = new MulticastSocket(port)) {
+                
+                // Join the multicast group
+                socket.joinGroup(group);
+                System.out.println("Joined multicast group at " + groupAddress + ":" + port);
+                System.out.println("Waiting for messages...");
+
+                // Create a buffer to receive data
+                byte[] buffer = new byte[256];
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+
+                // Loop to receive messages (for demonstration, we receive 5 messages)
+                for (int i = 0; i < 5; i++) {
+                    socket.receive(packet);
+                    String received = new String(packet.getData(), 0, packet.getLength());
+                    System.out.println("Received: " + received);
+                }
+
+                // Leave the multicast group
+                socket.leaveGroup(group);
+                System.out.println("\nLeft the multicast group.");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+            <p><strong>To test this:</strong> You would need another program (a sender) that sends messages to the same multicast address (230.0.0.0) and port (4446).</p>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Joining a Multicast Group</h3>
+            <ul>
+                <li>Create a <code>MulticastSocket</code> on a specific port.</li>
+                <li>Get the <code>InetAddress</code> of the multicast group you want to join.</li>
+                <li>Call <code>socket.joinGroup(groupAddress)</code>.</li>
+                <li>Use <code>socket.receive()</code> to get incoming packets for that group.</li>
+                <li>Call <code>socket.leaveGroup()</code> when you are finished.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

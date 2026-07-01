@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3: JavaBeans - Answers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 3: JavaBeans - Answers</h1>
+
+        <div class="card">
+            <h2>Group B</h2>
+            <h3>What is a Javabean? Explain different types of properties in JavaBeans.</h3>
+            <p><strong>Answer:</strong> A JavaBean is a reusable software component for Java. It's a class that follows certain conventions for its methods, naming, and constructor, allowing it to be manipulated visually in a builder tool. Key characteristics include a no-argument constructor, properties (accessed via getter/setter methods), events (fired by event-handling methods), and serialization. Different types of properties include:</p>
+            <ul>
+                <li><strong>Simple Properties:</strong> Single values accessed via `getProperty()` and `setProperty()` methods.</li>
+                <li><strong>Boolean Properties:</strong> Special case of simple properties for boolean values, often using `isProperty()` for getters.</li>
+                <li><strong>Indexed Properties:</strong> Arrays of values accessed via `getProperty(int index)` and `setProperty(int index, value)` methods.</li>
+                <li><strong>Bound Properties:</strong> Properties that notify registered listeners when their value changes. This is achieved by adding `addPropertyChangeListener()` and `removePropertyChangeListener()` methods.</li>
+                <li><strong>Constrained Properties:</strong> Similar to bound properties, but they allow listeners to veto a proposed change. This involves `addVetoableChangeListener()` and `removeVetoableChangeListener()` methods, and the setter method throws a `PropertyVetoException`.</li>
+            </ul>
+
+            <h3>What are bounded and constrained properties in JavaBeans? Explain the advantages of Java beans.</h3>
+            <p><strong>Answer:</strong></p>
+            <ul>
+                <li><strong>Bounded Properties:</strong> A bounded property is one that notifies other components when its value changes. When a bounded property's value is modified, it fires a `PropertyChangeEvent` to all registered `PropertyChangeListener` objects. This allows other parts of the application to react to changes in the bean's state.</li>
+                <li><strong>Constrained Properties:</strong> A constrained property is a special type of bounded property where listeners have the ability to veto a proposed change. Before the property's value is actually changed, a `VetoableChangeEvent` is fired to `VetoableChangeListener` objects. If any listener throws a `PropertyVetoException`, the change is aborted. This provides a mechanism for enforcing business rules or constraints on property values.</li>
+            </ul>
+            <p><strong>Advantages of JavaBeans:</strong></p>
+            <ul>
+                <li><strong>Reusability:</strong> JavaBeans are designed to be reusable software components, which can be easily integrated into different applications.</li>
+                <li><strong>Platform Independence:</strong> Being Java-based, JavaBeans are platform-independent.</li>
+                <li><strong>Tool Support:</strong> They are well-supported by visual development tools (IDEs) that can inspect, customize, and connect beans without writing code.</li>
+                <li><strong>Introspection:</strong> Tools can automatically analyze a JavaBean to determine its properties, methods, and events.</li>
+                <li><strong>Customization:</strong> Properties of a JavaBean can be customized at design time.</li>
+                <li><strong>Event Handling:</strong> JavaBeans provide a robust event model for communication between components.</li>
+                <li><strong>Persistence:</strong> The state of a JavaBean can be saved and restored (serialized and deserialized).</li>
+            </ul>
+
+            <h3>Why do we need to create JavaBeans? Explain the steps involved in the creation of a JavaBean.</h3>
+            <p><strong>Answer:</strong> We need to create JavaBeans primarily for component-based software development. They promote reusability, simplify development with visual builder tools, and provide a standardized way for components to interact. They encapsulate functionality and data, making applications more modular and easier to maintain.</p>
+            <p><strong>Steps involved in the creation of a JavaBean:</strong></p>
+            <ol>
+                <li><strong>Create a Class:</strong> Define a public class that will serve as your JavaBean.</li>
+                <li><strong>Implement `Serializable` (Optional but Recommended):</strong> For persistence, the bean class should implement the `java.io.Serializable` interface.</li>
+                <li><strong>Provide a No-Argument Constructor:</strong> The class must have a public no-argument constructor. This allows builder tools to instantiate the bean.</li>
+                <li><strong>Define Properties with Getters and Setters:</strong> For each property, provide public `get` and `set` methods following the standard naming conventions (`getPropertyName()` and `setPropertyName(value)`). For boolean properties, `isPropertyName()` can be used for the getter.</li>
+                <li><strong>Implement Event Handling (if needed):</strong> If the bean needs to fire events, define event source methods (e.g., `addPropertyChangeListener()`, `removePropertyChangeListener()`) and fire appropriate event objects.</li>
+                <li><strong>Add Customization (if needed):</strong> For more complex customization, you might create a `BeanInfo` class.</li>
+            </ol>
+
+            <h3>Short notes on (Any Two):</h3>
+            <h4>Bean bound property</h4>
+            <p><strong>Answer:</strong> A bean bound property is a property of a JavaBean that notifies interested listeners whenever its value changes. This notification is achieved by firing a `PropertyChangeEvent` to all registered `PropertyChangeListener` objects. The bean class must provide `addPropertyChangeListener()` and `removePropertyChangeListener()` methods to allow other components to register as listeners. When the property's setter method is called and the value actually changes, the bean invokes the `firePropertyChange()` method (typically from `java.beans.PropertyChangeSupport`) to dispatch the event. This mechanism is crucial for maintaining consistency across interconnected components in an application, as it allows for automatic updates or reactions when a dependent property's value is altered.</p>
+        </div>
+
+        <div class="card">
+            <h2>Group C</h2>
+            <h3>What is a bean design pattern? Explain simple, Boolean, and indexed property design patterns with suitable examples in detail.</h3>
+            <p><strong>Answer:</strong> A bean design pattern refers to the set of conventions that a Java class must follow to be considered a JavaBean. These conventions enable introspection by development tools, allowing them to analyze the bean's capabilities (properties, methods, events) without requiring explicit metadata. The core of these patterns revolves around how properties are exposed and how events are handled.</p>
+
+            <h4>Simple Property Design Pattern</h4>
+            <p>A simple property represents a single value. It is exposed through a pair of public methods: a getter method to read its value and a setter method to write its value. The naming convention is `getPropertyName()` for the getter and `setPropertyName(value)` for the setter, where `PropertyName` is the capitalized name of the property.</p>
+            <pre><code>
+public class MyBean {
+    private String name;
+
+    public String getName() { // Getter for 'name' property
+        return name;
+    }
+
+    public void setName(String name) { // Setter for 'name' property
+        this.name = name;
+    }
+}
+            </code></pre>
+
+            <h4>Boolean Property Design Pattern</h4>
+            <p>This is a special case of a simple property for boolean values. The getter method can be named either `isPropertyName()` or `getPropertyName()`. The setter method follows the standard `setPropertyName(boolean value)` convention.</p>
+            <pre><code>
+public class LightSwitchBean {
+    private boolean isOn;
+
+    public boolean isOn() { // Getter for 'on' property (common for boolean)
+        return isOn;
+    }
+
+    // Alternatively: public boolean getOn() { return isOn; }
+
+    public void setOn(boolean on) { // Setter for 'on' property
+        this.isOn = on;
+    }
+}
+            </code></pre>
+
+            <h4>Indexed Property Design Pattern</h4>
+            <p>An indexed property represents an array of values. It is exposed through two pairs of methods: one for accessing the entire array and another for accessing individual elements by index. The methods are `getPropertyName()` (returns the array), `setPropertyName(type[] value)` (sets the entire array), `getPropertyName(int index)` (gets element at index), and `setPropertyName(int index, type value)` (sets element at index).</p>
+            <pre><code>
+public class ShoppingCartBean {
+    private String[] items;
+
+    public ShoppingCartBean() {
+        this.items = new String[10]; // Example initialization
+    }
+
+    public String[] getItems() { // Getter for the entire 'items' array
+        return items;
+    }
+
+    public void setItems(String[] items) { // Setter for the entire 'items' array
+        this.items = items;
+    }
+
+    public String getItems(int index) { // Getter for an individual item by index
+        if (index >= 0 && index < items.length) {
+            return items[index];
+        }
+        return null; // Or throw an exception
+    }
+
+    public void setItems(int index, String item) { // Setter for an individual item by index
+        if (index >= 0 && index < items.length) {
+            this.items[index] = item;
+        }
+    }
+}
+            </code></pre>
+        </div>
+    </div>
+</body>
+</html>

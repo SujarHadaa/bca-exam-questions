@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3: Designing the User Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mobile Programming Study Guide</h1>
+        <p>Unit 3: Designing the User Interface</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="unit1.html">Unit 1</a>
+        <a href="unit2.html">Unit 2</a>
+        <a href="unit3.html">Unit 3</a>
+        <a href="unit4.html">Unit 4</a>
+        <a href="unit5.html">Unit 5</a>
+        <a href="unit6.html">Unit 6</a>
+        <a href="unit7.html">Unit 7</a>
+        <a href="unit8.html">Unit 8</a>
+    </nav>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">What is an event? How many ways to handle events in android programming?</div>
+        <div class="answer">
+            <p>An <strong>event</strong> in Android is an action triggered by the user interacting with the device (e.g., clicking a button, touching the screen, or typing on the keyboard).</p>
+            <h3>Ways to Handle Events:</h3>
+            <ol>
+                <li><strong>Using the <code>onClick</code> attribute in XML:</strong> Simplest way, where you specify a method name in the XML file and define it in the Activity.</li>
+                <li><strong>Using an Anonymous Inner Class:</strong> Setting an <code>OnClickListener</code> directly on the view in Java/Kotlin code.</li>
+                <li><strong>Implementing the Listener Interface:</strong> Having the Activity class implement the listener (e.g., <code>implements View.OnClickListener</code>).</li>
+                <li><strong>Using an Inner Class:</strong> Creating a separate named inner class that implements the listener interface.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">What are important attributes used in Absolute Layout? Develop a simple calculator application... using Absolute Layout.</div>
+        <div class="answer">
+            <p><strong>Note:</strong> AbsoluteLayout is deprecated and discouraged because it doesn't scale well to different screen sizes. However, for exam purposes:</p>
+            <h3>Important Attributes:</h3>
+            <ul>
+                <li><code>android:layout_x</code>: Specifies the absolute x-coordinate of the view.</li>
+                <li><code>android:layout_y</code>: Specifies the absolute y-coordinate of the view.</li>
+            </ul>
+
+            <h3>Calculator Code (Absolute Layout):</h3>
+            <pre><code>&lt;!-- activity_main.xml --&gt;
+&lt;AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;EditText android:id="@+id/num1" android:layout_width="150dp" android:layout_height="wrap_content"
+        android:layout_x="10dp" android:layout_y="20dp" android:hint="Number 1" /&gt;
+
+    &lt;EditText android:id="@+id/num2" android:layout_width="150dp" android:layout_height="wrap_content"
+        android:layout_x="10dp" android:layout_y="80dp" android:hint="Number 2" /&gt;
+
+    &lt;Button android:id="@+id/btnMul" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="10dp" android:layout_y="140dp" android:text="Multiply" /&gt;
+
+    &lt;Button android:id="@+id/btnDiv" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="120dp" android:layout_y="140dp" android:text="Divide" /&gt;
+
+    &lt;TextView android:id="@+id/result" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="10dp" android:layout_y="200dp" android:text="Result: " android:textSize="20sp" /&gt;
+&lt;/AbsoluteLayout&gt;
+
+// MainActivity.java Snippet
+btnMul.setOnClickListener(v -> {
+    double n1 = Double.parseDouble(num1.getText().toString());
+    double n2 = Double.parseDouble(num2.getText().toString());
+    result.setText("Result: " + (n1 * n2));
+});
+btnDiv.setOnClickListener(v -> {
+    double n1 = Double.parseDouble(num1.getText().toString());
+    double n2 = Double.parseDouble(num2.getText().toString());
+    result.setText("Result: " + (n1 / n2));
+});</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">How can you use string and string array in android? Explain.</div>
+        <div class="answer">
+            <p>Strings and String Arrays are stored in <code>res/values/strings.xml</code> to support internationalization and easy maintenance.</p>
+            <h3>Defining in XML:</h3>
+            <pre><code>&lt;resources&gt;
+    &lt;string name="app_name"&gt;My App&lt;/string&gt;
+    &lt;string-array name="colors"&gt;
+        &lt;item&gt;Red&lt;/item&gt;
+        &lt;item&gt;Green&lt;/item&gt;
+        &lt;item&gt;Blue&lt;/item&gt;
+    &lt;/string-array&gt;
+&lt;/resources&gt;</code></pre>
+            <h3>Accessing in Java:</h3>
+            <pre><code>String appName = getResources().getString(R.string.app_name);
+String[] colors = getResources().getStringArray(R.array.colors);</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">How to use spinner in android? Explain with a suitable example.</div>
+        <div class="answer">
+            <p>A <strong>Spinner</strong> provides a quick way to select one value from a set. In the default state, a spinner shows its currently selected value.</p>
+            <h3>Example Implementation:</h3>
+            <pre><code>&lt;!-- activity_main.xml --&gt;
+&lt;Spinner android:id="@+id/mySpinner" android:layout_width="match_parent" android:layout_height="wrap_content" /&gt;
+
+// MainActivity.java
+Spinner spinner = findViewById(R.id.mySpinner);
+String[] items = {"Android", "iOS", "Windows", "Harmony"};
+ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;&gt;(this, android.R.layout.simple_spinner_item, items);
+adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+spinner.setAdapter(adapter);
+
+spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+    @Override
+    public void onItemSelected(AdapterView&lt;?&gt; parent, View view, int pos, long id) {
+        Toast.makeText(getApplicationContext(), "Selected: " + items[pos], Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void onNothingSelected(AdapterView&lt;?&gt; parent) {}
+});</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">What is the difference between android:layout_gravity and android:gravity attribute in linear layout? Create application to convert KM to Meters using Table Layout.</div>
+        <div class="answer">
+            <ul>
+                <li><strong>android:gravity:</strong> Specifies how to align the content <em>within</em> the view (e.g., text inside a TextView).</li>
+                <li><strong>android:layout_gravity:</strong> Specifies how to align the <em>entire view</em> within its parent layout.</li>
+            </ul>
+
+            <h3>KM to Meters (Table Layout):</h3>
+            <pre><code>&lt;!-- activity_main.xml --&gt;
+&lt;TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:stretchColumns="1"&gt;
+    &lt;TableRow&gt;
+        &lt;TextView android:text="Kilometers:" /&gt;
+        &lt;EditText android:id="@+id/etKM" android:inputType="numberDecimal" /&gt;
+    &lt;/TableRow&gt;
+    &lt;TableRow&gt;
+        &lt;Button android:id="@+id/btnConvert" android:text="Convert" /&gt;
+        &lt;TextView android:id="@+id/tvMeters" android:text="0 Meters" /&gt;
+    &lt;/TableRow&gt;
+&lt;/TableLayout&gt;
+
+// Java logic
+btnConvert.setOnClickListener(v -> {
+    double km = Double.parseDouble(etKM.getText().toString());
+    tvMeters.setText((km * 1000) + " Meters");
+});</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">List and explain any five widgets used in android programming.</div>
+        <div class="answer">
+            <ol>
+                <li><strong>TextView:</strong> Used to display text to the user.</li>
+                <li><strong>EditText:</strong> A text field that allows the user to enter and edit text.</li>
+                <li><strong>Button:</strong> A push-button that triggers an action when clicked.</li>
+                <li><strong>ImageView:</strong> Used to display image resources (e.g., bitmaps, drawables).</li>
+                <li><strong>CheckBox:</strong> A type of button that can be either checked or unchecked, often used in lists of options where multiple selections are allowed.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">Differentiate RelativeLayout and ConstraintLayout with suitable example.</div>
+        <div class="answer">
+            <ul>
+                <li><strong>RelativeLayout:</strong> Views are positioned relative to the parent or to other sibling views (e.g., "to right of Button A"). It is simpler for flat hierarchies but can get complex.</li>
+                <li><strong>ConstraintLayout:</strong> More advanced and flexible version of RelativeLayout. It allows you to build complex layouts with a flat view hierarchy. It uses "constraints" to define the position of a view relative to other views and the parent. It is optimized for performance and works well with the visual editor.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">Develop an android application to calculate perimeter of rectangle using LinearLayout.</div>
+        <div class="answer">
+            <pre><code>&lt;!-- activity_main.xml --&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="16dp"&gt;
+    &lt;EditText android:id="@+id/etLength" android:hint="Length" android:inputType="numberDecimal" /&gt;
+    &lt;EditText android:id="@+id/etWidth" android:hint="Width" android:inputType="numberDecimal" /&gt;
+    &lt;Button android:id="@+id/btnCalc" android:text="Calculate Perimeter" /&gt;
+    &lt;TextView android:id="@+id/tvRes" android:text="Result: " android:textSize="18sp" /&gt;
+&lt;/LinearLayout&gt;
+
+// Java logic: perimeter = 2 * (length + width)
+btnCalc.setOnClickListener(v -> {
+    double l = Double.parseDouble(etLength.getText().toString());
+    double w = Double.parseDouble(etWidth.getText().toString());
+    tvRes.setText("Perimeter: " + (2 * (l + w)));
+});</code></pre>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mobile Programming Exam Prep</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,151 @@
+UNIT - 1: Introduction to Mobile and Mobile Programming
+
+Syllabus Focus: Mobile Device features, categories, history, and platforms.
+
+Group B
+What do you mean by mobile device? List and explain any four popular programming languages used for developing mobile applications.
+
+What is a smart mobile device? Explain different platforms used in mobile devices.
+
+What are different mobile application development approaches? Explain in detail.
+
+What is Android? Explain different categories of mobile devices.
+
+What is a mobile device? Explain different features of a mobile device.
+
+UNIT - 2: Introduction to Android Programming
+ 
+Syllabus Focus: Android Platform, Environment Setup, AVDs, and Project Structure.
+
+Group B
+Explain android architecture briefly with a suitable diagram. * What is a surface manager library? How is DVM different from ART?
+
+Draw the hierarchical directory structure of an android application.
+
+How to create AVD's?
+
+What does an android APK file contain?
+
+UNIT - 3: Designing the User Interface
+
+Syllabus Focus: Layout types (Linear, Relative, Table, Constraint), Widgets, and Event Handling.
+
+Group B
+What is an event? How many ways to handle events in android programming?
+
+What are important attributes used in Absolute Layout? Develop a simple calculator application with two input fields for inputting numbers and two buttons for performing multiplication and division and display the result in TextView using Absolute Layout.
+
+How can you use string and string array in android? Explain.
+
+How to use spinner in android? Explain with a suitable example.
+
+What is the difference between android:layout_gravity and android:gravity attribute in linear layout? Create an android application that will convert distance entered into Kilometers into Meters using Table Layout.
+
+List and explain any five widgets used in android programming.
+
+Differentiate RelativeLayout and ConstraintLayout with suitable example.
+
+Develop an android application to calculate perimeter of rectangle using LinearLayout.
+
+UNIT - 4: Android Activity
+
+Syllabus Focus: Activity lifecycle, Intents, and passing data.
+
+Group B
+Write Java code only to send data from one activity to another activity using an implicit intent.
+
+Group C
+Develop an android application to input your Name, Age, gender and other personal information. Pass and display this information in another activity.
+
+Develop an android application to pass name and age of customer from one activity to another.
+
+UNIT - 5: UI Fragments, Menus and Dialogs
+
+Syllabus Focus: Fragment lifecycle, Fragment Manager, Menus (Types), and Dialogs.
+
+Group B
+Why is fragment needed in android application? How can a fragment be added to an activity?
+
+What is the difference between activity and fragment?
+
+What is Toast? Develop an android application to create an alert dialog to input any number and then calculate the factorial of the number and display the result in Toast.
+
+What are the uses of fragments? How fragments are differing from activity?
+
+Develop an android application to display an alert dialog box.
+
+Why is a fragment needed in Android?
+
+What is a menu? Develop an android application to create a popup menu having menu items "Edit", "Copy", "Paste", "Redo", and "Undo".
+
+Explain the process of creating options menu in android app with suitable program.
+
+Develop an android application to create two fragments and display it in activity.
+
+Group C
+Develop an android application to calculate simple interest using a customize dialog box.
+
+Develop an android application with a context menu having menu items "Redo", "Yellow", "Green", "Black" and "Blue" etc. and change the background color of the layout when the user selects a menu item accordingly.
+
+UNIT - 6: Listview, Gridview and Recyclerview
+
+Syllabus Focus: Implementation and features of adapter-based views.
+
+Group B
+How is List View differ from Recycler View? Explain with an example.
+
+Develop an android application to display 8 programming languages in ListView.
+
+What is JSON? Develop an android application to display 10 different images of fruit in Grid View with two columns.
+
+Group C
+What is the difference between ArrayAdapter and CursorAdapter? Develop an android application to display the application name with logo (i.e., YouTube, Facebook, Twitter, Tiktok, Snapchat, Telegram etc.) in Grid View and display their site in another activity when a Grid View item is clicked.
+
+Develop an android application to display a list of students (student_name) in ListView and display the student details (roll, name and address) in a fragment when a ListView item is selected.
+
+Develop an android application to display a list of Students (Student name) in ListView and display the student details (student image, roll, name, and college) in a Custom Dialog when a ListView item is selected.
+
+List and explain any three features of RecyclerView. Develop an android application to display any five programming languages in GridView.
+
+UNIT - 7: Advance Android Concepts
+
+Syllabus Focus: SQLite, APIs (JSON), Google Maps, and Play Store publishing.
+
+Group B
+How do you find a view element in your program? Which dialog boxes can you use in your android application?
+
+What are different data types supported by SQLite? How to decode JSON data in an android application? Explain with a suitable example.
+
+Why we use API in android?
+
+How to generate a signed APK? Write a program to locate the user's current location (write only .java and manifest file).
+
+Explain the procedure for generating a Google Maps API key for displaying Google Maps. Develop an android application to display a Google Map with a marker at TRIBHUVAN UNIVERSITY.
+
+Explain different types of API.
+
+Group C
+Provided that a SQLite database named "College" with a table named Student with the following columns (Roll as Integer, Name as Text and Address as Text). Develop an android application to connect to the database and insert five student records and display the student information.
+
+Provided that SQLite database named "Hospital" with table named Doctor with the following columns (Did as Integer, Dname as Text, and Specialization as Text and Experience as Real). Develop an android application to connect to the database and insert records of Doctor and display the Doctor information whose experience is less than 5.5 years.
+
+Develop an android application to demonstrate the retrieval of content from a remote server.
+
+Provided that a MySQL database named "Bank" with a table named Customer has the following columns: (account_no, name, account_type, and amount). Develop an android application to connect to the database remotely and display the Customer details in a ListView for those whose deposit amount is greater than 5000.
+
+Provided that a SQLite database named "BookStore" with a table named Book with the following columns (book_id as Integer, name as Text and author as Text). Develop an android application to connect to the database and insert three book records and display the book information.
+
+UNIT - 8: Introduction to iOS Programming
+
+Syllabus Focus: iOS Platform, Swift, Xcode, Storyboard, and View Controllers.
+
+Group B
+What are different types of UI controls used in IOS programming? Write a swift program to find the sum of all elements of a 1-D array.
+
+What do you mean by View hierarchy in IOS programming? Write a swift program to find the sum of all elements of a 1-D array.
+
+What do you mean by view hierarchy in iOS programming? Write a swift function to calculate the factorial of any positive integer.
+
+What do you mean by storyboard? Write a Swift program to find the largest and smallest number among three numbers using a ternary operator.
+
+Define ViewController. Write a Swift program to calculate factorial of a number using function.

@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 5: URLConnections</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .question-block {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+        .question {
+            background: #e9ecef;
+            padding: 15px;
+            border-left: 5px solid #0056b3;
+            margin-bottom: 20px;
+        }
+        .answer, .summary, .code-example {
+            margin-bottom: 20px;
+        }
+        .summary {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 5px solid #155724;
+            border-radius: 5px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 5: URLConnections</h1>
+
+        <div class="question">
+            <h2>Reading the Header Using URLConnection</h2>
+        </div>
+
+        <div class="answer">
+            <h3>Describe the process of reading the Header using URLConnection.</h3>
+            <p>Reading the response header of a web resource is a common task in network programming, used to get metadata about the response before processing the actual content. The process using Java's <code>URLConnection</code> class involves these steps:</p>
+            <ol>
+                <li><strong>Create a <code>URL</code> Object:</strong> First, you need to create a <code>URL</code> object representing the target resource.</li>
+                <li><strong>Open a Connection:</strong> Call the <code>openConnection()</code> method on the <code>URL</code> object. This returns a <code>URLConnection</code> object (or a subclass like <code>HttpURLConnection</code>).</li>
+                <li><strong>Establish the Connection:</strong> Although some header fields might be available before connecting, explicitly calling <code>connect()</code> or getting the input stream (which implicitly connects) ensures that the HTTP request is sent and the headers are received from the server.</li>
+                <li><strong>Retrieve Header Fields:</strong> Use the methods of the <code>URLConnection</code> object to access the header fields. You can either get specific, well-known headers using dedicated methods or iterate through all of them.</li>
+            </ol>
+            <p>There are two main ways to get header fields:</p>
+            <ul>
+                <li><strong>Using specific getter methods:</strong> For common headers like <code>Content-Type</code>, <code>Content-Length</code>, and <code>Date</code>, <code>URLConnection</code> provides direct methods like <code>getContentType()</code>, <code>getContentLengthLong()</code>, and <code>getDate()</code>.</li>
+                <li><strong>Using a generic method:</strong> You can retrieve any header by its name using <code>getHeaderField(String name)</code>. To get all headers, you can use <code>getHeaderFields()</code> which returns a <code>Map<String, List<String>></code>, or you can loop using <code>getHeaderFieldKey(int n)</code> and <code>getHeaderField(int n)</code>.</li>
+            </ul>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program to Read All Response Headers</h3>
+            <p>This program connects to a URL and prints out all the response headers sent by the server.</p>
+            <pre><code>
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.List;
+import java.util.Map;
+
+public class AllHeaderReader {
+
+    public static void main(String[] args) {
+        try {
+            URL url = new URL("https://www.google.com");
+            URLConnection connection = url.openConnection();
+
+            // The connection is implicitly established when getting header fields
+
+            System.out.println("All Response Headers from " + url + ":");
+            System.out.println("--------------------------------------------------");
+
+            // Get all header fields as a Map
+            Map<String, List<String>> headerFields = connection.getHeaderFields();
+
+            // Iterate over the map and print each header
+            for (Map.Entry<String, List<String>> entry : headerFields.entrySet()) {
+                String key = entry.getKey();
+                List<String> values = entry.getValue();
+                
+                // The status line has a null key
+                if (key == null) {
+                    System.out.println("Status Line: " + String.join(", ", values));
+                } else {
+                    System.out.println(key + ": " + String.join(", ", values));
+                }
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error connecting to the URL or reading headers.");
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Reading Headers with URLConnection</h3>
+            <ul>
+                <li><strong>Step 1:</strong> Create a <code>URL</code> object.</li>
+                <li><strong>Step 2:</strong> Call <code>openConnection()</code> on the URL.</li>
+                <li><strong>Step 3:</strong> Use methods like <code>getHeaderField(String name)</code> or <code>getHeaderFields()</code> to get the headers.</li>
+                <li><strong>No explicit connect needed:</strong> Calling a get-header method implicitly establishes the connection.</li>
+                <li><strong>Header Map:</strong> <code>getHeaderFields()</code> returns a map where the key is the header name and the value is a list of header values.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

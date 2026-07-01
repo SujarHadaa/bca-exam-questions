@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 2: Internet Addresses</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .question-block {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+        .question {
+            background: #e9ecef;
+            padding: 15px;
+            border-left: 5px solid #0056b3;
+            margin-bottom: 20px;
+        }
+        .answer, .summary, .code-example {
+            margin-bottom: 20px;
+        }
+        .summary {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 5px solid #155724;
+            border-radius: 5px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+        .repetition-note {
+            font-style: italic;
+            color: #6c757d;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 2: Internet Addresses</h1>
+
+        <div class="question">
+            <h2>The InetAddress Class</h2>
+        </div>
+
+        <div class="answer">
+            <h3>What is the use of the InetAddress class?</h3>
+            <p>The <code>InetAddress</code> class in Java is used to represent an Internet Protocol (IP) address. It provides methods to resolve hostnames to IP addresses and vice versa. This class is fundamental for network programming as it encapsulates both IPv4 and IPv6 addresses, allowing you to identify and connect to other machines on a network.</p>
+            <p>Key uses include:</p>
+            <ul>
+                <li>Getting the IP address of a local machine or a remote host.</li>
+                <li>Converting a hostname (like "www.google.com") into an IP address.</li>
+                <li>Checking the type of IP address (IPv4 or IPv6).</li>
+            </ul>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: InetAddress Class</h3>
+            <ul>
+                <li>Represents an IP address (both IPv4 and IPv6).</li>
+                <li>Resolves hostnames to IP addresses.</li>
+                <li>Provides methods to get local and remote host information.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>The NetworkInterface Class</h2>
+        </div>
+
+        <div class="answer">
+            <h3>What is the use of the NetworkInterface class?</h3>
+            <p>The <code>NetworkInterface</code> class represents a network interface, which is a point of connection between a computer and a network. This can be a physical device like an Ethernet card or a Wi-Fi adapter, or a virtual one. It is primarily used to retrieve information about the local network interfaces, such as their names, IP addresses, and MAC (Media Access Control) addresses.</p>
+            <h3>Basic Features of the NetworkInterface class:</h3>
+            <ul>
+                <li><strong>Listing Network Interfaces:</strong> You can get a list of all network interfaces available on the system.</li>
+                <li><strong>Getting Interface Information:</strong> For each interface, you can retrieve its name (e.g., "eth0", "wlan0"), display name, and a list of associated IP addresses.</li>
+                <li><strong>Retrieving MAC Address:</strong> It provides a method to get the hardware address (MAC address) of the interface, which is crucial for uniquely identifying a device on a local network.</li>
+                <li><strong>Checking Interface Status:</strong> You can check if an interface is up and running, if it's a loopback interface, or if it supports multicast.</li>
+            </ul>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: NetworkInterface Class</h3>
+            <ul>
+                <li>Represents a network interface (e.g., Ethernet card).</li>
+                <li>Used to get information about local network connections.</li>
+                <li>Key feature: Provides access to the MAC address.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Program to Retrieve IP and MAC Addresses</h2>
+            <p class="repetition-note">This question is repeated 2 times.</p>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program to Show IP, MAC, and IP Version</h3>
+            <p>This program demonstrates how to use the <code>InetAddress</code> and <code>NetworkInterface</code> classes to get the system's IP address, check if it's IPv4 or IPv6, and find the corresponding MAC address.</p>
+            <pre><code>
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+
+public class NetworkInfo {
+
+    public static void main(String[] args) {
+        try {
+            // Get the local host's IP address
+            InetAddress localHost = InetAddress.getLocalHost();
+            System.out.println("IP Address: " + localHost.getHostAddress());
+
+            // Check if the address is IPv4 or IPv6
+            if (localHost instanceof java.net.Inet4Address) {
+                System.out.println("IP Version: IPv4");
+            } else if (localHost instanceof java.net.Inet6Address) {
+                System.out.println("IP Version: IPv6");
+            } else {
+                System.out.println("IP Version: Unknown");
+            }
+
+            // Get the network interface for the local host
+            NetworkInterface networkInterface = NetworkInterface.getByInetAddress(localHost);
+            if (networkInterface != null) {
+                // Get the MAC address
+                byte[] macAddressBytes = networkInterface.getHardwareAddress();
+                if (macAddressBytes != null) {
+                    // Format the MAC address for display
+                    StringBuilder macAddress = new StringBuilder();
+                    for (int i = 0; i < macAddressBytes.length; i++) {
+                        macAddress.append(String.format("%02X%s", macAddressBytes[i], (i < macAddressBytes.length - 1) ? "-" : ""));
+                    }
+                    System.out.println("MAC Address: " + macAddress.toString());
+                } else {
+                    System.out.println("MAC Address: Not found or not accessible.");
+                }
+            } else {
+                System.out.println("Network interface for the IP address not found.");
+            }
+
+        } catch (UnknownHostException e) {
+            System.err.println("Error: Could not resolve the local host name.");
+            e.printStackTrace();
+        } catch (SocketException e) {
+            System.err.println("Error: Could not access the network interface.");
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: IP/MAC Address Program</h3>
+            <ul>
+                <li>Use <code>InetAddress.getLocalHost()</code> to get your computer's IP address.</li>
+                <li>Use <code>instanceof java.net.Inet4Address</code> to check for IPv4.</li>
+                <li>Use <code>NetworkInterface.getByInetAddress()</code> to get the network card for that IP.</li>
+                <li>Use <code>getHardwareAddress()</code> on the network interface to get the MAC address.</li>
+                <li>Remember to handle <code>UnknownHostException</code> and <code>SocketException</code>.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

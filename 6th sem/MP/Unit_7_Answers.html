@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 7: Advance Android Concepts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --card-bg-color: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        h3 {
+            color: #444;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        strong {
+            font-weight: 600;
+        }
+        ol, ul {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 7: Advance Android Concepts</h1>
+
+        <div class="card">
+            <h2>Provided that a SQLite database named "College" with a table named Student with the following columns (Roll as Integer, Name as Text and Address as Text). Develop an android application to connect to the database and insert five student records and display the student information.</h2>
+            <h3>Full Code Example:</h3>
+            <h4>1. `DatabaseHelper.java`:</h4>
+            <pre><code class="language-java">import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class DatabaseHelper extends SQLiteOpenHelper {
+    private static final String DATABASE_NAME = "College.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String TABLE_STUDENT = "Student";
+    private static final String COLUMN_ROLL = "Roll";
+    private static final String COLUMN_NAME = "Name";
+    private static final String COLUMN_ADDRESS = "Address";
+
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        String CREATE_STUDENT_TABLE = "CREATE TABLE " + TABLE_STUDENT + "("
+                + COLUMN_ROLL + " INTEGER PRIMARY KEY,"
+                + COLUMN_NAME + " TEXT,"
+                + COLUMN_ADDRESS + " TEXT" + ")";
+        db.execSQL(CREATE_STUDENT_TABLE);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_STUDENT);
+        onCreate(db);
+    }
+
+    public void addStudent(int roll, String name, String address) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_ROLL, roll);
+        values.put(COLUMN_NAME, name);
+        values.put(COLUMN_ADDRESS, address);
+        db.insert(TABLE_STUDENT, null, values);
+        db.close();
+    }
+
+    public Cursor getAllStudents() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_STUDENT, null);
+    }
+}
+            </code></pre>
+            <h4>2. `activity_main.xml`:</h4>
+            <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    &lt;Button
+        android:id="@+id/btn_add_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add and Display Students" />
+
+    &lt;TextView
+        android:id="@+id/tv_student_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp" />
+
+&lt;/LinearLayout>
+            </code></pre>
+            <h4>3. `MainActivity.java`:</h4>
+            <pre><code class="language-java">public class MainActivity extends AppCompatActivity {
+    private DatabaseHelper dbHelper;
+    private TextView tvStudentData;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        dbHelper = new DatabaseHelper(this);
+        tvStudentData = findViewById(R.id.tv_student_data);
+        Button btnAddData = findViewById(R.id.btn_add_data);
+
+        btnAddData.setOnClickListener(v -> {
+            insertSampleData();
+            displayStudentData();
+        });
+    }
+
+    private void insertSampleData() {
+        dbHelper.addStudent(1, "Alice", "123 Main St");
+        dbHelper.addStudent(2, "Bob", "456 Oak Ave");
+        dbHelper.addStudent(3, "Charlie", "789 Pine Ln");
+        dbHelper.addStudent(4, "David", "101 Maple Dr");
+        dbHelper.addStudent(5, "Eve", "212 Birch Rd");
+    }
+
+    private void displayStudentData() {
+        Cursor cursor = dbHelper.getAllStudents();
+        StringBuilder data = new StringBuilder();
+
+        if (cursor.moveToFirst()) {
+            do {
+                int roll = cursor.getInt(cursor.getColumnIndexOrThrow("Roll"));
+                String name = cursor.getString(cursor.getColumnIndexOrThrow("Name"));
+                String address = cursor.getString(cursor.getColumnIndexOrThrow("Address"));
+                data.append("Roll: ").append(roll)
+                    .append(", Name: ").append(name)
+                    .append(", Address: ").append(address).append("\n\n");
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        tvStudentData.setText(data.toString());
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="card">
+            <h2>What are different data types supported by SQLite? How to decode JSON data in an android application? Explain with a suitable example.</h2>
+            <h3>SQLite Data Types (Type Affinity):</h3>
+            <p>SQLite uses a dynamic type system. The data type of a value is associated with the value itself, not with its container (the column). However, SQLite does have a concept of "Type Affinity" on columns, which is the recommended type of data to be stored in that column. The five affinities are:</p>
+            <ul>
+                <li><strong>TEXT:</strong> Stores text strings.</li>
+                <li><strong>NUMERIC:</strong> Stores all numerical values, including integers and floating-point numbers.</li>
+                <li><strong>INTEGER:</strong> Similar to NUMERIC but with a preference for storing values as integers if possible.</li>
+                <li><strong>REAL:</strong> Stores floating-point values.</li>
+                <li><strong>BLOB (Binary Large Object):</strong> Stores any kind of data exactly as it was input (e.g., images, files).</li>
+            </ul>
+            <h3>Decoding JSON in Android:</h3>
+            <p>Android provides the built-in `org.json` library to parse JSON data. You use `JSONObject` to represent a JSON object (a set of key-value pairs) and `JSONArray` for a JSON array (an ordered sequence of values).</p>
+            <h4>Example:</h4>
+            <pre><code class="language-java">// Sample JSON string
+String jsonString = "{\n" +
+        "  \"name\": \"John Doe\",\n" +
+        "  \"age\": 30,\n" +
+        "  \"isStudent\": false,\n" +
+        "  \"courses\": [\n" +
+        "    {\"title\": \"History\", \"credits\": 3},\n" +
+        "    {\"title\": \"Math\", \"credits\": 4}\n" +
+        "  ]\n" +
+        "}";
+
+try {
+    // Create a JSONObject from the string
+    JSONObject person = new JSONObject(jsonString);
+
+    // Extract values by key
+    String name = person.getString("name");
+    int age = person.getInt("age");
+    boolean isStudent = person.getBoolean("isStudent");
+
+    System.out.println("Name: " + name);
+    System.out.println("Age: " + age);
+    System.out.println("Is Student: " + isStudent);
+
+    // Get the JSONArray for courses
+    JSONArray coursesArray = person.getJSONArray("courses");
+
+    // Loop through the array
+    for (int i = 0; i < coursesArray.length(); i++) {
+        JSONObject course = coursesArray.getJSONObject(i);
+        String title = course.getString("title");
+        int credits = course.getInt("credits");
+        System.out.println("Course: " + title + ", Credits: " + credits);
+    }
+
+} catch (JSONException e) {
+    e.printStackTrace();
+}
+            </code></pre>
+        </div>
+    </div>
+</body>
+</html>

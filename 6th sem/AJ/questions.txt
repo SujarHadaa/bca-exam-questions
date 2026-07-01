@@ -1,0 +1,76 @@
+Here's a list of questions categorized by the units they are asked from, and further separated by Group B and Group C, based on the provided images:
+
+**Unit 1: GUI Programming**
+
+* **Group B**
+    * Why do we use Panels while creating GUI applications in Java? Explain the components of the event handling model in Java. (Question 11 from Image 1)
+    * What are adapter classes? What is the benefit of using adapter classes in Java while creating events in GUI programs? Explain with an example. (Question 12 from Image 1)
+    * Why do we need a top-level container like JFrame to write java programs with GUI? How can we display two-dimensional objects in Java? (Question 11 from Image 2)
+    * Explain JTextfield and JTextArea components of the Java Swing library. (Question 12 from Image 2)
+    * What is the role of Event Listener in event handling? List different event listeners provided by Java. (Question 11 from Image 3)
+    * What is KeyEvent? Explain with a proper example. (Question 12 from Image 3)
+    * What is the use of WindowEvent? List different methods of WindowListener interface with its uses. (Question 11 from Image 4)
+    * How can you display images in GUI using Java? Explain. (Question 12 from Image 4)
+    * **Short notes on (Any Two):**
+        * 2D shapes in swing (Question 17a from Image 1)
+        * MouseEvent and MouseListener (Question 17b from Image 1)
+        * MenuBar (Question 17a from Image 4)
+* **Group C**
+    * Why do we need to use Layout managers while creating GUI application in Java? Explain the key interfaces required to develop any database application using Java. Also, write a program to display the records from the table Students who have got distinction and have a major subject Data science. Assume that the Student table is in the database College and contains the columns Rollno, Name, Level, Division and Major. (Question 18 from Image 1)
+    * Write a GUI application to find the sum and difference of two integer numbers. Use two text fields for input and a third text field for output. Your program should display the sum if the user presses the mouse and the difference if the user releases the mouse. (Question 18 from Image 2)
+    * How a frame can be created in Java? Explain. Write a program to create a GUI application in Java that identifies the smaller and greater number between two input numbers taken through two text fields and displays the result in a label. If the user presses the mouse it should display the smaller number and if the user releases the mouse it should display the greater number. (Question 18 from Image 3)
+    * Why do we need to use layout managers in GUI programming? Write a program to create a GUI form that takes data about a customer including cid, name, address, email and age and insert these data into the Customer table of the Shop database. (Question 18 from Image 4)
+
+**Unit 2: Database Programming (JDBC)**
+
+* **Group B**
+    * How the data can be accessed through a resultset object? Explain forward only, scroll-insensitive and scroll-sensitive resultsets. (Question 13 from Image 1)
+    * How do you execute SQL statements using JDBC? Explain with an example. (Question 13 from Image 2)
+    * What is the use of RowSet interface? Explain connected and disconnected rowsets. (Question 13 from Image 3)
+    * What is the use of PreparedStatement? Differentiate between Statement and PreparedStatement. (Question 14 from Image 4)
+* **Group C**
+    * Compare result set with row set. Explain a prepared statement with an example. (Question 14 from Image 2)
+    * Explain JDBC architecture in Java in detail. Write a program to insert three records into a table Item which is in the database Shop and contains the columns ItemID, Name, UnitPrice, Units and ExpiryDate. (Question 19 from Image 3)
+
+**Unit 3: JavaBeans**
+
+* **Group B**
+    * What is a Javabean? Explain different types of properties in JavaBeans. (Question 14 from Image 1)
+    * What are bounded and constrained properties in JavaBeans? Explain the advantages of Java beans. (Question 14 from Image 3)
+    * Why do we need to create JavaBeans? Explain the steps involved in the creation of a JavaBean. (Question 13 from Image 4)
+    * **Short notes on (Any Two):**
+        * Bean bound property (Question 17c from Image 2)
+* **Group C**
+    * What is a bean design pattern? Explain simple, Boolean, and indexed property design patterns with suitable examples in detail. (Question 19 from Image 2)
+
+**Unit 4: Servlets and JSP**
+
+* **Group B**
+    * What are the differences between servlets and Java applications? Explain different methods used for handling cookies in Java. (Question 15 from Image 1)
+    * How do you set and get Cookie in Servlet? Explain using a suitable Java program. (Question 15 from Image 2)
+    * What are the key methods provided in HttpSession interface for handling sessions? Explain. (Question 15 from Image 3)
+    * What are declaration and expression tags in JSP? Explain with examples. (Question 15 from Image 4)
+    * **Short notes on (Any Two):**
+        * Session tracking (Question 17c from Image 1)
+        * Java web frameworks (Question 17a from Image 2)
+        * Life cycle of a servlet (Question 17c from Image 3)
+        * Session handling in Servlet (Question 17b from Image 4)
+* **Group C**
+    * Differentiate between declaration and expression tags used in JSP. Also create a JSP page that contains three textboxes to input three numbers and a button. It should display the greatest number among three numbers when the button is clicked. (Question 19 from Image 1)
+    * Explain different scripting elements of JSP with examples. (Question 16 from Image 2)
+    * Differentiate between servlet and JSP. Create a servlet that computes and displays the factorial of an input number entered from a page when the button from that page is pressed by the user. (Question 19 from Image 3)
+    * Explain the lifecycle of a Java Servlet. Write a servlet program that takes three numbers from an HTML page and computes the sum of natural numbers up to the greatest number among the three numbers. (Question 19 from Image 4)
+    * What is directive element in JSP? Explain in detail. Create a JSP page that verifies the username and password entered form an HTML file and if the username and password are correct it displays a greetings message. Otherwise, it redirects to the register page. (Question 20 from Image 4)
+
+**Unit 5: RMI**
+
+* **Group B**
+    * What are marshalling and unmarshalling of arguments in RMI? Differentiate between CORBA and RMI. (Question 16 from Image 1)
+    * What is marshalling? Write a RMI client and server program to find the greater number among two numbers. (Question 16 from Image 4)
+    * Explain RMI architecture in java in detail. (Question 16 from Image 3)
+    * **Short notes on (Any Two):**
+        * CORBA (Question 17b from Image 2 & 17b from Image 3)
+        * Marshalling and Unmarshalling of arguments in RMI (Question 17c from Image 4)
+* **Group C**
+    * What is RMI? Explain its components. Write a client-server application in RMI to find the selling price of an item with cost price Rs. 5000 after a discount of Rs. 50. (Question 20 from Image 1)
+    * Define RMI. What is stub and parameter marshalling? Write a client/server application using RMI to find the product of two numbers. (Question 20 from Image 2)

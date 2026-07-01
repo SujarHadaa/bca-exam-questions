@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 4: Android Activity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --card-bg-color: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        h3 {
+            color: #444;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        strong {
+            font-weight: 600;
+        }
+        ol, ul {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a7ac0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 4: Android Activity</h1>
+
+        <div class="card">
+            <h2>How do you find a view element in your program? Which dialog boxes can you use in your android application?</h2>
+            <img src="Screenshot From 2025-06-30 04-39-40.png" alt="Question 17">
+            <h3>Finding a View Element:</h3>
+            <p>In Android, you can find a view element in your program using the <code>findViewById()</code> method. This method takes the resource ID of the view as an argument and returns the view object. The resource ID is an integer that uniquely identifies the view in the R.java file.</p>
+            <pre><code class="language-java">
+// Example in Java
+Button myButton = findViewById(R.id.my_button);
+
+// Example in Kotlin
+val myButton = findViewById<Button>(R.id.my_button)
+            </code></pre>
+            <h3>Dialog Boxes in Android:</h3>
+            <p>Android provides several types of dialog boxes that you can use in your application:</p>
+            <ul>
+                <li><strong>AlertDialog:</strong> A standard dialog box that can display a title, a message, and up to three buttons.</li>
+                <li><strong>DatePickerDialog:</strong> A dialog box that allows the user to select a date.</li>
+                <li><strong>TimePickerDialog:</strong> A dialog box that allows the user to select a time.</li>
+                <li><strong>ProgressDialog:</strong> A dialog box that shows a progress indicator. This is deprecated in API level 26.</li>
+                <li><strong>Custom Dialog:</strong> You can create your own custom dialog box by extending the Dialog class.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Why write a java code only to send data from one activity to another activity using implicit intent.</h2>
+            <img src="Screenshot From 2025-06-30 04-40-16.png" alt="Question 14">
+            <p>The question is slightly ambiguous. It likely means "Write Java code to send data from one activity to another using an explicit intent." Implicit intents are used to trigger actions that can be handled by other apps, while explicit intents are used to start a specific component (like an Activity) within your own app.</p>
+            <p>Here is the Java code to send data from one activity to another using an <strong>explicit intent</strong>:</p>
+            <pre><code class="language-java">
+// In the first activity (SenderActivity.java)
+Intent intent = new Intent(this, ReceiverActivity.class);
+intent.putExtra("key_name", "Your data here");
+startActivity(intent);
+
+// In the second activity (ReceiverActivity.java)
+Intent intent = getIntent();
+String data = intent.getStringExtra("key_name");
+            </code></pre>
+        </div>
+
+        <div class="card">
+            <h2>Develop an android application to input your Name, Age, gender and other personal information. Pass and display this information in another activity.</h2>
+            <img src="Screenshot From 2025-06-30 04-39-40.png" alt="Question 20">
+            <h3>Layout File (activity_main.xml):</h3>
+            <pre><code class="language-xml">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    &lt;EditText
+        android:id="@+id/edit_text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name" />
+
+    &lt;EditText
+        android:id="@+id/edit_text_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Age" />
+
+    &lt;EditText
+        android:id="@+id/edit_text_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Gender" />
+
+    &lt;Button
+        android:id="@+id/button_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+
+&lt;/LinearLayout>
+            </code></pre>
+            <h3>MainActivity.java:</h3>
+            <pre><code class="language-java">
+public class MainActivity extends AppCompatActivity {
+
+    private EditText editTextName, editTextAge, editTextGender;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editTextName = findViewById(R.id.edit_text_name);
+        editTextAge = findViewById(R.id.edit_text_age);
+        editTextGender = findViewById(R.id.edit_text_gender);
+
+        Button buttonSubmit = findViewById(R.id.button_submit);
+        buttonSubmit.setOnClickListener(v -> {
+            String name = editTextName.getText().toString();
+            String age = editTextAge.getText().toString();
+            String gender = editTextGender.getText().toString();
+
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            intent.putExtra("NAME", name);
+            intent.putExtra("AGE", age);
+            intent.putExtra("GENDER", gender);
+            startActivity(intent);
+        });
+    }
+}
+            </code></pre>
+            <h3>SecondActivity.java:</h3>
+            <pre><code class="language-java">
+public class SecondActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
+        TextView textViewName = findViewById(R.id.text_view_name);
+        TextView textViewAge = findViewById(R.id.text_view_age);
+        TextView textViewGender = findViewById(R.id.text_view_gender);
+
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("NAME");
+        String age = intent.getStringExtra("AGE");
+        String gender = intent.getStringExtra("GENDER");
+
+        textViewName.setText("Name: " + name);
+        textViewAge.setText("Age: " + age);
+        textViewGender.setText("Gender: " + gender);
+    }
+}
+            </code></pre>
+            <h3>activity_second.xml:</h3>
+            <pre><code class="language-xml">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    &lt;TextView
+        android:id="@+id/text_view_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    &lt;TextView
+        android:id="@+id/text_view_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    &lt;TextView
+        android:id="@+id/text_view_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+&lt;/LinearLayout>
+            </code></pre>
+        </div>
+    </div>
+</body>
+</html>

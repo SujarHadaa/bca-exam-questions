@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group C Answers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <h1>Group C - Advanced Java Questions and Answers</h1>
+
+    <!-- Question 1 -->
+    <div class="card">
+        <h2>Q1: How can a frame be created in Java? Explain. Write a program to create a GUI application in Java that identifies the smaller and greater number between two input numbers taken through two text fields and displays the result in a label. If the user presses the mouse it should display the smaller number and if the user releases the mouse it should display the greater number.</h2>
+        <h3>Explanation:</h3>
+        <div class="explanation">
+            <p>A frame is a top-level window with a title and a border. In Java, you can create a frame in two ways:</p>
+            <ol>
+                <li><b>By creating an object of the `Frame` class (Association):</b> You create an instance of `java.awt.Frame` and then add your components to it.</li>
+                <li><b>By extending the `Frame` class (Inheritance):</b> You create your own class that inherits from `java.awt.Frame`. This is the more common approach as it allows you to treat your application window as a component itself.</li>
+            </ol>
+            <p>To handle user interactions like mouse clicks, you need to implement a `MouseListener` interface and override its methods (`mousePressed`, `mouseReleased`, etc.).</p>
+        </div>
+        <h3>Code:</h3>
+        <pre><code>
+import java.awt.*;
+import java.awt.event.*;
+
+// Extending Frame class and implementing MouseListener
+public class NumberComparator extends Frame implements MouseListener {
+
+    TextField tf1, tf2;
+    Label resultLabel;
+
+    NumberComparator() {
+        // Frame setup
+        setTitle("Number Comparator");
+        setSize(400, 200);
+        setLayout(new FlowLayout());
+        setVisible(true);
+
+        // Closing the window
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                System.exit(0);
+            }
+        });
+
+        // Add mouse listener to the frame
+        addMouseListener(this);
+
+        // Create and add components
+        add(new Label("First Number:"));
+        tf1 = new TextField(10);
+        add(tf1);
+
+        add(new Label("Second Number:"));
+        tf2 = new TextField(10);
+        add(tf2);
+
+        resultLabel = new Label("Press/Release mouse to see result.");
+        add(resultLabel);
+    }
+
+    // MouseListener methods
+    @Override
+    public void mousePressed(MouseEvent e) {
+        try {
+            int num1 = Integer.parseInt(tf1.getText());
+            int num2 = Integer.parseInt(tf2.getText());
+            int smaller = Math.min(num1, num2);
+            resultLabel.setText("Smaller Number: " + smaller);
+        } catch (NumberFormatException ex) {
+            resultLabel.setText("Invalid input!");
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        try {
+            int num1 = Integer.parseInt(tf1.getText());
+            int num2 = Integer.parseInt(tf2.getText());
+            int greater = Math.max(num1, num2);
+            resultLabel.setText("Greater Number: " + greater);
+        } catch (NumberFormatException ex) {
+            resultLabel.setText("Invalid input!");
+        }
+    }
+
+    // Other MouseListener methods (not used here)
+    @Override
+    public void mouseClicked(MouseEvent e) {}
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+    @Override
+    public void mouseExited(MouseEvent e) {}
+
+    public static void main(String[] args) {
+        new NumberComparator();
+    }
+}
+        </code></pre>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="card">
+        <h2>Q2: Why do we need to use layout managers in GUI programming? Write a program to create a GUI form that takes data about a customer including cid, name, address, email and age and insert these data into the Customer table of the Shop database.</h2>
+        <h3>Explanation:</h3>
+        <div class="explanation">
+            <p><b>Layout Managers</b> are used to arrange components in a particular manner within a container. They are essential because they handle the complexity of component placement and resizing automatically. Without layout managers, you would have to manually calculate and set the position and size of every component, which would be very difficult to maintain, especially for windows that can be resized.</p>
+            <p><b>JDBC (Java Database Connectivity)</b> is used to connect the Java application to a database. The program below uses a simple `GridLayout` and connects to a database to insert customer data.</p>
+            <p><b>Note:</b> This code assumes you have a database named `Shop` with a `Customer` table and the necessary JDBC driver.</p>
+        </div>
+        <h3>Code:</h3>
+        <pre><code>
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
+
+public class CustomerForm extends Frame implements ActionListener {
+
+    TextField tfCid, tfName, tfAddress, tfEmail, tfAge;
+    Button btnInsert;
+    Label statusLabel;
+
+    public CustomerForm() {
+        // Frame setup
+        setTitle("Customer Data Entry");
+        setSize(400, 300);
+        setLayout(new GridLayout(6, 2)); // Using GridLayout
+        setVisible(true);
+
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                System.exit(0);
+            }
+        });
+
+        // Create and add components
+        add(new Label("Customer ID:"));
+        tfCid = new TextField();
+        add(tfCid);
+
+        add(new Label("Name:"));
+        tfName = new TextField();
+        add(tfName);
+
+        add(new Label("Address:"));
+        tfAddress = new TextField();
+        add(tfAddress);
+
+        add(new Label("Email:"));
+        tfEmail = new TextField();
+        add(tfEmail);
+
+        add(new Label("Age:"));
+        tfAge = new TextField();
+        add(tfAge);
+
+        btnInsert = new Button("Insert");
+        btnInsert.addActionListener(this);
+        add(btnInsert);
+
+        statusLabel = new Label("");
+        add(statusLabel);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String cid = tfCid.getText();
+        String name = tfName.getText();
+        String address = tfAddress.getText();
+        String email = tfEmail.getText();
+        int age = Integer.parseInt(tfAge.getText());
+
+        // Database connection details
+        String url = "jdbc:mysql://localhost:3306/Shop";
+        String user = "root";
+        String password = "password"; // Change with your password
+
+        String query = "INSERT INTO Customer (cid, name, address, email, age) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, cid);
+            pstmt.setString(2, name);
+            pstmt.setString(3, address);
+            pstmt.setString(4, email);
+            pstmt.setInt(5, age);
+
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                statusLabel.setText("Data inserted successfully!");
+            }
+
+        } catch (SQLException ex) {
+            statusLabel.setText("Error: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        new CustomerForm();
+    }
+}
+        </code></pre>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="card">
+        <h2>Q3: Explain JDBC Architecture. Write a program to insert three records into a table Item which is in the database Shop and contains the columns ItemID, Name, UnitPrice, Units and ExpiryDate.</h2>
+        <h3>Explanation:</h3>
+        <div class="explanation">
+            <p><b>JDBC Architecture</b> consists of two main layers:</p>
+            <ul>
+                <li><b>JDBC API:</b> This provides the `java.sql` package which contains classes and interfaces for Java applications to connect to databases. Key interfaces include `Driver`, `Connection`, `Statement`, `PreparedStatement`, and `ResultSet`.</li>
+                <li><b>JDBC Driver Manager:</b> This is the backbone of the JDBC architecture. It manages the different database drivers. When a Java application makes a connection request, the Driver Manager finds the appropriate driver to connect to the database.</li>
+            </ul>
+            <p>The program below demonstrates inserting multiple records into an `Item` table.</p>
+        </div>
+        <h3>Code:</h3>
+        <pre><code>
+import java.sql.*;
+
+public class InsertItems {
+
+    public static void main(String[] args) {
+        // Database connection details
+        String url = "jdbc:mysql://localhost:3306/Shop";
+        String user = "root";
+        String password = "password"; // Change with your password
+
+        String query = "INSERT INTO Item (ItemID, Name, UnitPrice, Units, ExpiryDate) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            System.out.println("Connected to database. Inserting records...");
+
+            // Record 1
+            pstmt.setString(1, "ITM001");
+            pstmt.setString(2, "Laptop");
+            pstmt.setDouble(3, 1200.50);
+            pstmt.setInt(4, 50);
+            pstmt.setDate(5, Date.valueOf("2026-12-31"));
+            pstmt.addBatch();
+
+            // Record 2
+            pstmt.setString(1, "ITM002");
+            pstmt.setString(2, "Mouse");
+            pstmt.setDouble(3, 25.00);
+            pstmt.setInt(4, 200);
+            pstmt.setDate(5, Date.valueOf("2025-10-20"));
+            pstmt.addBatch();
+
+            // Record 3
+            pstmt.setString(1, "ITM003");
+            pstmt.setString(2, "Keyboard");
+            pstmt.setDouble(3, 75.75);
+            pstmt.setInt(4, 150);
+            pstmt.setDate(5, Date.valueOf("2025-11-15"));
+            pstmt.addBatch();
+
+            int[] updateCounts = pstmt.executeBatch();
+            System.out.println("Successfully inserted " + updateCounts.length + " records.");
+
+        } catch (SQLException e) {
+            System.err.println("Database error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
+        </code></pre>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="card">
+        <h2>Q4: What is a bean design pattern? Explain simple, Boolean, and indexed property design patterns with suitable examples in detail.</h2>
+        <h3>Explanation:</h3>
+        <div class="explanation">
+            <p>A <b>JavaBean</b> is a special type of Java class that follows a set of conventions, making it reusable and easy to integrate with other components. The core of JavaBeans is its properties, which are manipulated using getter and setter methods that follow specific naming conventions (design patterns).</p>
+            <ul>
+                <li><b>Simple Property:</b> A standard property of a specific type (like `int`, `String`, etc.). It has a `getPropertyName()` getter and a `setPropertyName(value)` setter.</li>
+                <li><b>Boolean Property:</b> A property of type `boolean`. Its getter method can be named either `isPropertyName()` or `getPropertyName()`. The `isPropertyName()` form is preferred. The setter is standard: `setPropertyName(boolean value)`.</li>
+                <li><b>Indexed Property:</b> A property that represents an array of values. It has getter and setter methods to access the entire array (`getPropertyName()`) and also methods to access individual elements by their index (`getPropertyName(int index)` and `setPropertyName(int index, value)`).</li>
+            </ul>
+        </div>
+        <h3>Code:</h3>
+        <pre><code>
+import java.io.Serializable;
+
+// This class must implement Serializable to be a proper JavaBean
+public class EmployeeBean implements Serializable {
+
+    // 1. Simple Property
+    private String name;
+
+    // 2. Boolean Property
+    private boolean fullTime;
+
+    // 3. Indexed Property
+    private String[] projects;
+
+    // Default constructor (required for JavaBeans)
+    public EmployeeBean() {
+    }
+
+    // --- Getters and Setters for Simple Property "name" ---
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // --- Getters and Setters for Boolean Property "fullTime" ---
+    // Getter uses "is" prefix, which is standard for booleans
+    public boolean isFullTime() {
+        return fullTime;
+    }
+    public void setFullTime(boolean fullTime) {
+        this.fullTime = fullTime;
+    }
+
+    // --- Getters and Setters for Indexed Property "projects" ---
+    // Access the whole array
+    public String[] getProjects() {
+        return projects;
+    }
+    public void setProjects(String[] projects) {
+        this.projects = projects;
+    }
+
+    // Access a single element by index
+    public String getProjects(int index) {
+        if (projects != null && index >= 0 && index < projects.length) {
+            return projects[index];
+        }
+        return null;
+    }
+    public void setProjects(int index, String project) {
+        if (projects != null && index >= 0 && index < projects.length) {
+            this.projects[index] = project;
+        }
+    }
+
+    public static void main(String[] args) {
+        EmployeeBean employee = new EmployeeBean();
+
+        // Using simple property
+        employee.setName("John Doe");
+        System.out.println("Employee Name: " + employee.getName());
+
+        // Using boolean property
+        employee.setFullTime(true);
+        System.out.println("Is Full-Time?: " + employee.isFullTime());
+
+        // Using indexed property
+        String[] projectList = {"Project A", "Project B", "Project C"};
+        employee.setProjects(projectList);
+        System.out.println("First Project: " + employee.getProjects(0));
+        
+        // Update a project
+        employee.setProjects(1, "Project X");
+        System.out.println("Updated Second Project: " + employee.getProjects(1));
+    }
+}
+        </code></pre>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="card">
+        <h2>Q5: Differentiate between servlet and JSP. Create a servlet that computes and displays the factorial of an input number entered from a page when the button from that page is pressed by the user.</h2>
+        <h3>Explanation:</h3>
+        <div class="explanation">
+            <p><b>Servlet vs. JSP (JavaServer Pages):</b></p>
+            <table border="1" cellpadding="5" cellspacing="0">
+                <tr><th>Feature</th><th>Servlet</th><th>JSP</th></tr>
+                <tr><td><b>Primary Role</b></td><td>Java code that can generate HTML (HTML inside Java). Best for processing and logic.</td><td>HTML code that can contain Java (Java inside HTML). Best for presentation.</td></tr>
+                <tr><td><b>Translation</b></td><td>Is a Java class from the start.</td><td>Is translated into a Servlet by the web container before being executed.</td></tr>
+                <tr><td><b>Development</b></td><td>Can be complex to write and maintain presentation logic.</td><td>Easier to write and maintain HTML content.</td></tr>
+                <tr><td><b>MVC Pattern</b></td><td>Typically used as the <b>Controller</b>.</td><td>Typically used as the <b>View</b>.</td></tr>
+            </table>
+            <p>Below is the code for an HTML page to get the input and a Servlet to calculate the factorial.</p>
+        </div>
+        <h3>Code (index.html):</h3>
+        <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Factorial Calculator&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Factorial Calculator&lt;/h2&gt;
+    &lt;form action="factorialServlet" method="post"&gt;
+        Enter a number: &lt;input type="text" name="number"&gt;
+        &lt;input type="submit" value="Calculate"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </code></pre>
+        <h3>Code (FactorialServlet.java):</h3>
+        <pre><code>
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class FactorialServlet extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        
+        try {
+            // Get the number from the form
+            int number = Integer.parseInt(request.getParameter("number"));
+            
+            // Calculate factorial
+            long factorial = 1;
+            for(int i = 1; i <= number; ++i) {
+                factorial *= i;
+            }
+            
+            // Display the result
+            out.println("&lt;html&gt;");
+            out.println("&lt;head&gt;&lt;title&gt;Factorial Result&lt;/title&gt;&lt;/head&gt;");
+            out.println("&lt;body&gt;");
+            out.println("&lt;h2&gt;Factorial of " + number + " is: " + factorial + "&lt;/h2&gt;");
+            out.println("&lt;/body&gt;");
+            out.println("&lt;/html&gt;");
+            
+        } catch (NumberFormatException e) {
+            out.println("Please enter a valid integer.");
+        } finally {
+            out.close();
+        }
+    }
+}
+        </code></pre>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="card">
+        <h2>Q6: Define RMI. What is stub and parameter marshalling? Write a client/server application using RMI to find the product of two numbers.</h2>
+        <h3>Explanation:</h3>
+        <div class="explanation">
+            <p><b>RMI (Remote Method Invocation)</b> is a Java API that allows an object running in one Java Virtual Machine (JVM) to invoke methods on an object running in another JVM. It provides a way to create distributed Java applications.</p>
+            <ul>
+                <li><b>Stub:</b> The stub is a client-side proxy object that represents the remote object. When the client calls a method on the stub, the stub is responsible for sending the method call to the remote server. It handles the process of marshalling the parameters and sending them over the network.</li>
+                <li><b>Parameter Marshalling:</b> This is the process of bundling up the method parameters (arguments) into a message that can be sent over the network from the client (stub) to the server (skeleton). The reverse process on the server side is called unmarshalling.</li>
+            </ul>
+        </div>
+        <h3>Code (Product.java - Remote Interface):</h3>
+        <pre><code>
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+// 1. The remote interface must extend java.rmi.Remote
+public interface Product extends Remote {
+    // 2. Every method must throw java.rmi.RemoteException
+    public int multiply(int a, int b) throws RemoteException;
+}
+        </code></pre>
+        <h3>Code (ProductImpl.java - Implementation):</h3>
+        <pre><code>
+import java.rmi.server.UnicastRemoteObject;
+import java.rmi.RemoteException;
+
+// 3. The implementation class must extend UnicastRemoteObject
+public class ProductImpl extends UnicastRemoteObject implements Product {
+
+    // 4. The constructor must throw RemoteException
+    public ProductImpl() throws RemoteException {
+        super();
+    }
+
+    // 5. Implement the remote method
+    public int multiply(int a, int b) throws RemoteException {
+        return a * b;
+    }
+}
+        </code></pre>
+        <h3>Code (Server.java):</h3>
+        <pre><code>
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class Server {
+    public static void main(String[] args) {
+        try {
+            // 6. Create an instance of the implementation
+            ProductImpl p = new ProductImpl();
+
+            // 7. Create and start the RMI registry on a port
+            Registry registry = LocateRegistry.createRegistry(1099);
+
+            // 8. Bind the remote object in the registry
+            registry.rebind("ProductService", p);
+
+            System.out.println("Server is running...");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+        </code></pre>
+        <h3>Code (Client.java):</h3>
+        <pre><code>
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class Client {
+    public static void main(String[] args) {
+        try {
+            // 9. Get the registry
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+
+            // 10. Look up the remote object
+            Product p = (Product) registry.lookup("ProductService");
+
+            // 11. Call the remote method
+            int result = p.multiply(5, 10);
+            System.out.println("Result of 5 * 10 is: " + result);
+
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+        </code></pre>
+    </div>
+</div>
+</body>
+</html>

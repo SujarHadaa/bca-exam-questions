@@ -1,0 +1,68 @@
+Here's a list of questions from the provided images, categorized by their relevant units in the "CACS355-Network-Programming.pdf" document, along with their group (B or C):
+
+**Unit 1: Introduction**
+* What is the Client-Server software model? Explain the strengths and weaknesses of Java programming as a network programming language. (Group B)
+* Define the client-server model of a network application. Explain the design considerations for a network application. (Group B)
+* Define Client-Server software model. Explain the features of Java as a Network programming language. (Group B)
+
+**Unit 2: Internet Addresses**
+* What is the use of InetAddress class? Write a program to retrieve IP and MAC addresses? (Group B)
+* Write a program to show the IP and MAC address of the system and also check if the IP address is IPv4 or IPv6. (Group B)
+* What is the use of the NetworkInterface Class? Explain the basic features of the NetworkInterface class. (Group B)
+
+**Unit 3: URLs and URIs**
+* Define URL class. Write a program to show the parts of the URL (Splitting URL). (Group B)
+* Define URL Connection Class? Write a program to read header using header-specific methods. (Group B)
+* Differentiate between URL and URI class with their applications. b) Write any program to illustrate the application of RMI. (Group C)
+
+**Unit 4: HTTP**
+* Define Cookies. Write a program to retrieve cookie information stored in the system. (Group B)
+* Write Short Notes on (Any Two): a) HTTP (Group B)
+* Describe about X-www-form URL Encoder and URL Decoder with an example. (Group B)
+* What is the significance to control HTTP Keep-Alive system properties. Write a Program for a cookie policy that blocks all .gov cookies but allows others. (Group B)
+* Explain HTTP methods with examples. (Group B)
+
+**Unit 5: URLConnections**
+* Describe the process of reading the Header using URL Connection. (Group B)
+
+**Unit 6: Socket for Clients**
+* Define Socket. Differentiate between TCP and UDP Sockets with their applications. (Group B)
+* Define a secure socket. Write a program to create a secure client socket. (Group B)
+* What are the key differences between Socket and Server Socket? Create a simple console chat application using TCP socket. (Group C)
+* Write a program to display the socket information [address, port, local address, local port]. (Group B)
+* Write a program to perform a basic two-way communication between client and server. (Group C)
+
+**Unit 7: Socket for Servers**
+* Write multithreaded TCP client and server socket programs for daytime service. (Group C)
+* Write UDP client and server socket programs in which the server identifies the number sent by a client is either even or odd and replies to the client accordingly. (Group C)
+* Write a server-side program for a daytime service using socket. (Group B)
+* What is the procedure for constructing and connecting Server sockets? Explain the Server Socket options with examples. (Group C)
+
+**Unit 8: Secure Socket**
+* Write Short Notes on (Any Two): c) Secure Socket (Group B)
+* What is Java Secure Sockets Extension? Write a program for creating secure sockets with tufoshss.edu.np. (Group B)
+* Define a secure socket. Write a program to create a secure client socket. (Group B)
+* Write Short Notes on (Any Two): a) Secure Communication (Group B)
+
+**Unit 9: Nonblocking I/O**
+* How blocking I/O is different from Non-Blocking I/O? Explain the basic mechanism of handling Buffers and Channels in Java with an example. (Group C)
+* Define Non-blocking I/O. Differentiate between blocking and non-blocking socket communication in Java. (Group B)
+* Define Buffer. Explain buffer handling methods. (Group B)
+* Explain central abstractions of Java NIO. (Group B)
+
+**Unit 10: UDP**
+* Write Short Notes on (Any Two): b) Datagram Packet (Group B)
+* Describe about UDP Socket Option and Write a Program for Scanning Local UDP Ports from 1024 port to up. (Group B)
+* What are the features of DatagramPacket and DatagramSocket Class? Write a program to create a simple UDP client. (Group C)
+* Write a program to create a UDP server and client which converts the date from the client in BS to AD format. [Assume that the difference between BS and AD is 56 years, 08 months, 17 days] (Group C)
+
+**Unit 11: IP Multicast**
+* Define IP Multicast. Write a program to join a computer system in a multicast group. (Group B)
+* Write Short Notes on (Any Two): b) Multicast Sockets (Group B)
+* Define Multicast Group, and briefly explain the process of working with Multicast Sockets? (Group B)
+
+**Unit 12: Remote Method Invocation (RMI)**
+* Write Short Notes on (Any Two): b) RMI (Group B)
+* Explain the factory method with an example. Write a program to download a webpage. (Group C)
+* a) Write a program to calculate the area of a triangle using RMI. [6] b) Write a program to list out all the interfaces. (Group C)
+* Write Short Notes on (Any Two): c) RMI Server (Group B)

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improved Information Security - Notes</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .unit {
+            margin-bottom: 30px;
+        }
+        .unit-content {
+            padding-left: 15px;
+            border-left: 3px solid #0056b3;
+        }
+        .topic {
+            margin-bottom: 10px;
+        }
+        .topic h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Improved Information Security - Notes</h1>
+
+        <div class="unit">
+            <h2>Unit I: Overview of Computer security</h2>
+            <div class="unit-content">
+                <div class="topic">
+                    <h3>Computer Security Concepts</h3>
+                    <p><strong>CIA Triad:</strong> <strong>C</strong>onfidentiality, <strong>I</strong>ntegrity, <strong>A</strong>vailability.</p>
+                    <p><strong>Threats:</strong> Potential for security violation.</p>
+                    <p><strong>Attacks:</strong> Deliberate assault on system security.</p>
+                    <p><strong>Assets:</strong> Information, hardware, software.</p>
+                </div>
+                <div class="topic">
+                    <h3>Security Design Principles</h3>
+                    <p><strong>Least Privilege:</strong> Minimum necessary access.</p>
+                    <p><strong>Fail-Safe Defaults:</strong> Deny by default.</p>
+                    <p><strong>Open Design:</strong> No security through obscurity.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit II: Cryptographic Algorithms</h2>
+            <div class="unit-content">
+                <div class="topic">
+                    <h3>Classical Ciphers</h3>
+                    <p><strong>Vigenere:</strong> Polyalphabetic substitution (uses keyword).</p>
+                    <p><strong>Rail Fence:</strong> Transposition cipher (writes diagonally).</p>
+                </div>
+                <div class="topic">
+                    <h3>Modern Ciphers</h3>
+                    <p><strong>Symmetric:</strong> Same key for encryption and decryption (e.g., DES, AES).</p>
+                    <p><strong>Asymmetric:</strong> Different keys for encryption and decryption (e.g., RSA, Diffie-Hellman).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit III: Message Authentication and Hash Functions</h2>
+            <div class="unit-content">
+                <div class="topic">
+                    <h3>Message Authentication</h3>
+                    <p><strong>MAC (Message Authentication Code):</strong> A short piece of information used to authenticate a message.</p>
+                    <p><strong>HMAC:</strong> A type of MAC that uses a hash function and a secret key.</p>
+                </div>
+                <div class="topic">
+                    <h3>Hash Functions</h3>
+                    <p><strong>MD5, SHA-1:</strong> Older hash functions (less secure).</p>
+                    <p><strong>Digital Signatures:</strong> Provide authentication, integrity, and non-repudiation.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit IV: User Authentication</h2>
+            <div class="unit-content">
+                <div class="topic">
+                    <h3>Authentication Methods</h3>
+                    <p><strong>Password-based:</strong> Something you know.</p>
+                    <p><strong>Token-based:</strong> Something you have.</p>
+                    <p><strong>Biometric:</strong> Something you are.</p>
+                    <p><strong>Two-Factor Authentication (2FA):</strong> Combines two different methods.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit V: Access Control</h2>
+            <div class="unit-content">
+                <div class="topic">
+                    <h3>Access Control Models</h3>
+                    <p><strong>Discretionary Access Control (DAC):</strong> The owner of a resource determines who has access.</p>
+                    <p><strong>Role-Based Access Control (RBAC):</strong> Access is based on the user's role in the organization.</p>
+                    <p><strong>Attribute-Based Access Control (ABAC):</strong> Access is based on attributes of the user, resource, and environment.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit VI: Malicious Software and Intrusion</h2>
+            <div class="unit-content">
+                <div class="topic">
+                    <h3>Malicious Software (Malware)</h3>
+                    <p><strong>Virus:</strong> Attaches itself to a program and spreads to other programs.</p>
+                    <p><strong>Worm:</strong> A self-replicating program that spreads across a network.</p>
+                    <p><strong>Trojan Horse:</strong> A program that appears to be harmless but has a malicious purpose.</p>
+                </div>
+                <div class="topic">
+                    <h3>Intrusion Detection System (IDS)</h3>
+                    <p><strong>Signature-based IDS:</strong> Detects known attacks by looking for specific patterns.</p>
+                    <p><strong>Anomaly-based IDS:</strong> Detects unknown attacks by looking for deviations from normal behavior.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit VII: Network Security</h2>
+            <div class="unit-content">
+                <div class="topic">
+                    <h3>Network Security Protocols</h3>
+                    <p><strong>SSL/TLS:</strong> Secure communication over a network.</p>
+                    <p><strong>IPSec:</strong> Secure communication at the IP layer.</p>
+                    <p><strong>Firewall:</strong> A network security device that monitors and filters incoming and outgoing network traffic.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit VIII: Security Auditing</h2>
+            <div class="unit-content">
+                <div class="topic">
+                    <h3>Security Auditing</h3>
+                    <p><strong>Security Audit:</strong> A systematic evaluation of the security of a system.</p>
+                    <p><strong>Audit Trail:</strong> A record of system activity.</p>
+                    <p><strong>Logging:</strong> The process of collecting and storing audit data.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

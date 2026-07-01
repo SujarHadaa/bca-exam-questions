@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 7: Socket for Servers</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .question-block {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+        .question {
+            background: #e9ecef;
+            padding: 15px;
+            border-left: 5px solid #0056b3;
+            margin-bottom: 20px;
+        }
+        .answer, .summary, .code-example {
+            margin-bottom: 20px;
+        }
+        .summary {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 5px solid #155724;
+            border-radius: 5px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 7: Socket for Servers</h1>
+
+        <div class="question">
+            <h2>Server-Side Program for a Daytime Service</h2>
+        </div>
+
+        <div class="answer">
+            <h3>What is a Daytime Service?</h3>
+            <p>A daytime service is a simple network service that, when a client connects, sends the current date and time to the client and then closes the connection. It's a classic example used to demonstrate server-side socket programming.</p>
+            
+            <h3>How to Implement a Server-Side Daytime Service</h3>
+            <p>The implementation involves creating a <code>ServerSocket</code> that waits for client connections. When a client connects, the server accepts the connection, which creates a regular <code>Socket</code> for communication. The server then writes the current date and time to the socket's output stream and closes the connection.</p>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program for a Daytime Server</h3>
+            <p>This program creates a server that listens on port 1313. When a client connects, it sends the current date and time and then closes the connection.</p>
+            <pre><code>
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Date;
+
+public class DaytimeServer {
+
+    public static final int PORT = 1313;
+
+    public static void main(String[] args) {
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+            System.out.println("Daytime Server started on port " + PORT);
+            System.out.println("Waiting for clients to connect...");
+
+            while (true) { // Keep the server running indefinitely
+                try (Socket clientSocket = serverSocket.accept()) { // Wait for a client connection
+                    System.out.println("Client connected from: " + clientSocket.getInetAddress());
+
+                    // Get the output stream to send data to the client
+                    PrintWriter out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+
+                    // Get the current date and time
+                    String dateTime = new Date().toString();
+
+                    // Send the date and time to the client
+                    out.println(dateTime);
+                    out.flush(); // Ensure the data is sent
+
+                    System.out.println("Sent date and time to the client: " + dateTime);
+                    // The client socket is automatically closed by the try-with-resources statement
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error with the server socket.");
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+            
+            <h3>How to Test the Daytime Server</h3>
+            <p>You can test this server using a simple client program or even a command-line tool like <code>telnet</code> or <code>netcat</code>. For example, in your terminal, you would run:</p>
+            <pre><code>telnet localhost 1313</code></pre>
+            <p>After connecting, the server will send the date and time and then close the connection.</p>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Daytime Server</h3>
+            <ul>
+                <li><strong>Create a <code>ServerSocket</code>:</strong> This waits for incoming connections on a specific port.</li>
+                <li><strong>Loop and Accept Connections:</strong> Use an infinite loop and <code>serverSocket.accept()</code> to handle multiple clients, one after another.</li>
+                <li><strong>Get Output Stream:</strong> Use <code>clientSocket.getOutputStream()</code> to send data to the client.</li>
+                <li><strong>Send Data:</strong> Write the current date and time to the output stream.</li>
+                <li><strong>Close the Socket:</strong> It's crucial to close the client socket after serving the request to free up resources. Using a try-with-resources statement is the best practice.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

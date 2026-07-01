@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 6: Socket for Clients</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .question-block {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+        .question {
+            background: #e9ecef;
+            padding: 15px;
+            border-left: 5px solid #0056b3;
+            margin-bottom: 20px;
+        }
+        .answer, .summary, .code-example {
+            margin-bottom: 20px;
+        }
+        .summary {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 5px solid #155724;
+            border-radius: 5px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+        .repetition-note {
+            font-style: italic;
+            color: #6c757d;
+            text-align: right;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 6: Socket for Clients</h1>
+
+        <div class="question">
+            <h2>Socket Definition and TCP vs. UDP</h2>
+        </div>
+
+        <div class="answer">
+            <h3>Define Socket.</h3>
+            <p>A socket is one endpoint of a two-way communication link between two programs running on the network. A socket is a combination of an IP address and a port number. The <code>java.net.Socket</code> class represents a client-side socket. When you create a socket, you specify the hostname and port of the server you want to connect to. Once the connection is established, you can get input and output streams from the socket to communicate with the server.</p>
+
+            <h3>Differentiate between TCP and UDP Sockets.</h3>
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>TCP (Transmission Control Protocol)</th>
+                    <th>UDP (User Datagram Protocol)</th>
+                </tr>
+                <tr>
+                    <td><strong>Connection</strong></td>
+                    <td>Connection-oriented</td>
+                    <td>Connectionless</td>
+                </tr>
+                <tr>
+                    <td><strong>Reliability</strong></td>
+                    <td>Reliable (guarantees delivery, order, and no duplication)</td>
+                    <td>Unreliable (no guarantee of delivery or order)</td>
+                </tr>
+                <tr>
+                    <td><strong>Speed</strong></td>
+                    <td>Slower (due to overhead of reliability checks)</td>
+                    <td>Faster (less overhead)</td>
+                </tr>
+                <tr>
+                    <td><strong>Header Size</strong></td>
+                    <td>20 bytes</td>
+                    <td>8 bytes</td>
+                </tr>
+                <tr>
+                    <td><strong>Use Cases</strong></td>
+                    <td>Web browsing (HTTP), email (SMTP), file transfer (FTP)</td>
+                    <td>Video streaming, online gaming, DNS, VoIP</td>
+                </tr>
+                <tr>
+                    <td><strong>Java Classes</strong></td>
+                    <td><code>Socket</code>, <code>ServerSocket</code></td>
+                    <td><code>DatagramSocket</code>, <code>DatagramPacket</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: TCP vs. UDP</h3>
+            <ul>
+                <li><strong>TCP:</strong> Reliable, ordered, connection-based. Think of it like a phone call. Use for things that must be perfect, like file transfers.</li>
+                <li><strong>UDP:</strong> Fast, lightweight, connectionless. Think of it like sending a postcard. Use for things where speed is more important than perfect reliability, like streaming or gaming.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Secure Sockets</h2>
+            <p class="repetition-note">This question is repeated 2 times.</p>
+        </div>
+
+        <div class="answer">
+            <h3>Define a secure socket.</h3>
+            <p>A secure socket is a type of socket that provides a secure communication channel using cryptographic protocols like SSL (Secure Sockets Layer) or TLS (Transport Layer Security). It encrypts the data being transmitted between the client and the server, ensuring confidentiality and integrity. In Java, secure sockets are created using the <code>javax.net.ssl.SSLSocket</code> class, which is a subclass of <code>java.net.Socket</code>.</p>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program to Create a Secure Client Socket</h3>
+            <p>This program shows how to create a secure client socket that connects to a secure server (like a website with HTTPS) and sends a simple HTTP request.</p>
+            <pre><code>
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import java.io.*;
+
+public class SecureClientSocket {
+
+    public static void main(String[] args) {
+        String host = "www.google.com";
+        int port = 443; // Standard HTTPS port
+
+        try {
+            // Get a factory for creating secure sockets
+            SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+
+            // Create a secure socket and connect it
+            try (SSLSocket socket = (SSLSocket) factory.createSocket(host, port)) {
+
+                System.out.println("Connected to " + host + " on port " + port);
+
+                // Enable all available cipher suites
+                socket.setEnabledCipherSuites(socket.getSupportedCipherSuites());
+
+                // Start the SSL handshake
+                socket.startHandshake();
+
+                // Send an HTTP GET request
+                PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
+                out.println("GET / HTTP/1.1");
+                out.println("Host: " + host);
+                out.println();
+                out.flush();
+
+                // Read the response
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                String line;
+                while ((line = in.readLine()) != null) {
+                    System.out.println(line);
+                    // Break after a few lines for brevity
+                    if (line.contains("</HTML>") || line.contains("</html>")) {
+                        break;
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error creating or communicating with the secure socket.");
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Secure Sockets</h3>
+            <ul>
+                <li>Encrypts communication between client and server.</li>
+                <li>Uses SSL/TLS protocols.</li>
+                <li>In Java, use <code>SSLSocketFactory</code> to create an <code>SSLSocket</code>.</li>
+                <li>Connects to the server's secure port (usually 443 for HTTPS).</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Displaying Socket Information</h2>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program to Display Socket Information</h3>
+            <p>This program connects to a server and then displays information about the connection, including the remote address and port, and the local address and port.</p>
+            <pre><code>
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+public class SocketInfo {
+
+    public static void main(String[] args) {
+        String host = "www.google.com";
+        int port = 80; // Standard HTTP port
+
+        try (Socket socket = new Socket(host, port)) {
+            System.out.println("Successfully connected to " + host + " on port " + port);
+            System.out.println("----------------------------------");
+
+            // Display socket information
+            System.out.println("Remote Address: " + socket.getInetAddress().getHostAddress());
+            System.out.println("Remote Port: " + socket.getPort());
+            System.out.println("Local Address: " + socket.getLocalAddress().getHostAddress());
+            System.out.println("Local Port: " + socket.getLocalPort());
+
+        } catch (UnknownHostException e) {
+            System.err.println("Error: Don't know about host " + host);
+        } catch (IOException e) {
+            System.err.println("Error: Couldn't get I/O for the connection to " + host);
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Socket Information</h3>
+            <ul>
+                <li>Create a <code>Socket</code> object to connect to a server.</li>
+                <li><code>getInetAddress()</code>: Gets the remote server's IP address info.</li>
+                <li><code>getPort()</code>: Gets the remote server's port.</li>
+                <li><code>getLocalAddress()</code>: Gets your machine's IP address used for the connection.</li>
+                <li><code>getLocalPort()</code>: Gets the port on your machine used for the connection.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

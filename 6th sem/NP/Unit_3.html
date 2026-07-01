@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3: URLs and URIs</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .question-block {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+        .question {
+            background: #e9ecef;
+            padding: 15px;
+            border-left: 5px solid #0056b3;
+            margin-bottom: 20px;
+        }
+        .answer, .summary, .code-example {
+            margin-bottom: 20px;
+        }
+        .summary {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 5px solid #155724;
+            border-radius: 5px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 3: URLs and URIs</h1>
+
+        <div class="question">
+            <h2>The URL Class</h2>
+        </div>
+
+        <div class="answer">
+            <h3>Define URL class.</h3>
+            <p>The <code>URL</code> class in Java represents a Uniform Resource Locator, which is a pointer to a "resource" on the World Wide Web. A resource can be something as simple as a file or a directory, or it can be a reference to a more complicated object, such as a query to a database or a search engine.</p>
+            <p>The <code>URL</code> class provides a simple, high-level API to access resources on the internet. Once you create a <code>URL</code> object, you can use it to open a connection to the resource it points to and retrieve its content.</p>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: URL Class</h3>
+            <ul>
+                <li>Represents a web address (e.g., "http://www.example.com").</li>
+                <li>Provides methods to parse and access different parts of the URL.</li>
+                <li>Acts as a starting point for downloading web content.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Program to Split a URL</h2>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program to Show the Parts of a URL</h3>
+            <p>This program creates a <code>URL</code> object and then uses its getter methods to extract and display its various components, such as the protocol, host, port, and path.</p>
+            <pre><code>
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class URLSplitter {
+
+    public static void main(String[] args) {
+        try {
+            // Create a URL object
+            URL url = new URL("https://www.example.com:8080/path/to/file.html?query=123#fragment");
+
+            System.out.println("URL: " + url.toString());
+            System.out.println("---------------------------------");
+
+            // Split the URL into its components
+            System.out.println("Protocol: " + url.getProtocol());
+            System.out.println("Host: " + url.getHost());
+            System.out.println("Port: " + url.getPort());
+            System.out.println("Default Port: " + url.getDefaultPort());
+            System.out.println("Path: " + url.getPath());
+            System.out.println("File: " + url.getFile());
+            System.out.println("Query: " + url.getQuery());
+            System.out.println("Reference (Fragment): " + url.getRef());
+
+        } catch (MalformedURLException e) {
+            System.err.println("Error: The URL is not valid.");
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Splitting a URL</h3>
+            <ul>
+                <li>Create a <code>URL</code> object from a URL string.</li>
+                <li>Use methods like <code>getProtocol()</code>, <code>getHost()</code>, <code>getPort()</code>, <code>getPath()</code>, <code>getQuery()</code>, and <code>getRef()</code>.</li>
+                <li>Always wrap URL creation in a <code>try-catch</code> block for <code>MalformedURLException</code>.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>The URLConnection Class</h2>
+        </div>
+
+        <div class="answer">
+            <h3>Define URLConnection Class.</h3>
+            <p>The <code>URLConnection</code> class is an abstract class that represents a communication link between an application and a URL. It is a more general and powerful mechanism than the <code>URL</code> class for accessing web resources. While a <code>URL</code> object just points to a resource, a <code>URLConnection</code> object can be used to interact with it, allowing you to send data (for POST requests) and inspect the response headers and content.</p>
+            <p>You don't create a <code>URLConnection</code> directly. Instead, you get an instance by calling the <code>openConnection()</code> method on a <code>URL</code> object. The actual type of the connection object returned (e.g., <code>HttpURLConnection</code>) depends on the protocol of the URL.</p>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: URLConnection Class</h3>
+            <ul>
+                <li>Represents an active connection to a web resource.</li>
+                <li>Obtained by calling <code>url.openConnection()</code>.</li>
+                <li>Allows you to read response headers and content.</li>
+                <li>Allows you to configure the connection (e.g., set timeouts, add request headers).</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Program to Read Response Headers</h2>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program to Read Headers Using Header-Specific Methods</h3>
+            <p>This program connects to a URL and uses the <code>URLConnection</code> object to read and display various response headers, such as the content type, content length, and date.</p>
+            <pre><code>
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Date;
+
+public class HeaderReader {
+
+    public static void main(String[] args) {
+        try {
+            URL url = new URL("https://www.google.com");
+            URLConnection connection = url.openConnection();
+
+            // Connect to the resource
+            connection.connect();
+
+            System.out.println("Response Headers:");
+            System.out.println("-------------------");
+
+            // Use header-specific methods
+            System.out.println("Content-Type: " + connection.getContentType());
+            System.out.println("Content-Length: " + connection.getContentLength());
+            System.out.println("Content-Encoding: " + connection.getContentEncoding());
+            System.out.println("Date: " + new Date(connection.getDate()));
+            System.out.println("Last-Modified: " + new Date(connection.getLastModified()));
+            System.out.println("Expiration: " + new Date(connection.getExpiration()));
+
+        } catch (IOException e) {
+            System.err.println("Error connecting to the URL or reading headers.");
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Reading Headers</h3>
+            <ul>
+                <li>Get a <code>URLConnection</code> from a <code>URL</code> object.</li>
+                <li>Call <code>connect()</code> to establish the connection.</li>
+                <li>Use methods like <code>getContentType()</code>, <code>getContentLength()</code>, and <code>getDate()</code>.</li>
+                <li>Dates are returned as long values (milliseconds since epoch), so convert them to <code>Date</code> objects for readability.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

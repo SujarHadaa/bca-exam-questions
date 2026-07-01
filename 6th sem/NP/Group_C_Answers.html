@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group C Questions and Answers</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .question-block {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+        .question {
+            background: #e9ecef;
+            padding: 15px;
+            border-left: 5px solid #0056b3;
+            margin-bottom: 20px;
+        }
+        .answer, .summary, .code-example {
+            margin-bottom: 20px;
+        }
+        .summary {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 5px solid #155724;
+            border-radius: 5px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+        .repetition-note {
+            font-style: italic;
+            color: #6c757d;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Group C Questions and Answers</h1>
+
+        <!-- Question 1 -->
+        <div class="question-block">
+            <div class="question">
+                <h2>Differentiate between URL and URI class with their applications. b) Write any program to illustrate the application of RMI.</h2>
+            </div>
+
+            <div class="answer">
+                <h3>a) Differentiating URL and URI</h3>
+                <p><strong>URI (Uniform Resource Identifier)</strong> is a string of characters that unambiguously identifies a particular resource. It's a general concept. A URI can be a name, a locator, or both.</p>
+                <p><strong>URL (Uniform Resource Locator)</strong> is a specific type of URI that not only identifies a resource but also provides a means of locating it by describing its primary access mechanism (i.e., its network location).</p>
+                <p><strong>The key difference:</strong> Every URL is a URI, but not every URI is a URL. A URL specifies *how* to get to a resource (e.g., <code>http://</code>, <code>ftp://</code>). A URI can just be a unique name for a resource without specifying its location, like a URN (Uniform Resource Name), for example, <code>urn:isbn:0451450523</code>, which identifies a book but doesn't tell you where to find it.</p>
+                <p>In Java, the <code>java.net.URI</code> class is a more general representation and can handle all types of URIs. The <code>java.net.URL</code> class is specifically for URLs and provides methods to open connections and retrieve content.</p>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember: URL vs. URI</h3>
+                <ul>
+                    <li><strong>URI:</strong> An identifier. Can be a name, a location, or both.</li>
+                    <li><strong>URL:</strong> A specific kind of URI that tells you the location of a resource.</li>
+                    <li><strong>Analogy:</strong> Your name is a URI (it identifies you). Your address is a URL (it tells people where to find you).</li>
+                </ul>
+            </div>
+
+            <div class="answer">
+                <h3>b) Program to Illustrate RMI (Remote Method Invocation)</h3>
+                <p>This example shows a simple RMI application where a client can get the current date from a remote server.</p>
+                
+                <h4>1. The Remote Interface</h4>
+                <p>This defines the methods that the client can call remotely. It must extend <code>java.rmi.Remote</code>.</p>
+                <pre><code>
+// DateServer.java (Interface)
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.Date;
+
+public interface DateServer extends Remote {
+    Date getDate() throws RemoteException;
+}
+                </code></pre>
+
+                <h4>2. The Implementation</h4>
+                <p>This class implements the remote interface. It contains the actual logic of the remote method.</p>
+                <pre><code>
+// DateServerImpl.java (Implementation)
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.Date;
+
+public class DateServerImpl extends UnicastRemoteObject implements DateServer {
+    public DateServerImpl() throws RemoteException {
+        super();
+    }
+
+    @Override
+    public Date getDate() throws RemoteException {
+        return new Date();
+    }
+}
+                </code></pre>
+
+                <h4>3. The RMI Server</h4>
+                <p>This program creates an instance of the implementation and registers it with the RMI registry.</p>
+                <pre><code>
+// RMIServer.java
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class RMIServer {
+    public static void main(String[] args) {
+        try {
+            DateServerImpl server = new DateServerImpl();
+            Registry registry = LocateRegistry.createRegistry(1099);
+            registry.rebind("DateServer", server);
+            System.out.println("RMI Server is running...");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+                </code></pre>
+
+                <h4>4. The RMI Client</h4>
+                <p>This program looks up the remote object in the registry and calls its method.</p>
+                <pre><code>
+// RMIClient.java
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.Date;
+
+public class RMIClient {
+    public static void main(String[] args) {
+        try {
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            DateServer server = (DateServer) registry.lookup("DateServer");
+            Date serverDate = server.getDate();
+            System.out.println("Date from server: " + serverDate);
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+                </code></pre>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember: RMI Program</h3>
+                <ul>
+                    <li><strong>Interface:</strong> Defines the remote methods.</li>
+                    <li><strong>Implementation:</strong> The actual code for the remote methods.</li>
+                    <li><strong>Server:</strong> Creates an instance of the implementation and binds it to the RMI registry.</li>
+                    <li><strong>Client:</strong> Looks up the remote object in the registry and calls its methods.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-block">
+            <div class="question">
+                <h2>What are the key differences between Socket and Server Socket? Create a simple console chat application using TCP socket.</h2>
+                <p class="repetition-note">This question is repeated 2 times.</p>
+            </div>
+
+            <div class="answer">
+                <h3>a) Key Differences Between Socket and ServerSocket</h3>
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th><code>Socket</code></th>
+                        <th><code>ServerSocket</code></th>
+                    </tr>
+                    <tr>
+                        <td><strong>Purpose</strong></td>
+                        <td>Used by a client to connect to a server. Represents one endpoint of a connection.</td>
+                        <td>Used by a server to listen for and accept incoming client connections.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Initiation</strong></td>
+                        <td>Actively initiates a connection to a server.</td>
+                        <td>Passively waits for clients to connect to it.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Creation</strong></td>
+                        <td><code>new Socket(serverAddress, serverPort)</code></td>
+                        <td><code>new ServerSocket(port)</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lifecycle</strong></td>
+                        <td>Created when a connection is made, closed when the conversation is over.</td>
+                        <td>Created once and typically runs for the lifetime of the server application.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Key Method</strong></td>
+                        <td><code>getInputStream()</code> / <code>getOutputStream()</code></td>
+                        <td><code>accept()</code>, which waits for a client and returns a <code>Socket</code> object for communication.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember: Socket vs. ServerSocket</h3>
+                <ul>
+                    <li><strong><code>ServerSocket</code>:</strong> The server's receptionist. It waits for the phone to ring.</li>
+                    <li><strong><code>Socket</code>:</strong> The actual phone call. The client uses it to call the server, and the server uses it to talk back after accepting the call.</li>
+                </ul>
+            </div>
+
+            <div class="answer">
+                <h3>b) Simple Console Chat Application (TCP)</h3>
+                <p>This application consists of a server that can handle one client at a time and a client that connects to it. They can then send messages back and forth.</p>
+
+                <h4>The Chat Server</h4>
+                <pre><code>
+// ChatServer.java
+import java.io.*;
+import java.net.*;
+
+public class ChatServer {
+    public static void main(String[] args) throws IOException {
+        ServerSocket serverSocket = new ServerSocket(9999);
+        System.out.println("Server started. Waiting for a client...");
+
+        Socket clientSocket = serverSocket.accept();
+        System.out.println("Client connected: " + clientSocket.getInetAddress().getHostAddress());
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+        BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
+
+        String inputLine;
+        while (true) {
+            // Read from client
+            if (in.ready()) {
+                inputLine = in.readLine();
+                System.out.println("Client: " + inputLine);
+                if (inputLine.equalsIgnoreCase("bye")) break;
+            }
+
+            // Write to client
+            if (consoleReader.ready()) {
+                String serverMsg = consoleReader.readLine();
+                out.println(serverMsg);
+                if (serverMsg.equalsIgnoreCase("bye")) break;
+            }
+        }
+
+        System.out.println("Closing connection.");
+        clientSocket.close();
+        serverSocket.close();
+    }
+}
+                </code></pre>
+
+                <h4>The Chat Client</h4>
+                <pre><code>
+// ChatClient.java
+import java.io.*;
+import java.net.*;
+
+public class ChatClient {
+    public static void main(String[] args) throws IOException {
+        Socket socket = new Socket("localhost", 9999);
+        System.out.println("Connected to server. Start typing...");
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+        BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
+
+        String inputLine;
+        while (true) {
+            // Read from server
+            if (in.ready()) {
+                inputLine = in.readLine();
+                System.out.println("Server: " + inputLine);
+                if (inputLine.equalsIgnoreCase("bye")) break;
+            }
+
+            // Write to server
+            if (consoleReader.ready()) {
+                String clientMsg = consoleReader.readLine();
+                out.println(clientMsg);
+                if (clientMsg.equalsIgnoreCase("bye")) break;
+            }
+        }
+
+        System.out.println("Closing connection.");
+        socket.close();
+    }
+}
+                </code></pre>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember: Console Chat App</h3>
+                <ul>
+                    <li><strong>Server:</strong> Creates a <code>ServerSocket</code>, calls <code>accept()</code>, then gets input/output streams.</li>
+                    <li><strong>Client:</strong> Creates a <code>Socket</code> to connect to the server, then gets input/output streams.</li>
+                    <li><strong>Communication:</strong> Both sides need a loop to continuously read from the other side and from the console.</li>
+                    <li><strong>Termination:</strong> Have a keyword (like "bye") to break the loop and close the sockets.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-block">
+            <div class="question">
+                <h2>Write a program to perform a basic two-way communication between client and server.</h2>
+            </div>
+
+            <div class="answer">
+                <h3>Two-Way Client-Server Communication</h3>
+                <p>This is very similar to the chat application. Here is a slightly simplified version focusing on the core two-way communication logic.</p>
+
+                <h4>The Two-Way Server</h4>
+                <pre><code>
+// TwoWayServer.java
+import java.io.*;
+import java.net.*;
+
+public class TwoWayServer {
+    public static void main(String[] args) throws IOException {
+        ServerSocket serverSocket = new ServerSocket(5000);
+        System.out.println("Server is waiting for a client...");
+        Socket clientSocket = serverSocket.accept();
+        System.out.println("Client connected.");
+
+        // Streams for communication
+        DataInputStream dis = new DataInputStream(clientSocket.getInputStream());
+        DataOutputStream dos = new DataOutputStream(clientSocket.getOutputStream());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String clientMessage = "", serverMessage = "";
+
+        while (!clientMessage.equals("stop")) {
+            clientMessage = dis.readUTF();
+            System.out.println("Client says: " + clientMessage);
+            System.out.print("Enter your message: ");
+            serverMessage = br.readLine();
+            dos.writeUTF(serverMessage);
+            dos.flush();
+        }
+
+        dis.close();
+        dos.close();
+        clientSocket.close();
+        serverSocket.close();
+    }
+}
+                </code></pre>
+
+                <h4>The Two-Way Client</h4>
+                <pre><code>
+// TwoWayClient.java
+import java.io.*;
+import java.net.*;
+
+public class TwoWayClient {
+    public static void main(String[] args) throws IOException {
+        Socket socket = new Socket("localhost", 5000);
+        System.out.println("Connected to server.");
+
+        // Streams for communication
+        DataInputStream dis = new DataInputStream(socket.getInputStream());
+        DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String clientMessage = "", serverMessage = "";
+
+        while (!clientMessage.equals("stop")) {
+            System.out.print("Enter your message: ");
+            clientMessage = br.readLine();
+            dos.writeUTF(clientMessage);
+            dos.flush();
+            serverMessage = dis.readUTF();
+            System.out.println("Server says: " + serverMessage);
+        }
+
+        dis.close();
+        dos.close();
+        socket.close();
+    }
+}
+                </code></pre>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember: Two-Way Communication</h3>
+                <ul>
+                    <li>Establish a client-server connection using <code>Socket</code> and <code>ServerSocket</code>.</li>
+                    <li>Use both input and output streams on both the client and server.</li>
+                    <li>Create a loop where each side waits to receive a message and then sends one back.</li>
+                    <li>Using <code>DataInputStream</code> and <code>DataOutputStream</code> with <code>readUTF()</code> and <code>writeUTF()</code> is a simple way to handle string-based communication.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-block">
+            <div class="question">
+                <h2>Write multithreaded TCP client and server socket programs for daytime service.</h2>
+            </div>
+
+            <div class="answer">
+                <h3>Multithreaded Daytime Server</h3>
+                <p>A multithreaded server can handle multiple client requests simultaneously. When the server accepts a new client connection, it spawns a new thread to handle that client, and then immediately goes back to waiting for the next connection. This prevents new clients from being blocked while the server is busy with an existing one.</p>
+
+                <h4>The Multithreaded Daytime Server</h4>
+                <pre><code>
+// MultithreadedDaytimeServer.java
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Date;
+
+public class MultithreadedDaytimeServer {
+    public static final int PORT = 1313;
+
+    public static void main(String[] args) {
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+            System.out.println("Multithreaded Daytime Server started on port " + PORT);
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                // Create a new thread for each client
+                new ClientHandler(clientSocket).start();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class ClientHandler extends Thread {
+    private Socket clientSocket;
+
+    public ClientHandler(Socket socket) {
+        this.clientSocket = socket;
+    }
+
+    public void run() {
+        try {
+            System.out.println("Client connected: " + clientSocket.getInetAddress());
+            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+            out.println(new Date().toString());
+            System.out.println("Sent time to client " + clientSocket.getInetAddress());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                clientSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+                </code></pre>
+
+                <h4>The Daytime Client</h4>
+                <p>The client program remains the same as for a single-threaded server.</p>
+                <pre><code>
+// DaytimeClient.java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
+
+public class DaytimeClient {
+    public static void main(String[] args) {
+        try (Socket socket = new Socket("localhost", 1313)) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String time = reader.readLine();
+            System.out.println("Current time from server: " + time);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+                </code></pre>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember: Multithreaded Server</h3>
+                <ul>
+                    <li>The main server class has a loop that calls <code>accept()</code>.</li>
+                    <li>For each client connection returned by <code>accept()</code>, create a new thread (e.g., a <code>ClientHandler</code> class).</li>
+                    <li>Pass the client <code>Socket</code> to the new thread.</li>
+                    <li>The thread's <code>run()</code> method contains the logic for communicating with that one client.</li>
+                    <li>This allows the main loop to immediately wait for the next client.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question-block">
+            <div class="question">
+                <h2>Write UDP client and server socket programs in which the server identifies the number sent by a client is either even or odd and replies to the client accordingly.</h2>
+            </div>
+
+            <div class="answer">
+                <h3>UDP Even/Odd Checker</h3>
+                <p>This program demonstrates UDP communication. The client sends a number, and the server responds with "Even" or "Odd".</p>
+
+                <h4>The UDP Even/Odd Server</h4>
+                <pre><code>
+// UdpEvenOddServer.java
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class UdpEvenOddServer {
+    public static void main(String[] args) throws IOException {
+        try (DatagramSocket socket = new DatagramSocket(9876)) {
+            System.out.println("UDP Server is running...");
+            byte[] receiveData = new byte[1024];
+
+            while (true) {
+                DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+                socket.receive(receivePacket);
+
+                String sentence = new String(receivePacket.getData(), 0, receivePacket.getLength()).trim();
+                System.out.println("RECEIVED: " + sentence);
+
+                int number = Integer.parseInt(sentence.trim());
+                String result = (number % 2 == 0) ? "Even" : "Odd";
+
+                InetAddress ipAddress = receivePacket.getAddress();
+                int port = receivePacket.getPort();
+
+                byte[] sendData = result.getBytes();
+                DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, port);
+                socket.send(sendPacket);
+            }
+        }
+    }
+}
+                </code></pre>
+
+                <h4>The UDP Even/Odd Client</h4>
+                <pre><code>
+// UdpEvenOddClient.java
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class UdpEvenOddClient {
+    public static void main(String[] args) throws IOException {
+        try (DatagramSocket clientSocket = new DatagramSocket()) {
+            InetAddress ipAddress = InetAddress.getByName("localhost");
+            byte[] sendData;
+            byte[] receiveData = new byte[1024];
+
+            System.out.print("Enter a number: ");
+            BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+            String numberStr = inFromUser.readLine();
+
+            sendData = numberStr.getBytes();
+            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, 9876);
+            clientSocket.send(sendPacket);
+
+            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+            clientSocket.receive(receivePacket);
+
+            String result = new String(receivePacket.getData(), 0, receivePacket.getLength());
+            System.out.println("FROM SERVER: The number is " + result);
+        }
+    }
+}
+                </code></pre>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember: UDP Even/Odd Checker</h3>
+                <ul>
+                    <li><strong>Server:</strong> Creates a <code>DatagramSocket</code>, receives a <code>DatagramPacket</code>, processes the data, and sends a new <code>DatagramPacket</code> back to the client's address and port.</li>
+                    <li><strong>Client:</strong> Creates a <code>DatagramSocket</code>, sends a <code>DatagramPacket</code> with the server's address, and then waits to receive a response.</li>
+                    <li>Data is sent and received as byte arrays.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question-block">
+            <div class="question">
+                <h2>What is the procedure for constructing and connecting Server sockets? Explain the Server Socket options with examples.</h2>
+            </div>
+
+            <div class="answer">
+                <h3>Procedure for Constructing and Connecting Server Sockets</h3>
+                <ol>
+                    <li><strong>Construction:</strong> You create a <code>ServerSocket</code> object, specifying the port number you want it to listen on. For example: <code>ServerSocket server = new ServerSocket(8080);</code>. You can also specify a backlog (the maximum queue length for incoming connection requests) and an address to bind to if the machine has multiple IP addresses.</li>
+                    <li><strong>Connecting (Accepting):</strong> You call the <code>accept()</code> method on the <code>ServerSocket</code>. This is a blocking call that waits until a client tries to connect. When a client connects, <code>accept()</code> returns a <code>Socket</code> object that represents the connection to that specific client. All further communication with that client happens through this new <code>Socket</code> object.</li>
+                </ol>
+
+                <h3>ServerSocket Options</h3>
+                <p>ServerSocket options are set using methods on the <code>ServerSocket</code> object before it starts accepting connections.</p>
+                <ul>
+                    <li><strong><code>SO_TIMEOUT</code>:</strong> Sets a timeout on the <code>accept()</code> method. If no client connects within the specified time (in milliseconds), it throws a <code>SocketTimeoutException</code>. This is useful if you want the server to be able to do other things periodically instead of just waiting forever.</li>
+                    <li><strong><code>SO_REUSEADDR</code>:</strong> This is a crucial option. It allows the server to bind to a port that is in a `TIME_WAIT` state from a previous, recently closed socket. Without this, you might have to wait a few minutes to restart a server on the same port, which is very inconvenient during development.</li>
+                    <li><strong><code>SO_RCVBUF</code>:</strong> Sets the size of the underlying buffer for incoming data on the sockets that are created by this <code>ServerSocket</code>.</li>
+                </ul>
+
+                <h4>Example of Setting ServerSocket Options</h4>
+                <pre><code>
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
+
+public class ServerSocketOptionsExample {
+    public static void main(String[] args) {
+        try {
+            ServerSocket serverSocket = new ServerSocket(8080);
+
+            // Set SO_TIMEOUT to 10 seconds (10000 ms)
+            serverSocket.setSoTimeout(10000);
+            System.out.println("Accept timeout set to 10 seconds.");
+
+            // Enable SO_REUSEADDR
+            serverSocket.setReuseAddress(true);
+            System.out.println("SO_REUSEADDR enabled.");
+
+            System.out.println("Waiting for a client...");
+            Socket clientSocket = serverSocket.accept(); // This will time out after 10 seconds
+            System.out.println("Client connected: " + clientSocket.getInetAddress());
+
+            clientSocket.close();
+            serverSocket.close();
+
+        } catch (SocketTimeoutException e) {
+            System.err.println("No client connected within 10 seconds. Server shutting down.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+                </code></pre>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember: ServerSocket Procedure & Options</h3>
+                <ul>
+                    <li><strong>Construct:</strong> <code>new ServerSocket(port)</code>.</li>
+                    <li><strong>Connect:</strong> Call <code>accept()</code> to wait for a client.</li>
+                    <li><strong><code>SO_TIMEOUT</code>:</strong> Prevents <code>accept()</code> from blocking forever.</li>
+                    <li><strong><code>SO_REUSEADDR</code>:</strong> Lets you restart the server quickly on the same port.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question-block">
+            <div class="question">
+                <h2>How blocking I/O is different from Non-Blocking I/O? Explain the basic mechanism of handling Buffers and Channels in Java with an example.</h2>
+            </div>
+
+            <div class="answer">
+                <h3>a) Blocking vs. Non-Blocking I/O</h3>
+                <p>This is the same as a previous question. See the detailed comparison table in Question 2 of the Non-Blocking I/O unit.</p>
+                <p><strong>In short:</strong> Blocking I/O waits, non-blocking I/O doesn't. A thread making a blocking call (e.g., <code>read()</code>) will sleep until the operation is complete. A thread making a non-blocking call will return immediately, either with data or with an indication that there is no data yet.</p>
+
+                <h3>b) Mechanism of Handling Buffers and Channels</h3>
+                <p>The basic mechanism in Java NIO is as follows:</p>
+                <ol>
+                    <li>You have data that you want to read or write (e.g., in a file or coming from a network connection).</li>
+                    <li>You create a <strong>Channel</strong> to that source or destination (e.g., a <code>FileChannel</code> or a <code>SocketChannel</code>). The channel is the conduit for the data.</li>
+                    <li>You create a <strong>Buffer</strong> (e.g., a <code>ByteBuffer</code>). This is a fixed-size block of memory that will temporarily hold the data.</li>
+                    <li><strong>Reading data:</strong> You call the channel's <code>read(buffer)</code> method. The channel reads data from the source and puts it into your buffer.</li>
+                    <li><strong>Writing data:</strong> You first put your data into the buffer (using the buffer's <code>put()</code> method). Then you call the channel's <code>write(buffer)</code> method, which takes the data from your buffer and sends it to the destination.</li>
+                </ol>
+                <p>The key is that you always work with the buffer as an intermediary. You never write directly to the channel or read directly from it.</p>
+
+                <h4>Example: Reading from a File with a Channel and Buffer</h4>
+                <pre><code>
+import java.io.FileInputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+
+public class BufferChannelFileRead {
+    public static void main(String[] args) throws Exception {
+        FileInputStream fis = new FileInputStream("questions.txt");
+        FileChannel channel = fis.getChannel();
+
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
+
+        // Read from channel into buffer
+        int bytesRead = channel.read(buffer);
+
+        System.out.println("Read " + bytesRead + " bytes.");
+
+        // Prepare buffer for reading
+        buffer.flip();
+
+        System.out.print("Buffer contents: ");
+        while(buffer.hasRemaining()){
+            System.out.print((char) buffer.get());
+        }
+
+        fis.close();
+    }
+}
+                </code></pre>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember: Buffers and Channels</h3>
+                <ul>
+                    <li><strong>Channel:</strong> The data pipe (to a file, socket, etc.).</li>
+                    <li><strong>Buffer:</strong> The data container.</li>
+                    <li><strong>Read process:</strong> Channel <code>read()</code> -> Buffer.</li>
+                    <li><strong>Write process:</strong> Your data <code>put()</code> -> Buffer, then Channel <code>write()</code> -> Destination.</li>
+                    <li><strong><code>flip()</code>:</strong> The essential method to switch a buffer from write mode to read mode.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question-block">
+            <div class="question">
+                <h2>What are the features of DatagramPacket and DatagramSocket Class? Write a program to create a simple UDP client.</h2>
+            </div>
+
+            <div class="answer">
+                <h3>Features of DatagramPacket</h3>
+                <ul>
+                    <li><strong>Self-contained:</strong> Each packet holds its own data, destination address, and port.</li>
+                    <li><strong>Stateless:</strong> No connection is established; each packet is independent.</li>
+                    <li><strong>Constructors:</strong> Has two main constructors: one for sending (specifying data, address, port) and one for receiving (providing a buffer to be filled).</li>
+                    <li><strong>Data Handling:</strong> Provides methods like <code>getData()</code>, <code>getLength()</code>, <code>getAddress()</code>, and <code>getPort()</code> to access the information within the packet.</li>
+                </ul>
+
+                <h3>Features of DatagramSocket</h3>
+                <ul>
+                    <li><strong>Connectionless:</strong> Used for sending and receiving UDP packets.</li>
+                    <li><strong>Binding:</strong> Can be bound to a specific port to listen for incoming packets. If not specified, it binds to an available port.</li>
+                    <li><strong>Sending/Receiving:</strong> Uses <code>send(DatagramPacket p)</code> and <code>receive(DatagramPacket p)</code> methods. <code>receive()</code> is a blocking call.</li>
+                    <li><strong>Socket Options:</strong> Supports options like <code>SO_TIMEOUT</code> to prevent blocking indefinitely on a receive call.</li>
+                </ul>
+
+                <h4>Program to Create a Simple UDP Client</h4>
+                <p>This client sends a simple message to a server and prints the reply.</p>
+                <pre><code>
+// SimpleUdpClient.java
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class SimpleUdpClient {
+    public static void main(String[] args) throws IOException {
+        try (DatagramSocket clientSocket = new DatagramSocket()) {
+            String sentence = "Hello, UDP Server!";
+            byte[] sendData = sentence.getBytes();
+
+            InetAddress ipAddress = InetAddress.getByName("localhost");
+            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, 9876);
+
+            System.out.println("Sending message to server...");
+            clientSocket.send(sendPacket);
+
+            byte[] receiveData = new byte[1024];
+            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+
+            clientSocket.receive(receivePacket);
+            String modifiedSentence = new String(receivePacket.getData(), 0, receivePacket.getLength());
+            System.out.println("FROM SERVER: " + modifiedSentence);
+        }
+    }
+}
+                </code></pre>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember: UDP Client</h3>
+                <ul>
+                    <li>Create a <code>DatagramSocket</code>.</li>
+                    <li>Create a <code>DatagramPacket</code> with your message, the server's IP, and the server's port.</li>
+                    <li>Use <code>socket.send()</code> to send the packet.</li>
+                    <li>Create a buffer packet and use <code>socket.receive()</code> to wait for the server's reply.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question-block">
+            <div class="question">
+                <h2>Write a program to create a UDP server and client which converts the date from the client in BS to AD format. [Assume that the difference between BS and AD is 56 years, 08 months, 17 days]</h2>
+            </div>
+
+            <div class="answer">
+                <h3>BS to AD Date Converter (UDP)</h3>
+                <p>This example uses a simplified conversion for demonstration purposes.</p>
+
+                <h4>The BS to AD UDP Server</h4>
+                <pre><code>
+// BsToAdUdpServer.java
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class BsToAdUdpServer {
+    public static void main(String[] args) throws IOException {
+        try (DatagramSocket socket = new DatagramSocket(9877)) {
+            System.out.println("BS to AD UDP Server is running...");
+            byte[] receiveData = new byte[1024];
+
+            while (true) {
+                DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+                socket.receive(receivePacket);
+
+                String bsDateStr = new String(receivePacket.getData(), 0, receivePacket.getLength()).trim();
+                System.out.println("RECEIVED BS Date: " + bsDateStr);
+
+                // Simple conversion logic (assuming format YYYY-MM-DD)
+                String[] parts = bsDateStr.split("-");
+                int bsYear = Integer.parseInt(parts[0]);
+                int bsMonth = Integer.parseInt(parts[1]);
+                int bsDay = Integer.parseInt(parts[2]);
+
+                int adYear = bsYear - 56;
+                int adMonth = bsMonth - 8;
+                int adDay = bsDay - 17;
+
+                // Basic adjustments for negative month/day
+                if (adDay <= 0) {
+                    adDay += 30; // Approximate
+                    adMonth -= 1;
+                }
+                if (adMonth <= 0) {
+                    adMonth += 12;
+                    adYear -= 1;
+                }
+
+                String adDateStr = String.format("%04d-%02d-%02d", adYear, adMonth, adDay);
+
+                InetAddress ipAddress = receivePacket.getAddress();
+                int port = receivePacket.getPort();
+
+                byte[] sendData = adDateStr.getBytes();
+                DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, port);
+                socket.send(sendPacket);
+            }
+        }
+    }
+}
+                </code></pre>
+
+                <h4>The BS to AD UDP Client</h4>
+                <pre><code>
+// BsToAdUdpClient.java
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class BsToAdUdpClient {
+    public static void main(String[] args) throws IOException {
+        try (DatagramSocket clientSocket = new DatagramSocket()) {
+            InetAddress ipAddress = InetAddress.getByName("localhost");
+
+            System.out.print("Enter BS Date (YYYY-MM-DD): ");
+            BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+            String bsDate = inFromUser.readLine();
+
+            byte[] sendData = bsDate.getBytes();
+            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, 9877);
+            clientSocket.send(sendPacket);
+
+            byte[] receiveData = new byte[1024];
+            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+            clientSocket.receive(receivePacket);
+
+            String adDate = new String(receivePacket.getData(), 0, receivePacket.getLength());
+            System.out.println("Converted AD Date from Server: " + adDate);
+        }
+    }
+}
+                </code></pre>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember: BS to AD Converter</h3>
+                <ul>
+                    <li>The logic is the same as the Even/Odd UDP example.</li>
+                    <li>The only difference is the processing step on the server.</li>
+                    <li>The server receives the BS date string, performs the calculation, and sends back the AD date string.</li>
+                    <li>Note: This is a highly simplified date conversion and not accurate for real-world use.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question-block">
+            <div class="question">
+                <h2>Explain the factory method with an example. Write a program to download a webpage.</h2>
+            </div>
+
+            <div class="answer">
+                <h3>a) The Factory Method Pattern</h3>
+                <p>The Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created. It's called a "factory" because it's responsible for "manufacturing" objects.</p>
+                <p><strong>Example:</strong> Imagine a logistics company. The main company might have a <code>createTransport()</code> method. A subclass like <code>RoadLogistics</code> would implement this method to create a <code>Truck</code> object, while a <code>SeaLogistics</code> subclass would implement it to create a <code>Ship</code> object. The client code doesn't need to know about trucks or ships; it just asks the factory to create a transport object.</p>
+                <p>In network programming, <code>SSLSocketFactory</code> is a great example. You don't create an <code>SSLSocket</code> directly with <code>new</code>. Instead, you get a factory object and call its <code>createSocket()</code> method. This pattern allows the framework to handle the complex details of creating and configuring the secure socket.</p>
+
+                <h3>b) Program to Download a Webpage</h3>
+                <p>This program uses the <code>URL</code> and _InputStream_ classes to download the HTML content of a webpage and save it to a file.</p>
+                <pre><code>
+// WebpageDownloader.java
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.URL;
+import java.net.URLConnection;
+
+public class WebpageDownloader {
+    public static void main(String[] args) {
+        String urlString = "https://www.google.com";
+        String outputFileName = "google.html";
+
+        try {
+            URL url = new URL(urlString);
+            URLConnection connection = url.openConnection();
+
+            // Open streams to read from the URL and write to a file
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                 PrintWriter writer = new PrintWriter(new FileWriter(outputFileName))) {
+
+                System.out.println("Downloading from " + urlString + "...");
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    writer.println(line);
+                }
+                System.out.println("Successfully downloaded to " + outputFileName);
+            }
+
+        } catch (IOException e) {
+            System.err.println("An error occurred during download.");
+            e.printStackTrace();
+        }
+    }
+}
+                </code></pre>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember: Webpage Downloader</h3>
+                <ul>
+                    <li>Create a <code>URL</code> object from the webpage address.</li>
+                    <li>Call <code>openConnection()</code> on the URL.</li>
+                    <li>Get the <code>InputStream</code> from the connection to read the page content.</li>
+                    <li>Use a <code>FileWriter</code> or <code>PrintWriter</code> to save the content to a local file.</li>
+                    <li>Read from the input stream line-by-line and write to the file.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="question-block">
+            <div class="question">
+                <h2>a) Write a program to calculate the area of a triangle using RMI. [6] b) Write a program to list out all the interfaces.</h2>
+            </div>
+
+            <div class="answer">
+                <h3>a) RMI Program to Calculate Area of a Triangle</h3>
+                
+                <h4>1. The Remote Interface</h4>
+                <pre><code>
+// TriangleArea.java (Interface)
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface TriangleArea extends Remote {
+    double getArea(double base, double height) throws RemoteException;
+}
+                </code></pre>
+
+                <h4>2. The Implementation</h4>
+                <pre><code>
+// TriangleAreaImpl.java (Implementation)
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class TriangleAreaImpl extends UnicastRemoteObject implements TriangleArea {
+    public TriangleAreaImpl() throws RemoteException {
+        super();
+    }
+
+    @Override
+    public double getArea(double base, double height) throws RemoteException {
+        return 0.5 * base * height;
+    }
+}
+                </code></pre>
+
+                <h4>3. The RMI Server</h4>
+                <pre><code>
+// TriangleServer.java
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class TriangleServer {
+    public static void main(String[] args) {
+        try {
+            TriangleAreaImpl server = new TriangleAreaImpl();
+            Registry registry = LocateRegistry.createRegistry(1099);
+            registry.rebind("TriangleAreaServer", server);
+            System.out.println("Triangle Area RMI Server is running...");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+                </code></pre>
+
+                <h4>4. The RMI Client</h4>
+                <pre><code>
+// TriangleClient.java
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class TriangleClient {
+    public static void main(String[] args) {
+        try {
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            TriangleArea server = (TriangleArea) registry.lookup("TriangleAreaServer");
+            double area = server.getArea(10, 5);
+            System.out.println("Area of the triangle is: " + area);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+                </code></pre>
+
+            </div>
+
+            <div class="answer">
+                <h3>b) Program to List All Network Interfaces</h3>
+                <pre><code>
+// ListNetworkInterfaces.java
+import java.net.NetworkInterface;
+import java.util.Collections;
+import java.util.Enumeration;
+
+public class ListNetworkInterfaces {
+    public static void main(String[] args) throws Exception {
+        Enumeration<NetworkInterface> nets = NetworkInterface.getNetworkInterfaces();
+        for (NetworkInterface netint : Collections.list(nets)) {
+            System.out.printf("Display name: %s\n", netint.getDisplayName());
+            System.out.printf("Name: %s\n", netint.getName());
+            System.out.printf("Up? %s\n", netint.isUp());
+            System.out.printf("Loopback? %s\n", netint.isLoopback());
+            System.out.printf("Virtual? %s\n", netint.isVirtual());
+            System.out.printf("Supports multicast? %s\n", netint.supportsMulticast());
+            System.out.println("---------------------------------");
+        }
+    }
+}
+                </code></pre>
+            </div>
+
+            <div class="summary">
+                <h3>Key Points to Remember:</h3>
+                <ul>
+                    <li><strong>RMI Area Calculator:</strong> Follows the standard RMI pattern: Interface, Implementation, Server, Client. The remote method takes base and height and returns the calculated area.</li>
+                    <li><strong>List Interfaces:</strong> Use <code>NetworkInterface.getNetworkInterfaces()</code> to get an <code>Enumeration</code> of all interfaces. Loop through it and use methods like <code>getDisplayName()</code>, <code>getName()</code>, and <code>isUp()</code> to get details about each one.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

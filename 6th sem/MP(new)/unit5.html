@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 5: UI Fragments, Menus and Dialogs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mobile Programming Study Guide</h1>
+        <p>Unit 5: UI Fragments, Menus and Dialogs</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="unit1.html">Unit 1</a>
+        <a href="unit2.html">Unit 2</a>
+        <a href="unit3.html">Unit 3</a>
+        <a href="unit4.html">Unit 4</a>
+        <a href="unit5.html">Unit 5</a>
+        <a href="unit6.html">Unit 6</a>
+        <a href="unit7.html">Unit 7</a>
+        <a href="unit8.html">Unit 8</a>
+    </nav>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">Why is fragment needed in android application? How can a fragment be added to an activity?</div>
+        <div class="answer">
+            <p>A <strong>Fragment</strong> is a modular section of an activity, which has its own lifecycle, receives its own input events, and which you can add or remove while the activity is running. Fragments are needed for:</p>
+            <ul>
+                <li><strong>Reusability:</strong> Use the same fragment in different activities.</li>
+                <li><strong>Dynamic UI:</strong> Change UI components based on device orientation or screen size (e.g., multi-pane layouts on tablets).</li>
+                <li><strong>Modularization:</strong> Dividing complex activity code into smaller, manageable pieces.</li>
+            </ul>
+            <h3>Ways to Add a Fragment:</h3>
+            <ol>
+                <li><strong>Statically in XML:</strong> Declaring the fragment within the activity's layout file using the <code>&lt;fragment&gt;</code> tag.</li>
+                <li><strong>Dynamically via Java/Kotlin:</strong> Using <code>FragmentManager</code> and <code>FragmentTransaction</code> to add, replace, or remove fragments at runtime.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">What is the difference between activity and fragment?</div>
+        <div class="answer">
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Activity</th>
+                    <th>Fragment</th>
+                </tr>
+                <tr>
+                    <td>Existence</td>
+                    <td>Can exist independently.</td>
+                    <td>Must be hosted by an activity.</td>
+                </tr>
+                <tr>
+                    <td>Lifecycle</td>
+                    <td>Managed by the OS.</td>
+                    <td>Managed by the host activity's lifecycle.</td>
+                </tr>
+                <tr>
+                    <td>Purpose</td>
+                    <td>Represents a single screen with a UI.</td>
+                    <td>Represents a portion of a UI or behavior.</td>
+                </tr>
+                <tr>
+                    <td>Context</td>
+                    <td>It is a Context itself.</td>
+                    <td>Needs <code>getActivity()</code> or <code>getContext()</code>.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">What is Toast? Develop an android application to create an alert dialog to input any number and then calculate the factorial of the number and display the result in Toast.</div>
+        <div class="answer">
+            <p>A <strong>Toast</strong> is a simple feedback about an operation in a small popup. It only fills the amount of space required for the message and the current activity remains visible and interactive.</p>
+            <h3>Factorial with Alert Dialog and Toast:</h3>
+            <pre><code>// MainActivity.java Snippet
+public void showFactorialDialog() {
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    builder.setTitle("Factorial Calculator");
+    final EditText input = new EditText(this);
+    input.setInputType(InputType.TYPE_CLASS_NUMBER);
+    builder.setView(input);
+
+    builder.setPositiveButton("Calculate", (dialog, which) -> {
+        int n = Integer.parseInt(input.getText().toString());
+        long fact = 1;
+        for (int i = 1; i <= n; i++) fact *= i;
+        Toast.makeText(this, "Factorial: " + fact, Toast.LENGTH_LONG).show();
+    });
+    builder.show();
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">What is a menu? Develop an android application to create a popup menu having menu items "Edit", "Copy", "Paste", "Redo", and "Undo".</div>
+        <div class="answer">
+            <p>A <strong>Menu</strong> is a user interface component that allows users to perform various actions related to the current context or application.</p>
+            <h3>Popup Menu Implementation:</h3>
+            <pre><code>// res/menu/popup_menu.xml
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;item android:id="@+id/edit" android:title="Edit" /&gt;
+    &lt;item android:id="@+id/copy" android:title="Copy" /&gt;
+    &lt;item android:id="@+id/paste" android:title="Paste" /&gt;
+    &lt;item android:id="@+id/redo" android:title="Redo" /&gt;
+    &lt;item android:id="@+id/undo" android:title="Undo" /&gt;
+&lt;/menu&gt;
+
+// MainActivity.java Snippet (On button click)
+PopupMenu popup = new PopupMenu(MainActivity.this, button);
+popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+popup.setOnMenuItemClickListener(item -> {
+    Toast.makeText(MainActivity.this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+    return true;
+});
+popup.show();</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group C</div>
+        <div class="question-text">Develop an android application to calculate simple interest using a customize dialog box.</div>
+        <div class="answer">
+            <h3>Custom Dialog Layout (dialog_interest.xml)</h3>
+            <pre><code>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="16dp"&gt;
+    &lt;EditText android:id="@+id/etP" android:hint="Principal" android:inputType="numberDecimal" /&gt;
+    &lt;EditText android:id="@+id/etT" android:hint="Time (years)" android:inputType="numberDecimal" /&gt;
+    &lt;EditText android:id="@+id/etR" android:hint="Rate (%)" android:inputType="numberDecimal" /&gt;
+&lt;/LinearLayout&gt;</code></pre>
+            <h3>Java Code to Show Dialog:</h3>
+            <pre><code>public void showInterestDialog() {
+    View dialogView = getLayoutInflater().inflate(R.layout.dialog_interest, null);
+    EditText etP = dialogView.findViewById(R.id.etP);
+    EditText etT = dialogView.findViewById(R.id.etT);
+    EditText etR = dialogView.findViewById(R.id.etR);
+
+    new AlertDialog.Builder(this)
+        .setTitle("Calculate Simple Interest")
+        .setView(dialogView)
+        .setPositiveButton("Calculate", (dialog, which) -> {
+            double p = Double.parseDouble(etP.getText().toString());
+            double t = Double.parseDouble(etT.getText().toString());
+            double r = Double.parseDouble(etR.getText().toString());
+            double si = (p * t * r) / 100;
+            Toast.makeText(this, "Interest: " + si, Toast.LENGTH_LONG).show();
+        }).show();
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group C</div>
+        <div class="question-text">Develop an android application with a context menu having items "Red", "Yellow", "Green" etc. and change the background color of the layout when selected.</div>
+        <div class="answer">
+            <pre><code>// MainActivity.java
+LinearLayout mainLayout;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    mainLayout = findViewById(R.id.mainLayout);
+    registerForContextMenu(mainLayout); // Long press anywhere to show menu
+}
+
+@Override
+public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo info) {
+    super.onCreateContextMenu(menu, v, info);
+    menu.setHeaderTitle("Select Background Color");
+    menu.add(0, v.getId(), 0, "Red");
+    menu.add(0, v.getId(), 0, "Yellow");
+    menu.add(0, v.getId(), 0, "Green");
+}
+
+@Override
+public boolean onContextItemSelected(MenuItem item) {
+    if (item.getTitle().equals("Red")) mainLayout.setBackgroundColor(Color.RED);
+    else if (item.getTitle().equals("Yellow")) mainLayout.setBackgroundColor(Color.YELLOW);
+    else if (item.getTitle().equals("Green")) mainLayout.setBackgroundColor(Color.GREEN);
+    return true;
+}</code></pre>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mobile Programming Exam Prep</p>
+    </footer>
+</body>
+</html>

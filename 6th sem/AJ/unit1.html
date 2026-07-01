@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 1: GUI Programming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 1: GUI Programming</h1>
+
+        <div class="card">
+            <h2>Group B Questions</h2>
+
+            <h3>Why do we use Panels while creating GUI applications in Java? Explain the components of the event handling model in Java.</h3>
+            <p><strong>Panels in Java GUI:</strong></p>
+            <p>Panels (like `JPanel` in Swing or `Panel` in AWT) are lightweight containers that serve several crucial purposes in GUI applications:</p>
+            <ol>
+                <li><strong>Organization and Grouping:</strong> Panels allow you to group related components together. This makes the GUI more organized, readable, and easier to manage, especially for complex layouts. For example, you might put all input fields in one panel and all buttons in another.</li>
+                <li><strong>Layout Management:</strong> Each panel can have its own layout manager (e.g., `FlowLayout`, `BorderLayout`, `GridLayout`). This enables you to create sophisticated and nested layouts by combining different layout managers within different panels. A `JFrame` typically uses `BorderLayout` by default, but you can add panels with other layouts to specific regions.</li>
+                <li><strong>Visual Separation:</strong> Panels can provide visual separation between different sections of your application, improving the user experience.</li>
+                <li><strong>Reusability:</strong> You can create custom panels that encapsulate a set of components and their associated logic, making them reusable across different parts of your application or in other projects.</li>
+                <li><strong>Buffering:</strong> `JPanel` is double-buffered by default, which helps in smoother rendering and avoids flickering when components are repainted.</li>
+            </ol>
+
+            <p><strong>Components of the Event Handling Model in Java:</strong></p>
+            <p>Java's event handling model is based on the delegation event model, which involves three main components:</p>
+            <ol>
+                <li><strong>Event Source:</strong>
+                    <ul>
+                        <li>The component that generates an event. This is typically a GUI component like a button, text field, or window.</li>
+                        <li>When an event occurs (e.g., a button is clicked, text is typed), the event source creates an event object and sends it to all registered listeners.</li>
+                        <li>Examples: `JButton`, `JTextField`, `JFrame`.</li>
+                    </ul>
+                </li>
+                <li><strong>Event Object:</strong>
+                    <ul>
+                        <li>An object that encapsulates information about the event that occurred.</li>
+                        <li>It contains details such as the source of the event, the type of event, and any relevant data (e.g., mouse coordinates for a `MouseEvent`, the character typed for a `KeyEvent`).</li>
+                        <li>Event objects are subclasses of `java.util.EventObject`. Specific event types include `ActionEvent`, `MouseEvent`, `KeyEvent`, `WindowEvent`, etc.</li>
+                    </ul>
+                </li>
+                <li><strong>Event Listener (or Handler):</strong>
+                    <ul>
+                        <li>An object that "listens" for and responds to events.</li>
+                        <li>A listener must implement a specific event listener interface (e.g., `ActionListener`, `MouseListener`, `KeyListener`, `WindowListener`).</li>
+                        <li>The event source maintains a list of registered listeners. When an event occurs, the source invokes the appropriate method on each registered listener, passing the event object as an argument.</li>
+                        <li>Listeners are registered with the event source using methods like `addActionListener()`, `addMouseListener()`, etc.</li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>How it works:</strong></p>
+            <p>When a user interacts with a GUI component (e.g., clicks a button):</p>
+            <ol>
+                <li>The component (event source) detects the interaction.</li>
+                <li>It creates an appropriate event object (e.g., `ActionEvent`).</li>
+                <li>It dispatches this event object to all registered event listeners.</li>
+                <li>Each registered listener's corresponding method (e.g., `actionPerformed` for `ActionListener`) is invoked, allowing it to process the event.</li>
+            </ol>
+
+            <h3>What are adapter classes? What is the benefit of using adapter classes in Java while creating events in GUI programs? Explain with an example.</h3>
+            <p><strong>Adapter Classes:</strong></p>
+            <p>Adapter classes are convenience classes provided in Java's AWT and Swing event handling mechanism. They are abstract classes that provide a default (empty) implementation for all methods of a corresponding event listener interface that has more than one method.</p>
+            <p>For example, the `MouseListener` interface has five methods (`mouseClicked`, `mousePressed`, `mouseReleased`, `mouseEntered`, `mouseExited`). If you only want to handle `mouseClicked`, without an adapter class, you would have to implement all five methods, even if four of them are empty.</p>
+            <p>The `MouseAdapter` class implements the `MouseListener` interface and provides empty implementations for all its methods. Similarly, `KeyAdapter` for `KeyListener`, `WindowAdapter` for `WindowListener`, etc.</p>
+
+            <p><strong>Benefit of using Adapter Classes:</strong></p>
+            <p>The primary benefit of using adapter classes is to simplify event handling code and improve readability. They allow you to implement only the specific event methods you are interested in, without being forced to provide empty implementations for all other methods in an interface. This reduces boilerplate code and makes your code cleaner and more focused on the actual logic.</p>
+
+            <p><strong>Example: Using <code>MouseAdapter</code></strong></p>
+            <p>Consider a scenario where you only want to react when a mouse button is clicked on a component, but you don't care about mouse presses, releases, entries, or exits.</p>
+
+            <p><strong>Without Adapter Class (Implementing <code>MouseListener</code> directly):</strong></p>
+<pre><code>import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class MouseListenerExample extends JFrame implements MouseListener {
+
+    public MouseListenerExample() {
+        setTitle("Mouse Listener Example");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel panel = new JPanel();
+        panel.addMouseListener(this); // Registering this frame as mouse listener
+        add(panel);
+        setVisible(true);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        System.out.println("Mouse Clicked at: (" + e.getX() + ", " + e.getY() + ")");
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        // Must implement, even if empty
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // Must implement, even if empty
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        // Must implement, even if empty
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        // Must implement, even if empty
+    }
+
+    public static void main(String[] args) {
+        new MouseListenerExample();
+    }
+}
+</code></pre>
+
+            <p><strong>With Adapter Class (Using <code>MouseAdapter</code>):</strong></p>
+<pre><code>import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class MouseAdapterExample extends JFrame {
+
+    public MouseAdapterExample() {
+        setTitle("Mouse Adapter Example");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel panel = new JPanel();
+        panel.addMouseListener(new MouseAdapter() { // Anonymous inner class extending MouseAdapter
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("Mouse Clicked at: (" + e.getX() + ", " + e.getY() + ")");
+            }
+        });
+        add(panel);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new MouseAdapterExample();
+    }
+}
+</code></pre>
+            <p>As you can see, using `MouseAdapter` significantly reduces the amount of code needed, making the program more concise and easier to understand, as you only focus on the `mouseClicked` method that you actually need.</p>
+
+            <h3>Why do we need a top-level container like JFrame to write java programs with GUI? How can we display two-dimensional objects in Java?</h3>
+            <p><strong>Need for Top-Level Containers (JFrame):</strong></p>
+            <p>In Java Swing (and AWT), top-level containers like `JFrame`, `JDialog`, and `JApplet` are essential for GUI applications because they provide the fundamental windowing capabilities. Here's why they are needed:</p>
+            <ol>
+                <li><strong>Native Window System Integration:</strong> A `JFrame` (or `Frame` in AWT) represents a true, independent window provided by the underlying operating system's windowing system. It has a title bar, borders, minimize, maximize, and close buttons, and can be moved, resized, and iconified. Without a top-level container, your GUI components would have no "home" to be displayed in on the user's desktop.</li>
+                <li><strong>Root for Component Hierarchy:</strong> All other Swing components (like `JButton`, `JTextField`, `JPanel`, etc.) are lightweight components that must be placed inside a top-level container. The `JFrame` acts as the root of the component hierarchy, providing the necessary context and drawing surface for all other components.</li>
+                <li><strong>Event Handling and Lifecycle Management:</strong> Top-level containers manage their own lifecycle (e.g., opening, closing, resizing) and handle system-level events. They provide the basic framework for event dispatching to the components within them.</li>
+                <li><strong>Content Pane:</strong> `JFrame` has a special "content pane" (a `Container` object, typically a `JPanel`) where you add your GUI components. This separation allows for flexible layout management and prevents direct manipulation of the frame's native window decorations.</li>
+            </ol>
+            <p>In essence, a `JFrame` provides the canvas and the window dressing that allows your Java GUI application to interact with the user and the operating system as a standalone application window.</p>
+
+            <p><strong>Displaying Two-Dimensional Objects in Java:</strong></p>
+            <p>In Java, two-dimensional (2D) objects (like lines, rectangles, circles, polygons, images, and text) are typically displayed using the Java 2D API, which is part of the AWT package (`java.awt` and `java.awt.geom`). The general approach involves overriding the `paintComponent()` method of a `JComponent` (or `paint()` for AWT components) and using a `Graphics2D` object.</p>
+
+            <p>Here's a breakdown of the process:</p>
+            <ol>
+                <li><strong>Create a Custom Component:</strong>
+                    <ul>
+                        <li>Extend `JPanel` (or `JComponent`) to create a custom component where you will perform your drawing. This is the recommended approach in Swing.</li>
+                    </ul>
+                </li>
+                <li><strong>Override <code>paintComponent(Graphics g)</code>:</strong>
+                    <ul>
+                        <li>Inside your custom component, override the `paintComponent()` method. This method is automatically called by the Swing painting mechanism when the component needs to be redrawn.</li>
+                        <li>The `Graphics` object `g` passed to this method is your drawing context.</li>
+                    </ul>
+                </li>
+                <li><strong>Cast to <code>Graphics2D</code>:</strong>
+                    <ul>
+                        <li>The `Graphics` object is a basic drawing context. For advanced 2D graphics (like anti-aliasing, transformations, gradients, and more complex shapes), you should cast it to `Graphics2D`.</li>
+                        <li><code>Graphics2D g2d = (Graphics2D) g;</code></li>
+                    </ul>
+                </li>
+                <li><strong>Set Rendering Hints (Optional but Recommended):</strong>
+                    <ul>
+                        <li>To improve the quality of your drawings (e.g., smooth edges for shapes and text), set rendering hints.</li>
+                        <li><code>g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);</code></li>
+                    </ul>
+                </li>
+                <li><strong>Use Drawing Methods:</strong>
+                    <ul>
+                        <li>`Graphics2D` provides numerous methods for drawing various 2D shapes:
+                            <ul>
+                                <li>`g2d.drawLine(x1, y1, x2, y2);`</li>
+                                <li>`g2d.drawRect(x, y, width, height);`</li>
+                                <li>`g2d.fillRect(x, y, width, height);`</li>
+                                <li>`g2d.drawOval(x, y, width, height);`</li>
+                                <li>`g2d.fillOval(x, y, width, height);`</li>
+                                <li>`g2d.drawArc(x, y, width, height, startAngle, arcAngle);`</li>
+                                <li>`g2d.drawPolygon(xPoints, yPoints, nPoints);`</li>
+                                <li>`g2d.drawString("Hello", x, y);` (for text)</li>
+                                <li>`g2d.drawImage(image, x, y, observer);` (for images)</li>
+                            </ul>
+                        </li>
+                        <li>You can also use `java.awt.geom` classes (like `Line2D`, `Rectangle2D`, `Ellipse2D`, `Path2D`) to define shapes and then draw them using `g2d.draw(Shape s)` or `g2d.fill(Shape s)`.</li>
+                    </ul>
+                </li>
+                <li><strong>Set Colors and Strokes:</strong>
+                    <ul>
+                        <li>`g2d.setColor(Color.RED);`</li>
+                        <li>`g2d.setStroke(new BasicStroke(3));` (for line thickness)</li>
+                    </ul>
+                </li>
+                <li><strong>Add the Custom Component to a Frame:</strong>
+                    <ul>
+                        <li>Create an instance of your custom drawing component and add it to a `JFrame`.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <p><strong>Example: Drawing a Rectangle and a Circle</strong></p>
+<pre><code>import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+
+class DrawingPanel extends JPanel {
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // Call superclass method to ensure proper painting
+
+        Graphics2D g2d = (Graphics2D) g;
+
+        // Set rendering hints for smoother graphics
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        // Draw a filled rectangle
+        g2d.setColor(Color.BLUE);
+        g2d.fillRect(50, 50, 100, 80); // x, y, width, height
+
+        // Draw a red outlined circle
+        g2d.setColor(Color.RED);
+        g2d.setStroke(new BasicStroke(3)); // Set line thickness
+        g2d.draw(new Ellipse2D.Double(200, 50, 90, 90)); // x, y, width, height
+
+        // Draw some text
+        g2d.setColor(Color.BLACK);
+        g2d.setFont(new Font("Serif", Font.BOLD, 20));
+        g2d.drawString("Hello 2D Graphics!", 50, 200);
+    }
+}
+
+public class TwoDObjectsDisplay extends JFrame {
+    public TwoDObjectsDisplay() {
+        setTitle("2D Objects Display");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // Center the window
+
+        DrawingPanel panel = new DrawingPanel();
+        add(panel);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new TwoDObjectsDisplay());
+    }
+}
+</code></pre>
+
+            <h3>Explain JTextfield and JTextArea components of the Java Swing library.</h3>
+            <p><strong>JTextfield and JTextArea Components in Java Swing:</strong></p>
+            <p>Both `JTextField` and `JTextArea` are fundamental Swing components used for accepting text input from the user or displaying text. They are subclasses of `JTextComponent` and provide different functionalities based on the amount of text they are designed to handle.</p>
+
+            <h4><code>JTextField</code></h4>
+            <p>A `JTextField` is a lightweight component that allows the user to edit a single line of text. It's commonly used for short inputs like names, IDs, passwords (though `JPasswordField` is better for passwords), or single-line search queries.</p>
+            <p><strong>Key Features and Usage:</strong></p>
+            <ul>
+                <li><strong>Single Line:</strong> Designed for one line of text input.</li>
+                <li><strong>Constructors:</strong>
+                    <ul>
+                        <li>`JTextField()`: Creates an empty text field.</li>
+                        <li>`JTextField(int columns)`: Creates an empty text field with the specified number of columns (preferred width).</li>
+                        <li>`JTextField(String text)`: Creates a text field initialized with the given text.</li>
+                        <li>`JTextField(String text, int columns)`: Creates a text field with initial text and preferred columns.</li>
+                    </ul>
+                </li>
+                <li><strong>Common Methods:</strong>
+                    <ul>
+                        <li>`setText(String s)`: Sets the text displayed in the text field.</li>
+                        <li>`String getText()`: Retrieves the current text from the text field.</li>
+                        <li>`setEditable(boolean b)`: Sets whether the text field can be edited by the user.</li>
+                        <li>`addActionListener(ActionListener l)`: Registers an `ActionListener`. An `ActionEvent` is fired when the user presses Enter in the text field.</li>
+                        <li>`setColumns(int columns)`: Sets the preferred width in columns.</li>
+                    </ul>
+                </li>
+                <li><strong>Event Handling:</strong> Primarily handles `ActionEvent` (when Enter is pressed) and `DocumentEvent` (for changes in the text content).</li>
+            </ul>
+            <p><strong>Example:</strong></p>
+<pre><code>import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class JTextFieldExample extends JFrame {
+    public JTextFieldExample() {
+        setTitle("JTextField Example");
+        setSize(300, 150);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+
+        JTextField nameField = new JTextField("Enter your name", 20);
+        add(nameField);
+
+        JButton submitButton = new JButton("Submit");
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Hello, " + nameField.getText());
+            }
+        });
+        add(submitButton);
+
+        nameField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // This will be triggered when Enter is pressed in the text field
+                JOptionPane.showMessageDialog(null, "You pressed Enter! Name: " + nameField.getText());
+            }
+        });
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new JTextFieldExample());
+    }
+}
+</code></pre>
+
+            <h4><code>JTextArea</code></h4>
+            <p>A `JTextArea` is a component that allows the user to edit multiple lines of text. It's suitable for larger blocks of text, such as comments, descriptions, or log displays.</p>
+            <p><strong>Key Features and Usage:</strong></p>
+            <ul>
+                <li><strong>Multi-Line:</strong> Designed for multiple lines of text input.</li>
+                <li><strong>Line Wrapping:</strong> Can be configured to wrap lines automatically (`setLineWrap(true)`).</li>
+                <li><strong>Scrolling:</strong> Often placed inside a `JScrollPane` to provide scrollability when the text exceeds the visible area.</li>
+                <li><strong>Constructors:</strong>
+                    <ul>
+                        <li>`JTextArea()`: Creates an empty text area.</li>
+                        <li>`JTextArea(int rows, int columns)`: Creates an empty text area with the specified dimensions.</li>
+                        <li>`JTextArea(String text)`: Creates a text area initialized with the given text.</li>
+                        <li>`JTextArea(String text, int rows, int columns)`: Creates a text area with initial text and dimensions.</li>
+                    </ul>
+                </li>
+                <li><strong>Common Methods:</strong>
+                    <ul>
+                        <li>`setText(String s)`: Sets the text displayed in the text area.</li>
+                        <li>`String getText()`: Retrieves the current text from the text area.</li>
+                        <li>`setEditable(boolean b)`: Sets whether the text area can be edited by the user.</li>
+                        <li>`setLineWrap(boolean wrap)`: Enables or disables line wrapping.</li>
+                        <li>`setWrapStyleWord(boolean word)`: If line wrapping is enabled, this determines whether wrapping occurs at word boundaries (`true`) or character boundaries (`false`).</li>
+                        <li>`append(String str)`: Appends the given string to the end of the document.</li>
+                        <li>`insert(String str, int pos)`: Inserts the given string at the specified position.</li>
+                    </ul>
+                </li>
+                <li><strong>Event Handling:</strong> Primarily handles `DocumentEvent` (for changes in the text content). It does not fire `ActionEvent` on Enter key press, as Enter typically inserts a new line.</li>
+            </ul>
+            <p><strong>Example:</strong></p>
+<pre><code>import javax.swing.*;
+import java.awt.*;
+
+public class JTextAreaExample extends JFrame {
+    public JTextAreaExample() {
+        setTitle("JTextArea Example");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        JTextArea textArea = new JTextArea(10, 30); // 10 rows, 30 columns
+        textArea.setText("This is a multi-line text area.
+You can type a lot of text here.
+");
+        textArea.setLineWrap(true); // Enable line wrapping
+        textArea.setWrapStyleWord(true); // Wrap at word boundaries
+
+        // Add the text area to a JScrollPane for scrollability
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        add(scrollPane, BorderLayout.CENTER);
+
+        JButton clearButton = new JButton("Clear Text");
+        clearButton.addActionListener(e -> textArea.setText(""));
+        add(clearButton, BorderLayout.SOUTH);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new JTextAreaExample());
+    }
+}
+</code></pre>
+
+            <p><strong>Summary of Differences:</strong></p>
+            <ul>
+                <li>`JTextField` is for single-line input; `JTextArea` is for multi-line input.</li>
+                <li>`JTextField` fires `ActionEvent` on Enter; `JTextArea` does not (Enter inserts a new line).</li>
+                <li>`JTextArea` typically requires a `JScrollPane` for effective use with large amounts of text.</li>
+            </ul>
+
+            <h3>What is the role of Event Listener in event handling? List different event listeners provided by Java.</h3>
+            <p><strong>Role of Event Listener in Event Handling:</strong></p>
+            <p>In Java's delegation event model, an <strong>Event Listener</strong> (also known as an event handler) is a crucial component responsible for "listening" for and responding to specific events generated by GUI components or other event sources. Its primary role is to define the actions that should be performed when a particular event occurs.</p>
+            <p>Here's a breakdown of its role:</p>
+            <ol>
+                <li><strong>Interface Implementation:</strong> An event listener is an object that implements a specific event listener interface (e.g., `ActionListener`, `MouseListener`, `KeyListener`). These interfaces define one or more methods that the listener must implement.</li>
+                <li><strong>Registration:</strong> For a listener to receive events, it must be registered with the event source (the component that generates the event). This is done using methods like `addActionListener()`, `addMouseListener()`, etc., provided by the event source.</li>
+                <li><strong>Event Reception:</strong> When an event occurs at the event source, the source creates an event object and dispatches it to all its registered listeners.</li>
+                <li><strong>Event Processing:</strong> The listener's implemented method corresponding to the event type is invoked, and the event object is passed as an argument. Inside this method, the programmer writes the logic to handle the event (e.g., update a display, perform a calculation, change component state).</li>
+                <li><strong>Decoupling:</strong> The delegation model, with listeners, decouples the event generation (source) from event handling (listener). The source doesn't need to know how the event will be handled; it just dispatches it. The listener doesn't need to know how the event was generated; it just processes it. This promotes modular and maintainable code.</li>
+            </ol>
+            <p>In essence, event listeners are the "brains" of your GUI's interactivity, defining how your application reacts to user input and system events.</p>
+
+            <p><strong>Different Event Listeners Provided by Java (Commonly Used):</strong></p>
+            <p>Java provides a rich set of event listener interfaces for various types of events. Here are some of the most commonly used ones, categorized by the type of event they handle:</p>
+
+            <h4>Action Events</h4>
+            <ul>
+                <li><strong><code>ActionListener</code>:</strong>
+                    <ul>
+                        <li>Method: `actionPerformed(ActionEvent e)`</li>
+                        <li>Used for: Button clicks, pressing Enter in a text field, selecting a menu item. Represents a semantic event.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Mouse Events</h4>
+            <ul>
+                <li><strong><code>MouseListener</code>:</strong>
+                    <ul>
+                        <li>Methods: `mouseClicked(MouseEvent e)`, `mousePressed(MouseEvent e)`, `mouseReleased(MouseEvent e)`, `mouseEntered(MouseEvent e)`, `mouseExited(MouseEvent e)`</li>
+                        <li>Used for: Basic mouse actions (clicks, presses, releases, entering/exiting a component's bounds).</li>
+                    </ul>
+                </li>
+                <li><strong><code>MouseMotionListener</code>:</strong>
+                    <ul>
+                        <li>Methods: `mouseDragged(MouseEvent e)`, `mouseMoved(MouseEvent e)`</li>
+                        <li>Used for: Tracking mouse movement (dragging and moving).</li>
+                    </ul>
+                </li>
+                <li><strong><code>MouseWheelListener</code>:</strong>
+                    <ul>
+                        <li>Method: `mouseWheelMoved(MouseWheelEvent e)`</li>
+                        <li>Used for: Handling mouse wheel rotation.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Keyboard Events</h4>
+            <ul>
+                <li><strong><code>KeyListener</code>:</strong>
+                    <ul>
+                        <li>Methods: `keyPressed(KeyEvent e)`, `keyReleased(KeyEvent e)`, `keyTyped(KeyEvent e)`</li>
+                        <li>Used for: Responding to keyboard input (key presses, releases, and character typing).</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Window Events</h4>
+            <ul>
+                <li><strong><code>WindowListener</code>:</strong>
+                    <ul>
+                        <li>Methods: `windowOpened(WindowEvent e)`, `windowClosing(WindowEvent e)`, `windowClosed(WindowEvent e)`, `windowIconified(WindowEvent e)`, `windowDeiconified(WindowEvent e)`, `windowActivated(WindowEvent e)`, `windowDeactivated(WindowEvent e)`</li>
+                        <li>Used for: Handling events related to the state of a window (e.g., opening, closing, minimizing, maximizing, gaining/losing focus).</li>
+                    </ul>
+                </li>
+                <li><strong><code>WindowStateListener</code>:</strong>
+                    <ul>
+                        <li>Method: `windowStateChanged(WindowEvent e)`</li>
+                        <li>Used for: Responding to changes in a window's state (e.g., iconified, maximized, normal).</li>
+                    </ul>
+                </li>
+                <li><strong><code>WindowFocusListener</code>:</strong>
+                    <ul>
+                        <li>Methods: `windowGainedFocus(WindowEvent e)`, `windowLostFocus(WindowEvent e)`</li>
+                        <li>Used for: Detecting when a window gains or loses keyboard focus.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Component Events</h4>
+            <ul>
+                <li><strong><code>ComponentListener</code>:</strong>
+                    <ul>
+                        <li>Methods: `componentResized(ComponentEvent e)`, `componentMoved(ComponentEvent e)`, `componentShown(ComponentEvent e)`, `componentHidden(ComponentEvent e)`</li>
+                        <li>Used for: Responding to changes in a component's size, position, or visibility.</li>
+                    </ul>
+                </li>
+                <li><strong><code>ContainerListener</code>:</strong>
+                    <ul>
+                        <li>Methods: `componentAdded(ContainerEvent e)`, `componentRemoved(ContainerEvent e)`</li>
+                        <li>Used for: Detecting when components are added to or removed from a container.</li>
+                    </ul>
+                </li>
+                <li><strong><code>FocusListener</code>:</strong>
+                    <ul>
+                        <li>Methods: `focusGained(FocusEvent e)`, `focusLost(FocusEvent e)`</li>
+                        <li>Used for: Detecting when a component gains or loses keyboard focus.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Item Events</h4>
+            <ul>
+                <li><strong><code>ItemListener</code>:</strong>
+                    <ul>
+                        <li>Method: `itemStateChanged(ItemEvent e)`</li>
+                        <li>Used for: Handling selection changes in items like checkboxes, radio buttons, and combo boxes.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Document Events (for text components)</h4>
+            <ul>
+                <li><strong><code>DocumentListener</code>:</strong>
+                    <ul>
+                        <li>Methods: `insertUpdate(DocumentEvent e)`, `removeUpdate(DocumentEvent e)`, `changedUpdate(DocumentEvent e)`</li>
+                        <li>Used for: Monitoring changes to the content of text components (`JTextField`, `JTextArea`).</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>Many of these interfaces have corresponding adapter classes (e.g., `MouseAdapter`, `KeyAdapter`, `WindowAdapter`) that provide empty implementations of all their methods, allowing you to override only the methods you need.</p>
+
+            <h3>What is KeyEvent? Explain with a proper example.</h3>
+            <p><strong>KeyEvent:</strong></p>
+            <p>A `KeyEvent` is an event object that indicates a component-level keyboard input. It is generated when a key is pressed, released, or typed (a key press and release combination that results in a Unicode character). `KeyEvent` objects are dispatched to `KeyListener` objects registered on the component that has keyboard focus.</p>
+            <p>Key events are fundamental for handling user input from the keyboard in GUI applications. They provide information about which key was pressed, its character representation (if any), and any modifiers (like Shift, Ctrl, Alt) that were active during the event.</p>
+
+            <p><strong>Key Properties of <code>KeyEvent</code>:</strong></p>
+            <ul>
+                <li><strong>`getKeyCode()`:</strong> Returns the integer key code associated with the key in this event. Key codes are virtual key codes (e.g., `KeyEvent.VK_A`, `KeyEvent.VK_ENTER`, `KeyEvent.VK_SPACE`).</li>
+                <li><strong>`getKeyChar()`:</strong> Returns the character associated with the key in this event. This is relevant for `KEY_TYPED` events. For `KEY_PRESSED` and `KEY_RELEASED`, it might return `CHAR_UNDEFINED` for non-character keys (like F1, Shift).</li>
+                <li><strong>`getID()`:</strong> Returns the type of event:
+                    <ul>
+                        <li>`KeyEvent.KEY_PRESSED`: When a key is pressed down.</li>
+                        <li>`KeyEvent.KEY_RELEASED`: When a key is released.</li>
+                        <li>`KeyEvent.KEY_TYPED`: When a Unicode character is generated (typically by pressing and releasing a key).</li>
+                    </ul>
+                </li>
+                <li><strong>`isAltDown()`, `isControlDown()`, `isShiftDown()`, `isMetaDown()`:</strong> Methods to check if modifier keys (Alt, Ctrl, Shift, Meta/Command) were pressed during the event.</li>
+            </ul>
+
+            <p><strong>Example: Handling Keyboard Input with <code>KeyListener</code></strong></p>
+            <p>This example demonstrates how to use `KeyListener` to detect key presses, releases, and typed characters in a `JTextField` and display information about the events.</p>
+
+<pre><code>import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+public class KeyEventExample extends JFrame implements KeyListener {
+
+    private JTextField inputField;
+    private JTextArea outputArea;
+
+    public KeyEventExample() {
+        setTitle("KeyEvent Example");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        // Input field where key events will be generated
+        inputField = new JTextField("Type something here...");
+        inputField.addKeyListener(this); // Register this frame as the KeyListener
+        add(inputField, BorderLayout.NORTH);
+
+        // Output area to display event details
+        outputArea = new JTextArea();
+        outputArea.setEditable(false); // Make it read-only
+        JScrollPane scrollPane = new JScrollPane(outputArea);
+        add(scrollPane, BorderLayout.CENTER);
+
+        setVisible(true);
+    }
+
+    // --- KeyListener Interface Methods ---
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        // This method is called when a key is pressed down.
+        String text = "KEY PRESSED: ";
+        text += "Key Code = " + e.getKeyCode();
+        text += ", Key Char = '" + e.getKeyChar() + "'";
+        text += ", Modifiers = " + KeyEvent.getKeyModifiersText(e.getModifiersEx());
+        outputArea.append(text + "
+");
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // This method is called when a key is released.
+        String text = "KEY RELEASED: ";
+        text += "Key Code = " + e.getKeyCode();
+        text += ", Key Char = '" + e.getKeyChar() + "'";
+        outputArea.append(text + "
+");
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // This method is called when a key press and release generates a Unicode character.
+        // It's typically used for character input.
+        String text = "KEY TYPED: ";
+        text += "Key Char = '" + e.getKeyChar() + "'";
+        outputArea.append(text + "
+");
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new KeyEventExample());
+    }
+}
+</code></pre>
+            <p><strong>Explanation:</strong></p>
+            <ul>
+                <li>The `KeyEventExample` class implements `KeyListener` and registers itself with the `inputField`.</li>
+                <li>When you type in the `inputField`:
+                    <ul>
+                        <li>`keyPressed` is called first, providing the virtual key code (e.g., `VK_A` for 'A').</li>
+                        <li>Then, `keyTyped` is called, providing the actual character ('a' or 'A' depending on Shift).</li>
+                        <li>Finally, `keyReleased` is called when the key is lifted.</li>
+                    </ul>
+                </li>
+                <li>For non-character keys (like Shift, Ctrl, Alt, F1-F12, Arrow keys), only `keyPressed` and `keyReleased` events are typically generated, and `getKeyChar()` might return `CHAR_UNDEFINED`.</li>
+                <li>`KeyEvent.getKeyModifiersText(e.getModifiersEx())` is useful for getting a readable string of active modifier keys.</li>
+            </ul>
+
+            <h3>What is the use of WindowEvent? List different methods of WindowListener interface with its uses.</h3>
+            <p><strong>Use of WindowEvent:</strong></p>
+            <p>A `WindowEvent` is an event object that indicates a change in the state of a window. These events are generated by `Window` objects (like `JFrame`, `JDialog`) when certain actions occur related to the window's lifecycle or state. `WindowEvent` objects are dispatched to `WindowListener` objects (or `WindowAdapter` subclasses) registered on the window.</p>
+            <p>The primary use of `WindowEvent` is to allow applications to respond to user interactions with the window's frame, such as:</p>
+            <ul>
+                <li>Closing the window (e.g., clicking the 'X' button).</li>
+                <li>Minimizing or maximizing the window.</li>
+                <li>Activating or deactivating the window (gaining or losing focus).</li>
+                <li>Opening or closing the window programmatically.</li>
+            </ul>
+            <p>By handling `WindowEvent`s, you can implement custom behavior for these window-related actions, such as saving data before closing, confirming exit, or performing actions when the window becomes active.</p>
+
+            <p><strong>Different Methods of <code>WindowListener</code> Interface with its Uses:</strong></p>
+            <p>The `WindowListener` interface defines seven methods that must be implemented by any class that wants to listen for window events. These methods are invoked when a specific window event occurs:</p>
+
+            <ol>
+                <li><strong><code>void windowOpened(WindowEvent e)</code>:</strong>
+                    <ul>
+                        <li><strong>Use:</strong> Invoked the first time a window is made visible. This is a good place to perform initialization tasks that depend on the window being fully displayed.</li>
+                    </ul>
+                </li>
+                <li><strong><code>void windowClosing(WindowEvent e)</code>:</strong>
+                    <ul>
+                        <li><strong>Use:</strong> Invoked when the user attempts to close the window from the system menu (e.g., clicking the 'X' button on the title bar). This is the most commonly used method for handling window closure. You can prevent the window from closing here (e.g., by showing a confirmation dialog) by setting the default close operation to `DO_NOTHING_ON_CLOSE` and then calling `dispose()` manually if confirmed.</li>
+                    </ul>
+                </li>
+                <li><strong><code>void windowClosed(WindowEvent e)</code>:</strong>
+                    <ul>
+                        <li><strong>Use:</strong> Invoked when a window has been closed as the result of calling `dispose()` on the window. This method is called *after* the window has been removed from the screen and its resources have been released. It's useful for cleanup operations that should happen only after the window is completely gone.</li>
+                    </ul>
+                </li>
+                <li><strong><code>void windowIconified(WindowEvent e)</code>:</strong>
+                    <ul>
+                        <li><strong>Use:</strong> Invoked when a window is minimized (iconified) to the taskbar or dock. Useful for pausing animations or background processes when the window is not visible.</li>
+                    </ul>
+                </li>
+                <li><strong><code>void windowDeiconified(WindowEvent e)</code>:</strong>
+                    <ul>
+                        <li><strong>Use:</strong> Invoked when a window is restored from its minimized (iconified) state. Useful for resuming activities that were paused when the window was minimized.</li>
+                    </ul>
+                </li>
+                <li><strong><code>void windowActivated(WindowEvent e)</code>:</strong>
+                    <ul>
+                        <li><strong>Use:</strong> Invoked when the window is set to be the active window. This means the window has gained keyboard focus and is ready to receive user input. Useful for highlighting the active window or updating its content.</li>
+                    </ul>
+                </li>
+                <li><strong><code>void windowDeactivated(WindowEvent e)</code>:</strong>
+                    <ul>
+                        <li><strong>Use:</strong> Invoked when the window is no longer the active window. This means it has lost keyboard focus. Useful for dimming the window or saving its state when it's no longer in the foreground.</li>
+                    </ul>
+                </li>
+            </ol>
+            <p>Because `WindowListener` has many methods, it's very common to use the `WindowAdapter` class, which provides empty implementations for all these methods. You can then extend `WindowAdapter` and override only the methods you need.</p>
+
+            <p><strong>Example: Handling Window Closing Event</strong></p>
+<pre><code>import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class WindowEventExample extends JFrame {
+
+    public WindowEventExample() {
+        setTitle("WindowEvent Example");
+        setSize(400, 200);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Prevent default close operation
+        setLocationRelativeTo(null);
+
+        JLabel label = new JLabel("Try closing this window!", SwingConstants.CENTER);
+        add(label);
+
+        // Add a WindowListener using WindowAdapter
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // This method is called when the user clicks the 'X' button
+                int response = JOptionPane.showConfirmDialog(
+                    WindowEventExample.this,
+                    "Are you sure you want to exit?",
+                    "Confirm Exit",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE
+                );
+
+                if (response == JOptionPane.YES_OPTION) {
+                    // If user confirms, dispose the frame and exit the application
+                    dispose(); // Releases all of the screen resources used by this Frame
+                    System.exit(0); // Terminates the currently running Java Virtual Machine
+                }
+                // If user clicks No, do nothing, and the window remains open
+            }
+
+            @Override
+            public void windowOpened(WindowEvent e) {
+                System.out.println("Window has been opened.");
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+                System.out.println("Window has been iconified (minimized).");
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+                System.out.println("Window has been deiconified (restored).");
+            }
+        });
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new WindowEventExample());
+    }
+}
+</code></pre>
+            <p>In this example, `setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE)` is crucial. It tells the JFrame not to perform any action when the close button is clicked. Instead, our `windowClosing` method in the `WindowAdapter` takes control, displaying a confirmation dialog before actually closing the application.</p>
+
+            <h3>How can you display images in GUI using Java? Explain.</h3>
+            <p><strong>Displaying Images in GUI using Java:</strong></p>
+            <p>In Java Swing, displaying images in a GUI application is primarily done using the `ImageIcon` class in conjunction with `JLabel` or by drawing the image directly onto a `JPanel` using `Graphics2D`.</p>
+
+            <h4>Method 1: Using <code>ImageIcon</code> and <code>JLabel</code> (Simplest for static images)</h4>
+            <p>This is the most straightforward way to display an image, especially if the image is static and doesn't require complex manipulation or custom drawing.</p>
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li><strong>Load the Image:</strong> Create an `ImageIcon` object, providing the path to your image file. It's best practice to load images using `Class.getResource()` or `ClassLoader.getResource()` for applications packaged as JARs, as this makes the path relative to the classpath.</li>
+                <li><strong>Create a <code>JLabel</code>:</strong> Instantiate a `JLabel` and pass the `ImageIcon` object to its constructor or use the `setIcon()` method.</li>
+                <li><strong>Add to Container:</strong> Add the `JLabel` to your `JFrame` or `JPanel`.</li>
+            </ol>
+            <p><strong>Supported Formats:</strong> `ImageIcon` supports common image formats like GIF, JPEG, PNG, BMP, and WBMP.</p>
+
+            <p><strong>Example: Displaying an Image with <code>JLabel</code></strong></p>
+            <p>Assume you have an image file named `my_image.png` in the same directory as your compiled `.class` files, or in a `resources` folder on your classpath.</p>
+<pre><code>import javax.swing.*;
+import java.awt.*;
+
+public class ImageDisplayLabel extends JFrame {
+
+    public ImageDisplayLabel() {
+        setTitle("Image Display (JLabel)");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // Center the window
+
+        // 1. Load the image using ImageIcon
+        // It's good practice to use getResource() for classpath-relative loading
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/my_image.png")); // Adjust path as needed
+
+        // Check if image loaded successfully
+        if (imageIcon.getImageLoadStatus() == MediaTracker.ERRORED) {
+            System.err.println("Error loading image: my_image.png");
+            // Fallback or display an error message
+            JLabel errorLabel = new JLabel("Image not found or failed to load!", SwingConstants.CENTER);
+            add(errorLabel);
+        } else {
+            // 2. Create a JLabel with the ImageIcon
+            JLabel imageLabel = new JLabel(imageIcon);
+            // Optional: Set text along with image
+            // imageLabel.setText("My Awesome Image");
+            // imageLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+            // imageLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
+
+            // 3. Add the JLabel to the frame's content pane
+            add(imageLabel, BorderLayout.CENTER);
+        }
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        // Ensure the GUI is created on the Event Dispatch Thread
+        SwingUtilities.invokeLater(() -> new ImageDisplayLabel());
+    }
+}
+</code></pre>
+            <p><strong>Note on Path:</strong> If `my_image.png` is directly in the project root and not in a `resources` folder, you might use `new ImageIcon("my_image.png")` for simple cases, but `getResource()` is more robust for deployment.</p>
+
+            <h4>Method 2: Drawing Image Directly on a <code>JPanel</code> (For custom painting, scaling, or animation)</h4>
+            <p>This method provides more control over how the image is drawn, allowing for scaling, transformations, and integration with other custom graphics. It's suitable when you need to draw multiple images, combine images with shapes, or perform animations.</p>
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li><strong>Load the Image:</strong> Use `ImageIO.read()` to load the image into an `Image` object. This method can throw an `IOException`, so it needs error handling.</li>
+                <li><strong>Create a Custom <code>JPanel</code>:</strong> Extend `JPanel` and override its `paintComponent()` method.</li>
+                <li><strong>Draw the Image:</strong> Inside `paintComponent()`, cast the `Graphics` object to `Graphics2D` and use `g2d.drawImage()` to draw the `Image` object.</li>
+                <li><strong>Add to Container:</strong> Add your custom `JPanel` to the `JFrame`.</li>
+            </ol>
+
+            <p><strong>Example: Drawing an Image on a <code>JPanel</code></strong></p>
+<pre><code>import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
+class ImagePanel extends JPanel {
+    private Image image;
+
+    public ImagePanel() {
+        try {
+            // Load the image from a file
+            // Adjust the path to your image file
+            image = ImageIO.read(new File("my_image.png"));
+            // Or from classpath:
+            // image = ImageIO.read(getClass().getResource("/my_image.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Could not load image: " + e.getMessage());
+        }
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // Call superclass method
+
+        if (image != null) {
+            Graphics2D g2d = (Graphics2D) g;
+
+            // Option 1: Draw image at its original size at a specific location
+            // g2d.drawImage(image, 0, 0, this);
+
+            // Option 2: Scale image to fit the panel size
+            g2d.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+
+            // Option 3: Draw image with specific width and height
+            // g2d.drawImage(image, 50, 50, 200, 150, this);
+        } else {
+            // Display a message if image failed to load
+            g.setColor(Color.RED);
+            g.drawString("Image not available", 50, 50);
+        }
+    }
+}
+
+public class ImageDisplayPanel extends JFrame {
+    public ImageDisplayPanel() {
+        setTitle("Image Display (JPanel)");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        ImagePanel panel = new ImagePanel();
+        add(panel);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new ImageDisplayPanel());
+    }
+}
+</code></pre>
+            <p><strong>Key Considerations:</strong></p>
+            <ul>
+                <li><strong>Image Loading:</strong> Always handle `IOException` when using `ImageIO.read()`.</li>
+                <li><strong>Path Resolution:</strong> Be careful with image file paths. For deployed applications, using `Class.getResource()` or `ClassLoader.getResource()` is generally preferred as it loads from the classpath, making your application more portable.</li>
+                <li><strong>Performance:</strong> For very large images or many images, consider optimizing image loading and drawing to avoid performance issues.</li>
+                <li><strong>Resizing:</strong> If you want the image to resize with the window, drawing it directly on a `JPanel` and scaling it in `paintComponent()` is more flexible than `JLabel`.</li>
+            </ul>
+
+            <h3>Short notes on (Any Two): 2D shapes in swing, MouseEvent and MouseListener, MenuBar</h3>
+
+            <h4>2D Shapes in Swing</h4>
+            <p>The Java 2D API, part of the `java.awt` and `java.awt.geom` packages, provides powerful capabilities for drawing and manipulating two-dimensional graphics within Swing applications. It allows developers to render various geometric shapes, text, and images with high quality and flexibility.</p>
+            <p><strong>Key Concepts:</strong></p>
+            <ul>
+                <li><strong><code>Graphics2D</code>:</strong> This is the core class for 2D drawing. It extends `Graphics` and provides enhanced capabilities like anti-aliasing, transformations (translation, rotation, scaling), gradients, and more sophisticated stroke and fill patterns. You typically obtain a `Graphics2D` object by casting the `Graphics` object passed to a component's `paintComponent()` method.</li>
+                <li><strong><code>Shape</code> Interface:</strong> The `java.awt.Shape` interface is implemented by classes representing various geometric shapes. Instead of drawing directly with `Graphics` methods like `drawRect()`, you can create `Shape` objects (e.g., `Rectangle2D`, `Ellipse2D`, `Line2D`, `Path2D`) and then draw or fill them using `Graphics2D.draw(Shape s)` or `Graphics2D.fill(Shape s)`. This provides a more object-oriented approach to graphics.</li>
+                <li><strong>Rendering Hints:</strong> `Graphics2D` allows setting rendering hints (e.g., `RenderingHints.KEY_ANTIALIASING`) to control the quality of rendering, such as smoothing jagged edges of shapes and text.</li>
+                <li><strong>Strokes and Paints:</strong> You can customize the appearance of drawn shapes using `Stroke` objects (for line thickness, dash patterns) and `Paint` objects (for solid colors, gradients, textures).</li>
+            </ul>
+            <p><strong>Common 2D Shapes and Classes:</strong></p>
+            <ul>
+                <li><strong>Lines:</strong> `Line2D` (e.g., `Line2D.Double`, `Line2D.Float`)</li>
+                <li><strong>Rectangles:</strong> `Rectangle2D` (e.g., `Rectangle2D.Double`, `Rectangle2D.Float`), `Rectangle`</li>
+                <li><strong>Ellipses/Circles:</strong> `Ellipse2D` (e.g., `Ellipse2D.Double`, `Ellipse2D.Float`)</li>
+                <li><strong>Arcs:</strong> `Arc2D`</li>
+                <li><strong>Round Rectangles:</strong> `RoundRectangle2D`</li>
+                <li><strong>Polygons:</strong> `Polygon`, `Path2D` (for complex custom shapes)</li>
+            </ul>
+            <p>Drawing 2D shapes typically involves creating a custom `JPanel`, overriding `paintComponent()`, casting `Graphics` to `Graphics2D`, and then using the `Graphics2D` methods to draw or fill the desired shapes.</p>
+
+            <h4>MouseEvent and MouseListener</h4>
+            <p><strong><code>MouseEvent</code>:</strong></p>
+            <p>A `MouseEvent` is an event object that represents a user interaction with the mouse (e.g., clicking, pressing, releasing, moving, dragging, entering, or exiting a component's area). It contains information about the event, such as:</p>
+            <ul>
+                <li><strong>Coordinates:</strong> `getX()`, `getY()` (relative to the component), `getXOnScreen()`, `getYOnScreen()` (absolute screen coordinates).</li>
+                <li><strong>Button:</strong> `getButton()` (which mouse button was involved: `MouseEvent.BUTTON1`, `BUTTON2`, `BUTTON3`).</li>
+                <li><strong>Click Count:</strong> `getClickCount()` (for double-clicks, etc.).</li>
+                <li><strong>Modifiers:</strong> `isShiftDown()`, `isControlDown()`, etc., to check if modifier keys were held during the mouse action.</li>
+                <li><strong>Event Type:</strong> `getID()` (`MouseEvent.MOUSE_CLICKED`, `MOUSE_PRESSED`, `MOUSE_RELEASED`, `MOUSE_ENTERED`, `MOUSE_EXITED`, `MOUSE_MOVED`, `MOUSE_DRAGGED`).</li>
+            </ul>
+
+            <p><strong><code>MouseListener</code>:</strong></p>
+            <p>The `MouseListener` interface is used to receive "interesting" mouse events (press, release, click, enter, exit) on a component. It defines five methods:</p>
+            <ul>
+                <li>`void mouseClicked(MouseEvent e)`: Invoked when the mouse button has been clicked (pressed and released) on a component.</li>
+                <li>`void mousePressed(MouseEvent e)`: Invoked when a mouse button has been pressed on a component.</li>
+                <li>`void mouseReleased(MouseEvent e)`: Invoked when a mouse button has been released on a component.</li>
+                <li>`void mouseEntered(MouseEvent e)`: Invoked when the mouse cursor enters the bounds of a component.</li>
+                <li>`void mouseExited(MouseEvent e)`: Invoked when the mouse cursor exits the bounds of a component.</li>
+            </ul>
+            <p>For handling mouse movement (dragging and moving), the `MouseMotionListener` interface is used, with methods `mouseDragged()` and `mouseMoved()`. For mouse wheel events, `MouseWheelListener` is used.</p>
+            <p>Due to the number of methods, `MouseAdapter` is commonly used to implement `MouseListener` (and `MouseMotionListener`, `MouseWheelListener`) by extending it and overriding only the necessary methods.</p>
+
+            <h4>MenuBar</h4>
+            <p>In Java Swing, a `JMenuBar` is a component that typically appears at the top of a `JFrame` (or `JInternalFrame`) and contains a series of menus. It's a standard GUI element for organizing application commands and options in a hierarchical structure.</p>
+            <p><strong>Key Components:</strong></p>
+            <ul>
+                <li><strong><code>JMenuBar</code>:</strong> The main bar itself, which holds `JMenu` objects. A `JFrame` can have only one `JMenuBar`, set using `setJMenuBar(JMenuBar menuBar)`.</li>
+                <li><strong><code>JMenu</code>:</strong> A menu within the `JMenuBar`. When clicked, it drops down to reveal a list of `JMenuItem`s or nested `JMenu`s.</li>
+                <li><strong><code>JMenuItem</code>:</strong> An individual item within a `JMenu`. Clicking a `JMenuItem` typically triggers an action. `JMenuItem`s fire `ActionEvent`s.</li>
+                <li><strong><code>JCheckBoxMenuItem</code> and <code>JRadioButtonMenuItem</code>:</strong> Special types of menu items that allow for selection (checkbox-like) or mutually exclusive selection (radio button-like) within a menu.</li>
+                <li><strong>Separators:</strong> `JMenu.addSeparator()` can be used to visually separate groups of menu items.</li>
+            </ul>
+            <p><strong>Structure:</strong></p>
+            <p>A typical menu structure looks like this:</p>
+            <pre><code>JMenuBar
+  ├── JMenu (e.g., "File")
+  │     ├── JMenuItem (e.g., "New")
+  │     ├── JMenuItem (e.g., "Open")
+  │     ├── JMenu (e.g., "Recent Files")
+  │     │     ├── JMenuItem (e.g., "file1.txt")
+  │     │     └── JMenuItem (e.g., "file2.txt")
+  │     └── JMenuItem (e.g., "Exit")
+  └── JMenu (e.g., "Edit")
+        ├── JMenuItem (e.g., "Cut")
+        └── JMenuItem (e.g., "Copy")
+            </code></pre>
+            <p><strong>Usage:</strong></p>
+            <p>You create `JMenuBar`, then add `JMenu`s to it, and then add `JMenuItem`s (and potentially nested `JMenu`s) to the `JMenu`s. `ActionListener`s are typically added to `JMenuItem`s to define their behavior when selected.</p>
+
+        </div>
+
+        <div class="card">
+            <h2>Group C Questions</h2>
+
+            <h3>Why do we need to use Layout managers while creating GUI application in Java? Explain the key interfaces required to develop any database application using Java. Also, write a program to display the records from the table Students who have got distinction and have a major subject Data science. Assume that the Student table is in the database College and contains the columns Rollno, Name, Level, Division and Major.</h3>
+            <p><strong>Need for Layout Managers in Java GUI:</strong></p>
+            <p>Layout managers are essential in Java GUI programming (both AWT and Swing) because they automatically arrange and size components within a container. Without them, you would have to manually calculate and set the exact pixel coordinates and dimensions for every component, which is highly impractical and problematic for several reasons:</p>
+            <ol>
+                <li><strong>Platform Independence:</strong> Different operating systems and display settings (e.g., screen resolution, font sizes) can render components differently. Manual positioning would lead to inconsistent and broken layouts across various environments. Layout managers adapt to these differences.</li>
+                <li><strong>Dynamic Resizing:</strong> When a user resizes a window, components need to adjust their size and position accordingly. Layout managers handle this automatically, ensuring the GUI remains functional and visually appealing. Manual positioning would require complex recalculations and repainting logic for every resize event.</li>
+                <li><strong>Internationalization:</strong> Text in different languages can have varying lengths. Layout managers can accommodate these variations without requiring code changes, ensuring that labels and buttons still fit within their allocated space.</li>
+                <li><strong>Component Addition/Removal:</strong> As components are added or removed dynamically at runtime, layout managers automatically re-arrange the remaining components, maintaining a coherent layout. Manual positioning would necessitate rewriting significant portions of the layout code.</li>
+                <li><strong>Readability and Maintainability:</strong> Using layout managers makes GUI code much cleaner, more readable, and easier to maintain. Instead of a long list of `setBounds()` calls, you define logical relationships between components.</li>
+                <li><strong>Complex Layouts:</strong> For complex GUIs, combining different layout managers (often by nesting panels with different layouts) allows for the creation of sophisticated and flexible user interfaces that would be extremely difficult to achieve with manual positioning.</li>
+            </ol>
+            <p>In essence, layout managers abstract away the complexities of component positioning and sizing, allowing developers to focus on the functionality and logical arrangement of their GUI elements rather than pixel-perfect manual placement.</p>
+
+            <p><strong>Key Interfaces Required to Develop Any Database Application Using Java (JDBC):</strong></p>
+            <p>Java Database Connectivity (JDBC) is the API that defines how a Java client can connect to a database. The core interfaces in `java.sql` package that are fundamental for developing database applications are:</p>
+            <ol>
+                <li><strong><code>Driver</code>:</strong>
+                    <ul>
+                        <li><strong>Purpose:</strong> Represents a database driver. A JDBC driver is a software component that enables a Java application to interact with a database. Different databases (MySQL, PostgreSQL, Oracle, SQL Server) require different drivers.</li>
+                        <li><strong>Usage:</strong> You typically don't interact with this interface directly. Instead, you load the driver (e.g., `Class.forName("com.mysql.cj.jdbc.Driver");`) or rely on JDBC 4.0+ auto-loading via `DriverManager`.</li>
+                    </ul>
+                </li>
+                <li><strong><code>DriverManager</code>:</strong>
+                    <ul>
+                        <li><strong>Purpose:</strong> A service manager that manages a list of JDBC drivers. It's the primary class for establishing a connection to a database.</li>
+                        <li><strong>Usage:</strong> Its static `getConnection()` method is used to obtain a `Connection` object.
+                            <pre><code>Connection conn = DriverManager.getConnection(url, user, password);</code></pre>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong><code>Connection</code>:</strong>
+                    <ul>
+                        <li><strong>Purpose:</strong> Represents an active session with a specific database. All communication with the database happens through this object.</li>
+                        <li><strong>Usage:</strong> Used to create `Statement` objects, manage transactions (`setAutoCommit()`, `commit()`, `rollback()`), and close the connection (`close()`). It's crucial to close connections when done to release database resources.</li>
+                    </ul>
+                </li>
+                <li><strong><code>Statement</code>:</strong>
+                    <ul>
+                        <li><strong>Purpose:</strong> Used for executing static SQL statements and returning their results.</li>
+                        <li><strong>Usage:</strong> Provides methods like `executeQuery()` (for `SELECT` statements, returns `ResultSet`), `executeUpdate()` (for `INSERT`, `UPDATE`, `DELETE`, returns row count), and `execute()` (for any SQL, returns boolean).</li>
+                    <li><strong>Limitation:</strong> Vulnerable to SQL injection if used with concatenated user input.</li>
+                    </ul>
+                </li>
+                <li><strong><code>PreparedStatement</code>:</strong>
+                    <ul>
+                        <li><strong>Purpose:</strong> Extends `Statement` and is used for executing precompiled SQL statements with parameters. It's more efficient for executing the same SQL statement multiple times and is crucial for preventing SQL injection.</li>
+                        <li><strong>Usage:</strong> You create it from a `Connection` (`conn.prepareStatement(sql)`), set parameters using `setXxx()` methods (e.g., `setString()`, `setInt()`), and then execute it.</li>
+                    </ul>
+                </li>
+                <li><strong><code>CallableStatement</code>:</strong>
+                    <ul>
+                        <li><strong>Purpose:</strong> Extends `PreparedStatement` and is used for executing stored procedures in the database.</li>
+                        <li><strong>Usage:</strong> Allows setting input parameters and retrieving output parameters and return values from stored procedures.</li>
+                    </ul>
+                </li>
+                <li><strong><code>ResultSet</code>:</strong>
+                    <ul>
+                        <li><strong>Purpose:</strong> Represents a table of data generated by executing a SQL query (typically a `SELECT` statement). It acts as an iterator over the query results.</li>
+                        <li><strong>Usage:</strong> You navigate through the rows using `next()` (moves to the next row), and retrieve column values using `getXxx()` methods (e.g., `getString("columnName")`, `getInt(columnIndex)`).</li>
+                    </ul>
+                </li>
+            </ol>
+            <p>The typical flow involves getting a `Connection`, creating a `Statement` (or `PreparedStatement`), executing SQL, processing the `ResultSet` (if any), and finally closing all resources (`ResultSet`, `Statement`, `Connection`) in a `finally` block to ensure they are released.</p>
+
+            <p><strong>Program to Display Records from <code>Students</code> Table (Distinction & Data Science Major):</strong></p>
+            <p>This program connects to a MySQL database named `College`, queries the `Student` table, and displays records where `Division` is 'Distinction' and `Major` is 'Data Science'.</p>
+            <p><strong>Assumptions:</strong></p>
+            <ul>
+                <li>You have a MySQL database named `College` running.</li>
+                <li>You have a table named `Student` with columns: `Rollno` (INT), `Name` (VARCHAR), `Level` (VARCHAR), `Division` (VARCHAR), `Major` (VARCHAR).</li>
+                <li>You have the MySQL JDBC driver (e.g., `mysql-connector-java.jar`) in your classpath.</li>
+                <li>Database credentials: `user` = "root", `password` = "your_password".</li>
+            </ul>
+
+<pre><code>import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class StudentDataQuery {
+
+    // Database connection details
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/College";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "your_password"; // CHANGE THIS TO YOUR ACTUAL PASSWORD
+
+    public static void main(String[] args) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            // 1. Load the JDBC driver (optional for JDBC 4.0+ but good practice)
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("JDBC Driver loaded successfully.");
+
+            // 2. Establish the connection
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            System.out.println("Connected to the database successfully.");
+
+            // 3. SQL query to select students with 'Distinction' and 'Data Science' major
+            String sql = "SELECT Rollno, Name, Level, Division, Major FROM Student WHERE Division = ? AND Major = ?";
+
+            // 4. Create a PreparedStatement to prevent SQL injection
+            preparedStatement = connection.prepareStatement(sql);
+
+            // 5. Set parameters for the PreparedStatement
+            preparedStatement.setString(1, "Distinction");
+            preparedStatement.setString(2, "Data Science");
+
+            // 6. Execute the query
+            resultSet = preparedStatement.executeQuery();
+            System.out.println("
+--- Students with Distinction in Data Science ---");
+
+            // 7. Process the ResultSet
+            boolean foundRecords = false;
+            while (resultSet.next()) {
+                foundRecords = true;
+                int rollno = resultSet.getInt("Rollno");
+                String name = resultSet.getString("Name");
+                String level = resultSet.getString("Level");
+                String division = resultSet.getString("Division");
+                String major = resultSet.getString("Major");
+
+                System.out.printf("Roll No: %d, Name: %s, Level: %s, Division: %s, Major: %s
+",
+                                  rollno, name, level, division, major);
+            }
+
+            if (!foundRecords) {
+                System.out.println("No students found matching the criteria.");
+            }
+
+        } catch (ClassNotFoundException e) {
+            System.err.println("JDBC Driver not found: " + e.getMessage());
+        } catch (SQLException e) {
+            System.err.println("Database error: " + e.getMessage());
+            // For more detailed error: e.printStackTrace();
+        } finally {
+            // 8. Close resources in reverse order of creation to avoid resource leaks
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+                System.out.println("
+Database resources closed.");
+            } catch (SQLException e) {
+                System.err.println("Error closing resources: " + e.getMessage());
+            }
+        }
+    }
+}
+</code></pre>
+            <p><strong>To run this program:</strong></p>
+            <ol>
+                <li>Make sure you have a MySQL server running.</li>
+                <li>Create a database named `College` (if it doesn't exist): `CREATE DATABASE College;`</li>
+                <li>Use the `College` database: `USE College;`</li>
+                <li>Create the `Student` table:
+<pre><code>CREATE TABLE Student (
+    Rollno INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Level VARCHAR(50),
+    Division VARCHAR(50),
+    Major VARCHAR(100)
+);
+</code></pre>
+                </li>
+                <li>Insert some sample data:
+<pre><code>INSERT INTO Student (Rollno, Name, Level, Division, Major) VALUES
+(101, 'Alice Smith', 'UG', 'Distinction', 'Data Science'),
+(102, 'Bob Johnson', 'PG', 'First Class', 'Computer Science'),
+(103, 'Charlie Brown', 'UG', 'Distinction', 'Data Science'),
+(104, 'Diana Prince', 'PG', 'Second Class', 'Mathematics'),
+(105, 'Eve Adams', 'UG', 'First Class', 'Physics');
+</code></pre>
+                </li>
+                <li>Download the MySQL JDBC Connector JAR file (e.g., `mysql-connector-java-x.x.x.jar`) and add it to your project's classpath.</li>
+                <li>Replace `"your_password"` with your actual MySQL root password in the Java code.</li>
+                <li>Compile and run the Java program.</li>
+            </ol>
+
+            <h3>Write a GUI application to find the sum and difference of two integer numbers. Use two text fields for input and a third text field for output. Your program should display the sum if the user presses the mouse and the difference if the user releases the mouse.</h3>
+            <p>This GUI application will use `JTextField` for input and output, and `JButton` to trigger calculations based on mouse press and release events. We'll use `MouseListener` to detect these events.</p>
+
+            <p><strong>Program Structure:</strong></p>
+            <ol>
+                <li>A `JFrame` as the main window.</li>
+                <li>Two `JTextField`s for input numbers (`num1Field`, `num2Field`).</li>
+                <li>One `JTextField` for displaying the result (`resultField`).</li>
+                <li>A `JButton` that the user will press/release to trigger calculations.</li>
+                <li>A `MouseListener` attached to the button to handle `mousePressed` and `mouseReleased` events.</li>
+                <li>Error handling for invalid number input.</li>
+            </ol>
+
+<pre><code>import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class SumDifferenceApp extends JFrame {
+
+    private JTextField num1Field;
+    private JTextField num2Field;
+    private JTextField resultField;
+    private JButton calculateButton;
+
+    public SumDifferenceApp() {
+        setTitle("Sum and Difference Calculator");
+        setSize(350, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // Center the window
+
+        // Set a layout manager (e.g., GridLayout for simple arrangement)
+        setLayout(new GridLayout(4, 2, 10, 10)); // Rows, Cols, HGap, VGap
+
+        // Initialize components
+        add(new JLabel("Number 1:"));
+        num1Field = new JTextField(10);
+        add(num1Field);
+
+        add(new JLabel("Number 2:"));
+        num2Field = new JTextField(10);
+        add(num2Field);
+
+        add(new JLabel("Result:"));
+        resultField = new JTextField(10);
+        resultField.setEditable(false); // Output field should not be editable by user
+        add(resultField);
+
+        calculateButton = new JButton("Press/Release for Result");
+        add(calculateButton); // Add button to the layout
+
+        // Add MouseListener to the button using an anonymous inner class extending MouseAdapter
+        calculateButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // When mouse is pressed, calculate sum
+                calculateAndDisplayResult("sum");
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // When mouse is released, calculate difference
+                calculateAndDisplayResult("difference");
+            }
+        });
+
+        setVisible(true);
+    }
+
+    private void calculateAndDisplayResult(String operation) {
+        try {
+            // Get input from text fields
+            int num1 = Integer.parseInt(num1Field.getText());
+            int num2 = Integer.parseInt(num2Field.getText());
+            int result;
+
+            if (operation.equals("sum")) {
+                result = num1 + num2;
+                resultField.setText(String.valueOf(result));
+            } else if (operation.equals("difference")) {
+                result = num1 - num2;
+                resultField.setText(String.valueOf(result));
+            }
+        } catch (NumberFormatException ex) {
+            // Handle case where input is not a valid integer
+            resultField.setText("Invalid Input!");
+            JOptionPane.showMessageDialog(this,
+                                          "Please enter valid integer numbers in both fields.",
+                                          "Input Error",
+                                          JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Ensure GUI updates are done on the Event Dispatch Thread
+        SwingUtilities.invokeLater(() -> new SumDifferenceApp());
+    }
+}
+</code></pre>
+            <p><strong>How to Run:</strong></p>
+            <ol>
+                <li>Save the code as `SumDifferenceApp.java`.</li>
+                <li>Compile: `javac SumDifferenceApp.java`</li>
+                <li>Run: `java SumDifferenceApp`</li>
+            </ol>
+            <p><strong>Usage:</strong></p>
+            <ol>
+                <li>Enter two integer numbers in the "Number 1" and "Number 2" fields.</li>
+                <li>Press and hold the "Press/Release for Result" button: The "Result" field will show the sum.</li>
+                <li>Release the "Press/Release for Result" button: The "Result" field will show the difference.</li>
+                <li>If you enter non-integer values, an "Invalid Input!" message will appear, and an error dialog will pop up.</li>
+            </ol>
+
+            <h3>How a frame can be created in Java? Explain. Write a program to create a GUI application in Java that identifies the smaller and greater number between two input numbers taken through two text fields and displays the result in a label. If the user presses the mouse it should display the smaller number and if the user releases the mouse it should display the greater number.</h3>
+            <p><strong>How a Frame Can Be Created in Java:</strong></p>
+            <p>In Java Swing, a "frame" refers to a top-level window, typically represented by the `JFrame` class. `JFrame` is a heavyweight component that provides the basic window decorations (title bar, borders, minimize, maximize, close buttons) and integrates with the operating system's windowing system. It serves as the primary container for all other GUI components in a desktop application.</p>
+            <p>There are two common ways to create a `JFrame`:</p>
+
+            <ol>
+                <li><strong>By Instantiating <code>JFrame</code> Directly:</strong>
+                    <p>This is the simplest and most common approach for basic applications. You create an instance of `JFrame` and then add components to its content pane.</p>
+<pre><code>import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.FlowLayout;
+
+public class SimpleFrameExample {
+    public static void main(String[] args) {
+        // 1. Create a JFrame object
+        JFrame frame = new JFrame("My First Frame");
+
+        // 2. Set the size of the frame (width, height)
+        frame.setSize(400, 300);
+
+        // 3. Set the default close operation (what happens when the user clicks 'X')
+        // EXIT_ON_CLOSE: Terminates the application when the frame is closed.
+        // DISPOSE_ON_CLOSE: Disposes the frame, but the application might continue if other frames are open.
+        // DO_NOTHING_ON_CLOSE: Does nothing, you handle closing manually.
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // 4. Set the layout manager for the frame's content pane
+        // FlowLayout arranges components in a row.
+        frame.setLayout(new FlowLayout());
+
+        // 5. Create and add components to the frame's content pane
+        JLabel label = new JLabel("Hello, Swing Frame!");
+        frame.add(label); // Components are added to the content pane by default
+
+        // 6. Make the frame visible
+        frame.setVisible(true);
+
+        // Optional: Center the frame on the screen
+        frame.setLocationRelativeTo(null);
+    }
+}
+</code></pre>
+                </li>
+                <li><strong>By Extending <code>JFrame</code>:</strong>
+                    <p>This approach is often preferred for more complex applications or when you want to encapsulate the frame's behavior and components within a single class. Your custom class inherits all the properties and methods of `JFrame`.</p>
+<pre><code>import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.FlowLayout;
+
+public class CustomFrame extends JFrame {
+
+    public CustomFrame() {
+        // Call superclass constructor to set the title
+        super("My Custom Frame");
+
+        // Set frame properties
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout()); // Set layout for this frame
+
+        // Add components
+        JLabel label = new JLabel("This is a custom JFrame!");
+        add(label);
+
+        // Make the frame visible
+        setVisible(true);
+        setLocationRelativeTo(null); // Center the window
+    }
+
+    public static void main(String[] args) {
+        // It's good practice to create and show GUI on the Event Dispatch Thread (EDT)
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new CustomFrame();
+            }
+        });
+    }
+}
+</code></pre>
+                </li>
+            </ol>
+            <p>In both cases, the essential steps involve creating the `JFrame` object, setting its size, defining its close behavior, adding components, and finally making it visible.</p>
+
+            <p><strong>Program to Find Smaller/Greater Number with Mouse Events:</strong></p>
+            <p>This application will take two numbers from `JTextField`s and display the smaller number on mouse press and the greater number on mouse release in a `JLabel`.</p>
+
+            <p><strong>Program Structure:</strong></p>
+            <ol>
+                <li>A `JFrame` as the main window.</li>
+                <li>Two `JTextField`s for input numbers.</li>
+                <li>A `JLabel` to display the result.</li>
+                <li>A `JButton` to trigger the mouse events.</li>
+                <li>A `MouseListener` (using `MouseAdapter`) on the button.</li>
+                <li>Error handling for non-numeric input.</li>
+            </ol>
+
+<pre><code>import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class MinMaxNumberApp extends JFrame {
+
+    private JTextField num1Field;
+    private JTextField num2Field;
+    private JLabel resultLabel;
+    private JButton triggerButton;
+
+    public MinMaxNumberApp() {
+        setTitle("Smaller/Greater Number Finder");
+        setSize(350, 250);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // Center the window
+
+        // Use a JPanel with BorderLayout for better organization
+        JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Padding
+
+        // Input Panel
+        JPanel inputPanel = new JPanel(new GridLayout(2, 2, 5, 5));
+        inputPanel.add(new JLabel("Number 1:"));
+        num1Field = new JTextField(10);
+        inputPanel.add(num1Field);
+        inputPanel.add(new JLabel("Number 2:"));
+        num2Field = new JTextField(10);
+        inputPanel.add(num2Field);
+        mainPanel.add(inputPanel, BorderLayout.NORTH);
+
+        // Result Label
+        resultLabel = new JLabel("Result will appear here", SwingConstants.CENTER);
+        resultLabel.setFont(new Font("Serif", Font.BOLD, 18));
+        resultLabel.setForeground(Color.BLUE);
+        mainPanel.add(resultLabel, BorderLayout.CENTER);
+
+        // Trigger Button
+        triggerButton = new JButton("Press or Release Mouse Here");
+        triggerButton.setFont(new Font("Arial", Font.PLAIN, 14));
+        mainPanel.add(triggerButton, BorderLayout.SOUTH);
+
+        // Add MouseListener to the button
+        triggerButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // On mouse press, display the smaller number
+                displayMinMax("smaller");
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // On mouse release, display the greater number
+                displayMinMax("greater");
+            }
+        });
+
+        add(mainPanel); // Add the main panel to the frame
+        setVisible(true);
+    }
+
+    private void displayMinMax(String type) {
+        try {
+            int num1 = Integer.parseInt(num1Field.getText());
+            int num2 = Integer.parseInt(num2Field.getText());
+
+            if (type.equals("smaller")) {
+                int smaller = Math.min(num1, num2);
+                resultLabel.setText("Smaller: " + smaller);
+            } else if (type.equals("greater")) {
+                int greater = Math.max(num1, num2);
+                resultLabel.setText("Greater: " + greater);
+            }
+        } catch (NumberFormatException ex) {
+            resultLabel.setText("Invalid Input!");
+            JOptionPane.showMessageDialog(this,
+                                          "Please enter valid integer numbers.",
+                                          "Input Error",
+                                          JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new MinMaxNumberApp());
+    }
+}
+</code></pre>
+            <p><strong>How to Run:</strong></p>
+            <ol>
+                <li>Save the code as `MinMaxNumberApp.java`.</li>
+                <li>Compile: `javac MinMaxNumberApp.java`</li>
+                <li>Run: `java MinMaxNumberApp`</li>
+            </ol>
+            <p><strong>Usage:</strong></p>
+            <ol>
+                <li>Enter two integer numbers in the text fields.</li>
+                <li>Press and hold the "Press or Release Mouse Here" button: The label will show the smaller number.</li>
+                <li>Release the button: The label will show the greater number.</li>
+                <li>If non-integer input is provided, an error message will be displayed.</li>
+            </ol>
+
+            <h3>Why do we need to use layout managers in GUI programming? Write a program to create a GUI form that takes data about a customer including cid, name, address, email and age and insert these data into the Customer table of the Shop database.</h3>
+            <p><strong>Why do we need to use layout managers in GUI programming?</strong></p>
+            <p>This question has been answered in detail previously in this unit. In summary, layout managers are crucial for Java GUI programming because they:</p>
+            <ul>
+                <li>Ensure **platform independence** by adapting to different screen resolutions and operating systems.</li>
+                <li>Handle **dynamic resizing** of windows and components automatically.</li>
+                <li>Support **internationalization** by accommodating varying text lengths.</li>
+                <li>Simplify **component addition/removal** at runtime.</li>
+                <li>Improve **code readability and maintainability** by abstracting positioning logic.</li>
+                <li>Enable the creation of **complex and flexible layouts** by nesting containers with different managers.</li>
+            </ul>
+            <p>They eliminate the need for manual pixel-based positioning, which is brittle and impractical for robust applications.</p>
+
+            <p><strong>Program to Create a GUI Form and Insert Customer Data into Database:</strong></p>
+            <p>This program will create a Swing GUI form to collect customer details (cid, name, address, email, age) and insert them into a `Customer` table in a `Shop` database using JDBC.</p>
+
+            <p><strong>Assumptions:</strong></p>
+            <ul>
+                <li>You have a MySQL database named `Shop` running.</li>
+                <li>You have a table named `Customer` with columns: `cid` (INT, PRIMARY KEY), `name` (VARCHAR), `address` (VARCHAR), `email` (VARCHAR), `age` (INT).</li>
+                <li>You have the MySQL JDBC driver in your classpath.</li>
+                <li>Database credentials: `user` = "root", `password` = "your_password".</li>
+            </ul>
+
+            <p><strong>Program Structure:</strong></p>
+            <ol>
+                <li>A `JFrame` as the main window.</li>
+                <li>`JTextField`s for `cid`, `name`, `address`, `email`, `age`.</li>
+                <li>A `JButton` to trigger the data insertion.</li>
+                <li>A `JLabel` to display status messages.</li>
+                <li>JDBC code to connect to the database and perform the `INSERT` operation using `PreparedStatement`.</li>
+                <li>Error handling for database operations and input validation.</li>
+            </ol>
+
+<pre><code>import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class CustomerFormApp extends JFrame {
+
+    // Database connection details
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/Shop";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "your_password"; // CHANGE THIS TO YOUR ACTUAL PASSWORD
+
+    private JTextField cidField, nameField, addressField, emailField, ageField;
+    private JButton submitButton;
+    private JLabel statusLabel;
+
+    public CustomerFormApp() {
+        setTitle("Customer Data Entry Form");
+        setSize(450, 350);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // Center the window
+
+        // Main panel with BorderLayout for overall structure
+        JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        // Form panel with GridLayout for input fields and labels
+        JPanel formPanel = new JPanel(new GridLayout(5, 2, 10, 10)); // 5 rows, 2 columns, gaps
+        formPanel.setBorder(BorderFactory.createTitledBorder("Customer Details"));
+
+        formPanel.add(new JLabel("Customer ID:"));
+        cidField = new JTextField(15);
+        formPanel.add(cidField);
+
+        formPanel.add(new JLabel("Name:"));
+        nameField = new JTextField(15);
+        formPanel.add(nameField);
+
+        formPanel.add(new JLabel("Address:"));
+        addressField = new JTextField(15);
+        formPanel.add(addressField);
+
+        formPanel.add(new JLabel("Email:"));
+        emailField = new JTextField(15);
+        formPanel.add(emailField);
+
+        formPanel.add(new JLabel("Age:"));
+        ageField = new JTextField(15);
+        formPanel.add(ageField);
+
+        mainPanel.add(formPanel, BorderLayout.CENTER);
+
+        // Button and Status Label Panel
+        JPanel southPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        submitButton = new JButton("Add Customer");
+        southPanel.add(submitButton);
+
+        statusLabel = new JLabel("Ready to add customer data.", SwingConstants.CENTER);
+        statusLabel.setFont(new Font("Arial", Font.ITALIC, 12));
+        southPanel.add(statusLabel);
+
+        mainPanel.add(southPanel, BorderLayout.SOUTH);
+
+        add(mainPanel);
+
+        // Add ActionListener to the submit button
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                insertCustomerData();
+            }
+        });
+
+        setVisible(true);
+    }
+
+    private void insertCustomerData() {
+        // Get data from text fields
+        String cidStr = cidField.getText().trim();
+        String name = nameField.getText().trim();
+        String address = addressField.getText().trim();
+        String email = emailField.getText().trim();
+        String ageStr = ageField.getText().trim();
+
+        // Basic input validation
+        if (cidStr.isEmpty() || name.isEmpty() || address.isEmpty() || email.isEmpty() || ageStr.isEmpty()) {
+            statusLabel.setText("Error: All fields are required!");
+            statusLabel.setForeground(Color.RED);
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int cid;
+        int age;
+        try {
+            cid = Integer.parseInt(cidStr);
+            age = Integer.parseInt(ageStr);
+        } catch (NumberFormatException ex) {
+            statusLabel.setText("Error: CID and Age must be numbers!");
+            statusLabel.setForeground(Color.RED);
+            JOptionPane.showMessageDialog(this, "Customer ID and Age must be valid integers.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            // Load driver (optional for JDBC 4.0+)
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establish connection
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+            // SQL INSERT statement
+            String sql = "INSERT INTO Customer (cid, name, address, email, age) VALUES (?, ?, ?, ?, ?)";
+            preparedStatement = connection.prepareStatement(sql);
+
+            // Set parameters
+            preparedStatement.setInt(1, cid);
+            preparedStatement.setString(2, name);
+            preparedStatement.setString(3, address);
+            preparedStatement.setString(4, email);
+            preparedStatement.setInt(5, age);
+
+            // Execute update
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                statusLabel.setText("Customer added successfully!");
+                statusLabel.setForeground(new Color(0, 128, 0)); // Green color
+                // Clear fields after successful insertion
+                cidField.setText("");
+                nameField.setText("");
+                addressField.setText("");
+                emailField.setText("");
+                ageField.setText("");
+            } else {
+                statusLabel.setText("Failed to add customer.");
+                statusLabel.setForeground(Color.RED);
+            }
+
+        } catch (ClassNotFoundException e) {
+            statusLabel.setText("Error: JDBC Driver not found.");
+            statusLabel.setForeground(Color.RED);
+            JOptionPane.showMessageDialog(this, "JDBC Driver not found. Make sure it's in your classpath.", "Database Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        } catch (SQLException e) {
+            statusLabel.setText("Database Error: " + e.getMessage());
+            statusLabel.setForeground(Color.RED);
+            JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                System.err.println("Error closing database resources: " + e.getMessage());
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new CustomerFormApp());
+    }
+}
+</code></pre>
+            <p><strong>To run this program:</strong></p>
+            <ol>
+                <li>Make sure you have a MySQL server running.</li>
+                <li>Create a database named `Shop` (if it doesn't exist): `CREATE DATABASE Shop;`</li>
+                <li>Use the `Shop` database: `USE Shop;`</li>
+                <li>Create the `Customer` table:
+<pre><code>CREATE TABLE Customer (
+    cid INT PRIMARY KEY,
+    name VARCHAR(100),
+    address VARCHAR(255),
+    email VARCHAR(100),
+    age INT
+);
+</code></pre>
+                </li>
+                <li>Download the MySQL JDBC Connector JAR file and add it to your project's classpath.</li>
+                <li>Replace `"your_password"` with your actual MySQL root password in the Java code.</li>
+                <li>Compile and run the Java program.</li>
+            </ol>
+            <p>The GUI will appear, allowing you to enter customer details. Clicking "Add Customer" will attempt to insert the data into your MySQL database.</p>
+        </div>
+    </div>
+</body>
+</html>

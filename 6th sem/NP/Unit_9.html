@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 9: Non-blocking I/O</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .question-block {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+        .question {
+            background: #e9ecef;
+            padding: 15px;
+            border-left: 5px solid #0056b3;
+            margin-bottom: 20px;
+        }
+        .answer, .summary, .code-example {
+            margin-bottom: 20px;
+        }
+        .summary {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 5px solid #155724;
+            border-radius: 5px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+        .repetition-note {
+            font-style: italic;
+            color: #6c757d;
+            text-align: right;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 9: Non-blocking I/O</h1>
+
+        <div class="question">
+            <h2>Blocking vs. Non-blocking I/O</h2>
+            <p class="repetition-note">This question is repeated 2 times.</p>
+        </div>
+
+        <div class="answer">
+            <h3>Define Non-blocking I/O.</h3>
+            <p>Non-blocking I/O is an approach to input/output operations where a call to read or write data returns immediately, regardless of whether the operation can be completed. If the operation cannot be completed at that moment (e.g., no data is available to be read), the call returns a status indicating that, allowing the program to continue with other tasks. This is in contrast to blocking I/O, where the call would wait until the operation is complete.</p>
+
+            <h3>How is blocking I/O different from Non-Blocking I/O?</h3>
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Blocking I/O</th>
+                    <th>Non-blocking I/O</th>
+                </tr>
+                <tr>
+                    <td><strong>Thread Behavior</strong></td>
+                    <td>The calling thread is blocked until the I/O operation completes.</td>
+                    <td>The calling thread is not blocked; the I/O call returns immediately.</td>
+                </tr>
+                <tr>
+                    <td><strong>Efficiency</strong></td>
+                    <td>Can be inefficient for handling multiple connections, as it requires a separate thread for each connection to avoid blocking the entire application.</td>
+                    <td>Highly efficient for handling many connections with a single thread, as the thread can switch to other tasks while waiting for I/O.</td>
+                </tr>
+                <tr>
+                    <td><strong>Complexity</strong></td>
+                    <td>Simpler to program and understand.</td>
+                    <td>More complex, as it requires mechanisms (like selectors) to know when an I/O operation is ready to be performed.</td>
+                </tr>
+                <tr>
+                    <td><strong>Use Cases</strong></td>
+                    <td>Simple client applications, or servers with a low number of concurrent connections.</td>
+                    <td>High-performance servers that need to handle thousands of concurrent connections, like chat servers or web servers.</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Blocking vs. Non-blocking I/O</h3>
+            <ul>
+                <li><strong>Blocking:</strong> Waits for I/O to finish. Simple but can be slow with many clients.</li>
+                <li><strong>Non-blocking:</strong> Doesn't wait. More complex but very efficient for high-concurrency servers.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Central Abstractions of Java NIO</h2>
+        </div>
+
+        <div class="answer">
+            <h3>Explain the central abstractions of Java NIO.</h3>
+            <p>Java New I/O (NIO) is an alternative I/O API for Java that provides support for non-blocking I/O. Its central abstractions are:</p>
+            <ul>
+                <li><strong>Channels:</strong> A channel represents a connection to an entity that is capable of performing I/O operations, such as a file or a socket. It is the gateway through which data is transferred. You read data from a channel into a buffer, and you write data from a buffer into a channel.</li>
+                <li><strong>Buffers:</strong> A buffer is a fixed-size block of memory that is used to hold data that is being transferred to or from a channel. All I/O in NIO is done through buffers. You don't write directly to a channel; you write to a buffer, which is then written to the channel.</li>
+                <li><strong>Selectors:</strong> A selector is an object that can be used to monitor multiple channels for I/O events (like connection ready, data available for reading, or channel ready for writing). This is the key to non-blocking I/O, as it allows a single thread to manage multiple channels efficiently.</li>
+            </ul>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Java NIO Abstractions</h3>
+            <ul>
+                <li><strong>Channels:</strong> The pipes that data flows through (like a socket or file).</li>
+                <li><strong>Buffers:</strong> The containers for data that is being sent or received through channels.</li>
+                <li><strong>Selectors:</strong> The traffic cop that tells you which channels are ready for I/O, enabling non-blocking operations.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Buffers and Buffer Handling</h2>
+        </div>
+
+        <div class="answer">
+            <h3>Define Buffer.</h3>
+            <p>A buffer is a temporary storage area for data. In Java NIO, a <code>Buffer</code> is an object that holds a fixed amount of data that can be sent to or received from a channel. It has a certain capacity and contains four key properties that control data handling:</p>
+            <ul>
+                <li><strong>Capacity:</strong> The maximum number of elements the buffer can hold. This is set at creation and cannot be changed.</li>
+                <li><strong>Limit:</strong> The index of the first element that should not be read or written. It effectively marks the end of the active data in the buffer.</li>
+                <li><strong>Position:</strong> The index of the next element to be read or written.</li>
+                <li><strong>Mark:</strong> A remembered position. Calling <code>mark()</code> sets the mark to the current position, and <code>reset()</code> sets the position back to the mark.</li>
+            </ul>
+
+            <h3>Explain buffer handling methods.</h3>
+            <p>The main methods for handling a buffer revolve around changing its state for reading and writing:</p>
+            <ul>
+                <li><strong><code>put()</code>:</strong> Writes data into the buffer at the current position and increments the position.</li>
+                <li><strong><code>get()</code>:</strong> Reads data from the buffer at the current position and increments the position.</li>
+                <li><strong><code>flip()</code>:</strong> Prepares the buffer for reading. It sets the limit to the current position and then resets the position to zero. This is done after you have finished writing to the buffer and want to read from it.</li>
+                <li><strong><code>rewind()</code>:</strong> Resets the position to zero, allowing you to reread the data in the buffer. The limit remains unchanged.</li>
+                <li><strong><code>clear()</code>:</strong> Prepares the buffer for writing. It resets the position to zero and sets the limit to the capacity. It does not erase the data in the buffer, but you will be overwriting it.</li>
+                <li><strong><code>compact()</code>:</strong> Shifts the unread data to the beginning of the buffer, making space for new data to be written at the end.</li>
+            </ul>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program Demonstrating Buffer and Channel Handling</h3>
+            <p>This example shows how to use a <code>FileChannel</code> and a <code>ByteBuffer</code> to read data from a file.</p>
+            <pre><code>
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+
+public class BufferChannelExample {
+
+    public static void main(String[] args) {
+        try (FileInputStream fis = new FileInputStream("questions.txt");
+             FileChannel channel = fis.getChannel()) {
+
+            // Create a buffer with a capacity of 1024 bytes
+            ByteBuffer buffer = ByteBuffer.allocate(1024);
+
+            System.out.println("Reading data from the file...");
+
+            // Read data from the channel into the buffer
+            int bytesRead = channel.read(buffer);
+
+            while (bytesRead != -1) {
+                // Flip the buffer to prepare it for reading
+                buffer.flip();
+
+                // Read the data from the buffer
+                while (buffer.hasRemaining()) {
+                    System.out.print((char) buffer.get());
+                }
+
+                // Clear the buffer to prepare it for writing
+                buffer.clear();
+
+                // Read more data from the channel
+                bytesRead = channel.read(buffer);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: Buffer Handling</h3>
+            <ul>
+                <li><strong><code>put()</code>:</strong> Write into the buffer.</li>
+                <li><strong><code>flip()</code>:</strong> Switch from writing to reading mode.</li>
+                <li><strong><code>get()</code>:</strong> Read from the buffer.</li>
+                <li><strong><code>clear()</code>:</strong> Switch back to writing mode.</li>
+                <li>The cycle is typically: <code>clear()</code> -> <code>put()</code> -> <code>flip()</code> -> <code>get()</code> -> <code>clear()</code>.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

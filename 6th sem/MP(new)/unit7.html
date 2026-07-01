@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 7: Advance Android Concepts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mobile Programming Study Guide</h1>
+        <p>Unit 7: Advance Android Concepts</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="unit1.html">Unit 1</a>
+        <a href="unit2.html">Unit 2</a>
+        <a href="unit3.html">Unit 3</a>
+        <a href="unit4.html">Unit 4</a>
+        <a href="unit5.html">Unit 5</a>
+        <a href="unit6.html">Unit 6</a>
+        <a href="unit7.html">Unit 7</a>
+        <a href="unit8.html">Unit 8</a>
+    </nav>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">How do you find a view element? Which dialog boxes can you use?</div>
+        <div class="answer">
+            <p><strong>Finding a view:</strong> In Java, you use <code>findViewById(R.id.element_id)</code>. In modern Android, you might use <strong>View Binding</strong> or <strong>Data Binding</strong> to access views more safely without <code>findViewById</code>.</p>
+            <p><strong>Common Dialog Boxes:</strong></p>
+            <ul>
+                <li><strong>AlertDialog:</strong> Displays a message and up to three buttons.</li>
+                <li><strong>DatePickerDialog:</strong> Used to select a date.</li>
+                <li><strong>TimePickerDialog:</strong> Used to select a time.</li>
+                <li><strong>ProgressDialog:</strong> (Now deprecated) Displays progress of an operation.</li>
+                <li><strong>BottomSheetDialog:</strong> Slides up from the bottom of the screen.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">What are different data types supported by SQLite? How to decode JSON data?</div>
+        <div class="answer">
+            <h3>SQLite Data Types:</h3>
+            <ul>
+                <li><strong>NULL:</strong> The value is a NULL value.</li>
+                <li><strong>INTEGER:</strong> The value is a signed integer (1, 2, 3, 4, 6, or 8 bytes).</li>
+                <li><strong>REAL:</strong> The value is a floating-point value.</li>
+                <li><strong>TEXT:</strong> The value is a text string (UTF-8, UTF-16BE, or UTF-16LE).</li>
+                <li><strong>BLOB:</strong> The value is a blob of data, stored exactly as it was input.</li>
+            </ul>
+
+            <h3>JSON Decoding Example:</h3>
+            <pre><code>String jsonString = "{ \"name\": \"John\", \"age\": 25 }";
+try {
+    JSONObject obj = new JSONObject(jsonString);
+    String name = obj.getString("name");
+    int age = obj.getInt("age");
+} catch (JSONException e) {
+    e.printStackTrace();
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">How to generate a signed APK? Write a program to locate the user's current location.</div>
+        <div class="answer">
+            <h3>Generating Signed APK:</h3>
+            <ol>
+                <li>In Android Studio, go to <strong>Build > Generate Signed Bundle / APK</strong>.</li>
+                <li>Select <strong>APK</strong> and click Next.</li>
+                <li>Choose an existing Key Store or create a new one.</li>
+                <li>Enter the passwords and alias, then click Next.</li>
+                <li>Select the build variant (usually <strong>release</strong>) and click <strong>Finish</strong>.</li>
+            </ol>
+
+            <h3>Locate Current Location (Java):</h3>
+            <pre><code>// Manifest Permissions
+&lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+
+// LocationActivity.java
+FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(this);
+client.getLastLocation().addOnSuccessListener(location -> {
+    if (location != null) {
+        double lat = location.getLatitude();
+        double lon = location.getLongitude();
+        Toast.makeText(this, "Lat: " + lat + " Lon: " + lon, Toast.LENGTH_SHORT).show();
+    }
+});</code></pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group C</div>
+        <div class="question-text">Provided that a SQLite database named "College" with a table named Student... Develop an application to insert 5 student records and display them.</div>
+        <div class="answer">
+            <h3>DBHelper.java</h3>
+            <pre><code>public class DBHelper extends SQLiteOpenHelper {
+    public DBHelper(Context context) { super(context, "College.db", null, 1); }
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE Student (Roll INTEGER PRIMARY KEY, Name TEXT, Address TEXT)");
+    }
+    public void onUpgrade(SQLiteDatabase db, int oldV, int newV) { db.execSQL("DROP TABLE IF EXISTS Student"); onCreate(db); }
+
+    public void insertStudent(int roll, String name, String addr) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("Roll", roll); cv.put("Name", name); cv.put("Address", addr);
+        db.insert("Student", null, cv);
+    }
+
+    public Cursor getAllStudents() {
+        return this.getReadableDatabase().rawQuery("SELECT * FROM Student", null);
+    }
+}</code></pre>
+            <h3>Displaying in Activity:</h3>
+            <pre><code>// Logic to insert 5 students
+db.insertStudent(1, "Aman", "Kathmandu");
+db.insertStudent(2, "Bina", "Lalitpur"); ...
+
+// Logic to display
+Cursor c = db.getAllStudents();
+while(c.moveToNext()) {
+    String data = c.getInt(0) + " " + c.getString(1) + " " + c.getString(2);
+    // Add to a list or textview
+}</code></pre>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mobile Programming Exam Prep</p>
+    </footer>
+</body>
+</html>

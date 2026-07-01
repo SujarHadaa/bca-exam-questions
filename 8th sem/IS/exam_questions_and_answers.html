@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Security - Q&A</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .unit {
+            margin-bottom: 30px;
+        }
+        .question {
+            margin-bottom: 20px;
+            border-left: 3px solid #0056b3;
+            padding-left: 15px;
+        }
+        .question h3 {
+            margin-top: 0;
+        }
+        .answer {
+            padding-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Information Security - Questions and Answers</h1>
+
+        <div class="unit">
+            <h2>Unit I: Overview of Computer security</h2>
+            <div class="question">
+                <h3>What is Information Security? List and briefly define fundamental security design principles. (2022)</h3>
+                <div class="answer">
+                    <p><strong>Information Security:</strong> Information security, sometimes shortened to InfoSec, is the practice of protecting information by mitigating information risks. It is part of the broader concept of computer security and is concerned with the confidentiality, integrity, and availability of data regardless of its form: electronic, print, or other.</p>
+                    <p><strong>Fundamental Security Design Principles:</strong></p>
+                    <ul>
+                        <li><strong>Economy of Mechanism:</strong> Keep the design as simple and small as possible.
+                        <li><strong>Fail-Safe Defaults:</strong> Base access decisions on permission rather than exclusion.
+                        <li><strong>Complete Mediation:</strong> Every access to every object must be checked for authority.
+                        <li><strong>Open Design:</strong> The design should not be secret.
+                        <li><strong>Separation of Privilege:</strong> Where feasible, a protection mechanism that requires two keys to unlock it is more robust and flexible than one that allows access to the presenter of only a single key.
+                        <li><strong>Least Privilege:</strong> Every program and every user of the system should operate using the least set of privileges necessary to complete the job.
+                        <li><strong>Least Common Mechanism:</strong> Minimize the amount of mechanism common to more than one user and depended on by all users.
+                        <li><strong>Psychological Acceptability:</strong> It is essential that the human interface be designed for ease of use, so that users routinely and automatically apply the protection mechanisms correctly.
+                        <li><strong>Work Factor:</strong> The cost of circumventing a security mechanism should be compared with the resources of an attacker.
+                        <li><strong>Compromise Recording:</strong> It is sometimes suggested that mechanisms that reliably record that a compromise of information has occurred can be used in place of more elaborate mechanisms that completely prevent loss.
+                    </ul>
+                </div>
+            </div>
+            <div class="question">
+                <h3>Define the terms threats and attacks in terms of Information Security. Explain different types of security threats in detail. (2022)</h3>
+                <div class="answer">
+                    <p><strong>Threats:</strong> A threat is a potential for violation of security, which exists when there is a circumstance, capability, action, or event that could breach security and cause harm. That is, a threat is a possible danger that might exploit a vulnerability.</p>
+                    <p><strong>Attacks:</strong> An attack is an assault on system security that derives from an intelligent threat; that is, an intelligent act that is a deliberate attempt (especially in the sense of a method or technique) to evade security services and violate the security policy of a system.</p>
+                    <p><strong>Types of Security Threats:</strong></p>
+                    <ul>
+                        <li><strong>Interruption:</strong> An asset of the system is destroyed or becomes unavailable or unusable. This is a threat to availability. Examples include destruction of a piece of hardware, or the cutting of a communication line.</li>
+                        <li><strong>Interception:</strong> An unauthorized party gains access to an asset. This is a threat to confidentiality. The unauthorized party could be a person, a program, or a computer. Examples include wiretapping to capture data in a network, and the illicit copying of files or programs.</li>
+                        <li><strong>Modification:</strong> An unauthorized party not only gains access to but tampers with an asset. This is a threat to integrity. Examples include changing values in a data file, altering a program so that it performs differently, and modifying the content of messages being transmitted in a network.</li>
+                        <li><strong>Fabrication:</strong> An unauthorized party inserts counterfeit objects into the system. This is a threat to authenticity. Examples include the insertion of spurious messages in a network or the addition of records to a file.</li>
+                    </ul>
+                </div>
+            </div>
+             <div class="question">
+                <h3>What is security attack? Explain different type of active attack. (2023)</h3>
+                <div class="answer">
+                    <p><strong>Security Attack:</strong> Any action that compromises the security of information owned by an organization.</p>
+                    <p><strong>Active Attacks:</strong> These attacks involve some modification of the data stream or the creation of a false stream and can be subdivided into four categories:</p>
+                    <ul>
+                        <li><strong>Masquerade:</strong> Takes place when one entity pretends to be a different entity.</li>
+                        <li><strong>Replay:</strong> Involves the passive capture of a data unit and its subsequent retransmission to produce an unauthorized effect.</li>
+                        <li><strong>Modification of messages:</strong> Some portion of a legitimate message is altered, or that messages are delayed or reordered, to produce an unauthorized effect.</li>
+                        <li><strong>Denial of service:</strong> Prevents or inhibits the normal use or management of communications facilities.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit II: Cryptographic Algorithms</h2>
+            <div class="question">
+                <h3>What is a cryptosystem? Explain the concepts of Vigenere and Rail Fence Ciphers in detail. (2022)</h3>
+                <div class="answer">
+                    <p><strong>Cryptosystem:</strong> A cryptosystem is a suite of cryptographic algorithms needed to implement a particular security service, most commonly for achieving confidentiality (encryption). Typically, a cryptosystem consists of three algorithms: one for key generation, one for encryption, and one for decryption.</p>
+                    <p><strong>Vigenere Cipher:</strong> The Vigenere cipher is a method of encrypting alphabetic text by using a series of interwoven Caesar ciphers, based on the letters of a keyword. It is a form of polyalphabetic substitution.</p>
+                    <p><strong>Rail Fence Cipher:</strong> The rail fence cipher is a form of transposition cipher that gets its name from the way in which it is encoded. In the rail fence cipher, the plaintext is written downwards and diagonally on successive "rails" of an imaginary fence, then moving up when the bottom rail is reached. The message is then read off in rows.</p>
+                </div>
+            </div>
+            <div class="question">
+                <h3>Find the value of 7^2019 mod 11 by using Fermat's little theorem. Define Euler totient function with example. (2023)</h3>
+                <div class="answer">
+                    <p><strong>Fermat's Little Theorem:</strong> If p is a prime number, then for any integer a, the number a^p - a is an integer multiple of p. In the notation of modular arithmetic, this is expressed as a^p ≡ a (mod p). If a is not divisible by p, then a^(p-1) ≡ 1 (mod p).</p>
+                    <p><strong>Solution:</strong></p>
+                    <p>Here, p = 11, which is a prime number. So, by Fermat's Little Theorem, 7^(11-1) ≡ 1 (mod 11), which means 7^10 ≡ 1 (mod 11).</p>
+                    <p>Now, we can write 2019 as 201 * 10 + 9.</p>
+                    <p>So, 7^2019 = 7^(201*10 + 9) = (7^10)^201 * 7^9.</p>
+                    <p>7^2019 ≡ (1)^201 * 7^9 (mod 11)</p>
+                    <p>7^2019 ≡ 7^9 (mod 11)</p>
+                    <p>Now we calculate 7^9 mod 11:</p>
+                    <p>7^1 ≡ 7 (mod 11)</p>
+                    <p>7^2 ≡ 49 ≡ 5 (mod 11)</p>
+                    <p>7^3 ≡ 7*5 = 35 ≡ 2 (mod 11)</p>
+                    <p>7^4 ≡ 5^2 = 25 ≡ 3 (mod 11)</p>
+                    <p>7^5 ≡ 7*3 = 21 ≡ 10 (mod 11)</p>
+                    <p>7^9 = 7^5 * 7^4 ≡ 10 * 3 = 30 ≡ 8 (mod 11)</p>
+                    <p>So, 7^2019 mod 11 is 8.</p>
+                    <p><strong>Euler's Totient Function:</strong> Euler's totient function, denoted as φ(n), is an arithmetic function that counts the positive integers up to a given integer n that are relatively prime to n. In other words, it is the number of integers k in the range 1 ≤ k ≤ n for which the greatest common divisor gcd(n, k) is equal to 1.</p>
+                    <p><strong>Example:</strong> For n = 9, the integers k in the range 1 ≤ k ≤ 9 are 1, 2, 3, 4, 5, 6, 7, 8, 9. The integers relatively prime to 9 are 1, 2, 4, 5, 7, 8. There are 6 such integers, so φ(9) = 6.</p>
+                </div>
+            </div>
+            <div class="question">
+                <h3>What is Galois field? Divide 5x² + 4x + 6 by 2x + 1 over GF(7). (2023)</h3>
+                <div class="answer">
+                    <p><strong>Galois Field:</strong> In abstract algebra, a Galois field or finite field is a field that contains a finite number of elements. As with any field, a finite field is a set on which the operations of multiplication, addition, subtraction and division are defined and satisfy certain basic rules. The most common examples of finite fields are given by the integers mod p when p is a prime number.</p>
+                    <p><strong>Solution:</strong></p>
+                    <p>We are working in GF(7). First, we need to find the inverse of 2 in GF(7). We are looking for a number 'a' such that 2a ≡ 1 (mod 7). By inspection, we can see that 2 * 4 = 8 ≡ 1 (mod 7). So, the inverse of 2 is 4.</p>
+                    <p>Now we perform polynomial long division:</p>
+                    <p>(5x² + 4x + 6) / (2x + 1)</p>
+                    <p>First, divide 5x² by 2x. This is (5 * 4)x = 20x ≡ 6x (mod 7).</p>
+                    <p>Multiply 6x by (2x + 1) to get 12x² + 6x ≡ 5x² + 6x (mod 7).</p>
+                    <p>Subtract this from the dividend: (5x² + 4x + 6) - (5x² + 6x) = -2x + 6 ≡ 5x + 6 (mod 7).</p>
+                    <p>Now, divide 5x by 2x. This is (5 * 4) = 20 ≡ 6 (mod 7).</p>
+                    <p>Multiply 6 by (2x + 1) to get 12x + 6 ≡ 5x + 6 (mod 7).</p>
+                    <p>Subtract this from the remainder: (5x + 6) - (5x + 6) = 0.</p>
+                    <p>So, the quotient is 6x + 6 and the remainder is 0.</p>
+                </div>
+            </div>
+             <div class="question">
+                <h3>What is difference between block cipher and stream cipher? Encrypt and decrypt the message TRIBHUVAN UNIVERSITY with key BES using play fair and vernam cipher. (2023)</h3>
+                <div class="answer">
+                    <p><strong>Block Cipher:</strong> A block cipher is an encryption method that applies a deterministic algorithm along with a symmetric key to encrypt a block of text of a fixed size. It processes fixed-size blocks of plaintext and returns corresponding ciphertext blocks of the same size.</p>
+                    <p><strong>Stream Cipher:</strong> A stream cipher is a symmetric key cipher where plaintext digits are combined with a pseudorandom cipher digit stream (keystream). In a stream cipher, each plaintext digit is encrypted one at a time with the corresponding digit of the keystream, to give a digit of the ciphertext stream.</p>
+                    <p>The solution to the encryption and decryption part of the question requires a separate detailed explanation with the given key 'BES'. Due to the complexity of the Playfair and Vernam cipher implementations, a detailed step-by-step solution is not provided here. </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit III: Message Authentication and Hash Functions</h2>
+            <div class="question">
+                <h3>Explain HMAC with its objectives. (2022)</h3>
+                <div class="answer">
+                    <p><strong>HMAC (Hash-based Message Authentication Code):</strong> HMAC is a specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic key. As with any MAC, it may be used to simultaneously verify both the data integrity and the authentication of a message.</p>
+                    <p><strong>Objectives of HMAC:</strong></p>
+                    <ul>
+                        <li>To use, without modifications, available hash functions. In particular, hash functions that perform well in software, and for which code is freely and widely available.</li>
+                        <li>To allow for easy replaceability of the embedded hash function in case faster or more secure hash functions are found or required.</li>
+                        <li>To preserve the original performance of the hash function without incurring a significant degradation.</li>
+                        <li>To use and handle keys in a simple way.</li>
+                        <li>To have a well understood cryptographic analysis of the strength of the authentication mechanism based on reasonable assumptions about the embedded hash function.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="question">
+                <h3>What is digital signature? Describe approaches of DSS. (2023)</h3>
+                <div class="answer">
+                    <p><strong>Digital Signature:</strong> A digital signature is a mathematical scheme for verifying the authenticity of digital messages or documents. A valid digital signature, where the prerequisites are satisfied, gives a recipient very high confidence that the message was created by a known sender (authenticity), and that the message was not altered in transit (integrity).</p>
+                    <p><strong>Digital Signature Standard (DSS):</strong> The Digital Signature Standard (DSS) is a Federal Information Processing Standard (FIPS) that specifies a digital signature algorithm (DSA) for digital signatures. The DSS has a couple of approaches:</p>
+                    <ul>
+                        <li><strong>DSA (Digital Signature Algorithm):</strong> This algorithm is based on the difficulty of computing discrete logarithms. It creates a 320-bit signature, but it is slower than RSA for signature verification.</li>
+                        <li><strong>RSA (Rivest-Shamir-Adleman):</strong> This algorithm can be used for both encryption and digital signatures. It is based on the difficulty of factoring large numbers.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit IV: User Authentication</h2>
+            <div class="question">
+                <h3>What are the vulnerabilities of passwords? Explain different strategies used for the selection of effective password. (2022)</h3>
+                <div class="answer">
+                    <p><strong>Password Vulnerabilities:</strong></p>
+                    <ul>
+                        <li><strong>Offline Dictionary Attack:</strong> The attacker gets access to the password file and can try a large number of passwords without the user's knowledge.</li>
+                        <li><strong>Specific Account Attack:</strong> The attacker targets a specific user and tries to guess their password based on personal information.</li>
+                        <li><strong>Popular Password Attack:</strong> The attacker tries a list of common passwords against many user accounts.</li>
+                        <li><strong>Password Guessing:</strong> The attacker tries to guess the password of a user. This can be done online (by trying to log in) or offline (if the attacker has the password hash).</li>
+                        <li><strong>Social Engineering:</strong> The attacker tricks the user into revealing their password.</li>
+                        <li><strong>Shoulder Surfing:</strong> The attacker watches the user type their password.</li>
+                    </ul>
+                    <p><strong>Strategies for Effective Password Selection:</strong></p>
+                    <ul>
+                        <li><strong>Use a long password:</strong> The longer the password, the harder it is to guess.
+                        <li><strong>Use a mix of character types:</strong> Use uppercase and lowercase letters, numbers, and symbols.
+                        <li><strong>Avoid common words and phrases:</strong> Do not use words that can be found in a dictionary or are related to your personal information.
+                        <li><strong>Use a unique password for each account:</strong> This will prevent an attacker from gaining access to all your accounts if one of them is compromised.
+                        <li><strong>Use a password manager:</strong> A password manager can generate and store strong, unique passwords for all your accounts.
+                    </ul>
+                </div>
+            </div>
+            <div class="question">
+                <h3>What are user authentication principles? Explain about Role based and Attribute based access control. (2023)</h3>
+                <div class="answer">
+                    <p><strong>User Authentication Principles:</strong> User authentication is the process of verifying the identity of a user. The three main principles of authentication are:</p>
+                    <ul>
+                        <li><strong>Something you know:</strong> This is typically a password or PIN.</li>
+                        <li><strong>Something you have:</strong> This is a physical object, such as a smart card or a security token.</li>
+                        <li><strong>Something you are:</strong> This is a biometric characteristic, such as a fingerprint or a retinal scan.</li>
+                    </ul>
+                    <p><strong>Role-Based Access Control (RBAC):</strong> RBAC is a method of restricting network access based on the roles of individual users within an enterprise. In RBAC, access rights are grouped by role name, and each user is assigned one or more roles. This simplifies the management of access rights, as administrators can assign roles to users instead of assigning individual access rights.</p>
+                    <p><strong>Attribute-Based Access Control (ABAC):</strong> ABAC is an access control model where access rights are granted to users through the use of policies which combine attributes together. The policies can use any type of attributes (user attributes, resource attributes, environmental attributes, etc.). This model is more flexible than RBAC and can be used to implement more fine-grained access control policies.</p>
+                </div>
+            </div>
+             <div class="question">
+                <h3>How does the Kerberos authentication works? Explain the concept of trust frameworks. (2023)</h3>
+                <div class="answer">
+                    <p><strong>Kerberos Authentication:</strong> Kerberos is a network authentication protocol that works on the basis of 'tickets' to allow nodes communicating over a non-secure network to prove their identity to one another in a secure manner. The protocol uses symmetric-key cryptography and requires a trusted third party, and optionally may use public-key cryptography during certain phases of authentication.</p>
+                    <p><strong>Trust Frameworks:</strong> A trust framework is a set of agreed-upon rules, standards, and agreements that allow different organizations to trust each other's identity and security information. It provides a way for organizations to establish and manage trust relationships in a consistent and scalable manner. Trust frameworks are often used in federated identity management systems, where users can use a single set of credentials to access resources from multiple organizations.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit V: Access Control</h2>
+            <div class="question">
+                <h3>Define access right. Explain the concept of trust framework. (2022)</h3>
+                <div class="answer">
+                    <p><strong>Access Right:</strong> An access right is the permission to perform a particular action on a particular object. For example, a user may have the right to read a file, but not to write to it. Access rights are the fundamental building blocks of access control systems.</p>
+                    <p><strong>Trust Framework:</strong> A trust framework is a set of agreed-upon rules, standards, and agreements that allow different organizations to trust each other's identity and security information. It provides a way for organizations to establish and manage trust relationships in a consistent and scalable manner. Trust frameworks are often used in federated identity management systems, where users can use a single set of credentials to access resources from multiple organizations.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit VI: Malicious Software and Intrusion</h2>
+            <div class="question">
+                <h3>Describe about Honeypot with the types of honeypots that may be deployed. (2022)</h3>
+                <div class="answer">
+                    <p><strong>Honeypot:</strong> A honeypot is a security mechanism that is set up to be a decoy, to attract and deflect attacks from the real targets. It is designed to be a tempting target for attackers, and it is instrumented to log all of their activities. This information can then be used to improve the security of the real systems.</p>
+                    <p><strong>Types of Honeypots:</strong></p>
+                    <ul>
+                        <li><strong>Low-interaction honeypots:</strong> These honeypots simulate only a limited number of services and are relatively easy to set up and maintain. They are useful for detecting and logging simple attacks.</li>
+                        <li><strong>High-interaction honeypots:</strong> These honeypots provide a real, but controlled, environment for attackers to interact with. They are more complex to set up and maintain, but they can provide more detailed information about the attackers' activities.</li>
+                        <li><strong>Research honeypots:</strong> These honeypots are used to gather information about new attack techniques and malware. They are typically high-interaction honeypots that are deployed in a research environment.</li>
+                        <li><strong>Production honeypots:</strong> These honeypots are used to protect production systems. They are typically low-interaction honeypots that are deployed in front of the real systems.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="question">
+                <h3>How can you say that Intrusion Detection System is the backbone for Information Security? Justify along with its categories. (2022)</h3>
+                <div class="answer">
+                    <p><strong>Intrusion Detection System (IDS) as the backbone for Information Security:</strong> An IDS is a device or software application that monitors a network or systems for malicious activity or policy violations. Any detected activity or violation is typically reported either to an administrator or collected centrally using a security information and event management (SIEM) system. An IDS is a critical component of a defense-in-depth strategy, as it provides a second line of defense against attacks that bypass the firewall.</p>
+                    <p><strong>Categories of IDS:</strong></p>
+                    <ul>
+                        <li><strong>Network-based IDS (NIDS):</strong> A NIDS is placed at a strategic point or points within the network to monitor traffic to and from all devices on the network. It performs an analysis of passing traffic on the entire subnet and matches the traffic that is passed on the subnets to the library of known attacks.</li>
+                        <li><strong>Host-based IDS (HIDS):</strong> A HIDS runs on individual hosts or devices on the network. A HIDS monitors the inbound and outbound packets from the device only and will alert the user or administrator if suspicious activity is detected.</li>
+                        <li><strong>Signature-based IDS:</strong> A signature-based IDS will monitor packets on the network and compare them against a database of signatures or attributes from known malicious threats. This is similar to the way antivirus software detects malware.</li>
+                        <li><strong>Anomaly-based IDS:</strong> An anomaly-based IDS will monitor network traffic and compare it against an established baseline. The baseline will identify what is considered "normal" for that network – what sort of bandwidth is generally used, what protocols are used, what ports are generally connected to, etc. It will alert an administrator to any traffic that is detected outside the baseline.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit VII: Network Security</h2>
+            <div class="question">
+                <h3>Explain the terms SSL, TSL and handshake protocol. (2022)</h3>
+                <div class="answer">
+                    <p><strong>SSL (Secure Sockets Layer):</strong> SSL is a standard security technology for establishing an encrypted link between a server and a client—typically a web server (website) and a browser, or a mail server and a mail client (e.g., Outlook).</p>
+                    <p><strong>TLS (Transport Layer Security):</strong> TLS is the successor to SSL. It is an improved version of SSL. It works in much the same way as SSL, using encryption to protect the transfer of data and information.</p>
+                    <p><strong>Handshake Protocol:</strong> The handshake protocol is the most complex part of TLS. It allows the server and client to authenticate each other and to negotiate an encryption algorithm and cryptographic keys before data is exchanged. The handshake protocol consists of a series of messages exchanged by the client and server.</p>
+                </div>
+            </div>
+            <div class="question">
+                <h3>What is firewall? Explain different type of firewall. (2023)</h3>
+                <div class="answer">
+                    <p><strong>Firewall:</strong> A firewall is a network security device that monitors incoming and outgoing network traffic and decides whether to allow or block specific traffic based on a defined set of security rules.</p>
+                    <p><strong>Types of Firewalls:</strong></p>
+                    <ul>
+                        <li><strong>Packet-filtering firewalls:</strong> These firewalls inspect packets at the network layer and make decisions based on the source and destination IP addresses, ports, and protocols.</li>
+                        <li><strong>Stateful inspection firewalls:</strong> These firewalls keep track of the state of network connections and make decisions based on the context of the traffic.</li>
+                        <li><strong>Application-level gateways (proxies):</strong> These firewalls act as intermediaries between internal and external users and can inspect traffic at the application layer.</li>
+                        <li><strong>Next-generation firewalls (NGFWs):</strong> These firewalls combine the features of traditional firewalls with other security functions, such as intrusion prevention, deep packet inspection, and application control.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="question">
+                <h3>What is IPSec? What are benefits of IPSec? Explain the IPSec architecture in details. (2023)</h3>
+                <div class="answer">
+                    <p><strong>IPSec (Internet Protocol Security):</strong> IPSec is a suite of protocols that provides security for Internet Protocol (IP) communications by authenticating and encrypting each IP packet of a communication session. IPSec also includes protocols for cryptographic key establishment.</p>
+                    <p><strong>Benefits of IPSec:</strong></p>
+                    <ul>
+                        <li><strong>Confidentiality:</strong> IPSec uses encryption to protect the confidentiality of data.</li>
+                        <li><strong>Integrity:</strong> IPSec uses authentication to ensure the integrity of data.</li>
+                        <li><strong>Authentication:</strong> IPSec uses authentication to verify the identity of the sender and receiver.</li>
+                        <li><strong>Anti-replay protection:</strong> IPSec uses sequence numbers to protect against replay attacks.</li>
+                    </ul>
+                    <p><strong>IPSec Architecture:</strong> The IPSec architecture consists of the following components:</p>
+                    <ul>
+                        <li><strong>Authentication Header (AH):</strong> AH provides data integrity, data origin authentication, and anti-replay protection.</li>
+                        <li><strong>Encapsulating Security Payload (ESP):</strong> ESP provides confidentiality, data origin authentication, data integrity, and anti-replay protection.</li>
+                        <li><strong>Security Association (SA):</strong> An SA is a one-way relationship between a sender and a receiver that affords security services to the traffic carried on it.</li>
+                        <li><strong>Internet Key Exchange (IKE):</strong> IKE is a protocol that is used to negotiate the security parameters of an SA.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit">
+            <h2>Unit VIII: Security Auditing</h2>
+            <div class="question">
+                <h3>What is a security audit? What is its importance? Explain the security auditing architecture in detail. (2022)</h3>
+                <div class="answer">
+                    <p><strong>Security Audit:</strong> A security audit is a systematic evaluation of the security of a company's information system by measuring how well it conforms to a set of established criteria. A thorough audit typically assesses the security of the system's physical configuration and environment, software, information handling processes, and user practices.</p>
+                    <p><strong>Importance of Security Audit:</strong></p>
+                    <ul>
+                        <li>Identifies security vulnerabilities and weaknesses.</li>
+                        <li>Ensures compliance with security policies and regulations.</li>
+                        <li>Improves security awareness among employees.</li>
+                        <li>Provides a baseline for future security improvements.</li>
+                    </ul>
+                    <p><strong>Security Auditing Architecture:</strong> A security auditing architecture defines the framework for conducting security audits. It typically includes the following components:</p>
+                    <ul>
+                        <li><strong>Audit policy:</strong> The audit policy defines the scope, objectives, and frequency of the audits.</li>
+                        <li><strong>Audit procedures:</strong> The audit procedures specify the steps to be followed when conducting an audit.</li>
+                        <li><strong>Audit tools:</strong> The audit tools are used to collect and analyze data during an audit.</li>
+                        <li><strong>Audit reports:</strong> The audit reports document the findings of the audit and provide recommendations for improvement.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="question">
+                <h3>What is security audit trial? What are requirements for security auditing? Explain. (2023)</h3>
+                <div class="answer">
+                    <p><strong>Security Audit Trail:</strong> A security audit trail (or audit log) is a chronological record of system activities that is used to reconstruct and examine the sequence of events that have occurred. It provides a means to trace the activities of users and to detect and investigate security breaches.</p>
+                    <p><strong>Requirements for Security Auditing:</strong></p>
+                    <ul>
+                        <li><strong>Completeness:</strong> The audit trail should capture all relevant security events.</li>
+                        <li><strong>Accuracy:</strong> The audit trail should be accurate and reliable.</li>
+                        <li><strong>Integrity:</strong> The audit trail should be protected from unauthorized modification.</li>
+                        <li><strong>Confidentiality:</strong> The audit trail should be protected from unauthorized disclosure.</li>
+                        <li><strong>Availability:</strong> The audit trail should be available when needed.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group C - Exam Answers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --card-bg-color: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        h3 {
+            color: #444;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        strong {
+            font-weight: 600;
+        }
+        ol, ul {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a7ac0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Group C - Exam Answers</h1>
+
+        <div class="card">
+            <h2>Unit 7: Advance Android Concepts</h2>
+
+            <h3>1. SQLite Database: Insert and Display Student Records</h3>
+            <p><strong>Question:</strong> Provided that a SQLite database named "College" with a table named Student with the following columns (Roll as Integer, Name as Text and Address as Text). Develop an android application to connect to the database and insert five student records and display the student information.</p>
+
+            <h4>Database Helper Class (DatabaseHelper.java)</h4>
+            <pre><code>
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class DatabaseHelper extends SQLiteOpenHelper {
+
+    private static final String DATABASE_NAME = "College.db";
+    private static final String TABLE_NAME = "Student";
+    private static final String COL_1 = "Roll";
+    private static final String COL_2 = "Name";
+    private static final String COL_3 = "Address";
+
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE " + TABLE_NAME + " (Roll INTEGER PRIMARY KEY, Name TEXT, Address TEXT)");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
+
+    public boolean insertData(int roll, String name, String address) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1, roll);
+        contentValues.put(COL_2, name);
+        contentValues.put(COL_3, address);
+        long result = db.insert(TABLE_NAME, null, contentValues);
+        return result != -1;
+    }
+
+    public Cursor getAllData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
+        return res;
+    }
+}
+            </code></pre>
+
+            <h4>Main Activity (MainActivity.java)</h4>
+            <pre><code>
+import android.database.Cursor;
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    DatabaseHelper myDb;
+    TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        myDb = new DatabaseHelper(this);
+        textView = findViewById(R.id.textView);
+
+        // Insert 5 records
+        myDb.insertData(1, "John Doe", "New York");
+        myDb.insertData(2, "Jane Smith", "Los Angeles");
+        myDb.insertData(3, "Peter Jones", "Chicago");
+        myDb.insertData(4, "Mary Williams", "Houston");
+        myDb.insertData(5, "David Brown", "Phoenix");
+
+        // Display records
+        Cursor res = myDb.getAllData();
+        if (res.getCount() == 0) {
+            textView.setText("No data found");
+            return;
+        }
+
+        StringBuffer buffer = new StringBuffer();
+        while (res.moveToNext()) {
+            buffer.append("Roll: " + res.getString(0) + "\n");
+            buffer.append("Name: " + res.getString(1) + "\n");
+            buffer.append("Address: " + res.getString(2) + "\n\n");
+        }
+        textView.setText(buffer.toString());
+    }
+}
+            </code></pre>
+
+            <h4>Layout File (activity_main.xml)</h4>
+            <pre><code>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity"&gt;
+
+    &lt;TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" /&gt;
+
+&lt;/RelativeLayout&gt;
+            </code></pre>
+        </div>
+
+        <div class="card">
+            <h3>2. Why use API in Android? and SQLite Database with condition</h3>
+            <p><strong>Question:</strong> Why we use API in android? Provided that SQLite database named "Hospital" with table named Doctor with the following columns (Did as Integer, Dname as Text, and Specialization as Text and Experience as Real), Develop an android application to connect to the database and insert records of Doctor and display the Doctor information whose experience is less than 5.5 years.</p>
+
+            <h4>Why use API in Android?</h4>
+            <p>API stands for Application Programming Interface. In Android, APIs are used for several reasons:</p>
+            <ul>
+                <li><strong>Accessing Device Features:</strong> APIs provide a way for applications to access hardware and software features of the device, such as the camera, GPS, Bluetooth, and sensors, without needing to know the underlying implementation.</li>
+                <li><strong>Connecting to Web Services:</strong> APIs are crucial for connecting to remote servers and web services to fetch or send data. This is how apps get real-time information, such as weather updates, news feeds, or user data from a server.</li>
+                <li><strong>Third-Party Integrations:</strong> APIs allow developers to integrate third-party services into their apps, such as social media logins (e.g., Google, Facebook), payment gateways (e.g., Stripe, PayPal), and mapping services (e.g., Google Maps).</li>
+                <li><strong>Code Reusability and Modularity:</strong> APIs promote modularity by allowing different parts of an application or different applications to communicate with each other through a defined interface. This makes code more reusable and easier to maintain.</li>
+            </ul>
+
+            <h4>Database Helper Class (HospitalDBHelper.java)</h4>
+            <pre><code>
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class HospitalDBHelper extends SQLiteOpenHelper {
+
+    private static final String DATABASE_NAME = "Hospital.db";
+    private static final String TABLE_NAME = "Doctor";
+    private static final String COL_1 = "Did";
+    private static final String COL_2 = "Dname";
+    private static final String COL_3 = "Specialization";
+    private static final String COL_4 = "Experience";
+
+    public HospitalDBHelper(Context context) {
+        super(context, DATABASE_NAME, null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE " + TABLE_NAME + " (Did INTEGER PRIMARY KEY, Dname TEXT, Specialization TEXT, Experience REAL)");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
+
+    public boolean insertData(int did, String dname, String specialization, double experience) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1, did);
+        contentValues.put(COL_2, dname);
+        contentValues.put(COL_3, specialization);
+        contentValues.put(COL_4, experience);
+        long result = db.insert(TABLE_NAME, null, contentValues);
+        return result != -1;
+    }
+
+    public Cursor getDoctorsWithLessExperience() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE Experience < 5.5", null);
+        return res;
+    }
+}
+            </code></pre>
+
+            <h4>Main Activity (MainActivity.java)</h4>
+            <pre><code>
+import android.database.Cursor;
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    HospitalDBHelper myDb;
+    TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        myDb = new HospitalDBHelper(this);
+        textView = findViewById(R.id.textView);
+
+        // Insert some records
+        myDb.insertData(1, "Dr. Smith", "Cardiologist", 7.0);
+        myDb.insertData(2, "Dr. Jones", "Neurologist", 4.5);
+        myDb.insertData(3, "Dr. Williams", "Dermatologist", 6.0);
+        myDb.insertData(4, "Dr. Brown", "Pediatrician", 3.0);
+        myDb.insertData(5, "Dr. Davis", "Oncologist", 8.5);
+
+
+        // Display records
+        Cursor res = myDb.getDoctorsWithLessExperience();
+        if (res.getCount() == 0) {
+            textView.setText("No data found");
+            return;
+        }
+
+        StringBuffer buffer = new StringBuffer();
+        while (res.moveToNext()) {
+            buffer.append("ID: " + res.getString(0) + "\n");
+            buffer.append("Name: " + res.getString(1) + "\n");
+            buffer.append("Specialization: " + res.getString(2) + "\n");
+            buffer.append("Experience: " + res.getString(3) + " years\n\n");
+        }
+        textView.setText(buffer.toString());
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="card">
+            <h3>3. Retrieve Content from a Remote Server</h3>
+            <p><strong>Question:</strong> Develop an android application to demonstrate the retrieval of content from a remote server.</p>
+            <p>To retrieve content from a remote server, we can use libraries like <strong>Volley</strong> or <strong>Retrofit</strong>. Here is an example using Volley, which is simpler for basic requests.</p>
+
+            <h4>Add Volley dependency to `build.gradle` (Module: app)</h4>
+            <pre><code>
+dependencies {
+    // ... other dependencies
+    implementation 'com.android.volley:volley:1.2.1'
+}
+            </code></pre>
+
+            <h4>Add Internet permission to `AndroidManifest.xml`</h4>
+            <pre><code>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.yourapp"&gt;
+
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+
+    &lt;application ...&gt;
+        ...
+    &lt;/application&gt;
+&lt;/manifest&gt;
+            </code></pre>
+
+            <h4>Main Activity (MainActivity.java)</h4>
+            <pre><code>
+import android.os.Bundle;
+import android.widget.TextView;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    TextView textView;
+    RequestQueue queue;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        textView = findViewById(R.id.textView);
+        queue = Volley.newRequestQueue(this);
+
+        String url = "https://jsonplaceholder.typicode.com/posts/1"; // Example API
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener&lt;String&gt;() {
+                    @Override
+                    public void onResponse(String response) {
+                        textView.setText("Response is: " + response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                textView.setText("That didn't work!");
+            }
+        });
+
+        queue.add(stringRequest);
+    }
+}
+            </code></pre>
+
+            <h4>Layout File (activity_main.xml)</h4>
+            <pre><code>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity"&gt;
+
+    &lt;TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" /&gt;
+
+&lt;/RelativeLayout&gt;
+            </code></pre>
+        </div>
+
+        <div class="card">
+            <h3>4. How to generate a signed APK? and Get User's Current Location</h3>
+            <p><strong>Question:</strong> How to generate a signed APK? Write a program to locate the user's current location (write only .java and manifest file).</p>
+
+            <h4>How to generate a signed APK?</h4>
+            <p>A signed APK is required for publishing your app on the Google Play Store. Here are the steps to generate a signed APK in Android Studio:</p>
+            <ol>
+                <li>Go to <strong>Build > Generate Signed Bundle / APK...</strong></li>
+                <li>Select <strong>APK</strong> and click <strong>Next</strong>.</li>
+                <li>Under <strong>Key store path</strong>, click <strong>Create new...</strong></li>
+                <li>Fill in the details for your new key store and key. Remember the passwords you set.</li>
+                <li>Once the key store is created, select it and enter the passwords.</li>
+                <li>Choose a destination folder for the signed APK.</li>
+                <li>Select the build variant (e.g., release).</li>
+                <li>Click <strong>Finish</strong>. Android Studio will build the signed APK and you can find it in the specified folder.</li>
+            </ol>
+
+            <h4>Get User's Current Location</h4>
+            <p>To get the user's location, you need to request location permissions and use the Fused Location Provider API.</p>
+
+            <h4>AndroidManifest.xml</h4>
+            <pre><code>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.locationapp"&gt;
+
+    &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LocationApp"&gt;
+        &lt;activity android:name=".MainActivity"&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;
+            </code></pre>
+
+            <h4>MainActivity.java</h4>
+            <pre><code>
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+public class MainActivity extends AppCompatActivity {
+
+    private FusedLocationProviderClient fusedLocationClient;
+    private TextView locationTextView;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        locationTextView = findViewById(R.id.locationTextView);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+        } else {
+            getLocation();
+        }
+    }
+
+    private void getLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener&lt;Location&gt;() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location != null) {
+                                locationTextView.setText("Latitude: " + location.getLatitude() + "\nLongitude: " + location.getLongitude());
+                            } else {
+                                locationTextView.setText("Location not found.");
+                            }
+                        }
+                    });
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getLocation();
+            } else {
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="card">
+            <h3>5. Remote MySQL Database with Condition</h3>
+            <p><strong>Question:</strong> Provided that a MySQL database named "Bank" with table named Customer with following columns (account_no, name, account_type and amount). Develop an android application to connect database remotely and display the Customer details in ListView whose deposit amount is greater than 5000.</p>
+            <p>Connecting to a remote MySQL database directly from an Android app is not recommended due to security risks. The standard approach is to create a web service (API) that acts as an intermediary between the app and the database. Here's a conceptual overview and code snippets for the Android part.</p>
+
+            <h4>1. Create a Web Service (e.g., using PHP)</h4>
+            <p>You would create a PHP script on your server that connects to the MySQL database, fetches the required data, and returns it in JSON format.</p>
+            <pre><code>
+&lt;?php
+// connect to database
+// ...
+
+$sql = "SELECT * FROM Customer WHERE amount > 5000";
+$result = $conn->query($sql);
+
+$customers = array();
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $customers[] = $row;
+    }
+}
+
+echo json_encode($customers);
+
+$conn->close();
+?&gt;
+            </code></pre>
+
+            <h4>2. Android Application</h4>
+            <p>The Android app would then make an HTTP request to this PHP script to get the JSON data and display it in a ListView.</p>
+
+            <h4>MainActivity.java</h4>
+            <pre><code>
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    ListView listView;
+    ArrayList&lt;String&gt; customerList;
+    ArrayAdapter&lt;String&gt; adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        listView = findViewById(R.id.listView);
+        customerList = new ArrayList&lt;&gt;();
+        adapter = new ArrayAdapter&lt;&gt;(this, android.R.layout.simple_list_item_1, customerList);
+        listView.setAdapter(adapter);
+
+        loadCustomers();
+    }
+
+    private void loadCustomers() {
+        String url = "http://your-server.com/get_customers.php"; // URL of your PHP script
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener&lt;String&gt;() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray array = new JSONArray(response);
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject customer = array.getJSONObject(i);
+                                String customerDetails = "Account No: " + customer.getString("account_no") +
+                                        "\nName: " + customer.getString("name") +
+                                        "\nType: " + customer.getString("account_type") +
+                                        "\nAmount: " + customer.getString("amount");
+                                customerList.add(customerDetails);
+                            }
+                            adapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // handle error
+                    }
+                });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="card">
+            <h3>6. Google Maps API Key and Displaying a Marker</h3>
+            <p><strong>Question:</strong> Explain the procedure for generating Google map API key for displaying Google map? Develop an android application to display the Google map with marker TRIBHUVAN UNIVERSITY.</p>
+
+            <h4>Procedure for generating Google Map API key:</h4>
+            <ol>
+                <li>Go to the <a href="https://console.cloud.google.com/">Google Cloud Console</a>.</li>
+                <li>Create a new project or select an existing one.</li>
+                <li>Go to <strong>APIs & Services > Library</strong>.</li>
+                <li>Search for and enable the <strong>Maps SDK for Android</strong>.</li>
+                <li>Go to <strong>APIs & Services > Credentials</strong>.</li>
+                <li>Click <strong>Create Credentials > API key</strong>.</li>
+                <li>Copy the API key. It's recommended to restrict the key to your app's package name and SHA-1 certificate fingerprint for security.</li>
+            </ol>
+
+            <h4>Add Google Maps dependency to `build.gradle`</h4>
+            <pre><code>
+dependencies {
+    // ... other dependencies
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+}
+            </code></pre>
+
+            <h4>Add API key to `AndroidManifest.xml`</h4>
+            <pre><code>
+&lt;application ...&gt;
+    ...
+    &lt;meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="YOUR_API_KEY" /&gt;
+&lt;/application&gt;
+            </code></pre>
+
+            <h4>MapsActivity.java</h4>
+            <pre><code>
+import androidx.fragment.app.FragmentActivity;
+import android.os.Bundle;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+
+    private GoogleMap mMap;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_maps);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker for Tribhuvan University and move the camera
+        LatLng tribhuvanUniversity = new LatLng(27.6836, 85.3187);
+        mMap.addMarker(new MarkerOptions().position(tribhuvanUniversity).title("Marker in Tribhuvan University"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(tribhuvanUniversity, 15));
+    }
+}
+            </code></pre>
+
+            <h4>activity_maps.xml</h4>
+            <pre><code>
+&lt;fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapsActivity" /&gt;
+            </code></pre>
+        </div>
+    </div>
+</body>
+</html>

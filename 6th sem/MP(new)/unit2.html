@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 2: Introduction to Android Programming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mobile Programming Study Guide</h1>
+        <p>Unit 2: Introduction to Android Programming</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="unit1.html">Unit 1</a>
+        <a href="unit2.html">Unit 2</a>
+        <a href="unit3.html">Unit 3</a>
+        <a href="unit4.html">Unit 4</a>
+        <a href="unit5.html">Unit 5</a>
+        <a href="unit6.html">Unit 6</a>
+        <a href="unit7.html">Unit 7</a>
+        <a href="unit8.html">Unit 8</a>
+    </nav>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">Explain android architecture briefly with a suitable diagram. What is a surface manager library? How is DVM different from ART?</div>
+        <div class="answer">
+            <p>Android architecture is organized into five main layers:</p>
+            <ol>
+                <li><strong>Linux Kernel:</strong> The base layer that manages hardware drivers (Camera, WiFi, Flash memory, Display, Bluetooth, etc.) and power management.</li>
+                <li><strong>Hardware Abstraction Layer (HAL):</strong> Provides standard interfaces that expose device hardware capabilities to the higher-level Java API framework.</li>
+                <li><strong>Android Runtime (ART/DVM) & Native C/C++ Libraries:</strong> Contains core libraries and the runtime environment.
+                    <ul>
+                        <li><strong>Native Libraries:</strong> Includes WebKit (browser engine), SQLite (database), OpenGL (graphics), and <strong>Surface Manager</strong>.</li>
+                    </ul>
+                </li>
+                <li><strong>Java API Framework:</strong> Provides the building blocks for creating apps (Activity Manager, Resource Manager, Notification Manager, Content Providers, View System).</li>
+                <li><strong>System Apps:</strong> The top layer containing pre-installed apps like Email, SMS, Calendar, Maps, and Browser.</li>
+            </ol>
+
+            <div class="diagram-placeholder">
+                [Diagram Description: Stack from bottom to top: Linux Kernel -> HAL -> Native Libraries & Android Runtime -> Java API Framework -> System Apps]
+            </div>
+
+            <p><strong>Surface Manager:</strong> It is a library that manages access to the display subsystem and seamlessly composites 2D and 3D graphic layers from multiple apps onto a single screen.</p>
+
+            <h3>DVM vs. ART:</h3>
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Dalvik Virtual Machine (DVM)</th>
+                    <th>Android Runtime (ART)</th>
+                </tr>
+                <tr>
+                    <td>Compilation</td>
+                    <td>Just-In-Time (JIT) compilation (code compiled during execution).</td>
+                    <td>Ahead-Of-Time (AOT) compilation (code compiled during installation).</td>
+                </tr>
+                <tr>
+                    <td>Battery Life</td>
+                    <td>Higher battery consumption due to frequent JIT compilation.</td>
+                    <td>Better battery life as compilation happens once.</td>
+                </tr>
+                <tr>
+                    <td>App Launch</td>
+                    <td>Slower app launch.</td>
+                    <td>Faster app launch.</td>
+                </tr>
+                <tr>
+                    <td>Storage</td>
+                    <td>Requires less storage space.</td>
+                    <td>Requires more storage space for compiled binaries.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">Draw the hierarchical directory structure of an android application.</div>
+        <div class="answer">
+            <p>A typical Android project (in Android Studio) has the following structure:</p>
+            <pre>
+MyApplication/
+├── app/
+│   ├── manifests/
+│   │   └── AndroidManifest.xml  (App configuration, permissions)
+│   ├── java/
+│   │   └── com.example.app/
+│   │       └── MainActivity.java (Source code)
+│   └── res/ (Resources)
+│       ├── drawable/ (Images/Icons)
+│       ├── layout/ (XML layout files like activity_main.xml)
+│       ├── mipmap/ (App icons for different densities)
+│       └── values/ (strings.xml, colors.xml, styles.xml)
+├── Gradle Scripts/
+│   ├── build.gradle (Project level)
+│   └── build.gradle (Module: app)
+            </pre>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">How to create AVD's?</div>
+        <div class="answer">
+            <p>An <strong>Android Virtual Device (AVD)</strong> is an emulator configuration that allows you to model an actual Android device. Steps to create one in Android Studio:</p>
+            <ol>
+                <li>Open Android Studio and go to <strong>Tools > Device Manager</strong>.</li>
+                <li>Click <strong>Create Device</strong>.</li>
+                <li><strong>Select Hardware:</strong> Choose a device profile (e.g., Pixel 6, Nexus 5X) and click Next.</li>
+                <li><strong>Select System Image:</strong> Choose an Android version (API level) to install on the device (e.g., Tiramisu, UpsideDownCake). Download it if necessary. Click Next.</li>
+                <li><strong>Verify Configuration:</strong> Change the AVD name if desired, adjust orientation, and click <strong>Finish</strong>.</li>
+                <li>The AVD will now appear in the Device Manager. Click the <strong>Play</strong> button to start the emulator.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="tag">Group B</div>
+        <div class="question-text">What does an android APK file contain?</div>
+        <div class="answer">
+            <p>An <strong>APK (Android Package)</strong> file is a ZIP-formatted file that contains everything needed for an Android app to run. It includes:</p>
+            <ul>
+                <li><strong>META-INF/:</strong> Contains the jar signature and a list of resources.</li>
+                <li><strong>lib/:</strong> Contains platform-specific compiled code (native libraries like .so files).</li>
+                <li><strong>res/:</strong> Contains resources not compiled into resources.arsc (like images).</li>
+                <li><strong>assets/:</strong> Contains application assets (raw files like fonts or data files).</li>
+                <li><strong>AndroidManifest.xml:</strong> The binary version of the manifest file.</li>
+                <li><strong>classes.dex:</strong> The compiled Java/Kotlin classes in Dalvik Executable (DEX) format.</li>
+                <li><strong>resources.arsc:</strong> Contains compiled resources (like strings and layouts) used by the app.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mobile Programming Exam Prep</p>
+    </footer>
+</body>
+</html>

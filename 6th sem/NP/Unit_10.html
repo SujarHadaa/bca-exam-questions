@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 10: UDP</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .question-block {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+        .question {
+            background: #e9ecef;
+            padding: 15px;
+            border-left: 5px solid #0056b3;
+            margin-bottom: 20px;
+        }
+        .answer, .summary, .code-example {
+            margin-bottom: 20px;
+        }
+        .summary {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 5px solid #155724;
+            border-radius: 5px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 10: UDP</h1>
+
+        <div class="question">
+            <h2>DatagramPacket</h2>
+        </div>
+
+        <div class="answer">
+            <h3>What is a DatagramPacket?</h3>
+            <p>A <code>DatagramPacket</code> is a Java class that represents a datagram, which is an independent, self-contained message sent over a network using a connectionless protocol like UDP. Each datagram packet contains:</p>
+            <ul>
+                <li>The data payload (as a byte array).</li>
+                <li>The IP address of the destination machine.</li>
+                <li>The port number on the destination machine.</li>
+            </ul>
+            <p>When you send data via UDP, you create a <code>DatagramPacket</code> with this information and send it using a <code>DatagramSocket</code>. When you receive data, you receive it in the form of a <code>DatagramPacket</code>, from which you can extract the data and the sender's address and port.</p>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: DatagramPacket</h3>
+            <ul>
+                <li>A message container for UDP communication.</li>
+                <li>Holds the data, destination IP, and destination port.</li>
+                <li>Used for both sending and receiving UDP messages.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>UDP Socket Options</h2>
+        </div>
+
+        <div class="answer">
+            <h3>Describe UDP Socket Options.</h3>
+            <p>UDP sockets (<code>DatagramSocket</code>) in Java have several options that can be configured to control their behavior. These are set using methods on the <code>DatagramSocket</code> object. The main options are:</p>
+            <ul>
+                <li><strong><code>SO_TIMEOUT</code>:</strong> Sets a timeout for blocking receive operations. If a packet is not received within the specified time (in milliseconds), a <code>SocketTimeoutException</code> is thrown. This is crucial for preventing a program from blocking indefinitely while waiting for a packet.</li>
+                <li><strong><code>SO_BROADCAST</code>:</strong> Enables or disables the ability of the socket to send broadcast packets. By default, this is disabled for security reasons. Broadcasting allows a packet to be sent to all devices on a local network.</li>
+                <li><strong><code>SO_SNDBUF</code> and <code>SO_RCVBUF</code>:</strong> Set the size of the underlying network buffers used by the operating system for sending and receiving data. Adjusting these can sometimes improve performance for applications that send or receive large amounts of data, but the default values are usually sufficient.</li>
+                <li><strong><code>SO_REUSEADDR</code>:</strong> Allows multiple sockets to be bound to the same address and port, as long as there is a mechanism to distribute incoming messages among them. This is more commonly used with TCP but is available for UDP as well.</li>
+            </ul>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: UDP Socket Options</h3>
+            <ul>
+                <li><strong><code>SO_TIMEOUT</code>:</strong> Avoids waiting forever for a packet.</li>
+                <li><strong><code>SO_BROADCAST</code>:</strong> Allows sending messages to all devices on the network.</li>
+                <li><strong><code>SO_SNDBUF</code> / <code>SO_RCVBUF</code>:</strong> Adjusts buffer sizes for performance tuning.</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>Program for Scanning Local UDP Ports</h2>
+        </div>
+
+        <div class="code-example">
+            <h3>Java Program for Scanning Local UDP Ports from 1024 upwards</h3>
+            <p>This program attempts to bind a <code>DatagramSocket</code> to each port starting from 1024 up to a specified limit. If the bind is successful, it means the port is likely free. If a <code>SocketException</code> occurs, it means the port is likely in use by another application.</p>
+            <pre><code>
+import java.net.DatagramSocket;
+import java.net.SocketException;
+
+public class UdpPortScanner {
+
+    public static void main(String[] args) {
+        int startPort = 1024;
+        int endPort = 65535; // The maximum port number
+
+        System.out.println("Scanning UDP ports from " + startPort + " to " + endPort + "...");
+
+        for (int port = startPort; port <= endPort; port++) {
+            try {
+                // Try to create a datagram socket on the port
+                DatagramSocket socket = new DatagramSocket(port);
+                // If it succeeds, the port is open. Close it immediately.
+                socket.close();
+                // To avoid flooding the output, we don't print open ports.
+                // You could add a print statement here if you wanted to see them.
+                // System.out.println("Port " + port + " is open.");
+            } catch (SocketException e) {
+                // If a SocketException is thrown, the port is likely in use.
+                System.out.println("Port " + port + " is in use.");
+            }
+
+            // A small delay to be less aggressive with the scanning
+            try {
+                Thread.sleep(1); // 1 millisecond delay
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+                System.err.println("Port scan interrupted.");
+                break;
+            }
+        }
+        System.out.println("UDP port scan finished.");
+    }
+}
+            </code></pre>
+            <p><strong>Note:</strong> This is a basic scanner. On some systems, you might need administrative privileges to run this, and it may not be 100% accurate. A port might be temporarily unavailable for other reasons, or a firewall could interfere with the results.</p>
+        </div>
+
+        <div class="summary">
+            <h3>Key Points to Remember: UDP Port Scanning</h3>
+            <ul>
+                <li>Loop through a range of port numbers.</li>
+                <li>Inside the loop, try to create a <code>new DatagramSocket(port)</code>.</li>
+                <li>If it works without an exception, the port is free. Close the socket immediately.</li>
+                <li>If it throws a <code>SocketException</code>, the port is already in use.</li>
+                <li>Wrap the socket creation in a <code>try-catch</code> block.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

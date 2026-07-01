@@ -1,0 +1,1192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2020 Exam Answer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="notebook-container">
+      <header class="header">
+        <h1>Exam Question 1</h1>
+        <p>Dot Net Technology - BCA Fifth Semester 2020</p>
+      </header>
+
+      <main>
+        <!-- Table of Contents -->
+        <div class="toc-card">
+          <h2 class="toc-title">Answered Questions</h2>
+          <h3 class="group-toc-title">Group B</h3>
+          <ul class="toc-list">
+            <li><a href="#qa-1">1. Differentiate Object Oriented Programming and Object Based Programming. Explain some of the major features of C# language.</a></li>
+            <li><a href="#qa-2">2. Explain overview of Microsoft .NET framework and its components in detail.</a></li>
+            <li><a href="#qa-4">4. What do you mean by property in C# language? How it is different from method? Compare automatic property with other types of property with suitable example.</a></li>
+            <li><a href="#qa-5">5. Define constructor. Explain different types of constructors used in C# with example.</a></li>
+            <li><a href="#qa-6">6. a) What is LINQ? Write a program to select employees whose salary is greater than 20000 and whose address is kathmandu using LINQ b) Write a C# program to show insert and select operation in database.</a></li>
+            <li><a href="#qa-7">7. What is generics? List different types of generic classes. Explain delegate with example.</a></li>
+            <li><a href="#qa-8">8. What do you mean by lambda expression? Explain different types of lambda expression used in C# with example.</a></li>
+            <li><a href="#qa-8">8. What do you mean by lambda expression? Explain different types of lambda expression used in C# with example.</a></li>
+          </ul>
+          <h3 class="group-toc-title">Group C</h3>
+          <ul class="toc-list">
+            <li><a href="#qa-9">9. a) Write a program to create user registration form in one ASP.NET web page and display filled data in another page.<br/>b) Write a program for handling exception in ASP.NET</a></li>
+            <li><a href="#qa-10">10. a) How virtual method is used to achieve dynamic binding in C#? Explain with the help of suitable program.<br/>b) Define operator overloading. Write a C# program to overload binary operator.</a></li>
+          </ul>
+        </div>
+
+        <h2 class="group-header">Group B</h2>
+
+        <article class="qa-card" id="qa-1">
+          <div class="question">
+            1. Differentiate Object Oriented Programming and Object Based
+            Programming. Explain some of the major features of C# language.
+          </div>
+          <div class="answer full-marks-answer">
+            <!-- Part A -->
+            <div>
+              <h3 class="section-title">
+                Part A: Object-Oriented vs. Object-Based Programming
+              </h3>
+              <p style="margin-bottom: 1rem">
+                While both paradigms utilize objects to encapsulate data and
+                behavior, they differ significantly in their support for
+                advanced relationship concepts.
+              </p>
+
+              <table class="diff-table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%">Feature</th>
+                    <th style="width: 40%">
+                      Object-Oriented Programming (OOP)
+                    </th>
+                    <th style="width: 40%">Object-Based Programming (OBP)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Definition</strong></td>
+                    <td>
+                      A programming paradigm that strictly follows all core
+                      concepts of objects, classes, and their relationships.
+                    </td>
+                    <td>
+                      A programming paradigm that uses objects and encapsulates
+                      state/behavior, but does not fully support all OOP
+                      pillars.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Inheritance</strong></td>
+                    <td>
+                      <strong>Supported.</strong> Classes can inherit properties
+                      and methods from parent classes, promoting code
+                      reusability.
+                    </td>
+                    <td>
+                      <strong>Not Supported.</strong> Objects cannot inherently
+                      derive features from other objects or classes.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Polymorphism</strong></td>
+                    <td>
+                      <strong>Supported.</strong> Allows processing objects
+                      differently based on their data type or class (e.g.,
+                      method overloading/overriding).
+                    </td>
+                    <td>
+                      <strong>Not Supported.</strong> Functions cannot easily be
+                      overridden or dynamically bound.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Examples</strong></td>
+                    <td>C#, Java, C++</td>
+                    <td>
+                      Visual Basic (early versions), VBScript, JavaScript
+                      (historically)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Part B -->
+            <div>
+              <h3 class="section-title">
+                Part B: Major Features of C# Language
+              </h3>
+              <p style="margin-bottom: 1rem">
+                C# is a modern, general-purpose programming language developed
+                by Microsoft. As per the .NET framework guidelines, its
+                distinctive features include:
+              </p>
+
+              <ul class="feature-list">
+                <li>
+                  <strong>Pure Object-Oriented:</strong> C# is a rich
+                  implementation of the object-orientation paradigm. It fully
+                  supports encapsulation, abstraction, inheritance, and
+                  polymorphism. All methods and variables (even the
+                  <code>Main</code> entry point) must be encapsulated within a
+                  class.
+                </li>
+                <li>
+                  <strong>Unified Type System:</strong> The fundamental building
+                  block is an encapsulated unit called a type. C# uses a unified
+                  type system where all types (primitive or complex business
+                  objects) ultimately share a common base type
+                  (<code>System.Object</code>), meaning they share core
+                  functionalities like the <code>ToString()</code> method.
+                </li>
+                <li>
+                  <strong>Strict Type Safety:</strong> C# is primarily a
+                  type-safe language enforcing internal consistency. It supports
+                  static typing (catching errors at compile-time) and prevents
+                  implicit conversions that result in data loss, making large
+                  programs robust and predictable.
+                </li>
+                <li>
+                  <strong>Automatic Memory Management:</strong> C# relies on the
+                  Common Language Runtime (CLR) for memory management. The CLR's
+                  Garbage Collector automatically reclaims memory for objects
+                  that are no longer referenced, eliminating incorrect pointer
+                  issues seen in languages like C++.
+                </li>
+                <li>
+                  <strong>Cross-Platform Support:</strong> While historically
+                  tied to Windows, modern C# (via .NET Core and Xamarin)
+                  supports cross-platform development across Windows, Linux,
+                  macOS, iOS, and Android.
+                </li>
+                <li>
+                  <strong>Component Oriented:</strong> It is designed for
+                  improving productivity in the development of Web applications
+                  and distributed components.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 2 -->
+        <article class="qa-card" id="qa-2">
+          <div class="question">
+            2. Explain overview of Microsoft .NET framework and its components
+            in detail.
+          </div>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">
+                Overview of Microsoft .NET Framework
+              </h3>
+              <p style="margin-bottom: 1rem">
+                .NET is a programming infrastructure created by Microsoft for
+                building, deploying, and running applications and services (such
+                as desktop applications and Web services). It sits between
+                application programs and the operating system.
+              </p>
+              <p style="margin-bottom: 1rem">
+                It provides an object-oriented environment and ensures safe
+                execution of code by performing required runtime validations
+                (e.g., preventing array bounds violations or accessing another
+                program's memory), making the entire environment robust.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="section-title">.NET Framework Architecture</h3>
+              <div style="text-align: center; margin: 2rem 0;">
+                <img src="assets/dotnet-framework.png" alt=".NET Framework Components Diagram" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; background: white;">
+                <p style="color: #64748b; font-size: 0.9rem; margin-top: 0.5rem;">Figure: Hierarchy of .NET Framework Components</p>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="section-title">Key Components in Detail</h3>
+              <ul class="feature-list">
+                <li>
+                  <strong>Common Language Runtime (CLR):</strong> The core
+                  execution engine and virtual machine component of the .NET
+                  Framework. It manages the execution of .NET programs and
+                  provides essential services like memory management,
+                  type-safety, exception handling, and thread management. Code
+                  that targets the CLR is known as <em>Managed Code</em>.
+                </li>
+                <li>
+                  <strong>Framework Class Library (FCL):</strong> A
+                  comprehensive, object-oriented collection of reusable types
+                  (classes, interfaces) that can be integrated with the CLR. It
+                  is used to develop a wide range of applications from
+                  traditional command-line apps to ASP.NET web applications.
+                </li>
+                <li>
+                  <strong>Common Language Infrastructure (CLI):</strong> The
+                  underlying infrastructure and specification that allows for
+                  language-agnostic development, upon which the CTS and CLS are
+                  built.
+                </li>
+                <li>
+                  <strong>Common Type System (CTS):</strong> A strict
+                  type-and-code-verification infrastructure. It describes how
+                  types are defined and used, ensuring that all managed code is
+                  self-describing and enabling seamless cross-language
+                  integration.
+                </li>
+                <li>
+                  <strong>Common Language Specification (CLS):</strong> A subset
+                  of the CTS. It defines a baseline of rules and standards that
+                  all .NET languages must follow to ensure interoperability
+                  (e.g., allowing C# code to seamlessly interact with VB.NET
+                  code).
+                </li>
+                <li>
+                  <strong>Garbage Collector (GC):</strong> An automatic memory
+                  manager executing as part of the CLR. It reclaims memory for
+                  objects that are no longer referenced, freeing programmers
+                  from explicitly deallocating memory and preventing memory
+                  leaks.
+                </li>
+                <li>
+                  <strong>Just-In-Time Compiler (JIT):</strong> A compiler
+                  within the CLR that converts Intermediate Language (IL) into
+                  native machine code (such as x86 or x64) just prior to
+                  execution, significantly enhancing execution speed.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <!-- Question 4 -->
+        <article class="qa-card" id="qa-4">
+          <div class="question">
+            4. What do you mean by property in C# language? How it is different
+            from method? Compare automatic property with other types of property
+            with suitable example.
+          </div>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Part A: What is a Property in C#?</h3>
+              <p style="margin-bottom: 1rem">
+                A <strong>property</strong> is a named member of a class, struct,
+                or interface that looks like a field from the outside but
+                contains logic (like methods) internally. It encapsulates a piece
+                of an object's state (e.g., a button's color, a label's text)
+                using special methods called <strong>accessors</strong> —
+                <code>get</code> (read) and <code>set</code> (write). Properties
+                provide controlled access to private fields, following
+                encapsulation principles.
+              </p>
+              <pre class="code-block"><span class="keyword">class</span> <span class="class-name">Student</span>
+{
+    <span class="keyword">private</span> <span class="type">string</span> name;  <span class="comment">// backing field</span>
+
+    <span class="keyword">public</span> <span class="type">string</span> Name    <span class="comment">// property</span>
+    {
+        <span class="keyword">get</span> { <span class="keyword">return</span> name; }
+        <span class="keyword">set</span> { name = <span class="keyword">value</span>; }
+    }
+}</pre>
+            </div>
+
+            <div>
+              <h3 class="section-title">
+                Part B: How is Property Different from Method?
+              </h3>
+              <table class="diff-table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%">Feature</th>
+                    <th style="width: 40%">Property</th>
+                    <th style="width: 40%">Method</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Purpose</strong></td>
+                    <td>Encapsulates state (data)</td>
+                    <td>Performs an action (behavior)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Syntax</strong></td>
+                    <td>Accessed like a field (<code>obj.Name</code>)</td>
+                    <td>Called with parentheses (<code>obj.GetName()</code>)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Accessors</strong></td>
+                    <td>Uses <code>get</code>/<code>set</code> keywords</td>
+                    <td>Uses regular parameters and return type</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Parameters</strong></td>
+                    <td>No explicit parameters (except implicit <code>value</code> in set)</td>
+                    <td>Can have any number of parameters</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Return</strong></td>
+                    <td><code>get</code> returns property type; <code>set</code> returns <code>void</code></td>
+                    <td>Can return any type or <code>void</code></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Intent</strong></td>
+                    <td>"What is this object's state?"</td>
+                    <td>"What can this object do?"</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div>
+              <h3 class="section-title">
+                Part C: Automatic Property vs Other Types of Properties
+              </h3>
+              <p style="margin-bottom: 1rem">
+                C# provides several types of properties. The key difference is
+                whether the compiler generates the backing field automatically or
+                the developer explicitly defines it with custom logic.
+              </p>
+
+              <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                1. Automatic Property (Auto-Implemented)
+              </h4>
+              <p style="margin-bottom: 0.75rem;">
+                The compiler automatically generates the backing field. No custom
+                logic in accessors. Most concise form.
+              </p>
+              <pre class="code-block"><span class="keyword">class</span> <span class="class-name">Product</span>
+{
+    <span class="keyword">public</span> <span class="type">int</span> Id { <span class="keyword">get</span>; <span class="keyword">set</span>; }       <span class="comment">// read-write auto property</span>
+    <span class="keyword">public</span> <span class="type">string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }  <span class="comment">// read-write auto property</span>
+}</pre>
+
+              <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">
+                2. Full Property (with Backing Field)
+              </h4>
+              <p style="margin-bottom: 0.75rem;">
+                Explicit backing field with custom logic in accessors such as
+                validation, computation, or change notification.
+              </p>
+              <pre class="code-block"><span class="keyword">class</span> <span class="class-name">Product</span>
+{
+    <span class="keyword">private</span> <span class="type">double</span> price;
+
+    <span class="keyword">public</span> <span class="type">double</span> Price
+    {
+        <span class="keyword">get</span> { <span class="keyword">return</span> price; }
+        <span class="keyword">set</span>
+        {
+            <span class="keyword">if</span> (value &lt; <span class="number">0</span>)
+                <span class="keyword">throw new</span> <span class="type">ArgumentException</span>(<span class="string">"Price cannot be negative"</span>);
+            price = value;
+        }
+    }
+}</pre>
+
+              <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">
+                3. Read-Only Property
+              </h4>
+              <p style="margin-bottom: 0.75rem;">
+                Only a <code>get</code> accessor — no <code>set</code>. Used for
+                computed values or immutable state.
+              </p>
+              <pre class="code-block"><span class="keyword">class</span> <span class="class-name">Rectangle</span>
+{
+    <span class="keyword">public</span> <span class="type">double</span> Length { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public</span> <span class="type">double</span> Breadth { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+
+    <span class="keyword">public</span> <span class="type">double</span> Area   <span class="comment">// Read-only computed property</span>
+    {
+        <span class="keyword">get</span> { <span class="keyword">return</span> Length * Breadth; }
+    }
+}</pre>
+
+              <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">
+                4. Expression-Bodied Property (C# 6+)
+              </h4>
+              <p style="margin-bottom: 0.75rem;">
+                Concise syntax using <code>=&gt;</code> for read-only or computed
+                properties.
+              </p>
+              <pre class="code-block"><span class="keyword">class</span> <span class="class-name">Rectangle</span>
+{
+    <span class="keyword">public</span> <span class="type">double</span> Length { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public</span> <span class="type">double</span> Breadth { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public</span> <span class="type">double</span> Area =&gt; Length * Breadth;  <span class="comment">// expression-bodied</span>
+}</pre>
+            </div>
+
+            <div>
+              <h3 class="section-title">
+                Complete Example — All Property Types in Action
+              </h3>
+              <pre class="code-block"><span class="keyword">class</span> <span class="class-name">Student</span>
+{
+    <span class="comment">// 1. Automatic property</span>
+    <span class="keyword">public</span> <span class="type">int</span> RollNo { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+
+    <span class="comment">// 2. Auto property with private set (read-only outside class)</span>
+    <span class="keyword">public</span> <span class="type">string</span> Name { <span class="keyword">get</span>; <span class="keyword">private set</span>; }
+
+    <span class="comment">// 3. Full property — custom validation</span>
+    <span class="keyword">private</span> <span class="type">int</span> age;
+    <span class="keyword">public</span> <span class="type">int</span> Age
+    {
+        <span class="keyword">get</span> { <span class="keyword">return</span> age; }
+        <span class="keyword">set</span>
+        {
+            <span class="keyword">if</span> (value &lt; <span class="number">1</span> || value &gt; <span class="number">150</span>)
+                <span class="keyword">throw new</span> <span class="type">Exception</span>(<span class="string">"Invalid age"</span>);
+            age = value;
+        }
+    }
+
+    <span class="comment">// 4. Read-only computed property</span>
+    <span class="keyword">public</span> <span class="type">string</span> Category
+    {
+        <span class="keyword">get</span>
+        {
+            <span class="keyword">if</span> (Age &lt; <span class="number">18</span>) <span class="keyword">return</span> <span class="string">"Minor"</span>;
+            <span class="keyword">if</span> (Age &lt; <span class="number">60</span>) <span class="keyword">return</span> <span class="string">"Adult"</span>;
+            <span class="keyword">return</span> <span class="string">"Senior"</span>;
+        }
+    }
+
+    <span class="comment">// 5. Expression-bodied read-only property</span>
+    <span class="keyword">public</span> <span class="type">string</span> Description =&gt;
+        <span class="string">$"Roll: {RollNo}, Name: {Name}, Age: {Age}"</span>;
+
+    <span class="keyword">public</span> <span class="method-name">Student</span>(<span class="type">int</span> roll, <span class="type">string</span> name, <span class="type">int</span> age)
+    {
+        RollNo = roll;
+        Name = name;
+        Age = age;
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Test</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Student</span> s = <span class="keyword">new</span> <span class="class-name">Student</span>(<span class="number">101</span>, <span class="string">"Alice"</span>, <span class="number">20</span>);
+        <span class="class-name">Console</span>.WriteLine(s.Description);
+        <span class="class-name">Console</span>.WriteLine(s.Category);
+    }
+}</pre>
+              <p style="margin-top: 1rem;">
+                <strong>Output:</strong><br />
+                Roll: 101, Name: Alice, Age: 20<br />
+                Adult
+              </p>
+            </div>
+
+            <div>
+              <h3 class="section-title">Summary</h3>
+              <table class="diff-table">
+                <thead>
+                  <tr>
+                    <th style="width: 25%">Property Type</th>
+                    <th style="width: 35%">Backing Field</th>
+                    <th style="width: 40%">Use Case</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Automatic</strong></td>
+                    <td>Compiler-generated</td>
+                    <td>Simple get/set with no logic</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Full Property</strong></td>
+                    <td>Explicit (developer-defined)</td>
+                    <td>Validation, computed values, change notification</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Read-Only</strong></td>
+                    <td>Optional</td>
+                    <td>Immutable state or computed values</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Expression-Bodied</strong></td>
+                    <td>Optional</td>
+                    <td>Concise read-only computed properties</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p style="margin-top: 1rem;">
+                Properties are function members that <strong>encapsulate state</strong> with field-like access syntax but method-like internal implementation, whereas methods are function members that <strong>perform actions</strong>.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 5 -->
+        <article class="qa-card" id="qa-5">
+          <div class="question">
+            5. Define constructor. Explain different types of constructors used in C# with example.
+          </div>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Part A: Definition of Constructor</h3>
+              <p style="margin-bottom: 1rem">
+                A <strong>constructor</strong> in C# is a block of code similar to a method that's called when an instance of an object is created. 
+                It is used to initialize the data members of new objects generally. 
+              </p>
+              <ul class="feature-list">
+                <li>A constructor doesn’t have a return type.</li>
+                <li>The name of the constructor must be the same as the name of the class.</li>
+                <li>Unlike methods, constructors are not considered members of a class.</li>
+                <li>A constructor is called automatically when a new instance of an object is created.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="section-title">
+                Part B: Different Types of Constructors in C#
+              </h3>
+              <p style="margin-bottom: 1rem">
+                According to the .NET Framework, C# provides various types of constructors to initialize objects:
+              </p>
+
+              <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                1. Default Constructor
+              </h4>
+              <p style="margin-bottom: 0.75rem;">
+                The default constructor is a constructor that is automatically generated in the absence of explicit constructors (i.e. no user-defined constructor). It is sometimes called a <em>nullary</em> constructor. It initializes all member variables to zero or default values. Once you define your own constructor, the default constructor is no longer used.
+              </p>
+              <pre class="code-block"><span class="keyword">class</span> <span class="class-name">ClassName</span>
+{
+    <span class="keyword">public</span> <span class="method-name">ClassName</span>() 
+    {
+        <span class="comment">// Default constructor body</span>
+    }
+}</pre>
+
+              <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">
+                2. Instance Constructors (Parameterized Constructors)
+              </h4>
+              <p style="margin-bottom: 0.75rem;">
+                Constructors run initialization code on a class or struct. An instance constructor is defined like a method, except that the method name and return type are reduced to the name of the enclosing type. They can take parameters to initialize fields with specific values.
+              </p>
+              <pre class="code-block"><span class="keyword">public class</span> <span class="class-name">Panda</span>
+{
+    <span class="keyword">private string</span> name;  <span class="comment">// Define field</span>
+
+    <span class="keyword">public</span> <span class="method-name">Panda</span>(<span class="keyword">string</span> n) <span class="comment">// Define constructor</span>
+    {
+        name = n;         <span class="comment">// Initialization code (set up field)</span>
+    }
+}
+
+<span class="comment">// Call constructor</span>
+<span class="class-name">Panda</span> p = <span class="keyword">new</span> <span class="class-name">Panda</span>(<span class="string">"Petey"</span>);</pre>
+
+              <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">
+                3. Overloaded Constructors
+              </h4>
+              <p style="margin-bottom: 0.75rem;">
+                A class or struct may overload constructors (have multiple constructors with different parameters). To avoid code duplication, one constructor may call another using the <code>this</code> keyword. When one constructor calls another, the called constructor executes first.
+              </p>
+              <pre class="code-block"><span class="keyword">public class</span> <span class="class-name">Wine</span>
+{
+    <span class="keyword">public decimal</span> Price;
+    <span class="keyword">public int</span> Year;
+
+    <span class="keyword">public</span> <span class="method-name">Wine</span>(<span class="keyword">decimal</span> price) 
+    { 
+        Price = price; 
+    }
+
+    <span class="keyword">public</span> <span class="method-name">Wine</span>(<span class="keyword">decimal</span> price, <span class="keyword">int</span> year) : <span class="keyword">this</span>(price) 
+    { 
+        Year = year; 
+    }
+}</pre>
+
+              <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">
+                4. Static Constructor
+              </h4>
+              <p style="margin-bottom: 0.75rem;">
+                A static constructor is used to perform a particular action only once throughout the application. It is invoked automatically by the CLR before the first instance is created or any static members are referenced. It cannot accept any parameters or access modifiers (it is parameterless). Only one static constructor is allowed per class.
+              </p>
+              <pre class="code-block"><span class="keyword">class</span> <span class="class-name">User</span>
+{
+    <span class="comment">// Static Constructor</span>
+    <span class="keyword">static</span> <span class="method-name">User</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"I am Static Constructor"</span>);
+    }
+
+    <span class="comment">// Default Constructor</span>
+    <span class="keyword">public</span> <span class="method-name">User</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"I am Default Constructor"</span>);
+    }
+}</pre>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 6 -->
+        <article class="qa-card" id="qa-6">
+          <div class="question">
+            6. a) What is LINQ? Write a program to select employees whose salary is greater than 20000 and whose address is kathmandu using LINQ<br/>
+            b) Write a C# program to show insert and select operation in database.
+          </div>
+          <div class="answer full-marks-answer">
+            <!-- Part A -->
+            <div>
+              <h3 class="section-title">Part A: LINQ and Employee Selection</h3>
+              <p style="margin-bottom: 1rem">
+                <strong>LINQ (Language Integrated Query)</strong> is a uniform query syntax in C# to retrieve data from different sources and formats. It is integrated in C#, thereby eliminating the mismatch between programming languages and databases, as well as providing a single querying interface for different types of data sources.
+              </p>
+              <p style="margin-bottom: 1rem">
+                Just as SQL is used to save and retrieve data from a relational database, LINQ is a structured query syntax built into C# to retrieve data from different types of data sources such as collections, ADO.NET DataSets, XML Docs, web services, MS SQL Server, and other databases. LINQ queries return results as objects, enabling an object-oriented approach without worrying about transforming different formats of results into objects.
+              </p>
+
+              <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">
+                Program to select employees using LINQ:
+              </h4>
+              <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Collections.Generic</span>;
+<span class="keyword">using</span> <span class="type">System.Linq</span>;
+
+<span class="keyword">class</span> <span class="class-name">Employee</span>
+{
+    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public decimal</span> Salary { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> Address { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="comment">// 1. Data source</span>
+        <span class="class-name">List</span>&lt;<span class="class-name">Employee</span>&gt; employees = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="class-name">Employee</span>&gt;()
+        {
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Ram"</span>, Salary = <span class="number">25000</span>, Address = <span class="string">"Kathmandu"</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Shyam"</span>, Salary = <span class="number">18000</span>, Address = <span class="string">"Pokhara"</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Hari"</span>, Salary = <span class="number">30000</span>, Address = <span class="string">"Kathmandu"</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Sita"</span>, Salary = <span class="number">22000</span>, Address = <span class="string">"Lalitpur"</span> }
+        };
+
+        <span class="comment">// 2. LINQ Query to filter employees</span>
+        <span class="keyword">var</span> selectedEmployees = <span class="keyword">from</span> emp <span class="keyword">in</span> employees
+                                <span class="keyword">where</span> emp.Salary &gt; <span class="number">20000</span> &amp;&amp; emp.Address == <span class="string">"Kathmandu"</span>
+                                <span class="keyword">select</span> emp;
+
+        <span class="comment">// 3. Query execution</span>
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Employees with salary &gt; 20000 and address in Kathmandu:"</span>);
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> emp <span class="keyword">in</span> selectedEmployees)
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Name: {emp.Name}, Salary: {emp.Salary}"</span>);
+        }
+        
+        <span class="class-name">Console</span>.ReadLine();
+    }
+}</pre>
+            </div>
+
+            <!-- Part B -->
+            <div>
+              <h3 class="section-title">Part B: Database Insert and Select Operation in C#</h3>
+              <p style="margin-bottom: 1rem">
+                Below is a C# program demonstrating how to perform an <code>INSERT</code> and a <code>SELECT</code> operation using ADO.NET with SQL Server classes (<code>SqlConnection</code>, <code>SqlCommand</code>, <code>SqlDataAdapter</code>, and <code>DataTable</code>).
+              </p>
+              <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Data</span>;
+<span class="keyword">using</span> <span class="type">System.Data.SqlClient</span>;
+
+<span class="keyword">namespace</span> <span class="class-name">DatabaseTest</span>
+{
+    <span class="keyword">class</span> <span class="class-name">Program</span>
+    {
+        <span class="type">SqlConnection</span> conn;
+        <span class="type">SqlCommand</span> command;
+
+        <span class="keyword">void</span> <span class="method-name">CreateConnection</span>()
+        {
+            <span class="keyword">string</span> constr = <span class="string">"Data Source=localhost\\SQLEXPRESS; Initial Catalog=dbtest; User ID=sa; Password=sys;"</span>;
+            conn = <span class="keyword">new</span> <span class="type">SqlConnection</span>(constr);
+            conn.Open();
+        }
+
+        <span class="keyword">void</span> <span class="method-name">InsertRecord</span>(<span class="keyword">string</span> name, <span class="keyword">string</span> address)
+        {
+            <span class="keyword">string</span> sql = <span class="string">"INSERT INTO tblStudent (name, address) VALUES ('"</span> + name + <span class="string">"', '"</span> + address + <span class="string">"')"</span>;
+            command = <span class="keyword">new</span> <span class="type">SqlCommand</span>(sql, conn);
+            command.ExecuteNonQuery();
+            <span class="class-name">Console</span>.WriteLine(<span class="string">"Operation Performed Successfully !"</span>);
+        }
+
+        <span class="keyword">void</span> <span class="method-name">SelectRecords</span>()
+        {
+            <span class="keyword">string</span> sql = <span class="string">"SELECT * FROM tblStudent"</span>;
+            command = <span class="keyword">new</span> <span class="type">SqlCommand</span>(sql, conn);
+            <span class="type">SqlDataAdapter</span> adapter = <span class="keyword">new</span> <span class="type">SqlDataAdapter</span>(command);
+            <span class="type">DataTable</span> dt = <span class="keyword">new</span> <span class="type">DataTable</span>();
+            adapter.Fill(dt);
+
+            <span class="keyword">if</span> (dt.Rows.Count != <span class="number">0</span>)
+            {
+                <span class="class-name">Console</span>.WriteLine(<span class="string">"Sid\t Name\t Address"</span>);
+                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; dt.Rows.Count; i++)
+                {
+                    <span class="keyword">string</span> sid = dt.Rows[i][<span class="string">"sid"</span>].ToString();
+                    <span class="keyword">string</span> name = dt.Rows[i][<span class="string">"name"</span>].ToString();
+                    <span class="keyword">string</span> address = dt.Rows[i][<span class="string">"address"</span>].ToString();
+                    <span class="class-name">Console</span>.WriteLine(sid + <span class="string">"\t"</span> + name + <span class="string">"\t"</span> + address);
+                }
+            }
+        }
+
+        <span class="keyword">static void</span> <span class="method-name">Main</span>(<span class="keyword">string</span>[] args)
+        {
+            <span class="class-name">Program</span> obj = <span class="keyword">new</span> <span class="class-name">Program</span>();
+            <span class="keyword">try</span>
+            {
+                obj.CreateConnection();
+                
+                <span class="comment">// 1. Insert Operation</span>
+                obj.InsertRecord(<span class="string">"Raju Poudel"</span>, <span class="string">"Bhadrapur"</span>);
+                
+                <span class="comment">// 2. Select Operation</span>
+                obj.SelectRecords();
+            }
+            <span class="keyword">catch</span> (<span class="type">Exception</span> ex)
+            {
+                <span class="class-name">Console</span>.WriteLine(ex.Message);
+            }
+            <span class="keyword">finally</span>
+            {
+                <span class="class-name">Console</span>.ReadLine();
+            }
+        }
+    }
+}</pre>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 7 -->
+        <article class="qa-card" id="qa-7">
+          <div class="question">
+            7. What is generics? List different types of generic classes. Explain delegate with example.
+          </div>
+          <div class="answer full-marks-answer">
+            <!-- Part A -->
+            <div>
+              <h3 class="section-title">Part A: Generics and Types of Generic Classes</h3>
+              <p style="margin-bottom: 1rem">
+                <strong>Generics</strong> in C# and .NET provide many of the benefits of strongly-typed collections, as well as a higher quality and performance boost for code. They are similar to C++ templates, but .NET Generics are not limited to classes—they can also be implemented with Interfaces, Delegates, and Methods. They allow you to define classes, methods, and structures with placeholders (type parameters, e.g., <code>&lt;T&gt;</code>) for the data types they store or use, ensuring type safety without the overhead of boxing and unboxing.
+              </p>
+              <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                Different Types of Generic Classes
+              </h4>
+              <p style="margin-bottom: 0.75rem;">
+                The <code>System.Collections.Generic</code> namespace defines several core generic classes:
+              </p>
+              <table class="diff-table">
+                <thead>
+                  <tr>
+                    <th style="width: 30%">Generic Class</th>
+                    <th style="width: 70%">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Collection&lt;T&gt;</strong></td>
+                    <td>Provides the base class for a generic collection.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Dictionary&lt;TKey, TValue&gt;</strong></td>
+                    <td>Represents a generic collection of key/value pairs.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>List&lt;T&gt;</strong></td>
+                    <td>Represents a dynamically resizable list of strongly typed objects that can be accessed by index.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Queue&lt;T&gt;</strong></td>
+                    <td>Represents a first-in, first-out (FIFO) generic collection of objects.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Stack&lt;T&gt;</strong></td>
+                    <td>Represents a variable size last-in-first-out (LIFO) generic collection of instances of the same specified type.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Part B -->
+            <div>
+              <h3 class="section-title">Part B: Delegate with Example</h3>
+              <p style="margin-bottom: 1rem">
+                A <strong>delegate</strong> is an object that knows how to call a method. It is a type that defines the kind of method that delegate instances can call (specifically, the return type and parameter types). All delegates are implicitly derived from the <code>System.Delegate</code> class. 
+              </p>
+              <p style="margin-bottom: 1rem">
+                Delegates are primarily used for implementing events and call-back methods. In simple words, a delegate represents a reference to a method with a particular parameter list and return type, allowing the method to be passed as an argument or invoked dynamically.
+              </p>
+              
+              <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                Example of a Delegate:
+              </h4>
+              <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="comment">// 1. Declare the delegate</span>
+<span class="keyword">public delegate int</span> <span class="type">MyDelegate</span>(<span class="keyword">int</span> x); 
+
+<span class="keyword">class</span> <span class="class-name">DelegateTest</span>
+{
+    <span class="comment">// 2. Create a method that matches the delegate signature</span>
+    <span class="keyword">static int</span> <span class="method-name">MyMethod</span>(<span class="keyword">int</span> x)
+    {
+        <span class="keyword">return</span> x * x;
+    }
+ 
+    <span class="keyword">static void</span> <span class="method-name">Main</span>(<span class="keyword">string</span>[] args)
+    {
+        <span class="comment">// 3. Instantiate the delegate</span>
+        <span class="type">MyDelegate</span> del = <span class="keyword">new</span> <span class="type">MyDelegate</span>(MyMethod);
+        
+        <span class="comment">// 4. Invoke the delegate</span>
+        <span class="keyword">int</span> res = del(<span class="number">5</span>); <span class="comment">// 25</span>
+        
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Result is : "</span> + res);
+        <span class="class-name">Console</span>.ReadKey();
+    }
+}</pre>
+            </div>
+          </div>
+        </article>
+
+        <article class="qa-card" id="qa-8">
+          <div class="question">
+            8. What do you mean by lambda expression? Explain different types of lambda expression used in C# with example.
+          </div>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">
+                Lambda Expression
+              </h3>
+              <p>
+                Lambda expressions in C# are used like anonymous functions, with the difference that in Lambda expressions you don’t need to specify the type of the value that you input thus making it more flexible to use.
+              </p>
+              <p>
+                The <code>=&gt;</code> is the lambda operator which is used in all lambda expressions. The Lambda expression is divided into two parts, the left side is the input and the right is the expression.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="section-title">
+                Types of Lambda Expressions
+              </h3>
+              <p>The Lambda Expressions can be of two types:</p>
+              <ul class="feature-list">
+                <li>
+                  <strong>1. Expression Lambda:</strong> Consists of the input and the expression.<br/>
+                  <em>Syntax:</em> <code>input =&gt; expression;</code>
+                </li>
+                <li>
+                  <strong>2. Statement Lambda:</strong> Consists of the input and a set of statements to be executed. Unlike an expression lambda, a statement lambda can contain multiple statements separated by semicolons. It is used with delegates.<br/>
+                  <em>Syntax:</em> <code>input =&gt; { statements };</code>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="section-title">
+                Example
+              </h3>
+              <p>Basic example of lambda expression in C#:</p>
+              <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">LambdaTest</span>
+{
+    <span class="keyword">static int</span> <span class="method-name">test1</span>() =&gt; <span class="number">5</span>;
+    <span class="keyword">static int</span> <span class="method-name">test2</span>(<span class="keyword">int</span> x) =&gt; x + <span class="number">10</span>;
+
+    <span class="keyword">static void</span> <span class="method-name">Main</span>(<span class="keyword">string</span>[] args)
+    {
+        <span class="keyword">int</span> x = test1();
+        <span class="keyword">int</span> res = test2(x);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Result is: "</span> + res);
+    }
+}</pre>
+              <p><strong>Output:</strong></p>
+              <pre class="code-block">Result is: 15</pre>
+
+              <h4 style="color: var(--primary-color); margin: 1.5rem 0 0.75rem;">Example of Statement Lambda:</h4>
+              <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">public delegate void</span> <span class="type">ModifyInt</span>(<span class="keyword">int</span> input);
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>(<span class="keyword">string</span>[] args)
+    {
+        <span class="comment">// Statement lambda containing multiple statements inside a block</span>
+        <span class="type">ModifyInt</span> addOneAndTellMe = x =&gt;
+        {
+            <span class="keyword">int</span> result = x + <span class="number">1</span>;
+            <span class="class-name">Console</span>.WriteLine(result);
+        };
+
+        addOneAndTellMe(<span class="number">5</span>);
+    }
+}</pre>
+              <p><strong>Output:</strong></p>
+              <pre class="code-block">6</pre>
+            </div>
+          </div>
+        </article>
+            </div>
+          </div>
+        </article>
+
+        <h2 class="group-header">Group C</h2>
+
+        <article class="qa-card" id="qa-9">
+          <div class="question">
+            9. a) Write a program to create user registration form in one ASP.NET web page and display filled data in another page.<br/>
+            b) Write a program for handling exception in ASP.NET
+          </div>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">
+                Part A: User Registration Form with Page Navigation
+              </h3>
+              <p>
+                In ASP.NET Web Forms, we can use <code>Response.Redirect</code> passing a query string to display data from one page on another.
+              </p>
+              
+              <p><strong>1. Registration.aspx (The Registration Form)</strong></p>
+              <pre class="code-block"><span class="comment">&lt;%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registration.aspx.cs" Inherits="WebApp.Registration" %&gt;</span>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+    &lt;form id=<span class="string">"form1"</span> runat=<span class="string">"server"</span>&gt;
+        &lt;h2&gt;User Registration&lt;/h2&gt;
+        Name: &lt;asp:TextBox ID=<span class="string">"txtName"</span> runat=<span class="string">"server"</span>&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;&lt;br /&gt;
+        Email: &lt;asp:TextBox ID=<span class="string">"txtEmail"</span> runat=<span class="string">"server"</span>&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;&lt;br /&gt;
+        &lt;asp:Button ID=<span class="string">"btnRegister"</span> runat=<span class="string">"server"</span> Text=<span class="string">"Register"</span> OnClick=<span class="string">"btnRegister_Click"</span> /&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+              <p><strong>2. Registration.aspx.cs (Code-Behind)</strong></p>
+              <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">namespace</span> WebApp
+{
+    <span class="keyword">public partial class</span> <span class="class-name">Registration</span> : <span class="type">System.Web.UI.Page</span>
+    {
+        <span class="keyword">protected void</span> <span class="method-name">btnRegister_Click</span>(<span class="keyword">object</span> sender, <span class="type">EventArgs</span> e)
+        {
+            <span class="comment">// Pass the filled data to DisplayData.aspx using Query String</span>
+            <span class="class-name">Response</span>.Redirect(<span class="string">"DisplayData.aspx?name="</span> + txtName.Text + <span class="string">"&amp;email="</span> + txtEmail.Text);
+        }
+    }
+}</pre>
+
+              <p><strong>3. DisplayData.aspx (The Destination Page)</strong></p>
+              <pre class="code-block"><span class="comment">&lt;%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DisplayData.aspx.cs" Inherits="WebApp.DisplayData" %&gt;</span>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+    &lt;form id=<span class="string">"form1"</span> runat=<span class="string">"server"</span>&gt;
+        &lt;h2&gt;Registration Details&lt;/h2&gt;
+        &lt;asp:Label ID=<span class="string">"lblDetails"</span> runat=<span class="string">"server"</span>&gt;&lt;/asp:Label&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+              <p><strong>4. DisplayData.aspx.cs (Code-Behind)</strong></p>
+              <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">namespace</span> WebApp
+{
+    <span class="keyword">public partial class</span> <span class="class-name">DisplayData</span> : <span class="type">System.Web.UI.Page</span>
+    {
+        <span class="keyword">protected void</span> <span class="method-name">Page_Load</span>(<span class="keyword">object</span> sender, <span class="type">EventArgs</span> e)
+        {
+            <span class="comment">// Retrieve and display data from the Query String</span>
+            <span class="keyword">if</span> (<span class="class-name">Request</span>.QueryString[<span class="string">"name"</span>] != <span class="keyword">null</span> &amp;&amp; <span class="class-name">Request</span>.QueryString[<span class="string">"email"</span>] != <span class="keyword">null</span>)
+            {
+                <span class="keyword">string</span> name = <span class="class-name">Request</span>.QueryString[<span class="string">"name"</span>];
+                <span class="keyword">string</span> email = <span class="class-name">Request</span>.QueryString[<span class="string">"email"</span>];
+                lblDetails.Text = <span class="string">"Name: "</span> + name + <span class="string">"&lt;br/&gt;Email: "</span> + email;
+            }
+        }
+    }
+}</pre>
+            </div>
+
+            <div>
+              <h3 class="section-title">
+                Part B: Exception Handling in ASP.NET
+              </h3>
+              <p>
+                Exception handling in ASP.NET is primarily done using <code>try</code>, <code>catch</code>, and <code>finally</code> blocks to handle runtime errors gracefully without crashing the application.
+              </p>
+              <p>Here is an example program demonstrating a division operation with exception handling in the code-behind of an ASP.NET page:</p>
+              
+              <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">namespace</span> WebApp
+{
+    <span class="keyword">public partial class</span> <span class="class-name">ExceptionHandlingDemo</span> : <span class="type">System.Web.UI.Page</span>
+    {
+        <span class="keyword">protected void</span> <span class="method-name">btnCalculate_Click</span>(<span class="keyword">object</span> sender, <span class="type">EventArgs</span> e)
+        {
+            <span class="keyword">try</span>
+            {
+                <span class="comment">// Assume txtNumerator and txtDenominator are text boxes on the ASP.NET page</span>
+                <span class="keyword">int</span> numerator = <span class="class-name">Convert</span>.ToInt32(txtNumerator.Text);
+                <span class="keyword">int</span> denominator = <span class="class-name">Convert</span>.ToInt32(txtDenominator.Text);
+                
+                <span class="keyword">int</span> result = numerator / denominator;
+                lblResult.Text = <span class="string">"Result: "</span> + result.ToString();
+            }
+            <span class="keyword">catch</span> (<span class="class-name">DivideByZeroException</span>)
+            {
+                <span class="comment">// Specific exception catch block for division by zero</span>
+                lblResult.Text = <span class="string">"Error: Cannot divide by zero."</span>;
+            }
+            <span class="keyword">catch</span> (<span class="class-name">FormatException</span>)
+            {
+                <span class="comment">// Specific exception catch block for invalid format (e.g., entering letters instead of numbers)</span>
+                lblResult.Text = <span class="string">"Error: Please enter valid numbers."</span>;
+            }
+            <span class="keyword">catch</span> (<span class="class-name">Exception</span> ex)
+            {
+                <span class="comment">// General exception catch block to catch any other errors</span>
+                lblResult.Text = <span class="string">"An unexpected error occurred: "</span> + ex.Message;
+            }
+            <span class="keyword">finally</span>
+            {
+                <span class="comment">// This block always executes, regardless of whether an exception occurred or not</span>
+                <span class="comment">// Usually used for cleanup operations</span>
+                <span class="class-name">Console</span>.WriteLine(<span class="string">"Operation attempted."</span>);
+            }
+        }
+    }
+}</pre>
+            </div>
+          </div>
+        </article>
+
+        <article class="qa-card" id="qa-10">
+          <div class="question">
+            10. a) How virtual method is used to achieve dynamic binding in C#? Explain with the help of suitable program.<br/>
+            b) Define operator overloading. Write a C# program to overload binary operator.
+          </div>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">
+                Part A: Virtual Methods and Dynamic Binding
+              </h3>
+              <p>
+                A virtual method is a method that can be redefined in derived classes. It has an implementation in a base class as well as the derived class. A virtual method is created in the base class using the <code>virtual</code> keyword and overridden in the derived class using the <code>override</code> keyword.
+              </p>
+              <p>
+                <strong>Dynamic binding</strong> (also known as late binding) occurs when a base class reference points to a derived class object. At runtime, the CLR checks the actual object type and calls the overridden method in the derived class instead of the base class method.
+              </p>
+              <p><strong>Example of Dynamic Binding:</strong></p>
+              <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Vir</span>
+{
+    <span class="keyword">public virtual void</span> <span class="method-name">message</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"This is test (Base Class)"</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Vir1</span> : <span class="type">Vir</span>
+{
+    <span class="keyword">public override void</span> <span class="method-name">message</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"This is test1 (Derived Class)"</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>(<span class="keyword">string</span>[] args)
+    {
+        <span class="comment">// Base class reference pointing to a derived class object</span>
+        <span class="type">Vir</span> obj = <span class="keyword">new</span> <span class="type">Vir1</span>();
+        
+        <span class="comment">// Dynamic Binding: The derived class method is called at runtime</span>
+        obj.message();
+        
+        <span class="class-name">Console</span>.ReadKey();
+    }
+}</pre>
+            </div>
+
+            <div>
+              <h3 class="section-title">
+                Part B: Operator Overloading
+              </h3>
+              <p>
+                <strong>Operator overloading</strong> gives the ability to use the same operator to do various operations. It provides additional capabilities to C# operators when they are applied to user-defined data types (like classes and structs). It enables developers to make user-defined implementations of operations where one or both of the operands are of a user-defined class.
+              </p>
+              <p>
+                An overloaded binary operator must take two arguments; at least one of them must be of the type class or struct in which the operation is defined.
+              </p>
+              <p><strong>Example: Overloading the Binary '+' Operator</strong></p>
+              <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Complex</span>
+{
+    <span class="keyword">private int</span> x;
+    <span class="keyword">private int</span> y;
+
+    <span class="keyword">public</span> <span class="method-name">Complex</span>() {}
+
+    <span class="keyword">public</span> <span class="method-name">Complex</span>(<span class="keyword">int</span> i, <span class="keyword">int</span> j)
+    {
+        x = i;
+        y = j;
+    }
+
+    <span class="keyword">public void</span> <span class="method-name">ShowXY</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"{0} {1}"</span>, x, y);
+    }
+
+    <span class="comment">// Overloading the binary '+' operator</span>
+    <span class="keyword">public static</span> <span class="type">Complex</span> <span class="keyword">operator</span> +(<span class="type">Complex</span> c1, <span class="type">Complex</span> c2)
+    {
+        <span class="type">Complex</span> temp = <span class="keyword">new</span> <span class="type">Complex</span>();
+        temp.x = c1.x + c2.x;
+        temp.y = c1.y + c2.y;
+        <span class="keyword">return</span> temp;
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">MyClient</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="type">Complex</span> c1 = <span class="keyword">new</span> <span class="type">Complex</span>(<span class="number">10</span>, <span class="number">20</span>);
+        <span class="type">Complex</span> c2 = <span class="keyword">new</span> <span class="type">Complex</span>(<span class="number">20</span>, <span class="number">30</span>);
+        <span class="type">Complex</span> c3 = <span class="keyword">new</span> <span class="type">Complex</span>();
+        
+        <span class="comment">// The overloaded '+' operator is used here</span>
+        c3 = c1 + c2;
+        
+        c3.ShowXY(); <span class="comment">// Displays 30 &amp; 50</span>
+    }
+}</pre>
+            </div>
+          </div>
+        </article>
+      </main>
+    </div>
+  </body>
+</html>

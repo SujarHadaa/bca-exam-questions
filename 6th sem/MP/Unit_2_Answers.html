@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 2: Introduction to Android Programming</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --card-bg-color: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        h3 {
+            color: #444;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        strong {
+            font-weight: 600;
+        }
+        ol, ul {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a7ac0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 2: Introduction to Android Programming</h1>
+
+        <div class="card">
+            <h2>Explain android architecture briefly with a suitable diagram.</h2>
+            <img src="Screenshot From 2025-06-30 04-39-40.png" alt="Question 13">
+            <p>Android architecture is a software stack of components that are broadly divided into five layers:</p>
+            <ol>
+                <li><strong>Linux Kernel:</strong> This is the bottom layer of the Android architecture. It provides core system services like security, memory management, process management, network stack, and driver model. It also acts as an abstraction layer between the hardware and the rest of the software stack.</li>
+                <li><strong>Hardware Abstraction Layer (HAL):</strong> HAL is a layer that provides standard interfaces for hardware vendors to implement, allowing Android to be hardware-agnostic. It defines a standard interface for hardware vendors to implement, which Android then uses to interact with the device hardware.</li>
+                <li><strong>Android Runtime (ART) and Core Libraries:</strong>
+                    <ul>
+                        <li><strong>Android Runtime (ART):</strong> ART is the managed runtime used by Android. It executes the Dalvik Executable (DEX) format, which is a bytecode format designed for Android. ART performs ahead-of-time (AOT) compilation, compiling app code into machine code when the app is installed, which improves performance and battery life.</li>
+                        <li><strong>Core Libraries:</strong> These are Java-based libraries that provide most of the functionality available in the Java programming language, including data structures, utilities, and I/O operations.</li>
+                    </ul>
+                </li>
+                <li><strong>Framework Layer (Java API Framework):</strong> This layer provides the APIs that developers use to build Android applications. It includes various managers and services like Activity Manager, Package Manager, Telephony Manager, Location Manager, and Notification Manager. Developers can access these services through Java APIs.</li>
+                <li><strong>Applications:</strong> This is the top layer of the Android architecture, where all the user applications reside. Both system applications (like Home, Contacts, Phone, Browser) and third-party applications developed by users are part of this layer.</li>
+            </ol>
+            <p><strong>Diagram:</strong></p>
+            <pre>
++-----------------------------------------------------------------------+
+|                               Applications                            |
+| (Home, Contacts, Phone, Browser, Third-party Apps)                    |
++-----------------------------------------------------------------------+
+|                                                                       |
+|                           Framework Layer (Java API Framework)        |
+| (Activity Manager, Package Manager, Telephony Manager, Location Manager)|
++-----------------------------------------------------------------------+
+|                                                                       |
+|                     Android Runtime (ART) & Core Libraries            |
+| (ART, Dalvik Executable, Java Core Libraries)                         |
++-----------------------------------------------------------------------+
+|                                                                       |
+|                       Hardware Abstraction Layer (HAL)                |
+| (Camera HAL, Audio HAL, Bluetooth HAL, etc.)                          |
++-----------------------------------------------------------------------+
+|                                                                       |
+|                               Linux Kernel                            |
+| (Drivers, Memory Management, Process Management, Networking)          |
++-----------------------------------------------------------------------+
+            </pre>
+        </div>
+
+        <div class="card">
+            <h2>Explain android architecture with a suitable diagram.</h2>
+            <img src="Screenshot From 2025-06-30 04-40-16.png" alt="Question 12">
+            <p>This question is a duplicate of the previous one. Please refer to the answer above for a detailed explanation of Android architecture with a suitable diagram.</p>
+        </div>
+
+        <div class="card">
+            <h2>Draw the hierarchical directory structure of an android application. How can you use string and string array in android? Explain.</h2>
+            <img src="Screenshot From 2025-06-30 04-40-08.png" alt="Question 12">
+            <h3>Hierarchical Directory Structure of an Android Application:</h3>
+            <pre>
+ProjectName/
+├── .gradle/
+├── .idea/
+├── app/
+│   ├── build/
+│   ├── libs/
+│   ├── src/
+│   │   ├── androidTest/
+│   │   │   └── java/
+│   │   │       └── com/example/projectname/ (Instrumentation tests)
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/example/projectname/ (Your Java/Kotlin source code)
+│   │   │   │       ├── MainActivity.java
+│   │   │   │       └── ...
+│   │   │   ├── res/
+│   │   │   │   ├── drawable/ (Images, XML drawables)
+│   │   │   │   ├── layout/ (XML layout files)
+│   │   │   │   │   └── activity_main.xml
+│   │   │   │   ├── mipmap/ (Launcher icons)
+│   │   │   │   ├── values/ (XML files for strings, colors, styles, dimensions)
+│   │   │   │   │   ├── colors.xml
+│   │   │   │   │   ├── strings.xml
+│   │   │   │   │   └── styles.xml
+│   │   │   │   └── xml/ (Various XML resources)
+│   │   │   └── AndroidManifest.xml (Application manifest file)
+│   │   └── test/
+│   │       └── java/
+│   │           └── com/example/projectname/ (Unit tests)
+│   └── build.gradle (Module-level build file)
+├── build.gradle (Project-level build file)
+├── gradle/
+│   └── wrapper/
+├── gradlew
+├── gradlew.bat
+├── local.properties/
+├── settings.gradle/
+└── ...
+            </pre>
+
+            <h3>How to use String and String Array in Android:</h3>
+            <p>In Android, strings and string arrays are typically defined in XML resource files, specifically in <code>res/values/strings.xml</code>. This approach promotes internationalization and makes it easier to manage text content separately from your code.</p>
+
+            <h4>1. Defining Strings and String Arrays in <code>strings.xml</code>:</h4>
+            <p>Open or create <code>app/src/main/res/values/strings.xml</code> and add your string resources:</p>
+            <pre><code class="language-xml">
+&lt;resources>
+    &lt;string name="app_name">My Android App&lt;/string>
+    &lt;string name="welcome_message">Welcome to our app!&lt;/string>
+    &lt;string name="greeting_format">Hello, %1$s!&lt;/string> &lt;!-- %1$s is a placeholder for a string argument -->
+
+    &lt;string-array name="programming_languages">
+        &lt;item>Java&lt;/item>
+        &lt;item>Kotlin&lt;/item>
+        &lt;item>Swift&lt;/item>
+        &lt;item>Dart&lt;/item>
+        &lt;item>Python&lt;/item>
+    &lt;/string-array>
+&lt;/resources>
+            </code></pre>
+
+            <h4>2. Accessing Strings in Layout XML:</h4>
+            <p>You can reference string resources directly in your layout XML files using the <code>@string/</code> syntax:</p>
+            <pre><code class="language-xml">
+&lt;TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/welcome_message"
+    android:textSize="24sp" />
+
+&lt;Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/app_name" />
+            </code></pre>
+
+            <h4>3. Accessing Strings and String Arrays in Java/Kotlin Code:</h4>
+            <p>You can retrieve string and string array resources programmatically in your Activity or Fragment classes using <code>getResources().getString()</code> and <code>getResources().getStringArray()</code> methods.</p>
+
+            <p><strong>Example in Java:</strong></p>
+            <pre><code class="language-java">
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        TextView welcomeTextView = findViewById(R.id.welcomeTextView);
+
+        // Accessing a single string
+        String welcomeMessage = getResources().getString(R.string.welcome_message);
+        welcomeTextView.setText(welcomeMessage);
+
+        // Accessing a formatted string
+        String userName = "Alice";
+        String formattedGreeting = String.format(getResources().getString(R.string.greeting_format), userName);
+        // Or using getString(int resId, Object... formatArgs) directly
+        // String formattedGreeting = getResources().getString(R.string.greeting_format, userName);
+        // welcomeTextView.setText(formattedGreeting);
+
+        // Accessing a string array
+        String[] languages = getResources().getStringArray(R.array.programming_languages);
+
+        StringBuilder languagesList = new StringBuilder("Programming Languages:\n");
+        for (String lang : languages) {
+            languagesList.append("- ").append(lang).append("\n");
+        }
+
+        TextView languagesTextView = findViewById(R.id.languagesTextView);
+        languagesTextView.setText(languagesList.toString());
+    }
+}
+            </code></pre>
+
+            <p><strong>Example in Kotlin:</strong></p>
+            <pre><code class="language-kotlin">
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.TextView
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val welcomeTextView: TextView = findViewById(R.id.welcomeTextView)
+
+        // Accessing a single string
+        val welcomeMessage = resources.getString(R.string.welcome_message)
+        welcomeTextView.text = welcomeMessage
+
+        // Accessing a formatted string
+        val userName = "Bob"
+        val formattedGreeting = String.format(resources.getString(R.string.greeting_format), userName)
+        // Or using getString(int resId, Object... formatArgs) directly
+        // val formattedGreeting = resources.getString(R.string.greeting_format, userName)
+        // welcomeTextView.text = formattedGreeting
+
+        // Accessing a string array
+        val languages = resources.getStringArray(R.array.programming_languages)
+
+        val languagesList = StringBuilder("Programming Languages:\n")
+        for (lang in languages) {
+            languagesList.append("- ").append(lang).append("\n")
+        }
+
+        val languagesTextView: TextView = findViewById(R.id.languagesTextView)
+        languagesTextView.text = languagesList.toString()
+    }
+}
+            </code></pre>
+            <p>Remember to have corresponding TextViews with IDs <code>welcomeTextView</code> and <code>languagesTextView</code> in your <code>activity_main.xml</code> layout file for the above code to work.</p>
+        </div>
+    </div>
+</body>
+</html>
