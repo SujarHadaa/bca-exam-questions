@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>2022 Exam Questions - IS</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<div class="notebook-container">
+<div class="header">
+<h1>2022 Information Security Questions</h1>
+</div>
+<div class="toc-card">
+<h2 class="toc-title">Table of Contents</h2>
+<h3 class="group-title" style="margin-top: 1rem; margin-bottom: 0.5rem; color: var(--primary-color);">Group A</h3>
+<ul class="toc-list">
+<li><a href="#q2">2. What is Information Security? List and briefly define fundamental security design principles.</a></li>
+<li><a href="#q3">3. Explain HMAC with its objectives.</a></li>
+<li><a href="#q4">4. What are the vulnerabilities of passwords? Explain different strategies used for the selection of effective password.</a></li>
+<li><a href="#q5">5. Define access right. Explain the concept of trust framework.</a></li>
+<li><a href="#q6">6. Describe about Honeypot with the types of honeypots that may be deployed.</a></li>
+<li><a href="#q7">7. How can you say that Intrusion Detection System is the backbone for Information Security? Justify along with its categories.</a></li>
+<li><a href="#q8">8. Explain the terms SSL, TLS and handshake protocol.</a></li>
+</ul>
+<h3 class="group-title" style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--primary-color);">Group B</h3>
+<ul class="toc-list">
+<li><a href="#q9">9. Define the terms threats and attacks in terms of Information Security. Explain different types of security threats in detail.</a></li>
+<li><a href="#q10">10. What is a cryptosystem? Explain the concepts of Vigenere, Rail Fence, Playfair, and Caesar Ciphers.</a></li>
+<li><a href="#q11">11. What is a security audit? What is its importance? Explain the security auditing architecture in detail.</a></li>
+</ul>
+</div>
+<div class="questions-container">
+<div class="group-header"><h2 style="margin: 2rem 0 1rem; color: var(--primary-color); border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem;">Group A</h2></div>
+<div class="qa-card">
+<div class="question" id="q2">2. What is Information Security? List and briefly define fundamental security design principles.</div>
+<div class="answer full-marks-answer">
+<div>
+    <p><strong>Information Security (InfoSec):</strong> Information Security is the practice of protecting information and data from unauthorized access, modification, destruction, or disruption. In simple terms, it's about keeping data safe. It is built on three core pillars known as the <strong>CIA Triad</strong>:</p>
+    <ul>
+        <li><strong>Confidentiality:</strong> Keeping secrets secret (only authorized people can see the data).</li>
+        <li><strong>Integrity:</strong> Making sure the data is accurate and has not been altered or tampered with.</li>
+        <li><strong>Availability:</strong> Ensuring that systems and data are accessible to users whenever they need them.</li>
+    </ul>
+
+    <p style="margin-top: 1.5rem;"><strong>Fundamental Security Design Principles:</strong></p>
+    <ul class="feature-list">
+        <li><strong>Least Privilege (Minimum Access):</strong> Users or programs should only have the minimum level of access necessary to do their job. <br><em>Layman analogy: A janitor only gets the key to the broom closet, not the principal's office.</em></li>
+        <li><strong>Fail-Safe Defaults (Deny by Default):</strong> If a decision cannot be made, access is denied. Access is allowed only by explicit permission, not by exclusion. <br><em>Layman analogy: A door remains locked until you show your ID, rather than being open until you are kicked out.</em></li>
+        <li><strong>Open Design (No Security by Obscurity):</strong> The security of a system should not depend on keeping its design secret. It should be secure even if the attacker knows how it works (relying on keys instead). <br><em>Layman analogy: A physical safe is secure because of the combination lock, not because the safe's blueprint is hidden.</em></li>
+        <li><strong>Economy of Mechanism (Keep It Simple):</strong> The security design should be as simple and small as possible. Fewer parts mean fewer things that can go wrong or be exploited. <br><em>Layman analogy: A simple lock is easier to secure than a complicated system of 10 locks.</em></li>
+        <li><strong>Complete Mediation (Check Every Time):</strong> Every single attempt to access a resource must be checked. No bypassing the check, even if they were allowed access a minute ago. <br><em>Layman analogy: A security guard checks your badge every single time you enter, even if you just walked out for a second.</em></li>
+        <li><strong>Separation of Privilege (Double Verification):</strong> Requiring multiple keys or conditions to access a sensitive resource. <br><em>Layman analogy: Launching a nuclear missile requires two separate officers to turn two different keys at the same time.</em></li>
+        <li><strong>Least Common Mechanism (Separate Users):</strong> Minimize the resources shared by different users. This prevents one compromised user from affecting others. <br><em>Layman analogy: Giving each student a separate locker rather than having them share one big locker.</em></li>
+        <li><strong>Psychological Acceptability (Easy to Use):</strong> Security mechanisms must be user-friendly. If security is too annoying, users will bypass it. <br><em>Layman analogy: If a password policy requires a 50-character password changing daily, users will write it on a sticky note on their monitor.</em></li>
+        <li><strong>Work Factor (Cost vs. Reward):</strong> The cost or effort to break the security should be much higher than the value of the information being protected. <br><em>Layman analogy: Don't spend $10,000 on a lock to protect a $10 bicycle.</em></li>
+        <li><strong>Compromise Recording (Keep Logs):</strong> The system should log and record security breaches so they can be analyzed later. <br><em>Layman analogy: Installing security cameras to record who enters the room, even if the door lock fails.</em></li>
+    </ul>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q3">3. Explain HMAC with its objectives.</div>
+<div class="answer full-marks-answer">
+<div>
+    <p><strong>HMAC (Hash-based Message Authentication Code):</strong> HMAC is a security tool used to verify two key things when sending messages over a network:
+    <ol>
+        <li><strong>Message Integrity:</strong> Has the message been altered or tampered with during transmission?</li>
+        <li><strong>Authenticity:</strong> Is the message really sent by the claimed sender?</li>
+    </ol>
+    </p>
+    <p><em>How it works simply:</em> It takes a standard <strong>Hash Function</strong> (like MD5 or SHA-256) and combines it with a **Secret Key** known only to the sender and receiver. If the hash matches on both sides, the message is genuine.</p>
+    
+    <p style="margin-top: 1.5rem;"><strong>Objectives of HMAC (Why it was created):</strong></p>
+    <ul class="feature-list">
+        <li><strong>Use Existing Hash Functions:</strong> It was designed to use standard, widely available hash functions (like MD5, SHA-1) without needing to modify them.</li>
+        <li><strong>Easy Replaceability (Plug-and-Play):</strong> If the embedded hash function is found to be insecure in the future, it should be easy to swap it out for a faster or more secure one (e.g., swapping SHA-1 for SHA-256) without rewriting the whole HMAC protocol.</li>
+        <li><strong>No Performance Loss:</strong> It should preserve the speed and performance of the original hash function without adding heavy overhead.</li>
+        <li><strong>Simple Key Handling:</strong> It should use and handle cryptographic keys in a simple and straightforward way.</li>
+        <li><strong>Strong Security Analysis:</strong> Its design should be easy to analyze mathematically so we can easily prove its strength based on the security of the underlying hash function.</li>
+    </ul>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q4">4. What are the vulnerabilities of passwords? Explain different strategies used for the selection of effective password.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Vulnerabilities of Passwords (Why passwords can be weak)</h3>
+    <ul class="feature-list">
+        <li><strong>Dictionary Attacks:</strong> Attackers use automated tools to try every word in a dictionary. <br><em>Layman analogy: A thief trying every key on a giant keychain until one opens the door.</em></li>
+        <li><strong>Brute-Force Attacks:</strong> Trying every possible combination of letters, numbers, and symbols until the correct one is guessed. <br><em>Layman analogy: Trying 0000, 0001, 0002... on a padlock until it pops open.</em></li>
+        <li><strong>Social Engineering & Phishing:</strong> Tricking the user into giving up their password voluntarily (e.g., via fake emails). <br><em>Layman analogy: Someone calling you pretending to be the bank and asking for your PIN.</em></li>
+        <li><strong>Shoulder Surfing:</strong> Literally looking over someone's shoulder as they type their password into a device.</li>
+        <li><strong>Keyloggers:</strong> Malicious software that secretly records every keystroke made by the user to capture the password.</li>
+        <li><strong>Password Reuse:</strong> Using the same password across multiple sites. If one site gets hacked, all your accounts are compromised. <br><em>Layman analogy: Having one master key for your house, car, office, and safe. If you lose it, everything is at risk.</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Strategies for Selection of Effective Passwords</h3>
+    <ul class="feature-list">
+        <li><strong>User Education:</strong> Teaching users to choose unpredictable passwords and to avoid sharing them or writing them down on sticky notes.</li>
+        <li><strong>Computer-Generated Passwords:</strong> The system randomly generates a strong, complex password for the user. <br><em>Layman analogy: Being handed a random, complex lock code by the manufacturer instead of choosing "1234".</em></li>
+        <li><strong>Proactive Password Checking (Rule-based):</strong> The system enforces rules during password creation (e.g., must contain uppercase, lowercase, numbers, symbols, and be at least 8 characters). <br><em>Layman analogy: The locksmith refuses to make a key unless it has at least 5 complex ridges.</em></li>
+        <li><strong>Reactive Password Checking:</strong> The system periodically runs user passwords against a dictionary or list of common passwords and rejects them if they are too weak or common. <br><em>Layman analogy: The system checking a list of "worst passwords" and saying, "No, you can't use 'password123'."</em></li>
+        <li><strong>Using Passphrases:</strong> Using a long sentence or phrase instead of a single word (e.g., "MyDogEats3BlueApples!"). It's easy for a human to remember but incredibly hard for a computer to guess.</li>
+    </ul>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q5">5. Define access right. Explain the concept of trust framework.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Access Right</h3>
+    <p><strong>Access Right:</strong> It is a specific permission given to a person (or computer program) that allows them to perform a certain action on a specific resource, like a file or folder.</p>
+    <ul class="feature-list" style="margin-top: 1rem;">
+        <li><strong>Examples:</strong> Permission to <em>Read</em>, <em>Write</em>, or <em>Execute</em> a file.</li>
+        <li><br><em>Layman analogy: Think of an access right like a VIP pass at a concert. A "Backstage Pass" (access right) allows you to enter the backstage area (the resource) to meet the band (the action), whereas a regular ticket only gives you the right to sit in the audience.</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Trust Framework</h3>
+    <p><strong>Trust Framework:</strong> A trust framework provides a common set of agreed-upon standards that allow completely different organizations (disparate entities) to establish trust with each other.</p>
+    
+    <ul class="feature-list" style="margin-top: 1rem;">
+        <li><strong>No Extra Contracts:</strong> By ensuring all organizations meet the same requirements, they can skip signing individual legal and peer-to-peer agreements.</li>
+        <li><strong>Scalable Trust:</strong> Each new organization or user that connects to the framework grows the trusted network rapidly.</li>
+        <li><strong>Unified Harmony:</strong> It provides policy and technical interoperability between three main parties: the identity issuers, the individuals asserting their identity, and the organizations relying on it.</li>
+        <li><br><em>Layman analogy: Imagine a universal passport system. If every country agrees on exactly how passports are made and verified (the framework), they don't need to sign individual treaties with every single country to allow travel. One ID instantly works everywhere.</em></li>
+    </ul>
+
+    <h4 style="color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.5rem;">Components of Trust Frameworks</h4>
+    <ul class="feature-list">
+        <li><strong>Policies:</strong> The common set of minimum requirements. They are published publicly so organizations can decide if they trust the network. <br><em>Layman analogy: The official rulebook everyone must agree to play by.</em></li>
+        <li><strong>Infrastructure:</strong> The technical mechanisms that deliver a "single source of truth" about who or what is trusted. <br><em>Layman analogy: A secure master database everyone checks.</em></li>
+        <li><strong>Certification:</strong> The process of ensuring everyone adheres to the requirements. Trust is approved or revoked through regular audits and monitoring. <br><em>Layman analogy: Health inspectors visiting restaurants to make sure they actually follow the rulebook.</em></li>
+        <li><strong>Interoperability:</strong> The ability for information and credentials to be accepted and used seamlessly using common standards. <br><em>Layman analogy: Electrical plugs that fit into any socket without needing an adapter.</em></li>
+        <li><strong>Technical Standards & Legality:</strong> The specific technical specifications and legal backing that enable and promote seamless exchange (like healthcare interoperability using Direct exchange).</li>
+    </ul>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q6">6. Describe about Honeypot with the types of honeypots that may be deployed.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Honeypot</h3>
+    <p><strong>Honeypot:</strong> A honeypot is a fake computer system set up as a trap or decoy for cyber attackers. Its purpose is to attract and deflect attacks away from real targets, allowing security professionals to safely log and study the attacker's methods.</p>
+    <ul class="feature-list" style="margin-top: 1rem;">
+        <li><br><em>Layman analogy: It's like leaving a fake wallet filled with tracking dye in plain sight to catch a thief. The thief attacks the fake wallet thinking it's real, and while they do, you record everything they do without risking your real money.</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Types of Honeypots</h3>
+    <ul class="feature-list">
+        <li><strong>Low-Interaction Honeypots:</strong> Simulates only a few fake services. It is easy to set up and good for catching basic automated attacks, but doesn't let the attacker do much inside the system. <br><em>Layman analogy: A cardboard cutout of a security guard or a fake security camera.</em></li>
+        <li><strong>High-Interaction Honeypots:</strong> A real, fully functioning operating system that is highly controlled. It takes more effort to set up but gives deep insights into the attacker's complex moves. <br><em>Layman analogy: A fully furnished fake house with hidden cameras everywhere to study how a burglar operates inside.</em></li>
+        <li><strong>Research Honeypots:</strong> Used by security researchers (often in academic or lab settings) to discover new attack methods and study unknown malware in the wild. <br><em>Layman analogy: A controlled laboratory setup specifically designed to catch and study a new, unknown virus.</em></li>
+        <li><strong>Production Honeypots:</strong> Deployed alongside real, live servers in a company. Their job is to distract attackers away from actual valuable data and alert administrators of a breach immediately. <br><em>Layman analogy: Putting a fake safe in the living room so the burglar ignores the real safe hidden behind a painting.</em></li>
+    </ul>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q7">7. How can you say that Intrusion Detection System is the backbone for Information Security? Justify along with its categories.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Why IDS is the Backbone of Information Security</h3>
+    <p>An <strong>Intrusion Detection System (IDS)</strong> is a device or software that constantly monitors a network for malicious activity or policy violations. It is considered the backbone of security because it acts as the crucial <strong>second line of defense</strong> (Defense-in-Depth strategy).</p>
+    <ul class="feature-list" style="margin-top: 1rem;">
+        <li><br><em>Layman analogy: Think of a firewall as the heavy locked front door of a building, and the IDS as the security cameras and motion sensors inside. If a clever burglar manages to pick the lock (bypass the firewall), the IDS catches them red-handed inside and sets off the alarm. Without it, the attacker could roam freely undetected.</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Categories of IDS (How they are deployed)</h3>
+    <ul class="feature-list">
+        <li><strong>Network-based IDS (NIDS):</strong> Placed at strategic points within the network to monitor all passing traffic to and from all devices. <br><em>Layman analogy: A security camera mounted high up on a busy highway, watching all the cars go by.</em></li>
+        <li><strong>Host-based IDS (HIDS):</strong> Installed on a single, specific computer or device to monitor only its inbound and outbound packets. <br><em>Layman analogy: A personal bodyguard assigned to protect just one specific VIP.</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Categories of IDS (How they detect threats)</h3>
+    <ul class="feature-list">
+        <li><strong>Signature-based IDS:</strong> Compares network traffic against a database of known malicious threats (signatures), much like how antivirus software works. <br><em>Layman analogy: A police officer checking faces against a "Most Wanted" poster. If a brand new criminal appears, they might slip by.</em></li>
+        <li><strong>Anomaly-based IDS:</strong> Learns what "normal" network behavior looks like (the baseline) and flags any unusual activity that deviates from this norm. It is great for catching brand new, unknown attacks. <br><em>Layman analogy: A bank teller noticing if a customer who usually withdraws $50 suddenly tries to withdraw $50,000. It's unusual, so they raise an alert.</em></li>
+    </ul>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q8">8. Explain the terms SSL, TLS and handshake protocol.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">SSL (Secure Sockets Layer)</h3>
+    <p><strong>SSL:</strong> It is an older, standard security technology that was originally developed in the 1990s. Its main purpose is to establish an encrypted, safe link between a server and a client (like a website and your web browser). By encrypting the data, it ensures that sensitive information, such as passwords or credit card numbers, remains completely private and cannot be read by anyone eavesdropping on the network. <em>Note: While it paved the way for secure internet browsing, SSL is now considered outdated and has known security vulnerabilities.</em></p>
+    <ul class="feature-list" style="margin-top: 1rem;">
+        <li><br><em>Layman analogy: Imagine sending a letter through a dangerous neighborhood. SSL is like putting your letter inside a locked, secure armored truck so no one can intercept or read your private messages while they travel across the internet.</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">TLS (Transport Layer Security)</h3>
+    <p><strong>TLS:</strong> This is the modern, highly secure successor to SSL. It performs the exact same foundational job—encrypting data between two systems—but it uses far stronger, more advanced mathematical algorithms. It is the technology that powers the "HTTPS" in website addresses and is represented by the secure padlock icon in your browser. Not only does it encrypt the data, but it also guarantees data integrity (ensuring the message wasn't secretly altered in transit). <em>(Fun fact: Even though we use TLS today, many people and companies still commonly refer to it as "SSL certificates").</em></p>
+    <ul class="feature-list" style="margin-top: 1rem;">
+        <li><br><em>Layman analogy: If SSL was the original armored truck, TLS is like upgrading that truck with shatterproof glass, an unpickable digital lock, and a much faster engine. It is the new, unbreakable standard for safe digital transport.</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Handshake Protocol</h3>
+    <p><strong>Handshake Protocol:</strong> This is the crucial first step, and the most complex part, of establishing any TLS/SSL connection. Before any actual user data is transmitted, the client (your computer) and the server (the website) must have a quick, automated "conversation." During this protocol, they exchange a series of messages to verify each other's identity (authentication), usually by checking digital certificates. Once they trust each other, they securely negotiate and generate unique, temporary "session keys" that will be used to encrypt the rest of their communication.</p>
+    <ul class="feature-list" style="margin-top: 1rem;">
+        <li><br><em>Layman analogy: Picture two secret agents meeting for the very first time. They start by exchanging secret code phrases (the handshake) to verify their IDs and prove they are who they say they are. Once confirmed, they agree on a brand-new secret language (the session keys) that only they know, and only then do they start discussing their highly classified mission.</em></li>
+    </ul>
+</div>
+</div>
+</div>
+<div class="group-header"><h2 style="margin: 3rem 0 1rem; color: var(--primary-color); border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem;">Group B</h2></div>
+<div class="qa-card">
+<div class="question" id="q9">9. Define the terms threats and attacks in terms of Information Security. Explain different types of security threats in detail.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Threats vs. Attacks</h3>
+    <p><strong>Threat:</strong> A threat is a <em>potential</em> danger or possibility that someone or something could exploit a vulnerability in a system, causing harm or breaching security.</p>
+    <ul class="feature-list" style="margin-top: 0.5rem;">
+        <li><em>Layman analogy: A known burglar scouting your neighborhood. They haven't done anything yet, but the potential for harm is there.</em></li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Attack:</strong> An attack is a <em>deliberate, active attempt</em> to evade security and violate the system's policies. It is the realization of a threat.</p>
+    <ul class="feature-list" style="margin-top: 0.5rem;">
+        <li><em>Layman analogy: The burglar is now actively picking your front door lock. The threat has turned into a real action.</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Types of Security Threats in Detail</h3>
+    <ul class="feature-list">
+        <li><strong>Interruption (Threat to Availability):</strong> An asset is destroyed or becomes unavailable or unusable. <br><em>Layman analogy: A vandal cutting the power lines to your house so you can't turn on the lights. In computers, this could be physically destroying a hard drive or overwhelming a website so no one can visit it.</em></li>
+        <li><strong>Interception (Threat to Confidentiality):</strong> An unauthorized party gains access to a private asset. <br><em>Layman analogy: Someone secretly wiretapping your phone to listen to your private conversations. In computers, this is like a hacker stealing your unencrypted passwords as they travel across the Wi-Fi.</em></li>
+        <li><strong>Modification (Threat to Integrity):</strong> An unauthorized party not only gains access to an asset but tampers with it. <br><em>Layman analogy: Someone sneaking into your office and changing the amount on a signed check from $100 to $1,000. In computers, this could be altering a database record or changing a message while it's in transit.</em></li>
+        <li><strong>Fabrication (Threat to Authenticity):</strong> An unauthorized party inserts counterfeit or fake objects into the system. <br><em>Layman analogy: A scammer creating a fake ID badge to sneak into a building. In computers, this could be sending a fake email pretending to be from the CEO (phishing) or inserting fake records into a file.</em></li>
+    </ul>
+</div>
+</div>
+</div>
+
+<div class="qa-card">
+<div class="question" id="q10">10. What is a cryptosystem? Explain the concepts of Vigenere, Rail Fence, Playfair, and Caesar Ciphers.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Cryptosystem</h3>
+    <p><strong>Cryptosystem:</strong> A cryptosystem is a complete suite of cryptographic algorithms needed to implement security services (like confidentiality). It typically consists of three main parts: one algorithm for generating keys, one for encrypting the message, and one for decrypting it back.</p>
+    <ul class="feature-list" style="margin-top: 0.5rem;">
+        <li><em>Layman analogy: Think of it like a complete lock-and-key manufacturing system. It includes the machine that cuts the unique key (key generation), the padlock you snap onto a door to secure it (encryption), and the process of using that exact key to unlock the door later (decryption).</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Vigenere Cipher</h3>
+    <p><strong>Vigenere Cipher:</strong> This is a method of encrypting alphabetic text by using a series of interwoven Caesar ciphers based on the letters of a secret keyword.</p>
+    <ul class="feature-list" style="margin-top: 0.5rem;">
+        <li><strong>Encoding Method:</strong>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                <li>Get your plain text and key.</li>
+                <li>Level both the plain text and key by repeating the key.</li>
+                <li>Use the Vigenere table to find the corresponding value.</li>
+            </ol>
+        </li>
+        <li><strong>Decoding Method:</strong>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                <li>Get your cipher value and key.</li>
+                <li>Level both cipher and key by repeating the key.</li>
+                <li>Use the Vigenere table to decode and get the original text.</li>
+            </ol>
+        </li>
+        <li><em>Layman analogy: It is like a smart Caesar cipher where the shift amount constantly changes based on a secret keyword (like "CAT"). The first letter shifts by 'C', the second by 'A', making it much harder for attackers to guess because the pattern keeps jumping around!</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Rail Fence Cipher</h3>
+    <p><strong>Rail Fence Cipher:</strong> The plain text is written down as a sequence of diagonals and then read off as a sequence of rows depending on the depth given.</p>
+    <ul class="feature-list" style="margin-top: 0.5rem;">
+        <li><strong>Encryption:</strong> Write the plain text as per the depth down the sequence of the diagonal and read off as a sequence of rows.</li>
+        <li><strong>Decryption:</strong>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                <li>Make a table with the number of words as columns and rows as depth.</li>
+                <li>Fill the first rows from the encrypted text to the first row.</li>
+                <li>Fill the remaining words down the rows and continue this process till all the words are covered.</li>
+                <li>Read the sequence as rows which gives us the plain text.</li>
+            </ol>
+        </li>
+        <li><em>Layman analogy: Imagine writing in a zig-zag pattern on a wooden rail fence. You put the 1st letter on the top rail, 2nd on the bottom, 3rd on the top, etc. Then, you read it straight across the top rail, then straight across the bottom rail.</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Caesar Cipher</h3>
+    <p><strong>Caesar Cipher:</strong> A simple substitution cipher where each letter in the plaintext is shifted a certain number of places down the alphabet.</p>
+    <ul class="feature-list" style="margin-top: 0.5rem;">
+        <li><strong>Encoding Method:</strong>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                <li>Get your plain text and choose a numerical shift key (e.g., 3).</li>
+                <li>For every letter in the plain text, shift it forward in the alphabet by the key amount.</li>
+                <li>Wrap around to 'A' if you pass 'Z'. This gives you the cipher text.</li>
+            </ol>
+        </li>
+        <li><strong>Decoding Method:</strong>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                <li>Get your cipher text and the numerical shift key used.</li>
+                <li>For every letter in the cipher text, shift it backward in the alphabet by the key amount.</li>
+                <li>Wrap around to 'Z' if you pass 'A'. This gives you the original plain text.</li>
+            </ol>
+        </li>
+        <li><em>Layman analogy: Think of a secret decoder ring from a cereal box. If the shift is 3, 'A' becomes 'D'. It is very simple to use but incredibly easy to crack.</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Playfair Cipher</h3>
+    <p><strong>Playfair Cipher:</strong> A symmetric encryption technique that encrypts pairs of letters (digraphs) instead of single letters, using a 5x5 grid constructed with a keyword.</p>
+    <ul class="feature-list" style="margin-top: 0.5rem;">
+        <li><strong>Encoding Method:</strong>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                <li>Create a 5x5 grid using the secret keyword (dropping duplicate letters) and fill the rest with the remaining alphabet (combining I/J).</li>
+                <li>Split the plain text into pairs of letters. Add a filler letter (like 'X') if a pair has identical letters or if there's an odd letter at the end.</li>
+                <li>For each pair: If in the same row, take letters to their immediate right. If in the same column, take letters immediately below. If forming a rectangle, take letters at opposite corners on the same row.</li>
+            </ol>
+        </li>
+        <li><strong>Decoding Method:</strong>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                <li>Use the exact same 5x5 grid constructed from the keyword.</li>
+                <li>Split the cipher text into pairs of letters.</li>
+                <li>Reverse the encoding rules: If in the same row, take letters to the left. If in the same column, take letters above. If forming a rectangle, take opposite corners on the same row.</li>
+                <li>Remove any filler letters used to read the original text.</li>
+            </ol>
+        </li>
+        <li><em>Layman analogy: Instead of swapping one letter for another, you and your friend use a secret 5x5 bingo card of letters. You take two letters from your message, find them on the card, and use the letters at the opposite corners of the rectangle they form to encrypt them. Because it scrambles two letters at a time, it ruins normal letter patterns and is much harder to break!</em></li>
+    </ul>
+</div>
+</div>
+</div>
+
+<div class="qa-card">
+<div class="question" id="q11">11. What is a security audit? What is its importance? Explain the security auditing architecture in detail.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Security Audit</h3>
+    <p><strong>Security Audit:</strong> An IT security audit is a comprehensive assessment of an organization's security posture and IT infrastructure. It focuses specifically on the security of information system assets to find vulnerabilities in networks, connected devices, and applications, giving the opportunity to fix loopholes and achieve compliance.</p>
+    <ul class="feature-list" style="margin-top: 0.5rem;">
+        <li><em>Layman analogy: It's like bringing in a master home inspector before winter. They check your roof, windows, and furnace to find any drafts or leaks (vulnerabilities) so you can fix them before a storm hits (hackers).</em></li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Importance of IT Security Audit</h3>
+    <ul class="feature-list">
+        <li><strong>Protects Critical Data:</strong> Safeguards the most valuable data resources of the organization.</li>
+        <li><strong>Ensures Compliance:</strong> Keeps the organization compliant with various security certifications and laws.</li>
+        <li><strong>Proactive Defense:</strong> Identifies security loopholes before hackers can find and exploit them.</li>
+        <li><strong>Maintains Up-to-Date Measures:</strong> Keeps the organization updated with modern security measures and practices.</li>
+        <li><strong>Physical Security:</strong> Identifies vulnerabilities in physical security (like broken doors or easily accessible server rooms).</li>
+        <li><strong>Policy Formulation:</strong> Helps in formulating new, stronger security policies based on audit findings.</li>
+        <li><strong>Emergency Preparedness:</strong> Prepares the organization for emergency responses in case a cybersecurity breach actually happens.</li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 1.5rem;">Security Auditing Architecture</h3>
+    <p>The security auditing architecture defines the detailed structural framework to protect the IT infrastructure and how it is assessed. It includes:</p>
+    <ul class="feature-list" style="margin-top: 0.5rem;">
+        <li><strong>Security Protocols:</strong> Details the tools and processes used in threat detection, prevention, incident response (handling breaches), and disaster recovery (resuming business). <br><em>Layman analogy: The building's emergency playbook—detailing exactly what to do and what tools to use if there's a fire, break-in, or earthquake.</em></li>
+        <li><strong>Account Creation and Management:</strong> A guide on user account creation, detailing exactly what access to grant or restrict based on roles. Limiting access (e.g., separating payroll and tax accountants) drastically reduces risks. <br><em>Layman analogy: Giving employees different colored keycards. A cashier can only open the front door, while the manager's keycard can open the safe.</em></li>
+        <li><strong>Security Roles and Responsibilities:</strong> Defines the people who carry out every step. It answers who handles day-to-day operations, who maintains the network, who the end-users are, and who acts as the auditor. <br><em>Layman analogy: The organizational chart of a ship. It clearly defines who is the captain, who works the engine, and who is looking out for icebergs.</em></li>
+        <li><strong>Auditing the Security Architecture:</strong> Because IT changes constantly, the architecture itself must be assessed regularly by auditors to ensure it still aligns with business goals and to make necessary adjustments. <br><em>Layman analogy: Periodically reviewing and updating the ship's emergency manual because they just installed a brand-new, modern engine.</em></li>
+    </ul>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</body>
+</html>

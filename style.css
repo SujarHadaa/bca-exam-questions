@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+@font-face {
+  font-family: 'Fast Sans';
+  src: url('fonts/Fast_Sans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fast Serif';
+  src: url('fonts/Fast_Serif.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --primary-color: #2563eb;
   --bg-color: #f8fafc;
@@ -19,7 +33,9 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Fast Sans', 'Inter', sans-serif;
+  font-variant-ligatures: common-ligatures contextual;
+  font-feature-settings: "calt" 1;
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
