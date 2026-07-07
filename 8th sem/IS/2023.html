@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2023 IS Questions</title>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+<div class="notebook-container">
+<div class="header">
+<h1>2023 Information Security Questions</h1>
+</div>
+<div class="toc-card">
+<h2 class="toc-title">Table of Contents</h2>
+<h3 class="group-title" style="margin-top: 1rem; margin-bottom: 0.5rem; color: var(--primary-color);">Group B</h3>
+<ul class="toc-list">
+<li><a href="#q1">2. What is security attack? Explain different type of active attack.</a></li>
+<li><a href="#q2">3. Find the value of 7^2019 mod 11 by using Fermat's little theorem. Define Euler totient function with example.</a></li>
+<li><a href="#q3">4. What is Galois field? Divide 5x² + 4x + 6 by 2x + 1 over GF (7).</a></li>
+<li><a href="#q4">5. What is digital signature? Describe approaches of DSS.</a></li>
+<li><a href="#q5">6. What is firewall? Explain different type of firewall.</a></li>
+<li><a href="#q6">7. What are user authentication principles? Explain about Role based and Attribute based access control.</a></li>
+<li><a href="#q7">8. What is security audit trial? What are requirements for security auditing? Explain.</a></li>
+</ul>
+<h3 class="group-title" style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--primary-color);">Group C</h3>
+<ul class="toc-list">
+<li><a href="#q8">9. What is difference between block cipher and stream cipher? Encrypt and decrypt the message TRIBHUVAN UNIVERSITY with key BES using play fair and vernam cipher.</a></li>
+<li><a href="#q9">10. How does the Kerberos authentication works? Explain the concept of trust frameworks.</a></li>
+<li><a href="#q10">11. What is IPSec? What are benefits of IPSec? Explain the IPSec architecture in details.</a></li>
+</ul>
+</div>
+<div class="questions-container">
+<div class="group-header"><h2 style="margin: 2rem 0 1rem; color: var(--primary-color); border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem;">Group B</h2></div>
+<div class="qa-card">
+<div class="question" id="q1">2. What is security attack? Explain different type of active attack.</div>
+<div class="answer full-marks-answer">
+<div>
+    <p><strong>Security Attack:</strong> Any action that compromises the security of information owned by an organization or an individual.</p>
+    
+    <h3 class="section-title">Active Attacks</h3>
+    <p style="margin-bottom: 1rem">
+      These attacks involve the modification of a data stream or the creation of a false stream. They try to alter system resources or affect their operations. They can be subdivided into four categories:
+    </p>
+    
+    <ul class="feature-list">
+      <li><strong>Masquerade:</strong> Happens when an unauthorized entity pretends to be a legitimate entity to gain access.</li>
+      <li><strong>Replay:</strong> Involves capturing a legitimate data transmission and resending it later to produce an unauthorized effect.</li>
+      <li><strong>Modification of messages:</strong> Happens when a legitimate message is altered, delayed, or reordered to cause an unauthorized effect.</li>
+      <li><strong>Denial of service (DoS):</strong> Prevents or inhibits the normal use or management of communication facilities or system resources.</li>
+    </ul>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q2">3. Find the value of 7^2019 mod 11 by using Fermat's little theorem. Define Euler totient function with example.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Part 1: Using Fermat's Little Theorem</h3>
+    <p style="margin-bottom: 1rem">
+        <strong>Fermat's Little Theorem</strong> states that if <span style="font-family: monospace;">p</span> is a prime number, then for any integer <span style="font-family: monospace;">a</span> not divisible by <span style="font-family: monospace;">p</span>, the following equation holds true: <br><br>
+        <strong>a<sup>(p-1)</sup> &equiv; 1 (mod p)</strong>
+    </p>
+    
+    <p style="margin-bottom: 0.75rem;">Here is the step-by-step numerical solution to find 7<sup>2019</sup> mod 11:</p>
+<pre class="code-block"><span class="comment">// 1. Identify given values</span>
+<span class="type">a</span> = <span class="number">7</span>
+<span class="type">p</span> = <span class="number">11</span>  <span class="comment">// 11 is a prime number</span>
+
+<span class="comment">// 2. Apply Fermat's Little Theorem: a^(p-1) &equiv; 1 (mod p)</span>
+<span class="number">7</span>^(<span class="number">11</span>-<span class="number">1</span>) &equiv; <span class="number">1</span> (mod <span class="number">11</span>)
+<span class="number">7</span>^<span class="number">10</span> &equiv; <span class="number">1</span> (mod <span class="number">11</span>)
+
+<span class="comment">// 3. Break down the large power (2019) into multiples of 10</span>
+<span class="type">2019</span> = <span class="number">10</span> * <span class="number">201</span> + <span class="number">9</span>
+
+<span class="comment">// 4. Rewrite the expression</span>
+<span class="number">7</span>^<span class="number">2019</span> = <span class="number">7</span>^(<span class="number">10</span> * <span class="number">201</span> + <span class="number">9</span>)
+       = (<span class="number">7</span>^<span class="number">10</span>)^<span class="number">201</span> * <span class="number">7</span>^<span class="number">9</span>
+
+<span class="comment">// 5. Substitute 7^10 with 1</span>
+       &equiv; (<span class="number">1</span>)^<span class="number">201</span> * <span class="number">7</span>^<span class="number">9</span> (mod <span class="number">11</span>)
+       &equiv; <span class="number">7</span>^<span class="number">9</span> (mod <span class="number">11</span>)
+
+<span class="comment">// 6. Calculate 7^9 mod 11 using smaller powers</span>
+<span class="number">7</span>^<span class="number">1</span> &equiv; <span class="number">7</span> (mod <span class="number">11</span>)
+<span class="number">7</span>^<span class="number">2</span> = <span class="number">49</span> &equiv; <span class="number">5</span> (mod <span class="number">11</span>)            <span class="comment">// because 49 = 11*4 + 5</span>
+<span class="number">7</span>^<span class="number">4</span> = (<span class="number">7</span>^<span class="number">2</span>)^<span class="number">2</span> &equiv; <span class="number">5</span>^<span class="number">2</span> = <span class="number">25</span> &equiv; <span class="number">3</span> (mod <span class="number">11</span>)
+<span class="number">7</span>^<span class="number">8</span> = (<span class="number">7</span>^<span class="number">4</span>)^<span class="number">2</span> &equiv; <span class="number">3</span>^<span class="number">2</span> = <span class="number">9</span> (mod <span class="number">11</span>)
+
+<span class="comment">// 7. Combine results to get 7^9</span>
+<span class="number">7</span>^<span class="number">9</span> = <span class="number">7</span>^<span class="number">8</span> * <span class="number">7</span>^<span class="number">1</span> 
+    &equiv; <span class="number">9</span> * <span class="number">7</span> = <span class="number">63</span>
+   
+<span class="number">63</span> = <span class="number">11</span> * <span class="number">5</span> + <span class="number">8</span> &equiv; <span class="number">8</span> (mod <span class="number">11</span>)
+
+<span class="comment">// Final Answer</span>
+<span class="type">Result</span> = <span class="number">8</span>
+</pre>
+</div>
+<div style="margin-top: 2rem;">
+    <h3 class="section-title">Part 2: Euler's Totient Function</h3>
+    <p>
+        <strong>Euler's Totient Function</strong>, written as <strong>&Phi;(n)</strong> (phi of n), is a mathematical function that counts how many positive integers up to <span style="font-family: monospace;">n</span> are <strong>relatively prime</strong> (or coprime) to <span style="font-family: monospace;">n</span>. 
+    </p>
+    <p style="margin-bottom: 1rem">
+        Two numbers are relatively prime if their <strong>Greatest Common Divisor (GCD) is 1</strong>, meaning they share no common factors other than 1.
+    </p>
+    <p style="margin-bottom: 0.75rem;">Here is a simple example to understand this concept:</p>
+<pre class="code-block"><span class="comment">// Example: Let's find &Phi;(6)</span>
+<span class="type">n</span> = <span class="number">6</span>
+
+<span class="comment">// Step 1: List all positive integers up to 6</span>
+<span class="comment">// They are: 1, 2, 3, 4, 5, 6</span>
+
+<span class="comment">// Step 2: Find the GCD of each number with 6</span>
+GCD(<span class="number">1</span>, <span class="number">6</span>) = <span class="number">1</span>  <span class="comment">-> (Relatively Prime)</span>
+GCD(<span class="number">2</span>, <span class="number">6</span>) = <span class="number">2</span>
+GCD(<span class="number">3</span>, <span class="number">6</span>) = <span class="number">3</span>
+GCD(<span class="number">4</span>, <span class="number">6</span>) = <span class="number">2</span>
+GCD(<span class="number">5</span>, <span class="number">6</span>) = <span class="number">1</span>  <span class="comment">-> (Relatively Prime)</span>
+GCD(<span class="number">6</span>, <span class="number">6</span>) = <span class="number">6</span>
+
+<span class="comment">// Step 3: Count the numbers that have a GCD of 1</span>
+<span class="comment">// The numbers are 1 and 5. There are exactly 2 such numbers.</span>
+
+<span class="comment">// Final Answer for the example</span>
+&Phi;(<span class="number">6</span>) = <span class="number">2</span>
+</pre>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q3">4. What is Galois field? Divide 5x² + 4x + 6 by 2x + 1 over GF (7).</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Part 1: What is a Galois Field?</h3>
+    <p>
+        A <strong>Galois Field</strong> (also known as a Finite Field) is a set that contains a finite number of elements in which you can add, subtract, multiply, and divide (except by zero) without ever leaving the set. 
+    </p>
+    <p style="margin-bottom: 1rem">
+        It is denoted as <strong>GF(p)</strong> or <strong>GF(p<sup>n</sup>)</strong>, where <span style="font-family: monospace;">p</span> is a prime number. In a simple Galois field like GF(7), the elements are just the numbers from 0 to 6, and all mathematical operations wrap around using <strong>modulo 7</strong>. It is heavily used in computer security and cryptography because it keeps numbers within a fixed size.
+    </p>
+</div>
+<div style="margin-top: 2rem;">
+    <h3 class="section-title">Part 2: Polynomial Division over GF(7)</h3>
+    <p style="margin-bottom: 0.75rem;">Here is the step-by-step division of the polynomials using Modulo 7 arithmetic:</p>
+<pre class="code-block"><span class="comment">// Given Polynomials</span>
+<span class="type">Dividend</span> = <span class="number">5</span>x² + <span class="number">4</span>x + <span class="number">6</span>
+<span class="type">Divisor</span> = <span class="number">2</span>x + <span class="number">1</span>
+
+<span class="comment">// In GF(7), all numbers are modulo 7. </span>
+<span class="comment">// First, we need to know how to divide by 2 in GF(7). </span>
+<span class="comment">// Dividing by 2 is the same as multiplying by the inverse of 2.</span>
+<span class="comment">// 2 * 4 = 8 &equiv; 1 (mod 7). So, the inverse of 2 is 4.</span>
+
+<span class="comment">// --- STEP 1: Divide the leading terms ---</span>
+(<span class="number">5</span>x²) / (<span class="number">2</span>x) = (<span class="number">5</span> * <span class="number">4</span>)x = <span class="number">20</span>x &equiv; <span class="number">6</span>x (mod <span class="number">7</span>)
+<span class="comment">// First term of the Quotient is 6x.</span>
+
+<span class="comment">// --- STEP 2: Multiply and Subtract ---</span>
+Multiply: (<span class="number">2</span>x + <span class="number">1</span>) * <span class="number">6</span>x = <span class="number">12</span>x² + <span class="number">6</span>x &equiv; <span class="number">5</span>x² + <span class="number">6</span>x (mod <span class="number">7</span>)
+Subtract: (<span class="number">5</span>x² + <span class="number">4</span>x + <span class="number">6</span>) - (<span class="number">5</span>x² + <span class="number">6</span>x) 
+          = (<span class="number">4</span>x - <span class="number">6</span>x) + <span class="number">6</span> 
+          = -<span class="number">2</span>x + <span class="number">6</span>
+          
+<span class="comment">// Since -2 &equiv; 5 (mod 7), the remainder becomes:</span>
+<span class="type">New Dividend</span> = <span class="number">5</span>x + <span class="number">6</span>
+
+<span class="comment">// --- STEP 3: Divide the new leading terms ---</span>
+(<span class="number">5</span>x) / (<span class="number">2</span>x) = (<span class="number">5</span> * <span class="number">4</span>) = <span class="number">20</span> &equiv; <span class="number">6</span> (mod <span class="number">7</span>)
+<span class="comment">// Second term of the Quotient is 6.</span>
+
+<span class="comment">// --- STEP 4: Multiply and Subtract ---</span>
+Multiply: (<span class="number">2</span>x + <span class="number">1</span>) * <span class="number">6</span> = <span class="number">12</span>x + <span class="number">6</span> &equiv; <span class="number">5</span>x + <span class="number">6</span> (mod <span class="number">7</span>)
+Subtract: (<span class="number">5</span>x + <span class="number">6</span>) - (<span class="number">5</span>x + <span class="number">6</span>) = <span class="number">0</span>
+
+<span class="comment">// Final Answer</span>
+<span class="type">Quotient</span> = <span class="number">6</span>x + <span class="number">6</span>
+<span class="type">Remainder</span> = <span class="number">0</span>
+</pre>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q4">5. What is digital signature? Describe approaches of DSS.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Part 1: What is a Digital Signature?</h3>
+    <p style="margin-bottom: 1rem">
+        A <strong>Digital Signature</strong> is a mathematical technique used to validate the authenticity and integrity of a digital document or message. It acts as the digital equivalent of a handwritten signature or a stamped seal but offers far more security.
+    </p>
+    <p style="margin-bottom: 1rem">
+        A digital signature provides three primary guarantees:
+    </p>
+    <ul class="feature-list">
+        <li><strong>Authenticity:</strong> It proves that the message was indeed created and sent by the claimed sender.</li>
+        <li><strong>Integrity:</strong> It ensures that the message was not altered or tampered with during transmission.</li>
+        <li><strong>Non-repudiation:</strong> The sender cannot deny having sent the message later on.</li>
+    </ul>
+</div>
+
+<div style="margin-top: 2rem;">
+    <h3 class="section-title">Part 2: Approaches of DSS (Digital Signature Standard)</h3>
+    <p style="margin-bottom: 1rem">
+        The Digital Signature Standard (DSS) uses a public-key cryptography approach. The entire process is divided into two main phases: the <strong>Signing Phase</strong> and the <strong>Verification Phase</strong>.
+    </p>
+    
+    <ul class="feature-list">
+        <li><strong>1. The Signing Phase (Done by the Sender):</strong>
+            <br>
+            - First, a Hash Function is applied to the original message to generate a fixed-size <strong>Message Digest</strong> (or hash value).<br>
+            - Then, this message digest is encrypted using the sender's <strong>Private Key</strong>.<br>
+            - This encrypted digest is the <strong>Digital Signature</strong>.<br>
+            - Finally, the digital signature is attached to the original message and sent over the network.
+        </li>
+        <li style="margin-top: 1rem;"><strong>2. The Verification Phase (Done by the Receiver):</strong>
+            <br>
+            - The receiver gets both the original message and the digital signature.<br>
+            - The receiver applies the <em>same</em> Hash Function to the received message to generate a <strong>New Message Digest</strong>.<br>
+            - Concurrently, the receiver decrypts the digital signature using the sender's <strong>Public Key</strong> to retrieve the <strong>Original Message Digest</strong>.<br>
+            - If the <em>New Message Digest</em> perfectly matches the <em>Original Message Digest</em>, the signature is considered valid.
+        </li>
+    </ul>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q5">6. What is firewall? Explain different type of firewall.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Part 1: What is a Firewall?</h3>
+    <p style="margin-bottom: 1rem">
+        A <strong>Firewall</strong> is a network security system (either hardware or software) that monitors and controls incoming and outgoing network traffic based on predetermined security rules. 
+    </p>
+    <p style="margin-bottom: 1rem">
+        It acts as a protective barrier or a "gatekeeper" between a trusted, secure internal network (like a company's private network) and an untrusted external network (like the public Internet), preventing unauthorized access and malicious attacks.
+    </p>
+</div>
+
+<div style="margin-top: 2rem;">
+    <h3 class="section-title">Part 2: Different Types of Firewalls</h3>
+    <p style="margin-bottom: 1rem">
+        Firewalls can be categorized based on how they inspect and filter the network traffic:
+    </p>
+    
+    <ul class="feature-list">
+        <li><strong>1. Packet Filtering Firewall:</strong>
+            <br>
+            - The most basic and oldest type of firewall.<br>
+            - It examines individual packets of data in isolation and filters them based on basic information like source/destination IP address, port numbers, and protocols.<br>
+            - It is fast but does not check the actual content (payload) of the packet, making it less secure against advanced attacks.
+        </li>
+        <li style="margin-top: 1rem;"><strong>2. Stateful Inspection Firewall:</strong>
+            <br>
+            - Also known as dynamic packet filtering.<br>
+            - It keeps track of the "state" of active network connections (e.g., a TCP connection).<br>
+            - It only allows packets that are part of an already established and verified connection, making it much more secure than basic packet filtering.
+        </li>
+        <li style="margin-top: 1rem;"><strong>3. Application-Level Gateway (Proxy Firewall):</strong>
+            <br>
+            - Operates at the Application layer and acts as an intermediary (proxy) between the user and the internet.<br>
+            - Instead of a direct connection, the client connects to the proxy, and the proxy connects to the destination.<br>
+            - It provides deep inspection of the actual data payload (like HTTP or FTP traffic) but can slow down network performance.
+        </li>
+        <li style="margin-top: 1rem;"><strong>4. Circuit-Level Gateway:</strong>
+            <br>
+            - Works at the Session layer of the network model.<br>
+            - It simply verifies the TCP handshake between packets to ensure the session is legitimate before a connection is established.<br>
+            - Once the connection is approved, it doesn't inspect the data further.
+        </li>
+        <li style="margin-top: 1rem;"><strong>5. Next-Generation Firewall (NGFW):</strong>
+            <br>
+            - The most advanced modern firewall.<br>
+            - It combines traditional firewall features (like stateful inspection) with deep packet inspection (DPI), intrusion prevention systems (IPS), and advanced malware detection to block modern sophisticated threats.
+        </li>
+    </ul>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q6">7. What are user authentication principles? Explain about Role based and Attribute based access control.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Part 1: User Authentication Principles</h3>
+    <p style="margin-bottom: 1rem">
+        <strong>User Authentication</strong> is the fundamental process of verifying the identity claimed by a user or system entity. It is the first line of defense in computer security. 
+    </p>
+    <p style="margin-bottom: 1rem">
+        The principles of authentication (how a user can prove who they are) are broadly categorized into four primary factors:
+    </p>
+    <ul class="feature-list">
+        <li><strong>Something you know:</strong> Requires a secret piece of information known only to the user. (e.g., Passwords, PINs, or security questions).</li>
+        <li><strong>Something you have:</strong> Requires physical possession of a token or device. (e.g., Smart cards, RSA physical tokens, or an authenticator app on a smartphone).</li>
+        <li><strong>Something you are (Static Biometrics):</strong> Uses physical characteristics unique to the individual. (e.g., Fingerprints, retina scans, or facial recognition).</li>
+        <li><strong>Something you do (Dynamic Biometrics):</strong> Uses behavioral characteristics. (e.g., Voice patterns, typing rhythm, or a handwritten signature).</li>
+    </ul>
+    <p style="margin-top: 1rem">
+        Combining two or more of these principles creates <strong>Multi-Factor Authentication (MFA)</strong>, which significantly increases security.
+    </p>
+</div>
+
+<div style="margin-top: 2rem;">
+    <h3 class="section-title">Part 2: Role-Based Access Control (RBAC) vs. Attribute-Based Access Control (ABAC)</h3>
+    <p style="margin-bottom: 1rem">
+        Once a user is authenticated, <strong>Access Control</strong> dictates what resources they are allowed to use. RBAC and ABAC are two prominent access control models:
+    </p>
+    
+    <table class="diff-table">
+        <thead>
+            <tr>
+                <th style="width: 20%">Feature</th>
+                <th style="width: 40%">Role-Based Access Control (RBAC)</th>
+                <th style="width: 40%">Attribute-Based Access Control (ABAC)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Core Concept</strong></td>
+                <td>Permissions are tied to <strong>Roles</strong> (e.g., "Manager", "Clerk"). Users are assigned to these roles.</td>
+                <td>Permissions are granted based on <strong>Attributes</strong> (characteristics of the user, resource, or environment).</td>
+            </tr>
+            <tr>
+                <td><strong>Flexibility & Granularity</strong></td>
+                <td>Less granular. It is rigid because it only looks at the user's job title or group.</td>
+                <td>Highly granular and flexible. It can evaluate complex rules (e.g., time of day, location, clearance level).</td>
+            </tr>
+            <tr>
+                <td><strong>Administration</strong></td>
+                <td>Simple to manage in standard organizations. When a user changes jobs, you just change their role.</td>
+                <td>More complex to set up and manage due to the need to define complex logical policies and many attributes.</td>
+            </tr>
+            <tr>
+                <td><strong>Example</strong></td>
+                <td>"All Doctors can access patient records."</td>
+                <td>"A Doctor can access patient records ONLY during hospital hours AND if they are on the hospital's network."</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q7">8. What is security audit trial? What are requirements for security auditing? Explain.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Part 1: Security Audit Trail</h3>
+    <p style="margin-bottom: 1rem">
+        A <strong>Security Audit Trail</strong> (or audit log) is a chronological record of system activities that is used to reconstruct and examine the sequence of events that have occurred. 
+    </p>
+    <p style="margin-bottom: 1rem">
+        It acts as a digital footprint, providing a reliable means to trace the activities of users, track changes to data, and to detect, investigate, and recover from security breaches or system failures. <br>
+        <em>Layman analogy: A detailed diary or a CCTV camera log that records exactly who entered a room, what time they entered, and what they did while inside.</em>
+    </p>
+</div>
+
+<div style="margin-top: 2rem;">
+    <h3 class="section-title">Part 2: Requirements for Security Auditing</h3>
+    <p style="margin-bottom: 1rem">
+        For a security audit trail to be effective and trustworthy, it must meet several critical requirements:
+    </p>
+    <ul class="feature-list">
+        <li><strong>Completeness:</strong> The audit trail should capture all relevant and significant security events without missing anything important.</li>
+        <li><strong>Accuracy:</strong> The information recorded must be precise, correct, and reliable, showing exactly what happened without errors.</li>
+        <li><strong>Integrity:</strong> The audit log must be tamper-proof. It should be strictly protected from unauthorized modification or deletion so attackers cannot cover their tracks.</li>
+        <li><strong>Confidentiality:</strong> The audit trail often contains sensitive information. It should be protected from unauthorized access or disclosure to ensure only authorized auditors can read it.</li>
+        <li><strong>Availability:</strong> The audit trail should always be readily available and accessible to authorized personnel whenever an investigation or review is needed.</li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+<div class="group-header"><h2 style="margin: 2rem 0 1rem; color: var(--primary-color); border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem;">Group C</h2></div>
+<div class="qa-card">
+<div class="question" id="q8">9. What is difference between block cipher and stream cipher? Encrypt and decrypt the message TRIBHUVAN UNIVERSITY with key BES using play fair and vernam cipher.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Part 1: Block Cipher vs. Stream Cipher</h3>
+    <table class="diff-table">
+        <thead>
+            <tr>
+                <th style="width: 20%">Feature</th>
+                <th style="width: 40%">Block Cipher</th>
+                <th style="width: 40%">Stream Cipher</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Processing</strong></td>
+                <td>Encrypts data in fixed-size blocks (e.g., 64 or 128 bits) at a time.</td>
+                <td>Encrypts data one bit or one byte at a time continuously.</td>
+            </tr>
+            <tr>
+                <td><strong>Speed</strong></td>
+                <td>Generally slower because it processes entire blocks before moving to the next.</td>
+                <td>Faster execution as it processes data bit-by-bit continuously.</td>
+            </tr>
+            <tr>
+                <td><strong>Complexity</strong></td>
+                <td>More complex hardware implementation, high diffusion.</td>
+                <td>Simpler hardware implementation, low diffusion.</td>
+            </tr>
+            <tr>
+                <td><strong>Examples</strong></td>
+                <td>DES, AES, IDEA.</td>
+                <td>RC4, Vernam Cipher.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div style="margin-top: 2rem;">
+    <h3 class="section-title">Part 2: Playfair Cipher</h3>
+    <p><strong>Message:</strong> TRIBHUVAN UNIVERSITY<br><strong>Key:</strong> BES</p>
+    
+    <p style="margin-bottom: 0.5rem;"><strong>1. Create the 5x5 Matrix:</strong></p>
+    <p>Fill the key "BES" first, then the remaining alphabets (combining I and J).</p>
+<pre class="code-block">B  E  S  A  C
+D  F  G  H  I/J
+K  L  M  N  O
+P  Q  R  T  U
+V  W  X  Y  Z</pre>
+
+    <p style="margin-bottom: 0.5rem; margin-top: 1rem;"><strong>2. Format the Message:</strong></p>
+    <p>Split the message into pairs (digraphs). Add a filler letter 'X' at the end to make a complete pair.</p>
+    <p><span style="font-family: monospace; background: var(--bg-color); padding: 0.2rem 0.5rem; border-radius: 4px;">TR  IB  HU  VA  NU  NI  VE  RS  IT  YX</span></p>
+
+    <p style="margin-bottom: 0.5rem; margin-top: 1rem;"><strong>3. Encrypt (Applying Playfair Rules):</strong></p>
+    <ul class="feature-list">
+        <li><strong>TR:</strong> Same row &rarr; shift right &rarr; <strong>UT</strong></li>
+        <li><strong>IB:</strong> Rectangle &rarr; opposite corners &rarr; <strong>DC</strong></li>
+        <li><strong>HU:</strong> Rectangle &rarr; opposite corners &rarr; <strong>IT</strong></li>
+        <li><strong>VA:</strong> Rectangle &rarr; opposite corners &rarr; <strong>YB</strong></li>
+        <li><strong>NU:</strong> Rectangle &rarr; opposite corners &rarr; <strong>OT</strong></li>
+        <li><strong>NI:</strong> Rectangle &rarr; opposite corners &rarr; <strong>OH</strong></li>
+        <li><strong>VE:</strong> Rectangle &rarr; opposite corners &rarr; <strong>WB</strong></li>
+        <li><strong>RS:</strong> Same column &rarr; shift down &rarr; <strong>XG</strong></li>
+        <li><strong>IT:</strong> Rectangle &rarr; opposite corners &rarr; <strong>HU</strong></li>
+        <li><strong>YX:</strong> Same row &rarr; shift right &rarr; <strong>ZY</strong></li>
+    </ul>
+    <p><strong>Ciphertext:</strong> UT DC IT YB OT OH WB XG HU ZY</p>
+    
+    <p style="margin-bottom: 0.5rem; margin-top: 1rem;"><strong>4. Decrypt:</strong></p>
+    <p>Reverse the rules: Shift left for rows, up for columns, and same opposite corners for rectangles.</p>
+    <p>UT &rarr; TR, DC &rarr; IB, IT &rarr; HU, YB &rarr; VA, OT &rarr; NU, OH &rarr; NI, WB &rarr; VE, XG &rarr; RS, HU &rarr; IT, ZY &rarr; YX</p>
+    <p><strong>Decrypted Text:</strong> TRIBHUVAN UNIVERSITY</p>
+</div>
+
+<div style="margin-top: 2rem;">
+    <h3 class="section-title">Part 3: Vernam Cipher (Modulo 26 addition)</h3>
+    <p style="margin-bottom: 1rem">
+        Assuming standard alphabetical values where A=0, B=1, ... Z=25. The key is repeated to match the message length. <br>
+        <strong>Encryption:</strong> C = (P + K) mod 26 <br>
+        <strong>Decryption:</strong> P = (C - K) mod 26
+    </p>
+
+<pre class="code-block"><span class="comment">// 1. Encryption</span>
+<span class="type">Message:</span> T  R  I  B  H  U  V  A  N  U  N  I  V  E  R  S  I  T  Y
+<span class="type">Key:</span>     B  E  S  B  E  S  B  E  S  B  E  S  B  E  S  B  E  S  B
+
+<span class="type">Msg Values:</span> 19 17  8  1  7 20 21  0 13 20 13  8 21  4 17 18  8 19 24
+<span class="type">Key Values:</span>  1  4 18  1  4 18  1  4 18  1  4 18  1  4 18  1  4 18  1
+<span class="comment">------------------------------------------------------------------</span>
+<span class="type">Sum:</span>        20 21 26  2 11 38 22  4 31 21 17 26 22  8 35 19 12 37 25
+<span class="type">Mod 26:</span>     20 21  0  2 11 12 22  4  5 21 17  0 22  8  9 19 12 11 25
+<span class="comment">------------------------------------------------------------------</span>
+<span class="type">Ciphertext:</span>  U  V  A  C  L  M  W  E  F  V  R  A  W  I  J  T  M  L  Z
+
+<span class="comment">// 2. Decryption</span>
+<span class="type">Cipher:</span>      U  V  A  C  L  M  W  E  F  V  R  A  W  I  J  T  M  L  Z
+<span class="type">Key:</span>         B  E  S  B  E  S  B  E  S  B  E  S  B  E  S  B  E  S  B
+
+<span class="type">Cph Values:</span> 20 21  0  2 11 12 22  4  5 21 17  0 22  8  9 19 12 11 25
+<span class="type">Key Values:</span>  1  4 18  1  4 18  1  4 18  1  4 18  1  4 18  1  4 18  1
+<span class="comment">------------------------------------------------------------------</span>
+<span class="type">Diff:</span>       19 17 -18 1  7 -6 21  0 -13 20 13 -18 21 4 -9 18  8 -7 24
+<span class="type">Mod 26:</span>     19 17  8  1  7 20 21  0 13 20 13  8 21  4 17 18  8 19 24
+<span class="comment">------------------------------------------------------------------</span>
+<span class="type">Decrypted:</span>   T  R  I  B  H  U  V  A  N  U  N  I  V  E  R  S  I  T  Y
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q9">10. How does the Kerberos authentication works? Explain the concept of trust frameworks.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Part 1: Kerberos Authentication</h3>
+    <p style="margin-bottom: 1rem">
+        <strong>Kerberos</strong> is a computer network authentication protocol that works on the basis of <strong>'tickets'</strong>. It is designed to provide strong authentication for client/server applications by allowing nodes communicating over a non-secure network to securely prove their identity to one another.
+    </p>
+    <p style="margin-bottom: 1rem">
+        Here is how the Kerberos process generally works:
+    </p>
+    <ul class="feature-list">
+        <li><strong>Trusted Third Party:</strong> It uses a centralized Authentication Server (AS) and a Ticket Granting Server (TGS), collectively known as the Key Distribution Center (KDC).</li>
+        <li><strong>Symmetric-Key Cryptography:</strong> The protocol primarily relies on symmetric encryption, meaning the KDC shares a unique secret key with every user and service on the network.</li>
+        <li><strong>The Process:</strong> 
+            <br>1. The client requests access from the Authentication Server (AS).
+            <br>2. The AS verifies the client's identity and issues a <em>Ticket-Granting Ticket (TGT)</em>.
+            <br>3. The client presents the TGT to the Ticket Granting Server (TGS) to request access to a specific service.
+            <br>4. The TGS validates the TGT and issues a <em>Service Ticket</em>.
+            <br>5. The client presents the Service Ticket to the actual service/server to gain access.
+        </li>
+    </ul>
+    <p><em>Layman analogy:</em> Think of it like going to an amusement park. You show your ID at the main gate to get a daily wristband (TGT). Then, instead of showing your ID at every single ride, you just show your wristband to the ride operator (Service Ticket) to get on the ride.</p>
+</div>
+
+<div style="margin-top: 2rem;">
+    <h3 class="section-title">Part 2: Trust Frameworks</h3>
+    <p style="margin-bottom: 1rem">
+        A <strong>Trust Framework</strong> is a formalized set of agreed-upon rules, security policies, standards, and legal agreements that allow different organizations (or security domains) to trust each other's identity and security information.
+    </p>
+    <p style="margin-bottom: 1rem">
+        It essentially creates a common language and standard of security. Key concepts include:
+    </p>
+    <ul class="feature-list">
+        <li><strong>Federated Identity Management:</strong> Trust frameworks are heavily used in federated systems. This allows a user from Organization A to securely access resources in Organization B using their original login credentials from Organization A.</li>
+        <li><strong>Scalability:</strong> Instead of creating one-on-one agreements between every single entity (which is unmanageable), a trust framework allows an entity to join the framework once and automatically trust everyone else within it.</li>
+        <li><strong>Consistency:</strong> It ensures that all participants meet a minimum baseline of security and identity verification, reducing the overall risk of unauthorized access across interconnected networks.</li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+<div class="qa-card">
+<div class="question" id="q10">11. What is IPSec? What are benefits of IPSec? Explain the IPSec architecture in details.</div>
+<div class="answer full-marks-answer">
+<div>
+    <h3 class="section-title">Part 1: What is IPSec?</h3>
+    <p style="margin-bottom: 1rem">
+        <strong>IPSec (Internet Protocol Security)</strong> is a suite of protocols that provides security for Internet Protocol (IP) communications by authenticating and encrypting each IP packet of a communication session. It operates at the Network Layer (Layer 3) of the OSI model, which means it protects any application traffic running over IP.
+    </p>
+</div>
+
+<div style="margin-top: 2rem;">
+    <h3 class="section-title">Part 2: Benefits of IPSec</h3>
+    <ul class="feature-list">
+        <li><strong>Confidentiality:</strong> Uses strong encryption to ensure that intercepted packets cannot be read by unauthorized parties.</li>
+        <li><strong>Integrity:</strong> Uses cryptographic hashing to ensure that the data has not been altered or tampered with in transit.</li>
+        <li><strong>Data Origin Authentication:</strong> Verifies that the packets actually came from the claimed sender.</li>
+        <li><strong>Anti-Replay Protection:</strong> Uses sequence numbers to detect and reject old, duplicated packets, preventing replay attacks.</li>
+        <li><strong>Transparency:</strong> Because it operates at the network layer, it provides security transparently without requiring changes to individual applications.</li>
+    </ul>
+</div>
+
+<div style="margin-top: 2rem;">
+    <h3 class="section-title">Part 3: IPSec Architecture</h3>
+    <p style="margin-bottom: 1rem">
+        According to the IP Security Architecture, it covers general concepts, definitions, protocols, algorithms, and security requirements of IP Security technology. It uses two main protocols (ESP and AH) along with several other components to secure the traffic:
+    </p>
+    
+    <div style="text-align: center; margin: 2rem 0;">
+        <img src="assets/ipsec_architecture.jpg" alt="IPSec Architecture Overview" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;"><em>IPSec Architecture Diagram</em></p>
+    </div>
+
+    <ul class="feature-list">
+        <li><strong>1. Architecture:</strong> Covers the general concepts, definitions, protocols, algorithms, and security requirements of IP Security technology.</li>
+        
+        <li style="margin-top: 1rem;"><strong>2. ESP Protocol (Encapsulation Security Payload):</strong> Provides confidentiality service. It can be implemented with or without optional Authentication.
+            <div style="text-align: center; margin: 1rem 0;">
+                <img src="assets/esp_packet.jpg" alt="ESP Protocol Packet Format" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;"><em>ESP Packet Format</em></p>
+            </div>
+            It includes fields like SPI, Sequence Number, Payload Data (encrypted), Padding, Next Header, and optional Authentication Data.
+        </li>
+
+        <li style="margin-top: 1rem;"><strong>3. Encryption Algorithm:</strong> Document that describes various encryption algorithms used for ESP.</li>
+        
+        <li style="margin-top: 1rem;"><strong>4. AH Protocol (Authentication Header):</strong> Provides both Authentication and Integrity service, but no confidentiality (encryption).
+            <div style="text-align: center; margin: 1rem 0;">
+                <img src="assets/ah_packet.jpg" alt="AH Protocol Packet Format" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;"><em>AH Packet Format</em></p>
+            </div>
+        </li>
+
+        <li style="margin-top: 1rem;"><strong>5. Authentication Algorithm:</strong> Contains the set of documents describing the algorithm used for AH and the authentication option of ESP.</li>
+        
+        <li style="margin-top: 1rem;"><strong>6. DOI (Domain of Interpretation):</strong> Identifier that supports both AH and ESP protocols, containing values needed for documentation related to each other.</li>
+        
+        <li style="margin-top: 1rem;"><strong>7. Key Management:</strong> Document that describes how the keys are exchanged between sender and receiver (often using IKE).</li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
