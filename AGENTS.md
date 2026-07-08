@@ -7,4 +7,5 @@ answer in a way that I will get full marks in exam
 each new question you answer add that to the top of with list of all questions and when I click on it it must take me to the solution
 Put the latest question in the last
 When adding code blocks or numerical solution, format them using `<pre class="code-block">` and apply syntax highlighting using `<span>` tags with appropriate classes (e.g., `keyword`, `type`, `class-name`, `method-name`, `number`, `string`, `comment`) to match existing styles.
+Keep code examples as simple as possible
 use easy and layman terms that are easy to understand and memorise for exam

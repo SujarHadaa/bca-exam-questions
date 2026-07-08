@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2021 Exam Answer</title>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+  <div class="notebook-container">
+    <header class="header">
+      <h1>Dot Net 2021</h1>
+      <p>Dot Net Technology - BCA Fifth Semester 2021</p>
+    </header>
+
+    <main>
+      <!-- Table of Contents -->
+      <div class="toc-card">
+        <h2 class="toc-title">Answered Questions</h2>
+        <h3 class="group-toc-title">Group B</h3>
+        <ul class="toc-list">
+          <li><a href="#qa-2">2. What is CLR? List and explain the feature of CLR.</a></li>
+          <li><a href="#qa-3">3. What do you mean by value type and reference type? Give an example for each.</a></li>
+          <li><a href="#qa-4">4. What is an interface? How interface is used in multiple inheritance? Explain with example.</a></li>
+          <li><a href="#qa-5">5. Why namespace is used in C#? How to create and use the namespace in C#? Explain with example.</a></li>
+          <li><a href="#qa-6">6. What is an Exception? Write a program to generate divide by zero exception and index out of Range exception and also handle these exception.</a></li>
+          <li><a href="#qa-7">7. What is a Query expression? Write a C# program to select Students who are lived in Kirtipur and studied in Patan Multiple Campus using LINQ.</a></li>
+          <li><a href="#qa-8">8. What do you mean by static class and constructor? Explain with suitable example.</a></li>
+        </ul>
+        <h3 class="group-toc-title">Group C</h3>
+        <ul class="toc-list">
+          <li><a href="#qa-11">11. What is web server control in ASP.NET? List five web server control used in ASP.NET. Write a program to create student registration form in one ASP.NET page and display the filled data within another page.</a></li>
+          <li><a href="#qa-10">10. Explain difference between ExecuteReader and ExecuteNonQuery. Provided that a mysql database named "Company" with table named "Product" with following columns (ProductId as int, ProductName as varchar(20), and UnitPrice as float). Write a C# program to connect to the database and display product records that have UnitPrice is greater than RS. 1000 and update the product record (such as Unit Price 4500) from ProductId whose ProductId=50.</a></li>
+          <li><a href="#qa-9">9. What do you mean by Operator Overloading? Write a C# program to demonstrate binary and relational operator overloading.</a></li>
+        </ul>
+      </div>
+
+      <h2 class="group-header">Group B</h2>
+
+      <!-- Example Question Card (to be replaced/appended later) -->
+      
+      <article class="qa-card" id="qa-2">
+        <div class="question">
+          2. What is CLR? List and explain the feature of CLR.
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <p style="margin-bottom: 1rem">
+              <strong>Common Language Runtime (CLR)</strong> is the basic and Virtual Machine component of the .NET Framework. It acts as the run-time environment that runs the code and manages the execution of .NET programs regardless of the .NET programming language used. It makes the development process easier by providing various services such as memory management, thread management, type-safety, and robustness.
+            </p>
+            <p style="margin-bottom: 1rem">
+              Code that targets the runtime is known as <strong>Managed Code</strong>, while code that does not target the runtime is known as <strong>Unmanaged code</strong>.
+            </p>
+
+            <h3 class="section-title">Features of Common Language Runtime (CLR)</h3>
+            <ul class="feature-list">
+              <li><strong>Code Access Security:</strong> The runtime enforces security by ensuring users can trust executables embedded in a webpage (e.g., to play an animation) while preventing them from accessing personal data, file systems, or networks.</li>
+              <li><strong>Code Robustness:</strong> It enforces robustness by implementing a strict type-and-code verification infrastructure known as the Common Type System (CTS), ensuring that all managed code is self-describing.</li>
+              <li><strong>Developer Productivity:</strong> It accelerates developer productivity by allowing programmers to write applications in their preferred language while taking full advantage of the runtime, class libraries, and components written by others in different languages.</li>
+              <li><strong>Cross-Era Software Support:</strong> While the runtime is built for future software, it is also designed to support software of today and yesterday, easing the migration process for existing applications.</li>
+              <li><strong>Enhanced Performance:</strong> The runtime is designed to optimize and enhance the performance of applications through features like Just-In-Time (JIT) compilation.</li>
+              <li><strong>Server-Side Hosting:</strong> The runtime can be hosted by high-performance, server-side applications, such as Microsoft SQL Server and Internet Information Services (IIS).</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="qa-card" id="qa-3">
+        <div class="question">
+          3. What do you mean by value type and reference type? Give an example for each.
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <p style="margin-bottom: 1rem">
+              In C#, all types are divided mainly into two categories: <strong>Value Types</strong> and <strong>Reference Types</strong>. The fundamental difference between them is how they are handled and stored in memory.
+            </p>
+
+            <h3 class="section-title">Value Types</h3>
+            <p style="margin-bottom: 1rem">
+              A <strong>Value Type</strong> variable directly contains its data (value). When you assign one value type variable to another, a direct copy of the value is made. They are typically stored in a memory area called the <strong>Stack</strong>. Examples of value types include primitive types (like <code>int</code>, <code>float</code>, <code>char</code>, <code>bool</code>), <code>struct</code>, and <code>enum</code>.
+            </p>
+            <p style="margin-bottom: 0.75rem;"><strong>Example:</strong></p>
+            <pre class="code-block"><span class="keyword">int</span> <span class="type">a</span> = <span class="number">10</span>;
+<span class="keyword">int</span> <span class="type">b</span> = a; <span class="comment">// A copy of the value 10 is assigned to b</span></pre>
+
+            <h3 class="section-title">Reference Types</h3>
+            <p style="margin-bottom: 1rem">
+              A <strong>Reference Type</strong> variable does not contain the actual data itself. Instead, it contains a reference (or memory address) to the object that holds the data. They are stored in a memory area called the <strong>Heap</strong>. When you assign one reference type variable to another, both variables point to the same memory location, meaning changes made through one variable affect the other. Examples of reference types include <code>class</code>, <code>string</code>, <code>array</code>, <code>interface</code>, and <code>delegate</code>.
+            </p>
+            <p style="margin-bottom: 0.75rem;"><strong>Example:</strong></p>
+            <pre class="code-block"><span class="keyword">class</span> <span class="class-name">Student</span> { <span class="keyword">public int</span> age; }
+<span class="class-name">Student</span> <span class="type">s1</span> = <span class="keyword">new</span> <span class="class-name">Student</span>();
+s1.age = <span class="number">20</span>;
+<span class="class-name">Student</span> <span class="type">s2</span> = s1; <span class="comment">// Both s1 and s2 now refer to the same object</span>
+s2.age = <span class="number">25</span>; <span class="comment">// s1.age also becomes 25</span></pre>
+
+            <h3 class="section-title">Key Differences</h3>
+            <table class="diff-table">
+              <thead>
+                <tr>
+                  <th style="width: 20%">Feature</th>
+                  <th style="width: 40%">Value Type</th>
+                  <th style="width: 40%">Reference Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Storage</strong></td>
+                  <td>Stored in the Stack memory.</td>
+                  <td>Stored in the Heap memory.</td>
+                </tr>
+                <tr>
+                  <td><strong>Data Content</strong></td>
+                  <td>Directly holds the actual data.</td>
+                  <td>Holds the memory address (reference) to the data.</td>
+                </tr>
+                <tr>
+                  <td><strong>Assignment</strong></td>
+                  <td>Assigning a value type creates an independent copy.</td>
+                  <td>Assigning a reference type copies the memory address (both variables point to the same object).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="qa-card" id="qa-4">
+        <div class="question">
+          4. What is an interface? How interface is used in multiple inheritance? Explain with example.
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is an Interface?</h3>
+            <p style="margin-bottom: 1rem">
+              An <strong>interface</strong> in C# looks like a class but has no implementation. It contains only the declarations of members like methods, properties, events, and indexers. It acts as a blueprint for a class—it specifies <em>what</em> a class must do, but not <em>how</em> it should do it. The implementation must be provided by the class or struct that inherits the interface.
+            </p>
+            <ul class="feature-list">
+              <li>By default, methods declared inside an interface are abstract (they only have a signature and no body).</li>
+              <li>It is used to achieve <strong>total abstraction</strong>.</li>
+              <li>If a class implements an interface but does not provide bodies for all its functions, the class must be declared abstract.</li>
+            </ul>
+
+            <h3 class="section-title">Interfaces and Multiple Inheritance</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>Multiple Inheritance</strong> refers to the ability of a single class to inherit from more than one parent class simultaneously. While C# <strong>does not support multiple inheritance of classes</strong> (to prevent complexity and the diamond problem), it fully supports multiple inheritance through <strong>interfaces</strong>. A class can inherit from one base class and simultaneously implement multiple interfaces.
+            </p>
+
+            <h3 class="section-title">Example of Multiple Inheritance using Interfaces</h3>
+            <p style="margin-bottom: 0.75rem;">
+              The following example demonstrates how a class (<code>BB</code>) inherits from a base class (<code>CA</code>) and implements an interface (<code>IA</code>) to achieve multiple inheritance:
+            </p>
+            <pre class="code-block"><span class="keyword">interface</span> <span class="type">IA</span>
+{
+    <span class="comment">// Interfaces do not contain fields, only declarations</span>
+    <span class="keyword">int</span> <span class="method-name">CalculateArea</span>();
+    <span class="keyword">int</span> <span class="method-name">CalculatePerimeter</span>();
+}
+
+<span class="keyword">class</span> <span class="class-name">CA</span>
+{
+    <span class="keyword">public int</span> <span class="type">l</span>, <span class="type">b</span>;
+    <span class="keyword">public void</span> <span class="method-name">ReadData</span>(<span class="keyword">int</span> l, <span class="keyword">int</span> b)
+    {
+        <span class="keyword">this</span>.l = l;
+        <span class="keyword">this</span>.b = b;
+    }
+}
+
+<span class="comment">// Class BB achieves multiple inheritance by inheriting from class CA and interface IA</span>
+<span class="keyword">class</span> <span class="class-name">BB</span> : <span class="class-name">CA</span>, <span class="type">IA</span>
+{
+    <span class="keyword">public int</span> <span class="method-name">CalculateArea</span>()
+    {
+        <span class="method-name">ReadData</span>(<span class="number">10</span>, <span class="number">5</span>);
+        <span class="keyword">int</span> <span class="type">area</span> = l * b;
+        <span class="keyword">return</span> area;
+    }
+
+    <span class="keyword">public int</span> <span class="method-name">CalculatePerimeter</span>()
+    {
+        <span class="method-name">ReadData</span>(<span class="number">15</span>, <span class="number">10</span>);
+        <span class="keyword">int</span> <span class="type">peri</span> = <span class="number">2</span> * (l + b);
+        <span class="keyword">return</span> peri;
+    }
+}
+
+<span class="comment">// Driver class</span>
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>(<span class="keyword">string</span>[] args)
+    {
+        <span class="class-name">BB</span> <span class="type">obj</span> = <span class="keyword">new</span> <span class="class-name">BB</span>();
+        <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Area of Rectangle = "</span> + obj.<span class="method-name">CalculateArea</span>());
+        <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Perimeter of Rectangle = "</span> + obj.<span class="method-name">CalculatePerimeter</span>());
+    }
+}</pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="qa-card" id="qa-5">
+        <div class="question">
+          5. Why namespace is used in C#? How to create and use the namespace in C#? Explain with example.
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">Why use Namespaces in C#?</h3>
+            <p style="margin-bottom: 1rem">
+              A <strong>namespace</strong> is a domain for type names. Types are typically organized into hierarchical namespaces to make them easier to find and to <strong>avoid naming conflicts</strong>. By grouping related classes, interfaces, and other types, namespaces keep the codebase organized. For example, the <code>RSA</code> type that handles public-key encryption is neatly organized within the <code>System.Security.Cryptography</code> namespace.
+            </p>
+
+            <h3 class="section-title">How to create a Namespace</h3>
+            <p style="margin-bottom: 1rem">
+              You can create a namespace using the <code>namespace</code> keyword followed by the namespace name, defining types (like classes) within its block. Namespaces can also be nested to create a hierarchy (using dots or nested blocks).
+            </p>
+            <pre class="code-block"><span class="keyword">namespace</span> <span class="class-name">Outer.Middle.Inner</span>
+{
+    <span class="keyword">class</span> <span class="class-name">Class1</span> { }
+    <span class="keyword">class</span> <span class="class-name">Class2</span> { }
+}</pre>
+
+            <h3 class="section-title">How to use a Namespace</h3>
+            <p style="margin-bottom: 1rem">
+              You can use the types declared inside a namespace in two ways:
+              <br/>1. By writing the <strong>fully qualified name</strong> (e.g., <code>Outer.Middle.Inner.Class1</code>).
+              <br/>2. By using the <code>using</code> <strong>directive</strong>, which imports the namespace and allows you to refer to types without their fully qualified names.
+            </p>
+
+            <h3 class="section-title">Example</h3>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+<span class="keyword">using</span> <span class="class-name">Outer.Middle.Inner</span>; <span class="comment">// Importing the namespace</span>
+
+<span class="keyword">namespace</span> <span class="class-name">ExampleApp</span>
+{
+    <span class="keyword">class</span> <span class="class-name">Test</span>
+    {
+        <span class="keyword">static void</span> <span class="method-name">Main</span>()
+        {
+            <span class="comment">// We can use Class1 directly because we imported its namespace</span>
+            <span class="class-name">Class1</span> <span class="type">c1</span> = <span class="keyword">new</span> <span class="class-name">Class1</span>();
+            
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Namespace imported and class used successfully!"</span>);
+        }
+    }
+}</pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="qa-card" id="qa-6">
+        <div class="question">
+          6. What is an Exception? Write a program to generate divide by zero exception and index out of Range exception and also handle these exception.
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is an Exception?</h3>
+            <p style="margin-bottom: 1rem">
+              An <strong>Exception</strong> is a problem or an error that arises during the execution of a program. When an error occurs, C# generates an exception which disrupts the normal flow of the program and terminates it abnormally. To prevent this, we use <strong>Exception Handling</strong> techniques (like <code>try</code>, <code>catch</code>, and <code>finally</code> blocks) to catch the error and execute alternative clean-up code, allowing the program to continue or terminate gracefully.
+            </p>
+
+            <h3 class="section-title">Example Program</h3>
+            <p style="margin-bottom: 0.75rem;">
+              The following C# program demonstrates how to generate and handle both a <code>DivideByZeroException</code> and an <code>IndexOutOfRangeException</code> using multiple catch blocks:
+            </p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">ExceptionDemo</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>(<span class="keyword">string</span>[] args)
+    {
+        <span class="keyword">try</span>
+        {
+            <span class="comment">// 1. Generating DivideByZeroException</span>
+            <span class="keyword">int</span> <span class="type">numerator</span> = <span class="number">10</span>;
+            <span class="keyword">int</span> <span class="type">denominator</span> = <span class="number">0</span>;
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Attempting to divide by zero..."</span>);
+            <span class="keyword">int</span> <span class="type">result</span> = numerator / denominator; <span class="comment">// This line throws an exception</span>
+
+            <span class="comment">// 2. Generating IndexOutOfRangeException (This code will be skipped because of the previous error)</span>
+            <span class="keyword">int</span>[] <span class="type">arr</span> = <span class="keyword">new int</span>[<span class="number">3</span>];
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Attempting to access invalid index..."</span>);
+            arr[<span class="number">5</span>] = <span class="number">100</span>; <span class="comment">// This line would throw an exception if reached</span>
+        }
+        <span class="keyword">catch</span> (<span class="class-name">DivideByZeroException</span> <span class="type">ex</span>)
+        {
+            <span class="comment">// Handling Divide By Zero Error</span>
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Error: Cannot divide a number by zero!"</span>);
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Exception details: "</span> + ex.Message);
+        }
+        <span class="keyword">catch</span> (<span class="class-name">IndexOutOfRangeException</span> <span class="type">ex</span>)
+        {
+            <span class="comment">// Handling Index Out Of Range Error</span>
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Error: Array index is out of bounds!"</span>);
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Exception details: "</span> + ex.Message);
+        }
+        <span class="keyword">catch</span> (<span class="class-name">Exception</span> <span class="type">ex</span>)
+        {
+            <span class="comment">// General fallback for any other exceptions</span>
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"An unexpected error occurred: "</span> + ex.Message);
+        }
+        <span class="keyword">finally</span>
+        {
+            <span class="comment">// Finally block always executes</span>
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Program execution completed."</span>);
+        }
+    }
+}</pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="qa-card" id="qa-7">
+        <div class="question">
+          7. What is a Query expression? Write a C# program to select Students who are lived in Kirtipur and studied in Patan Multiple Campus using LINQ.
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is a Query Expression?</h3>
+            <p style="margin-bottom: 1rem">
+              A <strong>Query Expression</strong> is a query written in query syntax that is similar to SQL or XQuery. In C# LINQ (Language Integrated Query), a query expression is used to extract, filter, and sort data from any enumerable data source (like arrays, collections, databases, or XML). It typically starts with a <code>from</code> clause and ends with a <code>select</code> or <code>group</code> clause.
+            </p>
+
+            <h3 class="section-title">C# LINQ Program Example</h3>
+            <p style="margin-bottom: 0.75rem;">
+              The following program demonstrates how to create a list of students and use a LINQ query expression to filter out the students living in "Kirtipur" and studying at "Patan Multiple Campus".
+            </p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+<span class="keyword">using</span> <span class="class-name">System.Collections.Generic</span>;
+<span class="keyword">using</span> <span class="class-name">System.Linq</span>;
+
+<span class="keyword">class</span> <span class="class-name">Student</span>
+{
+    <span class="keyword">public int</span> <span class="type">Id</span> { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> <span class="type">Name</span> { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> <span class="type">Address</span> { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> <span class="type">Campus</span> { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>(<span class="keyword">string</span>[] args)
+    {
+        <span class="comment">// 1. Data Source: Creating a list of students</span>
+        <span class="class-name">List</span>&lt;<span class="class-name">Student</span>&gt; <span class="type">studentList</span> = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="class-name">Student</span>&gt;()
+        {
+            <span class="keyword">new</span> <span class="class-name">Student</span>() { Id = 1, Name = <span class="string">"Ram"</span>, Address = <span class="string">"Kirtipur"</span>, Campus = <span class="string">"Patan Multiple Campus"</span> },
+            <span class="keyword">new</span> <span class="class-name">Student</span>() { Id = 2, Name = <span class="string">"Sita"</span>, Address = <span class="string">"Baneshwor"</span>, Campus = <span class="string">"Patan Multiple Campus"</span> },
+            <span class="keyword">new</span> <span class="class-name">Student</span>() { Id = 3, Name = <span class="string">"Hari"</span>, Address = <span class="string">"Kirtipur"</span>, Campus = <span class="string">"Mechi Multiple Campus"</span> },
+            <span class="keyword">new</span> <span class="class-name">Student</span>() { Id = 4, Name = <span class="string">"Gita"</span>, Address = <span class="string">"Kirtipur"</span>, Campus = <span class="string">"Patan Multiple Campus"</span> }
+        };
+
+        <span class="comment">// 2. Query Expression: Filtering students</span>
+        <span class="keyword">var</span> <span class="type">filteredStudents</span> = <span class="keyword">from</span> s <span class="keyword">in</span> studentList
+                               <span class="keyword">where</span> s.Address == <span class="string">"Kirtipur"</span> &amp;&amp; s.Campus == <span class="string">"Patan Multiple Campus"</span>
+                               <span class="keyword">select</span> s;
+
+        <span class="comment">// 3. Query Execution: Displaying results</span>
+        <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Students from Kirtipur studying in Patan Multiple Campus:\n"</span>);
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> <span class="type">student</span> <span class="keyword">in</span> filteredStudents)
+        {
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"ID: "</span> + student.Id + <span class="string">", Name: "</span> + student.Name);
+        }
+        
+        <span class="class-name">Console</span>.<span class="method-name">ReadLine</span>();
+    }
+}</pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="qa-card" id="qa-8">
+        <div class="question">
+          8. What do you mean by static class and constructor? Explain with suitable example.
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">Static Class</h3>
+            <p style="margin-bottom: 1rem">
+              A <strong>Static Class</strong> is a class that cannot be instantiated (you cannot create an object of it using the <code>new</code> keyword). The sole purpose of a static class is to contain static members (methods, properties, etc.). The <code>static</code> keyword is used before the class keyword to declare a static class. Since it has no instances, its members are accessed directly using the class name.
+            </p>
+            
+            <h3 class="section-title">Static Constructor</h3>
+            <p style="margin-bottom: 1rem">
+              A <strong>Static Constructor</strong> is used to initialize any static data or to perform a particular action that needs to be performed only once. It is invoked automatically before the first instance is created or any static members are referenced.
+            </p>
+            <ul class="feature-list">
+              <li>A static constructor does not take any access modifiers or parameters.</li>
+              <li>A class can only have one static constructor.</li>
+              <li>It is called automatically by the CLR, meaning the developer has no control over its execution order.</li>
+            </ul>
+
+            <h3 class="section-title">Example of Static Class and Constructor</h3>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="keyword">static class</span> <span class="class-name">College</span>
+{
+    <span class="keyword">public static string</span> <span class="type">Name</span>;
+
+    <span class="comment">// Static Constructor</span>
+    <span class="keyword">static</span> <span class="method-name">College</span>()
+    {
+        Name = <span class="string">"Mechi Multiple Campus"</span>;
+        <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Static Constructor called!"</span>);
+    }
+
+    <span class="keyword">public static void</span> <span class="method-name">Display</span>()
+    {
+        <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"College Name: "</span> + Name);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="comment">// Accessing static member directly. </span>
+        <span class="comment">// This will automatically invoke the static constructor first.</span>
+        <span class="class-name">College</span>.<span class="method-name">Display</span>();
+    }
+}</pre>
+          </div>
+        </div>
+      </article>
+
+      <h2 class="group-header">Group C</h2>
+
+      <article class="qa-card" id="qa-9">
+        <div class="question">
+          9. What do you mean by Operator Overloading? Write a C# program to demonstrate binary and relational operator overloading.
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">Operator Overloading</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>Operator Overloading</strong> is a concept that gives the ability to use the same operator to perform various custom operations on user-defined data types (like classes and structs). It provides additional capabilities to C# operators, enabling developers to write intuitive and readable code. For example, you can overload the <code>+</code> operator to add two objects of a custom class together. An operator is overloaded by defining a static function using the <code>operator</code> keyword.
+            </p>
+
+            <h3 class="section-title">Program Demonstrating Binary and Relational Operator Overloading</h3>
+            <p style="margin-bottom: 0.75rem;">
+              The following program overloads the binary operator <code>+</code> and the relational operators <code>==</code> and <code>!=</code> for a custom <code>Box</code> class:
+            </p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Box</span>
+{
+    <span class="keyword">public int</span> <span class="type">Length</span>;
+    <span class="keyword">public int</span> <span class="type">Breadth</span>;
+
+    <span class="keyword">public</span> <span class="method-name">Box</span>(<span class="keyword">int</span> l, <span class="keyword">int</span> b)
+    {
+        Length = l;
+        Breadth = b;
+    }
+
+    <span class="comment">// 1. Overloading Binary Operator (+)</span>
+    <span class="keyword">public static</span> <span class="class-name">Box</span> <span class="keyword">operator</span> +(<span class="class-name">Box</span> b1, <span class="class-name">Box</span> b2)
+    {
+        <span class="class-name">Box</span> <span class="type">box</span> = <span class="keyword">new</span> <span class="class-name">Box</span>(<span class="number">0</span>, <span class="number">0</span>);
+        box.Length = b1.Length + b2.Length;
+        box.Breadth = b1.Breadth + b2.Breadth;
+        <span class="keyword">return</span> box;
+    }
+
+    <span class="comment">// 2. Overloading Relational Operator (==)</span>
+    <span class="comment">// Note: Relational operators must be overloaded in pairs (e.g., == and !=)</span>
+    <span class="keyword">public static bool operator</span> ==(<span class="class-name">Box</span> b1, <span class="class-name">Box</span> b2)
+    {
+        <span class="keyword">return</span> (b1.Length == b2.Length) &amp;&amp; (b1.Breadth == b2.Breadth);
+    }
+
+    <span class="comment">// 3. Overloading Relational Operator (!=)</span>
+    <span class="keyword">public static bool operator</span> !=(<span class="class-name">Box</span> b1, <span class="class-name">Box</span> b2)
+    {
+        <span class="keyword">return</span> !(b1 == b2);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Box</span> <span class="type">box1</span> = <span class="keyword">new</span> <span class="class-name">Box</span>(<span class="number">10</span>, <span class="number">20</span>);
+        <span class="class-name">Box</span> <span class="type">box2</span> = <span class="keyword">new</span> <span class="class-name">Box</span>(<span class="number">10</span>, <span class="number">20</span>);
+        <span class="class-name">Box</span> <span class="type">box3</span> = <span class="keyword">new</span> <span class="class-name">Box</span>(<span class="number">5</span>, <span class="number">5</span>);
+
+        <span class="comment">// Binary Operator Overloading Demo</span>
+        <span class="class-name">Box</span> <span class="type">box4</span> = box1 + box3;
+        <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Box 4 Dimensions: Length = "</span> + box4.Length + <span class="string">", Breadth = "</span> + box4.Breadth);
+
+        <span class="comment">// Relational Operator Overloading Demo</span>
+        <span class="keyword">if</span> (box1 == box2)
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Box1 is equal to Box2."</span>);
+        <span class="keyword">else</span>
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Box1 is NOT equal to Box2."</span>);
+
+        <span class="keyword">if</span> (box1 != box3)
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Box1 is NOT equal to Box3."</span>);
+        <span class="keyword">else</span>
+            <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Box1 is equal to Box3."</span>);
+
+        <span class="class-name">Console</span>.<span class="method-name">ReadLine</span>();
+    }
+}</pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="qa-card" id="qa-10">
+        <div class="question">
+          10. Explain difference between ExecuteReader and ExecuteNonQuery. Provided that a mysql database named "Company" with table named "Product" with following columns (ProductId as int, ProductName as varchar(20), and UnitPrice as float).
+          Write a C# program to connect to the database and display product records that have UnitPrice is greater than RS. 1000 and update the product record (such as Unit Price 4500) from ProductId whose ProductId=50.
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">Difference between ExecuteReader and ExecuteNonQuery</h3>
+            <table class="diff-table">
+              <thead>
+                <tr>
+                  <th style="width: 50%">ExecuteReader</th>
+                  <th style="width: 50%">ExecuteNonQuery</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Used when a SQL statement returns data (e.g., <strong>SELECT</strong> queries).</td>
+                  <td>Used when a SQL statement does not return data (e.g., <strong>INSERT, UPDATE, DELETE</strong>).</td>
+                </tr>
+                <tr>
+                  <td>Returns a <code>DataReader</code> object that can read records row by row.</td>
+                  <td>Returns an integer representing the <strong>number of rows affected</strong> by the query.</td>
+                </tr>
+                <tr>
+                  <td>Best for fetching a list of records from the database.</td>
+                  <td>Best for making changes to the database structure or data.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 class="section-title">C# Program for MySQL Database</h3>
+            <p style="margin-bottom: 0.75rem;">
+              The following program connects to the "Company" MySQL database, fetches products with a price &gt; 1000 using <code>ExecuteReader</code>, and updates a product using <code>ExecuteNonQuery</code>.
+            </p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+<span class="keyword">using</span> <span class="class-name">MySql.Data.MySqlClient</span>; <span class="comment">// MySQL namespace</span>
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>(<span class="keyword">string</span>[] args)
+    {
+        <span class="comment">// 1. Database Connection String</span>
+        <span class="keyword">string</span> <span class="type">connString</span> = <span class="string">"server=localhost;database=Company;uid=root;password=yourpassword;"</span>;
+
+        <span class="comment">// 2. Establishing Connection</span>
+        <span class="keyword">using</span> (<span class="class-name">MySqlConnection</span> <span class="type">conn</span> = <span class="keyword">new</span> <span class="class-name">MySqlConnection</span>(connString))
+        {
+            <span class="keyword">try</span>
+            {
+                conn.<span class="method-name">Open</span>();
+                <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Connected to MySQL Database successfully!"</span>);
+
+                <span class="comment">// 3. Displaying records using ExecuteReader (SELECT query)</span>
+                <span class="keyword">string</span> <span class="type">selectQuery</span> = <span class="string">"SELECT * FROM Product WHERE UnitPrice &gt; 1000"</span>;
+                <span class="class-name">MySqlCommand</span> <span class="type">cmdSelect</span> = <span class="keyword">new</span> <span class="class-name">MySqlCommand</span>(selectQuery, conn);
+
+                <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"\nProducts with Unit Price &gt; 1000:"</span>);
+                <span class="class-name">MySqlDataReader</span> <span class="type">reader</span> = cmdSelect.<span class="method-name">ExecuteReader</span>();
+                <span class="keyword">while</span> (reader.<span class="method-name">Read</span>())
+                {
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"ID: "</span> + reader[<span class="string">"ProductId"</span>] + 
+                                      <span class="string">", Name: "</span> + reader[<span class="string">"ProductName"</span>] + 
+                                      <span class="string">", Price: RS. "</span> + reader[<span class="string">"UnitPrice"</span>]);
+                }
+                reader.<span class="method-name">Close</span>(); <span class="comment">// Close the reader before executing another command</span>
+
+                <span class="comment">// 4. Updating record using ExecuteNonQuery (UPDATE query)</span>
+                <span class="keyword">string</span> <span class="type">updateQuery</span> = <span class="string">"UPDATE Product SET UnitPrice = 4500 WHERE ProductId = 50"</span>;
+                <span class="class-name">MySqlCommand</span> <span class="type">cmdUpdate</span> = <span class="keyword">new</span> <span class="class-name">MySqlCommand</span>(updateQuery, conn);
+                
+                <span class="keyword">int</span> <span class="type">rowsAffected</span> = cmdUpdate.<span class="method-name">ExecuteNonQuery</span>();
+                <span class="keyword">if</span> (rowsAffected &gt; <span class="number">0</span>)
+                {
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"\nProduct updated successfully! Rows affected: "</span> + rowsAffected);
+                }
+                <span class="keyword">else</span>
+                {
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"\nProduct with ID 50 not found."</span>);
+                }
+            }
+            <span class="keyword">catch</span> (<span class="class-name">Exception</span> <span class="type">ex</span>)
+            {
+                <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(<span class="string">"Error: "</span> + ex.Message);
+            }
+        }
+    }
+}</pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="qa-card" id="qa-11">
+        <div class="question">
+          11. What is web server control in ASP.NET? List five web server control used in ASP.NET. Write a program to create student registration form in one ASP.NET page and display the filled data within another page.
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is a Web Server Control?</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>Web Server Controls</strong> are special ASP.NET tags that run on the server and are converted into standard HTML before being sent to the user's browser. They provide built-in features such as state management (remembering data between postbacks), rich event handling, and automatic browser detection. They are declared using the <code>asp:</code> prefix and must always include the <code>runat="server"</code> attribute.
+            </p>
+
+            <h3 class="section-title">Five Web Server Controls in ASP.NET</h3>
+            <ul class="feature-list">
+              <li><strong>Label (<code>&lt;asp:Label&gt;</code>)</strong> - Used to display text on the web page.</li>
+              <li><strong>TextBox (<code>&lt;asp:TextBox&gt;</code>)</strong> - Used to accept user input (text).</li>
+              <li><strong>Button (<code>&lt;asp:Button&gt;</code>)</strong> - Used to submit a form or trigger an action when clicked.</li>
+              <li><strong>DropDownList (<code>&lt;asp:DropDownList&gt;</code>)</strong> - Used to allow the user to select an item from a drop-down list.</li>
+              <li><strong>CheckBox (<code>&lt;asp:CheckBox&gt;</code>)</strong> - Used to represent a true/false or yes/no state.</li>
+            </ul>
+
+            <h3 class="section-title">ASP.NET Program: Student Registration Form</h3>
+            <p style="margin-bottom: 0.75rem;">
+              The following program uses two pages. The first page (<code>Registration.aspx</code>) takes the student details and uses the <code>PostBackUrl</code> property of the button to send the data directly to the second page (<code>Display.aspx</code>).
+            </p>
+            
+            <p style="margin-bottom: 0.75rem;"><strong>1. Registration.aspx (The Form Page)</strong></p>
+            <pre class="code-block"><span class="keyword">&lt;%@ Page</span> <span class="type">Language</span>=<span class="string">"C#"</span> <span class="keyword">%&gt;</span>
+<span class="keyword">&lt;!DOCTYPE html&gt;</span>
+<span class="keyword">&lt;html&gt;</span>
+<span class="keyword">&lt;body&gt;</span>
+    <span class="keyword">&lt;form</span> <span class="type">id</span>=<span class="string">"form1"</span> <span class="type">runat</span>=<span class="string">"server"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;h3&gt;</span>Student Registration<span class="keyword">&lt;/h3&gt;</span>
+        
+        <span class="keyword">&lt;asp:Label</span> <span class="type">ID</span>=<span class="string">"lblName"</span> <span class="type">runat</span>=<span class="string">"server"</span> <span class="type">Text</span>=<span class="string">"Name: "</span><span class="keyword">&gt;&lt;/asp:Label&gt;</span>
+        <span class="keyword">&lt;asp:TextBox</span> <span class="type">ID</span>=<span class="string">"txtName"</span> <span class="type">runat</span>=<span class="string">"server"</span><span class="keyword">&gt;&lt;/asp:TextBox&gt;</span>
+        <span class="keyword">&lt;br /&gt;&lt;br /&gt;</span>
+        
+        <span class="keyword">&lt;asp:Label</span> <span class="type">ID</span>=<span class="string">"lblEmail"</span> <span class="type">runat</span>=<span class="string">"server"</span> <span class="type">Text</span>=<span class="string">"Email: "</span><span class="keyword">&gt;&lt;/asp:Label&gt;</span>
+        <span class="keyword">&lt;asp:TextBox</span> <span class="type">ID</span>=<span class="string">"txtEmail"</span> <span class="type">runat</span>=<span class="string">"server"</span><span class="keyword">&gt;&lt;/asp:TextBox&gt;</span>
+        <span class="keyword">&lt;br /&gt;&lt;br /&gt;</span>
+        
+        <span class="comment">&lt;!-- PostBackUrl sends data to Display.aspx --&gt;</span>
+        <span class="keyword">&lt;asp:Button</span> <span class="type">ID</span>=<span class="string">"btnSubmit"</span> <span class="type">runat</span>=<span class="string">"server"</span> <span class="type">Text</span>=<span class="string">"Register"</span> <span class="type">PostBackUrl</span>=<span class="string">"Display.aspx"</span> <span class="keyword">/&gt;</span>
+    <span class="keyword">&lt;/form&gt;</span>
+<span class="keyword">&lt;/body&gt;</span>
+<span class="keyword">&lt;/html&gt;</span></pre>
+
+            <p style="margin-bottom: 0.75rem; margin-top: 1rem;"><strong>2. Display.aspx (The Display Page)</strong></p>
+            <pre class="code-block"><span class="keyword">&lt;%@ Page</span> <span class="type">Language</span>=<span class="string">"C#"</span> <span class="keyword">%&gt;</span>
+<span class="keyword">&lt;!DOCTYPE html&gt;</span>
+<span class="keyword">&lt;html&gt;</span>
+<span class="keyword">&lt;body&gt;</span>
+    <span class="keyword">&lt;form</span> <span class="type">id</span>=<span class="string">"form2"</span> <span class="type">runat</span>=<span class="string">"server"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;h3&gt;</span>Registration Details<span class="keyword">&lt;/h3&gt;</span>
+        <span class="keyword">&lt;%</span> 
+            <span class="comment">// Retrieving data from the previous page using Request.Form</span>
+            <span class="keyword">string</span> <span class="type">studentName</span> = Request.Form[<span class="string">"txtName"</span>];
+            <span class="keyword">string</span> <span class="type">studentEmail</span> = Request.Form[<span class="string">"txtEmail"</span>];
+            
+            <span class="comment">// Displaying the submitted data</span>
+            Response.<span class="method-name">Write</span>(<span class="string">"Student Name: "</span> + studentName + <span class="string">"&lt;br /&gt;"</span>);
+            Response.<span class="method-name">Write</span>(<span class="string">"Student Email: "</span> + studentEmail);
+        <span class="keyword">%&gt;</span>
+    <span class="keyword">&lt;/form&gt;</span>
+<span class="keyword">&lt;/body&gt;</span>
+<span class="keyword">&lt;/html&gt;</span></pre>
+          </div>
+        </div>
+      </article>
+
+    </main>
+  </div>
+</body>
+</html>
