@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2022 Exam Answer</title>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+  <div class="notebook-container">
+    <header class="header">
+      <h1>Dot Net 2022</h1>
+      <p>Dot Net Technology - BCA Fifth Semester 2022</p>
+    </header>
+
+    <main>
+      <!-- Table of Contents -->
+      <div class="toc-card">
+        <h2 class="toc-title">Answered Questions</h2>
+        
+        <h3 class="group-toc-title">Group B</h3>
+        <ul class="toc-list">
+          <li><a href="#qa-2">2. What do you mean by "safe" programming language? Explain any four applied technologies in DotNet framework.</a></li>
+          <li><a href="#qa-3">3. List any five canonical keywords in "C#". Write a C# program to initialize and display array element with sum of each power.</a></li>
+          <li><a href="#qa-4">4. What is string interpolation? How passing argument by value is differing from passing argument by reference? Explain with program.</a></li>
+          <li><a href="#qa-5">5. What are sealed classes in C#? Write a C# program to illustrate the concept of abstract class and abstract method.</a></li>
+          <li><a href="#qa-6">6. What is virtual method? Write a program to illustrate multi-level inheritance with virtual method.</a></li>
+          <li><a href="#qa-7">7. What is different between index and properties? Explain the concept of generic class in C# with a suitable program.</a></li>
+          <li><a href="#qa-8">8. Write a program to create form for calculating simple interest in one ASP.NET page and display the simple interest in another page of ASP.NET.</a></li>
+        </ul>
+
+        <h3 class="group-toc-title">Group C</h3>
+        <ul class="toc-list">
+          <li><a href="#qa-9">9. a) What is System Exception? Program to withdraw amount.<br/>b) Five LINQ standard operators and aggregate salary program.</a></li>
+          <li><a href="#qa-10">10. What are different type of delegate in C#? Write a C# Program to create a class 'Time' and overload '+' and comparison operators.</a></li>
+          <li><a href="#qa-11">11. Difference between ExecuteScalar() and ExecuteReader(). Program to insert customer records and display those with balance &gt; 5000.</a></li>
+        </ul>
+      </div>
+
+      <h2 class="group-header">Group B</h2>
+
+      <!-- Question Card 2 -->
+      <article class="qa-card" id="qa-2">
+        <div class="question">
+          2. What do you mean by "safe" programming language? Explain any four applied technologies in DotNet framework.
+        </div>
+        <div class="answer full-marks-answer">
+          
+          <div>
+            <h3 class="section-title">1. Safe Programming Language (Type Safety)</h3>
+            <p style="margin-bottom: 1rem">
+              A <strong>"safe"</strong> programming language (like C#) refers to a language that guarantees <strong>Type Safety</strong>. This means that instances of types can interact only through protocols they explicitly define, which ensures the internal consistency of each type. For example, C# strictly prevents you from interacting with a <code>string</code> type as though it were an <code>int</code> (integer).
+            </p>
+            <p style="margin-bottom: 1rem">
+              More specifically, C# enforces <strong>static typing</strong>, meaning that type safety is strictly checked by the compiler at compile-time before the program even runs. This eliminates a huge class of errors, making the software much easier to manage, more predictable, and highly robust.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="section-title">2. Four Applied Technologies in the .NET Framework</h3>
+            <p style="margin-bottom: 1rem">
+              The .NET Framework offers various applied technologies for different development scenarios. Four major ones include:
+            </p>
+            <ul class="feature-list" style="margin-bottom: 1rem;">
+              <li><strong>1. ASP.NET:</strong> A mature technology for creating web applications that run on a server (IIS) and are accessed via any web browser. It features zero deployment at the client side and allows easy updates.</li>
+              <li><strong>2. Windows Presentation Foundation (WPF):</strong> Introduced in Framework 3.0, it is used for writing rich-client desktop applications. It offers sophisticated graphics (3D rendering, true transparency) using DirectX and allows user interfaces to be designed cleanly using XAML files.</li>
+              <li><strong>3. Windows Forms:</strong> An older, relatively simple rich-client API for building traditional Windows desktop applications. While it lacks some advanced graphics features of WPF, it remains relevant for legacy systems and quick application development.</li>
+              <li><strong>4. Xamarin:</strong> A technology that enables developers to write cross-platform mobile applications in C# that target iOS, Android, and Windows Phone from a single shared codebase.</li>
+            </ul>
+          </div>
+
+          <!-- Cheat Sheet Section -->
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">⚡ Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Safe Language:</strong> Means "Type Safety". A string cannot be accidentally used as an integer. Errors are caught early at compile-time.</li>
+              <li><strong>ASP.NET:</strong> For building Websites and Web Apps.</li>
+              <li><strong>WPF:</strong> For building modern Desktop Apps with rich graphics (XAML).</li>
+              <li><strong>Windows Forms:</strong> For building traditional/simple Desktop Apps.</li>
+              <li><strong>Xamarin:</strong> For building Mobile Apps (iOS/Android) using C#.</li>
+            </ul>
+          </div>
+          
+        </div>
+      </article>
+
+      <!-- Question Card 3 -->
+      <article class="qa-card" id="qa-3">
+        <div class="question">
+          3. List any five canonical keywords in "C#". Write a C# program to initialize and display array element with sum of each power.
+        </div>
+        <div class="answer full-marks-answer">
+          
+          <div>
+            <h3 class="section-title">1. Five Canonical Keywords in C#</h3>
+            <p style="margin-bottom: 1rem">
+              In C#, keywords are reserved words that hold a special predefined meaning to the compiler. They cannot be used as identifiers (like variable or class names) unless prefixed with the <code>@</code> symbol. Five standard (canonical) reserved keywords in C# are:
+            </p>
+            <ul class="feature-list" style="margin-bottom: 1rem;">
+              <li><strong>1. public:</strong> An access modifier that makes a class or member accessible from anywhere.</li>
+              <li><strong>2. class:</strong> Used to declare a new class (a blueprint for creating objects).</li>
+              <li><strong>3. void:</strong> Specifies that a method does not return a value.</li>
+              <li><strong>4. static:</strong> Declares a member that belongs to the type itself rather than a specific instance/object.</li>
+              <li><strong>5. int:</strong> A predefined data type used to store 32-bit signed integers.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="section-title">2. Array Initialization and Sum of Powers Code Example</h3>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="keyword">public class</span> <span class="class-name">ArrayPowerSum</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>(<span class="type">string</span>[] args)
+    {
+        <span class="comment">// Initialize the array</span>
+        <span class="keyword">int</span>[] numbers = { <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> };
+        <span class="keyword">double</span> totalSum = <span class="number">0</span>;
+        
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Array Elements and their Squares:"</span>);
+        
+        <span class="comment">// Loop through the array</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.Length; i++)
+        {
+            <span class="keyword">double</span> power = <span class="class-name">Math</span>.Pow(numbers[i], <span class="number">2</span>); <span class="comment">// Calculating power of 2</span>
+            totalSum += power;
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Element: {numbers[i]}, Square: {power}"</span>);
+        }
+        
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"\nTotal Sum of powers: {totalSum}"</span>);
+    }
+}</pre>
+          </div>
+
+          <!-- Cheat Sheet Section -->
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">⚡ Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Keywords:</strong> Reserved words with special meaning (e.g., <code>public</code>, <code>class</code>, <code>void</code>, <code>int</code>, <code>static</code>).</li>
+              <li><strong>Math.Pow(x, y):</strong> C# method used to calculate powers. Evaluates x raised to the power y.</li>
+              <li><strong>Array Iteration:</strong> <code>for (int i = 0; i &lt; arr.Length; i++)</code> is the standard loop to read all array elements.</li>
+            </ul>
+          </div>
+          
+        </div>
+      </article>
+
+      <!-- Question Card 4 -->
+      <article class="qa-card" id="qa-4">
+        <div class="question">
+          4. What is string interpolation? How passing argument by value is differing from passing argument by reference? Explain with program.
+        </div>
+        <div class="answer full-marks-answer">
+          
+          <div>
+            <h3 class="section-title">1. String Interpolation</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>String Interpolation</strong> is a feature in C# that allows you to easily format strings by embedding variables and expressions directly inside a string literal. This is done by prefixing the string with a <code>$</code> character and wrapping variables in curly braces <code>{}</code>. It is a cleaner, more readable alternative to traditional string concatenation using <code>+</code>.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="section-title">2. Passing by Value vs. Passing by Reference</h3>
+            <ul class="feature-list" style="margin-bottom: 1rem;">
+              <li><strong>Passing by Value:</strong> This is the default mechanism in C#. When an argument is passed by value, a <em>copy</em> of the variable's value is created and passed to the method. Any modifications made to the parameter inside the method do not affect the original variable because they exist in different memory locations.</li>
+              <li><strong>Passing by Reference:</strong> When using the <code>ref</code> keyword, you pass the <em>actual memory address</em> of the variable rather than a copy. As a result, any changes made to the parameter within the method will directly update the original variable's value.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="section-title">3. Code Example</h3>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="keyword">public class</span> <span class="class-name">PassMethodDemo</span>
+{
+    <span class="comment">// 1. Pass by Value Method</span>
+    <span class="keyword">public static void</span> <span class="method-name">PassByValue</span>(<span class="keyword">int</span> x)
+    {
+        x = x + <span class="number">10</span>; <span class="comment">// Modifies only the local copy</span>
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Inside PassByValue: {x}"</span>); <span class="comment">// Using String Interpolation</span>
+    }
+
+    <span class="comment">// 2. Pass by Reference Method</span>
+    <span class="keyword">public static void</span> <span class="method-name">PassByReference</span>(<span class="keyword">ref int</span> y)
+    {
+        y = y + <span class="number">10</span>; <span class="comment">// Modifies the actual original variable</span>
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Inside PassByReference: {y}"</span>); <span class="comment">// Using String Interpolation</span>
+    }
+
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>(<span class="type">string</span>[] args)
+    {
+        <span class="keyword">int</span> num1 = <span class="number">5</span>;
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Before PassByValue: {num1}"</span>);
+        PassByValue(num1);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"After PassByValue: {num1}\n"</span>); <span class="comment">// Original remains 5</span>
+
+        <span class="keyword">int</span> num2 = <span class="number">5</span>;
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Before PassByReference: {num2}"</span>);
+        PassByReference(<span class="keyword">ref</span> num2);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"After PassByReference: {num2}"</span>); <span class="comment">// Original becomes 15</span>
+    }
+}</pre>
+          </div>
+
+          <!-- Cheat Sheet Section -->
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">⚡ Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>String Interpolation:</strong> Uses <code>$</code> before quotes to insert variables via <code>{}</code> (e.g. <code>$"Value: {x}"</code>).</li>
+              <li><strong>Pass by Value:</strong> Default in C#. Creates a <strong>copy</strong> of data. Original is safe.</li>
+              <li><strong>Pass by Reference:</strong> Requires <code>ref</code>. Passes <strong>memory address</strong>. Original can be changed.</li>
+            </ul>
+          </div>
+          
+        </div>
+      </article>
+
+      <!-- Question Card 5 -->
+      <article class="qa-card" id="qa-5">
+        <div class="question">
+          5. What are sealed classes in C#? Write a C# program to illustrate the concept of abstract class and abstract method.
+        </div>
+        <div class="answer full-marks-answer">
+          
+          <div>
+            <h3 class="section-title">1. Sealed Classes</h3>
+            <p style="margin-bottom: 1rem">
+              In C#, <strong>Sealed Classes</strong> are used to restrict the inheritance feature of Object-Oriented Programming. Once a class is defined using the <code>sealed</code> keyword, it <em>cannot be inherited</em> by any other class. 
+            </p>
+            <p style="margin-bottom: 1rem">
+              This is often used for security reasons or to prevent unintended modification of a class's behavior. If another class tries to derive from a sealed class, the C# compiler will throw an error. (Note: Structs are implicitly sealed in C#).
+            </p>
+          </div>
+
+          <div>
+            <h3 class="section-title">2. Abstract Class and Abstract Method Program</h3>
+            <p style="margin-bottom: 1rem">
+              An <strong>Abstract Class</strong> is a class that cannot be instantiated directly and is meant only to be inherited. An <strong>Abstract Method</strong> is a method declared without a body inside an abstract class, forcing the derived class to provide the actual implementation using the <code>override</code> keyword.
+            </p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="comment">// Abstract Class</span>
+<span class="keyword">public abstract class</span> <span class="class-name">Shape</span> 
+{ 
+    <span class="comment">// Abstract Method (No body)</span>
+    <span class="keyword">public abstract void</span> <span class="method-name">Draw</span>(); 
+} 
+
+<span class="comment">// Derived Concrete Class</span>
+<span class="keyword">public class</span> <span class="class-name">Rectangle</span> : <span class="class-name">Shape</span> 
+{ 
+    <span class="comment">// Overriding the abstract method</span>
+    <span class="keyword">public override void</span> <span class="method-name">Draw</span>() 
+    { 
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Drawing a Rectangle..."</span>); 
+    } 
+}
+
+<span class="keyword">public class</span> <span class="class-name">Program</span> 
+{ 
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>() 
+    { 
+        <span class="comment">// Cannot instantiate Shape directly (e.g. new Shape() is illegal)</span>
+        <span class="comment">// Instead, we instantiate the derived class Rectangle.</span>
+        <span class="class-name">Shape</span> myShape = <span class="keyword">new</span> <span class="class-name">Rectangle</span>(); 
+        myShape.Draw(); <span class="comment">// Outputs: Drawing a Rectangle...</span>
+    } 
+}</pre>
+          </div>
+
+          <!-- Cheat Sheet Section -->
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">⚡ Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Sealed Class:</strong> Uses the <code>sealed</code> keyword. Cannot be inherited by any other class.</li>
+              <li><strong>Abstract Class:</strong> Uses the <code>abstract</code> keyword. Cannot be instantiated directly using <code>new</code>. Must be inherited.</li>
+              <li><strong>Abstract Method:</strong> Has no body. Must be overridden (<code>override</code>) in the child class. Used to achieve abstraction.</li>
+            </ul>
+          </div>
+          
+        </div>
+      </article>
+
+      <!-- Question Card 6 -->
+      <article class="qa-card" id="qa-6">
+        <div class="question">
+          6. What is virtual method? Write a program to illustrate multi-level inheritance with virtual method.
+        </div>
+        <div class="answer full-marks-answer">
+          
+          <div>
+            <h3 class="section-title">1. Virtual Method</h3>
+            <p style="margin-bottom: 1rem">
+              A <strong>Virtual Method</strong> is a method in a base class that can be redefined (overridden) in its derived classes. It provides a default implementation that can either be used as-is by the derived class, or replaced with a more specific implementation.
+            </p>
+            <p style="margin-bottom: 1rem">
+              To declare a virtual method, you use the <code>virtual</code> keyword in the base class. To modify it in the derived class, you use the <code>override</code> keyword. This is the foundation of <em>Runtime Polymorphism</em> (Dynamic Binding) in C#.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="section-title">2. Multi-Level Inheritance with Virtual Methods Program</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>Multi-level Inheritance</strong> occurs when a class is derived from another derived class (e.g., Grandparent → Parent → Child). Below is a program demonstrating this concept using a virtual method.
+            </p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="comment">// Level 1: Base Class</span>
+<span class="keyword">public class</span> <span class="class-name">Grandparent</span>
+{
+    <span class="comment">// Virtual method allowing overriding</span>
+    <span class="keyword">public virtual void</span> <span class="method-name">Display</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Display from Grandparent"</span>);
+    }
+}
+
+<span class="comment">// Level 2: Intermediate Derived Class</span>
+<span class="keyword">public class</span> <span class="class-name">Parent</span> : <span class="class-name">Grandparent</span>
+{
+    <span class="comment">// Overriding the virtual method</span>
+    <span class="keyword">public override void</span> <span class="method-name">Display</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Display from Parent"</span>);
+    }
+}
+
+<span class="comment">// Level 3: Final Derived Class (Multi-level)</span>
+<span class="keyword">public class</span> <span class="class-name">Child</span> : <span class="class-name">Parent</span>
+{
+    <span class="comment">// Overriding the Parent's method</span>
+    <span class="keyword">public override void</span> <span class="method-name">Display</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Display from Child"</span>);
+    }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="comment">// Demonstrating dynamic polymorphism</span>
+        <span class="class-name">Grandparent</span> gp = <span class="keyword">new</span> <span class="class-name">Grandparent</span>();
+        gp.Display(); <span class="comment">// Outputs: Display from Grandparent</span>
+
+        <span class="class-name">Grandparent</span> p = <span class="keyword">new</span> <span class="class-name">Parent</span>();
+        p.Display();  <span class="comment">// Outputs: Display from Parent</span>
+
+        <span class="class-name">Grandparent</span> c = <span class="keyword">new</span> <span class="class-name">Child</span>();
+        c.Display();  <span class="comment">// Outputs: Display from Child</span>
+    }
+}</pre>
+          </div>
+
+          <!-- Cheat Sheet Section -->
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">⚡ Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Virtual Method:</strong> Uses <code>virtual</code>. Provides a base implementation that can be overridden.</li>
+              <li><strong>Override:</strong> Uses <code>override</code>. Replaces the base implementation in the child class.</li>
+              <li><strong>Multi-Level Inheritance:</strong> A chain of inheritance where a derived class serves as a base class for another (e.g., A → B → C).</li>
+            </ul>
+          </div>
+          
+        </div>
+      </article>
+
+      <!-- Question Card 7 -->
+      <article class="qa-card" id="qa-7">
+        <div class="question">
+          7. What is different between index and properties? Explain the concept of generic class in C# with a suitable program.
+        </div>
+        <div class="answer full-marks-answer">
+          
+          <div>
+            <h3 class="section-title">1. Differences between Indexers and Properties</h3>
+            <p style="margin-bottom: 1rem">
+              Both <strong>Indexers</strong> and <strong>Properties</strong> allow data encapsulation, but they are used in different ways. A property allows access to a single piece of data (a field), whereas an indexer allows a class or struct to be indexed exactly like an array.
+            </p>
+            <table class="diff-table">
+              <thead>
+                <tr>
+                  <th style="width: 50%">Indexers</th>
+                  <th style="width: 50%">Properties</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Created using the <code>this</code> keyword.</td>
+                  <td>Do not require the <code>this</code> keyword.</td>
+                </tr>
+                <tr>
+                  <td>Identified by their signature (parameters).</td>
+                  <td>Identified by their names.</td>
+                </tr>
+                <tr>
+                  <td>Accessed using array-like brackets <code>[ ]</code>.</td>
+                  <td>Accessed by their simple names (e.g. <code>obj.Name</code>).</td>
+                </tr>
+                <tr>
+                  <td>Must be an instance member; cannot be <code>static</code>.</td>
+                  <td>Can be both instance and <code>static</code> members.</td>
+                </tr>
+                <tr>
+                  <td>A <code>get</code> accessor has the same formal parameter list as the indexer.</td>
+                  <td>A <code>get</code> accessor has no parameters.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h3 class="section-title">2. Generic Class Concept and Program</h3>
+            <p style="margin-bottom: 1rem">
+              A <strong>Generic Class</strong> in C# allows you to define a class with placeholders (type parameters, usually <code>&lt;T&gt;</code>) for the data types it will store or use. This makes the class highly reusable, type-safe, and performant because you can use the exact same class logic with different data types without boxing or unboxing.
+            </p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="comment">// A Generic Class defined with type parameter &lt;T&gt;</span>
+<span class="keyword">public class</span> <span class="class-name">GenericBox</span>&lt;T&gt;
+{
+    <span class="keyword">private</span> T item;
+
+    <span class="comment">// Method that accepts a generic type T</span>
+    <span class="keyword">public void</span> <span class="method-name">Add</span>(T newItem)
+    {
+        item = newItem;
+    }
+
+    <span class="comment">// Method that returns a generic type T</span>
+    <span class="keyword">public</span> T <span class="method-name">GetItem</span>()
+    {
+        <span class="keyword">return</span> item;
+    }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="comment">// Using the generic class to store an Integer</span>
+        <span class="class-name">GenericBox</span>&lt;<span class="keyword">int</span>&gt; intBox = <span class="keyword">new</span> <span class="class-name">GenericBox</span>&lt;<span class="keyword">int</span>&gt;();
+        intBox.Add(<span class="number">100</span>);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Integer Box contains: {intBox.GetItem()}"</span>);
+
+        <span class="comment">// Using the exact same generic class to store a String</span>
+        <span class="class-name">GenericBox</span>&lt;<span class="keyword">string</span>&gt; stringBox = <span class="keyword">new</span> <span class="class-name">GenericBox</span>&lt;<span class="keyword">string</span>&gt;();
+        stringBox.Add(<span class="string">"Hello Generics!"</span>);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"String Box contains: {stringBox.GetItem()}"</span>);
+    }
+}</pre>
+          </div>
+
+          <!-- Cheat Sheet Section -->
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">⚡ Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Indexer:</strong> Uses <code>this[int index]</code>. Acts like an array. Cannot be static.</li>
+              <li><strong>Property:</strong> Named wrapper over fields. Uses <code>get</code> and <code>set</code>. Can be static.</li>
+              <li><strong>Generic Class:</strong> Defined with <code>&lt;T&gt;</code>. Allows class reuse with multiple data types, ensuring type safety.</li>
+            </ul>
+          </div>
+          
+        </div>
+      </article>
+
+      <!-- Question Card 8 -->
+      <article class="qa-card" id="qa-8">
+        <div class="question">
+          8. Write a program to create form for calculating simple interest in one ASP.NET page and display the simple interest in another page of ASP.NET.
+        </div>
+        <div class="answer full-marks-answer">
+          
+          <div>
+            <h3 class="section-title">ASP.NET Simple Interest Calculator</h3>
+            <p style="margin-bottom: 1rem">
+              To solve this, we use two ASP.NET web pages. The first page (<code>Default.aspx</code>) contains a form to accept Principal, Time, and Rate from the user. It calculates the Simple Interest on a button click, and passes the result to the second page (<code>Result.aspx</code>) using a <strong>Query String</strong> via <code>Response.Redirect()</code>.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="section-title">1. First Page: Default.aspx (The Form)</h3>
+            <pre class="code-block"><span class="comment">&lt;!-- Default.aspx (HTML Markup) --&gt;</span>
+&lt;%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SimpleInterestApp.Default" %&gt;
+&lt;html&gt;
+&lt;head runat="server"&gt;&lt;title&gt;Calculate SI&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form id="form1" runat="server"&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Simple Interest Calculator&lt;/h3&gt;
+            Principal (P): &lt;asp:TextBox ID="txtPrincipal" runat="server"&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;
+            Time (T): &lt;asp:TextBox ID="txtTime" runat="server"&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;
+            Rate (R): &lt;asp:TextBox ID="txtRate" runat="server"&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;
+            &lt;asp:Button ID="btnCalculate" runat="server" Text="Calculate" OnClick="btnCalculate_Click" /&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+            
+            <pre class="code-block" style="margin-top: 1rem;"><span class="comment">// Default.aspx.cs (Code-Behind)</span>
+<span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="keyword">public partial class</span> <span class="class-name">Default</span> : <span class="class-name">System.Web.UI.Page</span>
+{
+    <span class="keyword">protected void</span> <span class="method-name">btnCalculate_Click</span>(<span class="keyword">object</span> sender, <span class="class-name">EventArgs</span> e)
+    {
+        <span class="keyword">double</span> p = <span class="class-name">Convert</span>.ToDouble(txtPrincipal.Text);
+        <span class="keyword">double</span> t = <span class="class-name">Convert</span>.ToDouble(txtTime.Text);
+        <span class="keyword">double</span> r = <span class="class-name">Convert</span>.ToDouble(txtRate.Text);
+        
+        <span class="comment">// Calculate Simple Interest</span>
+        <span class="keyword">double</span> si = (p * t * r) / <span class="number">100</span>;
+        
+        <span class="comment">// Redirect to Result.aspx and pass the calculated SI via QueryString</span>
+        Response.Redirect(<span class="string">"Result.aspx?SI="</span> + si);
+    }
+}</pre>
+          </div>
+
+          <div style="margin-top: 1.5rem;">
+            <h3 class="section-title">2. Second Page: Result.aspx (Displaying the Result)</h3>
+            <pre class="code-block"><span class="comment">&lt;!-- Result.aspx (HTML Markup) --&gt;</span>
+&lt;%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Result.aspx.cs" Inherits="SimpleInterestApp.Result" %&gt;
+&lt;html&gt;
+&lt;head runat="server"&gt;&lt;title&gt;SI Result&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form id="form2" runat="server"&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Calculation Result&lt;/h3&gt;
+            &lt;asp:Label ID="lblResult" runat="server" ForeColor="Green"&gt;&lt;/asp:Label&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+            
+            <pre class="code-block" style="margin-top: 1rem;"><span class="comment">// Result.aspx.cs (Code-Behind)</span>
+<span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="keyword">public partial class</span> <span class="class-name">Result</span> : <span class="class-name">System.Web.UI.Page</span>
+{
+    <span class="keyword">protected void</span> <span class="method-name">Page_Load</span>(<span class="keyword">object</span> sender, <span class="class-name">EventArgs</span> e)
+    {
+        <span class="comment">// Check if QueryString "SI" has a value</span>
+        <span class="keyword">if</span> (Request.QueryString[<span class="string">"SI"</span>] != <span class="keyword">null</span>)
+        {
+            <span class="comment">// Read the value and display it on the label</span>
+            lblResult.Text = <span class="string">"The Simple Interest is: Rs. "</span> + Request.QueryString[<span class="string">"SI"</span>];
+        }
+    }
+}</pre>
+          </div>
+
+          <!-- Cheat Sheet Section -->
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">⚡ Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Response.Redirect(url):</strong> Method used to navigate the user from one ASP.NET page to another.</li>
+              <li><strong>QueryString:</strong> Data passed in the URL (e.g., <code>?SI=150</code>). Best for passing small amounts of non-sensitive data across pages.</li>
+              <li><strong>Request.QueryString["key"]:</strong> Used on the destination page to read the passed data.</li>
+            </ul>
+          </div>
+          
+        </div>
+      </article>
+
+      <h2 class="group-header">Group C</h2>
+
+      <!-- Question Card 9 -->
+      <article class="qa-card" id="qa-9">
+        <div class="question">
+          9. a) What is System Exception? Write a C# program that will read balance and withdraw amount from keyboard and display the remaining balance on screen. if balance is greater than withdrawal amount otherwise throw an Application Exception with appropriate message.<br/>
+          b) List any five LINQ standard operators? Write a C# program to compute aggregate salary of 5 employee and then display employee record in descending order with respective employee salary using LINQ.
+        </div>
+        <div class="answer full-marks-answer">
+          
+          <!-- Part A -->
+          <div>
+            <h3 class="section-title">9. a) System Exception and Withdrawal Program</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>System Exception:</strong> In C#, a <code>SystemException</code> is the base class for all predefined runtime exceptions thrown by the Common Language Runtime (CLR). Examples include <code>IndexOutOfRangeException</code>, <code>NullReferenceException</code>, and <code>DivideByZeroException</code>. It indicates errors that occur during application execution, generally related to system failures or invalid operations.
+            </p>
+            <p style="margin-bottom: 1rem">
+              Below is the program that reads balance and withdrawal amount, checks validity, and throws an <code>ApplicationException</code> if the withdrawal amount exceeds the balance:
+            </p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="keyword">public class</span> <span class="class-name">BankWithdrawal</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="keyword">try</span>
+        {
+            <span class="class-name">Console</span>.Write(<span class="string">"Enter Account Balance: "</span>);
+            <span class="keyword">double</span> balance = <span class="class-name">Convert</span>.ToDouble(<span class="class-name">Console</span>.ReadLine());
+
+            <span class="class-name">Console</span>.Write(<span class="string">"Enter Withdrawal Amount: "</span>);
+            <span class="keyword">double</span> withdraw = <span class="class-name">Convert</span>.ToDouble(<span class="class-name">Console</span>.ReadLine());
+
+            <span class="keyword">if</span> (withdraw &gt; balance)
+            {
+                <span class="comment">// Throw ApplicationException when custom business logic fails</span>
+                <span class="keyword">throw new</span> <span class="class-name">ApplicationException</span>(<span class="string">"Insufficient Balance! Withdrawal amount exceeds current balance."</span>);
+            }
+            <span class="keyword">else</span>
+            {
+                balance -= withdraw;
+                <span class="class-name">Console</span>.WriteLine(<span class="string">$"Withdrawal Successful! Remaining Balance: {balance}"</span>);
+            }
+        }
+        <span class="keyword">catch</span> (<span class="class-name">ApplicationException</span> ex)
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Error: {ex.Message}"</span>);
+        }
+        <span class="keyword">catch</span> (<span class="class-name">Exception</span> ex)
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Invalid Input: {ex.Message}"</span>);
+        }
+    }
+}</pre>
+          </div>
+
+          <!-- Part B -->
+          <div style="margin-top: 1.5rem;">
+            <h3 class="section-title">9. b) LINQ Operators and Aggregate Salary Program</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>LINQ (Language Integrated Query) Standard Operators:</strong> These are methods that form the LINQ pattern, allowing you to query data. Five common LINQ operators are:
+            </p>
+            <ul class="feature-list" style="margin-bottom: 1rem;">
+              <li><strong>1. Where:</strong> Filters a sequence of values based on a predicate.</li>
+              <li><strong>2. Select:</strong> Projects each element of a sequence into a new form.</li>
+              <li><strong>3. OrderBy / OrderByDescending:</strong> Sorts elements in ascending or descending order.</li>
+              <li><strong>4. Sum:</strong> Computes the sum of a sequence of numeric values.</li>
+              <li><strong>5. GroupBy:</strong> Groups elements that share a common attribute.</li>
+            </ul>
+            <p style="margin-bottom: 1rem">
+              Below is the program using LINQ to compute aggregate salary and display records in descending order:
+            </p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+<span class="keyword">using</span> <span class="class-name">System.Linq</span>;
+<span class="keyword">using</span> <span class="class-name">System.Collections.Generic</span>;
+
+<span class="keyword">public class</span> <span class="class-name">Employee</span>
+{
+    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public double</span> Salary { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}
+
+<span class="keyword">public class</span> <span class="class-name">LinqEmployeeDemo</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="comment">// Create a list of 5 employees</span>
+        <span class="class-name">List</span>&lt;<span class="class-name">Employee</span>&gt; empList = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="class-name">Employee</span>&gt;()
+        {
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Alice"</span>, Salary = <span class="number">45000</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Bob"</span>, Salary = <span class="number">62000</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Charlie"</span>, Salary = <span class="number">38000</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"David"</span>, Salary = <span class="number">75000</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Eve"</span>, Salary = <span class="number">50000</span> }
+        };
+
+        <span class="comment">// 1. Compute Aggregate (Sum) Salary</span>
+        <span class="keyword">double</span> totalSalary = empList.Sum(e =&gt; e.Salary);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Total Aggregate Salary: {totalSalary}\n"</span>);
+
+        <span class="comment">// 2. Sort by Salary in Descending Order</span>
+        <span class="keyword">var</span> sortedEmployees = empList.OrderByDescending(e =&gt; e.Salary);
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Employees sorted by Salary (Descending):"</span>);
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> emp <span class="keyword">in</span> sortedEmployees)
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Name: {emp.Name}, Salary: {emp.Salary}"</span>);
+        }
+    }
+}</pre>
+          </div>
+
+          <!-- Cheat Sheet Section -->
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">⚡ Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>SystemException vs ApplicationException:</strong> <code>SystemException</code> is for CLR errors. <code>ApplicationException</code> is for custom application/business rule errors.</li>
+              <li><strong>Throwing Exception:</strong> Use <code>throw new ExceptionType("Message");</code>.</li>
+              <li><strong>LINQ Aggregate:</strong> Use <code>.Sum(x =&gt; x.Property)</code> to get total.</li>
+              <li><strong>LINQ Sorting:</strong> Use <code>.OrderByDescending(x =&gt; x.Property)</code>.</li>
+            </ul>
+          </div>
+          
+        </div>
+      </article>
+
+      <!-- Question Card 10 -->
+      <article class="qa-card" id="qa-10">
+        <div class="question">
+          10. What are different type of delegate in C#? Write a C# Program to create a class 'Time' which represents time. The class should have three fields for hours, minutes and seconds. It should have constructor to initialize hours, minutes and seconds and method Time() to print current time. overload following operators a) +(Add two time objects of 24 hours clock) b) Compare two time objects
+        </div>
+        <div class="answer full-marks-answer">
+          
+          <div>
+            <h3 class="section-title">1. Types of Delegates in C#</h3>
+            <p style="margin-bottom: 1rem">
+              A <strong>Delegate</strong> in C# is a type-safe function pointer. The different types of delegates are:
+            </p>
+            <ul class="feature-list" style="margin-bottom: 1rem;">
+              <li><strong>Singlecast Delegate:</strong> A delegate that points to a single method at a time.</li>
+              <li><strong>Multicast Delegate:</strong> A delegate that can point to multiple methods at once. When invoked, all assigned methods are called in sequence. Used extensively in events.</li>
+              <li><strong>Generic Delegates (Built-in):</strong> Pre-defined delegates introduced to avoid declaring custom delegates for common scenarios. They are:
+                <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style-type: circle;">
+                  <li><code>Func&lt;&gt;</code>: Returns a value.</li>
+                  <li><code>Action&lt;&gt;</code>: Does not return a value (void).</li>
+                  <li><code>Predicate&lt;&gt;</code>: Always returns a boolean.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="section-title">2. Time Class and Operator Overloading Program</h3>
+            <p style="margin-bottom: 1rem">
+              In C#, you cannot have a method with the exact same name as the class (it would be treated as a constructor). For the method meant to print time, we'll name it <code>DisplayTime()</code>. Operator overloading uses the <code>operator</code> keyword and must be <code>public static</code>. For comparison operators, if you overload <code>==</code>, you must also overload <code>!=</code>.
+            </p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="keyword">public class</span> <span class="class-name">Time</span>
+{
+    <span class="keyword">public int</span> Hours;
+    <span class="keyword">public int</span> Minutes;
+    <span class="keyword">public int</span> Seconds;
+
+    <span class="comment">// Constructor to initialize fields</span>
+    <span class="keyword">public</span> <span class="class-name">Time</span>(<span class="keyword">int</span> h, <span class="keyword">int</span> m, <span class="keyword">int</span> s)
+    {
+        Hours = h;
+        Minutes = m;
+        Seconds = s;
+    }
+
+    <span class="comment">// Method to print current time</span>
+    <span class="keyword">public void</span> <span class="method-name">DisplayTime</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"{(Hours):D2}:{(Minutes):D2}:{(Seconds):D2}"</span>);
+    }
+
+    <span class="comment">// a) Overload '+' operator for 24-hour clock</span>
+    <span class="keyword">public static</span> <span class="class-name">Time</span> <span class="keyword">operator</span> +(<span class="class-name">Time</span> t1, <span class="class-name">Time</span> t2)
+    {
+        <span class="keyword">int</span> totalSeconds = t1.Seconds + t2.Seconds;
+        <span class="keyword">int</span> s = totalSeconds % <span class="number">60</span>;
+        
+        <span class="keyword">int</span> totalMinutes = t1.Minutes + t2.Minutes + (totalSeconds / <span class="number">60</span>);
+        <span class="keyword">int</span> m = totalMinutes % <span class="number">60</span>;
+        
+        <span class="keyword">int</span> totalHours = t1.Hours + t2.Hours + (totalMinutes / <span class="number">60</span>);
+        <span class="keyword">int</span> h = totalHours % <span class="number">24</span>; <span class="comment">// 24 hour clock logic</span>
+
+        <span class="keyword">return new</span> <span class="class-name">Time</span>(h, m, s);
+    }
+
+    <span class="comment">// b) Overload '==' and '!=' operators to compare objects</span>
+    <span class="keyword">public static bool operator</span> ==(<span class="class-name">Time</span> t1, <span class="class-name">Time</span> t2)
+    {
+        <span class="keyword">if</span> (<span class="class-name">ReferenceEquals</span>(t1, t2)) <span class="keyword">return true</span>;
+        <span class="keyword">if</span> (<span class="class-name">ReferenceEquals</span>(t1, <span class="keyword">null</span>) || <span class="class-name">ReferenceEquals</span>(t2, <span class="keyword">null</span>)) <span class="keyword">return false</span>;
+
+        <span class="keyword">return</span> (t1.Hours == t2.Hours) && (t1.Minutes == t2.Minutes) && (t1.Seconds == t2.Seconds);
+    }
+
+    <span class="keyword">public static bool operator</span> !=(<span class="class-name">Time</span> t1, <span class="class-name">Time</span> t2)
+    {
+        <span class="keyword">return</span> !(t1 == t2);
+    }
+
+    <span class="comment">// Best practice when overloading ==</span>
+    <span class="keyword">public override bool</span> <span class="method-name">Equals</span>(<span class="keyword">object</span> obj)
+    {
+        <span class="keyword">if</span> (obj <span class="keyword">is</span> <span class="class-name">Time</span>) <span class="keyword">return this</span> == (<span class="class-name">Time</span>)obj;
+        <span class="keyword">return false</span>;
+    }
+
+    <span class="keyword">public override int</span> <span class="method-name">GetHashCode</span>()
+    {
+        <span class="keyword">return</span> (Hours, Minutes, Seconds).GetHashCode();
+    }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Time</span> t1 = <span class="keyword">new</span> <span class="class-name">Time</span>(<span class="number">10</span>, <span class="number">45</span>, <span class="number">30</span>);
+        <span class="class-name">Time</span> t2 = <span class="keyword">new</span> <span class="class-name">Time</span>(<span class="number">15</span>, <span class="number">20</span>, <span class="number">45</span>);
+
+        <span class="class-name">Console</span>.Write(<span class="string">"Time 1: "</span>); t1.DisplayTime();
+        <span class="class-name">Console</span>.Write(<span class="string">"Time 2: "</span>); t2.DisplayTime();
+
+        <span class="comment">// Using overloaded + operator</span>
+        <span class="class-name">Time</span> t3 = t1 + t2;
+        <span class="class-name">Console</span>.Write(<span class="string">"Sum (t1 + t2): "</span>); t3.DisplayTime();
+
+        <span class="comment">// Using overloaded == operator</span>
+        <span class="keyword">if</span> (t1 == t2)
+            <span class="class-name">Console</span>.WriteLine(<span class="string">"Time 1 and Time 2 are equal."</span>);
+        <span class="keyword">else</span>
+            <span class="class-name">Console</span>.WriteLine(<span class="string">"Time 1 and Time 2 are NOT equal."</span>);
+    }
+}</pre>
+          </div>
+
+          <!-- Cheat Sheet Section -->
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">⚡ Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Delegate Types:</strong> Singlecast, Multicast, Generic (Func, Action, Predicate).</li>
+              <li><strong>Operator Overloading Syntax:</strong> <code>public static ReturnType operator +(Type t1, Type t2)</code>.</li>
+              <li><strong>Comparison Operators:</strong> Must be overloaded in pairs (e.g., <code>==</code> and <code>!=</code>). Remember to override <code>Equals()</code> and <code>GetHashCode()</code>.</li>
+            </ul>
+          </div>
+          
+        </div>
+      </article>
+
+      <!-- Question Card 11 -->
+      <article class="qa-card" id="qa-11">
+        <div class="question">
+          11. What is difference between executeScalar() and executeReader() method? Write a C# program to connect database Bank and insert 5 customer record (Account_no, Name, Address, Balance) in Customer table and Display the customer record whose balance is greater than 5000.
+        </div>
+        <div class="answer full-marks-answer">
+          
+          <div>
+            <h3 class="section-title">1. ExecuteScalar() vs ExecuteReader()</h3>
+            <p style="margin-bottom: 1rem">
+              In ADO.NET, both methods are used to execute queries against a database using a <code>SqlCommand</code> object, but they are used for different purposes:
+            </p>
+            <table class="diff-table">
+              <thead>
+                <tr>
+                  <th style="width: 50%">ExecuteScalar()</th>
+                  <th style="width: 50%">ExecuteReader()</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Returns a <strong>single value</strong> (the first column of the first row in the result set).</td>
+                  <td>Returns a <strong>SqlDataReader</strong> object that can read multiple rows and columns.</td>
+                </tr>
+                <tr>
+                  <td>Used mainly for aggregate functions like <code>COUNT()</code>, <code>SUM()</code>, <code>MAX()</code>, <code>MIN()</code>.</td>
+                  <td>Used for retrieving large sets of data, typically with a <code>SELECT * FROM Table</code> statement.</td>
+                </tr>
+                <tr>
+                  <td>Fast and lightweight, as it ignores extra rows and columns.</td>
+                  <td>Forward-only, read-only stream of rows. It requires a <code>while(reader.Read())</code> loop to process data.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h3 class="section-title">2. ADO.NET Database Connection Program</h3>
+            <p style="margin-bottom: 1rem">
+              Below is a complete C# program using <code>System.Data.SqlClient</code> to connect to a database named "Bank", insert 5 records using a loop and parameterized queries, and then read the records back using <code>ExecuteReader()</code> to filter those with a balance over 5000.
+            </p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="class-name">System</span>;
+<span class="keyword">using</span> <span class="class-name">System.Data.SqlClient</span>;
+
+<span class="keyword">public class</span> <span class="class-name">BankDatabase</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="comment">// Connection string for connecting to the "Bank" database</span>
+        <span class="type">string</span> connString = <span class="string">@"Data Source=YourServerName;Initial Catalog=Bank;Integrated Security=True"</span>;
+
+        <span class="keyword">using</span> (<span class="class-name">SqlConnection</span> conn = <span class="keyword">new</span> <span class="class-name">SqlConnection</span>(connString))
+        {
+            <span class="keyword">try</span>
+            {
+                conn.Open();
+                
+                <span class="comment">// --- 1. INSERT 5 RECORDS ---</span>
+                <span class="type">string</span> insertQuery = <span class="string">"INSERT INTO Customer (Account_no, Name, Address, Balance) VALUES (@acc, @name, @addr, @bal)"</span>;
+
+                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++)
+                {
+                    <span class="keyword">using</span> (<span class="class-name">SqlCommand</span> insertCmd = <span class="keyword">new</span> <span class="class-name">SqlCommand</span>(insertQuery, conn))
+                    {
+                        <span class="comment">// Using parameters prevents SQL Injection</span>
+                        insertCmd.Parameters.AddWithValue(<span class="string">"@acc"</span>, <span class="number">1000</span> + i);
+                        insertCmd.Parameters.AddWithValue(<span class="string">"@name"</span>, <span class="string">"Customer_"</span> + i);
+                        insertCmd.Parameters.AddWithValue(<span class="string">"@addr"</span>, <span class="string">"City_"</span> + i);
+                        insertCmd.Parameters.AddWithValue(<span class="string">"@bal"</span>, i * <span class="number">2000</span>); <span class="comment">// Balances will be 2000, 4000, 6000, 8000, 10000</span>
+
+                        insertCmd.ExecuteNonQuery();
+                    }
+                }
+                <span class="class-name">Console</span>.WriteLine(<span class="string">"5 Customer Records Inserted Successfully!\n"</span>);
+
+
+                <span class="comment">// --- 2. DISPLAY RECORDS WITH BALANCE &gt; 5000 ---</span>
+                <span class="class-name">Console</span>.WriteLine(<span class="string">"--- Customers with Balance &gt; 5000 ---"</span>);
+                <span class="type">string</span> selectQuery = <span class="string">"SELECT Account_no, Name, Address, Balance FROM Customer WHERE Balance &gt; 5000"</span>;
+
+                <span class="keyword">using</span> (<span class="class-name">SqlCommand</span> selectCmd = <span class="keyword">new</span> <span class="class-name">SqlCommand</span>(selectQuery, conn))
+                {
+                    <span class="comment">// Use ExecuteReader to read multiple rows</span>
+                    <span class="keyword">using</span> (<span class="class-name">SqlDataReader</span> reader = selectCmd.ExecuteReader())
+                    {
+                        <span class="keyword">while</span> (reader.Read())
+                        {
+                            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Acc No: {reader["Account_no"]}, Name: {reader["Name"]}, Balance: {reader["Balance"]}"</span>);
+                        }
+                    }
+                }
+            }
+            <span class="keyword">catch</span> (<span class="class-name">Exception</span> ex)
+            {
+                <span class="class-name">Console</span>.WriteLine(<span class="string">"Database Error: "</span> + ex.Message);
+            }
+        }
+    }
+}</pre>
+          </div>
+
+          <!-- Cheat Sheet Section -->
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">⚡ Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>ExecuteScalar():</strong> Used for single-value returns (e.g., <code>COUNT(*)</code>).</li>
+              <li><strong>ExecuteReader():</strong> Used for fetching multiple rows. Requires a <code>while (reader.Read())</code> loop.</li>
+              <li><strong>ExecuteNonQuery():</strong> Used for <code>INSERT</code>, <code>UPDATE</code>, and <code>DELETE</code>.</li>
+              <li><strong>Parameterized Queries:</strong> Always use <code>.AddWithValue("@param", value)</code> to prevent SQL Injection.</li>
+            </ul>
+          </div>
+          
+        </div>
+      </article>
+      
+    </main>
+  </div>
+</body>
+</html>
