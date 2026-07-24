@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Set A - Dot Net Exam Answers</title>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+  <div class="notebook-container">
+    <header class="header">
+      <h1>Set A - Dot Net Technology</h1>
+      <p>BCA Fifth Semester - Complete Exam Answers</p>
+    </header>
+
+    <main>
+      <!-- Table of Contents -->
+      <div class="toc-card">
+        <h2 class="toc-title">Answered Questions</h2>
+        <h3 class="group-toc-title">Group B</h3>
+        <ul class="toc-list">
+          <li><a href="#qa-1">1. Explain overview of Microsoft .NET framework and its components in detail</a></li>
+          <li><a href="#qa-2">2. Define constructor. Explain different types of constructors used in C# with example.</a></li>
+          <li><a href="#qa-3">3. Differentiate between static class and abstract class.</a></li>
+          <li><a href="#qa-4">4. Define inheritance. Write program to demonstrate Multilevel and Multiple inheritance.</a></li>
+          <li><a href="#qa-5">5. What is Generic? How can we create a generic class and function explain with example in C#?</a></li>
+          <li><a href="#qa-6">6. What do you mean by exception handling? Explain different keywords associated with it.</a></li>
+          <li><a href="#qa-7">7. Write a suitable program to demonstrate LINQ query.</a></li>
+        </ul>
+        <h3 class="group-toc-title">Group C</h3>
+        <ul class="toc-list">
+          <li><a href="#qa-8">8a. What do you mean by lambda expression? Explain its use in C# with example.</a></li>
+          <li><a href="#qa-8b">8b. What is ASP.net? Explain different elements of ASP.net with examples.</a></li>
+          <li><a href="#qa-9a">9a. How virtual method is used to achieve run time Polymorphism. Explain with suitable Example.</a></li>
+          <li><a href="#qa-9b">9b. Define method and operator overloading. Write a program to overload + operator.</a></li>
+          <li><a href="#qa-10">10. Write a C# program to demonstrate complete CRUD operation of a student.</a></li>
+        </ul>
+      </div>
+
+      <h2 class="group-header">Group B</h2>
+
+      <!-- Q1 -->
+      <article class="qa-card" id="qa-1">
+        <div class="question">
+          1. Explain overview of Microsoft .NET framework and its components in detail [5]
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is .NET Framework?</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>.NET Framework</strong> is a software development platform created by Microsoft. It provides a controlled environment where applications (Windows, Web, Mobile) can be built, deployed, and run. It acts as a bridge between the operating system and the application code, managing memory, security, and execution automatically.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="section-title">.NET Framework Architecture Diagram</h3>
+            <div style="text-align: center; margin: 1.5rem 0;">
+              <img src="assets/dotnet-framework.png" alt=".NET Framework Architecture" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; background: white;">
+            </div>
+          </div>
+
+          <div>
+            <h3 class="section-title">Core Components of .NET Framework</h3>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">1. CLR (Common Language Runtime)</h4>
+            <p style="margin-bottom: 0.75rem">The execution engine of .NET. It is the heart of the framework.</p>
+            <ul class="feature-list">
+              <li><strong>Memory Management:</strong> Automatic Garbage Collection (GC) frees unused memory.</li>
+              <li><strong>JIT Compilation:</strong> Converts MSIL (Intermediate Language) into native machine code at runtime.</li>
+              <li><strong>Exception Handling:</strong> Catches runtime errors and prevents app crashes.</li>
+              <li><strong>Security:</strong> Provides code access security (CAS) to protect resources.</li>
+            </ul>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">2. FCL (Framework Class Library)</h4>
+            <p style="margin-bottom: 0.75rem">A huge collection of pre-written, reusable classes, interfaces, and methods.</p>
+            <ul class="feature-list">
+              <li><strong>System Namespace:</strong> Contains fundamental types like String, DateTime, Math.</li>
+              <li><strong>ADO.NET:</strong> Classes for database connectivity (SqlConnection, SqlCommand).</li>
+              <li><strong>ASP.NET:</strong> Classes for building web applications and web services.</li>
+              <li><strong>Windows Forms / WPF:</strong> Classes for building desktop GUI applications.</li>
+              <li><strong>File I/O:</strong> Classes like FileStream, StreamReader for file operations.</li>
+            </ul>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">3. CTS (Common Type System)</h4>
+            <p style="margin-bottom: 0.75rem">Defines how data types are declared and managed. All .NET languages share the same type system. For example, <code>int</code> in C# and <code>Integer</code> in VB.NET both map to <code>System.Int32</code>.</p>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">4. CLS (Common Language Specification)</h4>
+            <p style="margin-bottom: 0.75rem">A set of rules that all .NET languages must follow. This ensures language interoperability — code written in C# can interact with code written in VB.NET or F#.</p>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">5. MSIL (Microsoft Intermediate Language)</h4>
+            <p style="margin-bottom: 0.75rem">Source code is first compiled into MSIL (also called IL). This IL is platform-independent and is later converted to machine code by the JIT compiler at runtime.</p>
+          </div>
+
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">&#9889; Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>CLR:</strong> Execution engine (Memory, JIT, Security)</li>
+              <li><strong>FCL:</strong> Ready-made classes (File I/O, Database, GUI)</li>
+              <li><strong>CTS:</strong> Common types across all .NET languages</li>
+              <li><strong>CLS:</strong> Rules for language interoperability</li>
+              <li><strong>MSIL:</strong> Intermediate code before JIT compilation</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Q2 -->
+      <article class="qa-card" id="qa-2">
+        <div class="question">
+          2. Define constructor. Explain different types of constructors used in C# with example. [5]
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is a Constructor?</h3>
+            <p style="margin-bottom: 1rem">
+              A <strong>constructor</strong> is a special method of a class that is automatically called when an object of that class is created. It has the same name as the class and no return type (not even void). Its main purpose is to initialize the data members of the object.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="section-title">Types of Constructors in C#</h3>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">1. Default Constructor</h4>
+            <p style="margin-bottom: 0.75rem">A constructor with no parameters. If you don't write any constructor, C# automatically provides one that sets numeric fields to 0 and string fields to null.</p>
+            <pre class="code-block"><span class="keyword">class</span> <span class="class-name">Student</span>
+{
+    <span class="keyword">public string</span> Name;
+    <span class="keyword">public int</span> Age;
+
+    <span class="comment">// Default Constructor (no parameters)</span>
+    <span class="keyword">public</span> <span class="method-name">Student</span>()
+    {
+        Name = <span class="string">"Unknown"</span>;
+        Age = <span class="number">0</span>;
+    }
+}</pre>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">2. Parameterized Constructor</h4>
+            <p style="margin-bottom: 0.75rem">A constructor that takes one or more parameters to initialize an object with specific values.</p>
+            <pre class="code-block"><span class="keyword">class</span> <span class="class-name">Student</span>
+{
+    <span class="keyword">public string</span> Name;
+    <span class="keyword">public int</span> Age;
+
+    <span class="comment">// Parameterized Constructor</span>
+    <span class="keyword">public</span> <span class="method-name">Student</span>(<span class="keyword">string</span> name, <span class="keyword">int</span> age)
+    {
+        Name = name;
+        Age = age;
+    }
+}
+
+<span class="comment">// Usage:</span>
+<span class="class-name">Student</span> s1 = <span class="keyword">new</span> <span class="class-name">Student</span>(<span class="string">"Ram"</span>, <span class="number">20</span>);</pre>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">3. Copy Constructor</h4>
+            <p style="margin-bottom: 0.75rem">A constructor that takes an object of the same class as a parameter and copies its values to a new object.</p>
+            <pre class="code-block"><span class="keyword">class</span> <span class="class-name">Student</span>
+{
+    <span class="keyword">public string</span> Name;
+    <span class="keyword">public int</span> Age;
+
+    <span class="comment">// Copy Constructor</span>
+    <span class="keyword">public</span> <span class="method-name">Student</span>(<span class="class-name">Student</span> existingStudent)
+    {
+        Name = existingStudent.Name;
+        Age = existingStudent.Age;
+    }
+}
+
+<span class="comment">// Usage:</span>
+<span class="class-name">Student</span> s1 = <span class="keyword">new</span> <span class="class-name">Student</span>(<span class="string">"Ram"</span>, <span class="number">20</span>);
+<span class="class-name">Student</span> s2 = <span class="keyword">new</span> <span class="class-name">Student</span>(s1); <span class="comment">// Copies s1 values into s2</span></pre>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">4. Static Constructor</h4>
+            <p style="margin-bottom: 0.75rem">A constructor that initializes static members. It is called automatically only once, before any static member is accessed or any object is created. It cannot have parameters or access modifiers.</p>
+            <pre class="code-block"><span class="keyword">class</span> <span class="class-name">Student</span>
+{
+    <span class="keyword">public static string</span> CollegeName;
+
+    <span class="comment">// Static Constructor</span>
+    <span class="keyword">static</span> <span class="method-name">Student</span>()
+    {
+        CollegeName = <span class="string">"ABC College"</span>;
+    }
+}</pre>
+          </div>
+
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">&#9889; Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Default:</strong> No parameters, auto-provided if missing</li>
+              <li><strong>Parameterized:</strong> Takes parameters to set initial values</li>
+              <li><strong>Copy:</strong> Creates new object by copying existing one</li>
+              <li><strong>Static:</strong> Runs once for static members, no params/access modifiers</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Q3 -->
+      <article class="qa-card" id="qa-3">
+        <div class="question">
+          3. Differentiate between static class and abstract class. [5]
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">Static Class vs Abstract Class</h3>
+            <table class="diff-table">
+              <thead>
+                <tr>
+                  <th style="width: 20%">Feature</th>
+                  <th style="width: 40%">Static Class</th>
+                  <th style="width: 40%">Abstract Class</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Instantiation</strong></td>
+                  <td>Cannot be instantiated at all. No objects can be created.</td>
+                  <td>Cannot be instantiated directly. But derived classes can be instantiated.</td>
+                </tr>
+                <tr>
+                  <td><strong>Inheritance</strong></td>
+                  <td>Cannot be inherited. It is implicitly sealed.</td>
+                  <td>Designed to be inherited. A derived class must implement abstract methods.</td>
+                </tr>
+                <tr>
+                  <td><strong>Members</strong></td>
+                  <td>Can only contain static members (static methods, static fields, static properties).</td>
+                  <td>Can contain both static and non-static members. Can also contain abstract methods (no body) and concrete methods (with body).</td>
+                </tr>
+                <tr>
+                  <td><strong>Constructors</strong></td>
+                  <td>Can only have a static constructor (no instance constructor).</td>
+                  <td>Can have both static and instance constructors.</td>
+                </tr>
+                <tr>
+                  <td><strong>Keyword</strong></td>
+                  <td>Declared using <code>static class</code> keyword.</td>
+                  <td>Declared using <code>abstract class</code> keyword.</td>
+                </tr>
+                <tr>
+                  <td><strong>Purpose</strong></td>
+                  <td>Used to group related utility methods (like Math class).</td>
+                  <td>Used to define a common base with some default behavior and some abstract behavior that child classes must implement.</td>
+                </tr>
+                <tr>
+                  <td><strong>Example</strong></td>
+                  <td><code>static class Math { }</code></td>
+                  <td><code>abstract class Animal { }</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h3 class="section-title">Simple Code Examples</h3>
+            <h4 style="color: var(--primary-color); margin: 1rem 0 0.5rem;">Static Class Example:</h4>
+            <pre class="code-block"><span class="keyword">static class</span> <span class="class-name">Calculator</span>
+{
+    <span class="keyword">public static int</span> <span class="method-name">Add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b)
+    {
+        <span class="keyword">return</span> a + b;
+    }
+}
+
+<span class="comment">// Usage:</span>
+<span class="keyword">int</span> result = <span class="class-name">Calculator</span>.Add(<span class="number">5</span>, <span class="number">3</span>);</pre>
+
+            <h4 style="color: var(--primary-color); margin: 1rem 0 0.5rem;">Abstract Class Example:</h4>
+            <pre class="code-block"><span class="keyword">abstract class</span> <span class="class-name">Animal</span>
+{
+    <span class="keyword">public abstract void</span> <span class="method-name">MakeSound</span>(); <span class="comment">// No body - must be implemented by child</span>
+
+    <span class="keyword">public void</span> <span class="method-name">Sleep</span>() <span class="comment">// Concrete method - has body</span>
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Sleeping..."</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Dog</span> : <span class="class-name">Animal</span>
+{
+    <span class="keyword">public override void</span> <span class="method-name">MakeSound</span>() <span class="comment">// Must implement abstract method</span>
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Bark!"</span>);
+    }
+}</pre>
+          </div>
+
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">&#9889; Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Static Class:</strong> All members static, cannot inherit, no objects. Like a toolbox.</li>
+              <li><strong>Abstract Class:</strong> Can have both abstract and concrete members. Must be inherited. Like a blueprint.</li>
+              <li><strong>Key Difference:</strong> Static = utility grouping. Abstract = base class for inheritance hierarchy.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Q4 -->
+      <article class="qa-card" id="qa-4">
+        <div class="question">
+          4. Define inheritance. Write a program to demonstrate Multilevel and Multiple inheritance. [5]
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is Inheritance?</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>Inheritance</strong> is a fundamental concept of Object-Oriented Programming (OOP) where a class (called child or derived class) can inherit properties, methods, and fields from another class (called parent or base class). It promotes code reusability. In C#, a class can inherit from only one base class but can implement multiple interfaces.
+            </p>
+            <p style="margin-bottom: 0.75rem"><strong>Syntax:</strong> <code>class ChildClass : ParentClass</code></p>
+          </div>
+
+          <div>
+            <h3 class="section-title">1. Multilevel Inheritance</h3>
+            <p style="margin-bottom: 0.75rem">In multilevel inheritance, a class is derived from another derived class, forming a chain: GrandParent -> Parent -> Child.</p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="comment">// Level 1: Base class</span>
+<span class="keyword">class</span> <span class="class-name">Animal</span>
+{
+    <span class="keyword">public void</span> <span class="method-name">Eat</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Animal eats food."</span>);
+    }
+}
+
+<span class="comment">// Level 2: Derived from Animal</span>
+<span class="keyword">class</span> <span class="class-name">Mammal</span> : <span class="class-name">Animal</span>
+{
+    <span class="keyword">public void</span> <span class="method-name">Breathe</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Mammal breathes air."</span>);
+    }
+}
+
+<span class="comment">// Level 3: Derived from Mammal (Multilevel Inheritance)</span>
+<span class="keyword">class</span> <span class="class-name">Dog</span> : <span class="class-name">Mammal</span>
+{
+    <span class="keyword">public void</span> <span class="method-name">Bark</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Dog barks: Woof! Woof!"</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Dog</span> d = <span class="keyword">new</span> <span class="class-name">Dog</span>();
+        d.Eat();     <span class="comment">// From Animal</span>
+        d.Breathe(); <span class="comment">// From Mammal</span>
+        d.Bark();    <span class="comment">// From Dog</span>
+    }
+}</pre>
+          </div>
+
+          <div>
+            <h3 class="section-title">2. Multiple Inheritance (using Interfaces)</h3>
+            <p style="margin-bottom: 0.75rem">C# does not support multiple class inheritance (a class cannot inherit from two classes). However, we can achieve multiple inheritance using interfaces. A class can implement multiple interfaces.</p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="comment">// Interface 1</span>
+<span class="keyword">interface</span> <span class="type">IPrinter</span>
+{
+    <span class="keyword">void</span> <span class="method-name">Print</span>();
+}
+
+<span class="comment">// Interface 2</span>
+<span class="keyword">interface</span> <span class="type">IScanner</span>
+{
+    <span class="keyword">void</span> <span class="method-name">Scan</span>();
+}
+
+<span class="comment">// Class implementing both interfaces (Multiple Inheritance)</span>
+<span class="keyword">class</span> <span class="class-name">MultiFunctionPrinter</span> : <span class="type">IPrinter</span>, <span class="type">IScanner</span>
+{
+    <span class="keyword">public void</span> <span class="method-name">Print</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Printing document..."</span>);
+    }
+
+    <span class="keyword">public void</span> <span class="method-name">Scan</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Scanning document..."</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">MultiFunctionPrinter</span> mfp = <span class="keyword">new</span> <span class="class-name">MultiFunctionPrinter</span>();
+        mfp.Print();
+        mfp.Scan();
+    }
+}</pre>
+          </div>
+
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">&#9889; Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Inheritance:</strong> Child class gets parent's properties/methods. <code>class B : A</code></li>
+              <li><strong>Multilevel:</strong> Chain: A -> B -> C (Grandparent -> Parent -> Child)</li>
+              <li><strong>Multiple:</strong> C# uses interfaces: <code>class C : IA, IB</code></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Q5 -->
+      <article class="qa-card" id="qa-5">
+        <div class="question">
+          5. What is Generic? How can we create a generic class and function explain with example in C#? [5]
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is Generic?</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>Generics</strong> in C# allow you to define classes, methods, interfaces, and delegates with a placeholder for the data type (usually denoted by T). The actual data type is specified when the generic is used. This means you write one class/method and use it with int, string, float, or any custom type.
+            </p>
+            <ul class="feature-list">
+              <li><strong>Type Safety:</strong> Errors are caught at compile time (you can't put a string in a List&lt;int&gt;).</li>
+              <li><strong>Reusability:</strong> One class works with any data type.</li>
+              <li><strong>Performance:</strong> No boxing/unboxing needed for value types.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="section-title">Creating a Generic Class</h3>
+            <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="comment">// Generic class with type parameter T</span>
+<span class="keyword">class</span> <span class="class-name">Box</span>&lt;T&gt;
+{
+    <span class="keyword">private</span> T data;
+
+    <span class="keyword">public void</span> <span class="method-name">SetValue</span>(T value)
+    {
+        data = value;
+    }
+
+    <span class="keyword">public</span> T <span class="method-name">GetValue</span>()
+    {
+        <span class="keyword">return</span> data;
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="comment">// Using the generic class with int</span>
+        <span class="class-name">Box</span>&lt;<span class="keyword">int</span>&gt; intBox = <span class="keyword">new</span> <span class="class-name">Box</span>&lt;<span class="keyword">int</span>&gt;();
+        intBox.SetValue(<span class="number">100</span>);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Int Value: "</span> + intBox.GetValue());
+
+        <span class="comment">// Using the same generic class with string</span>
+        <span class="class-name">Box</span>&lt;<span class="keyword">string</span>&gt; stringBox = <span class="keyword">new</span> <span class="class-name">Box</span>&lt;<span class="keyword">string</span>&gt;();
+        stringBox.SetValue(<span class="string">"Hello World"</span>);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"String Value: "</span> + stringBox.GetValue());
+    }
+}</pre>
+          </div>
+
+          <div>
+            <h3 class="section-title">Creating a Generic Method</h3>
+            <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="comment">// Generic method - works with any type T</span>
+    <span class="keyword">public static void</span> <span class="method-name">Swap</span>&lt;T&gt;(<span class="keyword">ref</span> T a, <span class="keyword">ref</span> T b)
+    {
+        T temp = a;
+        a = b;
+        b = temp;
+    }
+
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="keyword">int</span> x = <span class="number">10</span>, y = <span class="number">20</span>;
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Before Swap: x={x}, y={y}"</span>);
+        <span class="method-name">Swap</span>(<span class="keyword">ref</span> x, <span class="keyword">ref</span> y);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"After Swap: x={x}, y={y}"</span>);
+
+        <span class="keyword">string</span> s1 = <span class="string">"Hello"</span>, s2 = <span class="string">"World"</span>;
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Before Swap: s1={s1}, s2={s2}"</span>);
+        <span class="method-name">Swap</span>(<span class="keyword">ref</span> s1, <span class="keyword">ref</span> s2);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"After Swap: s1={s1}, s2={s2}"</span>);
+    }
+}</pre>
+          </div>
+
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">&#9889; Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Generic:</strong> Write code with placeholder type T. Use with any type.</li>
+              <li><strong>Generic Class:</strong> <code>class ClassName&lt;T&gt; { }</code></li>
+              <li><strong>Generic Method:</strong> <code>void MethodName&lt;T&gt;(T param) { }</code></li>
+              <li><strong>Examples:</strong> <code>List&lt;int&gt;</code>, <code>Dictionary&lt;string, int&gt;</code></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Q6 -->
+      <article class="qa-card" id="qa-6">
+        <div class="question">
+          6. What do you mean by exception handling? Explain different keywords associated with it. [5]
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is Exception Handling?</h3>
+            <p style="margin-bottom: 1rem">
+              An <strong>exception</strong> is an unexpected error that occurs during the execution of a program (like dividing by zero, accessing an array index out of bounds, or file not found). <strong>Exception handling</strong> is the mechanism to detect, catch, and handle these errors gracefully so that the program does not crash abruptly.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="section-title">Keywords in Exception Handling</h3>
+            <p style="margin-bottom: 1rem">C# provides four keywords for exception handling:</p>
+
+            <ul class="feature-list">
+              <li>
+                <strong>try:</strong> Contains the code that might throw an exception. The code is "tried" for errors.
+<pre class="code-block" style="margin-top: 0.5rem;"><span class="keyword">try</span>
+{
+    <span class="comment">// Code that may cause an error</span>
+    <span class="keyword">int</span> result = <span class="number">10</span> / <span class="number">0</span>; <span class="comment">// DivideByZeroException</span>
+}</pre>
+              </li>
+              <li>
+                <strong>catch:</strong> Catches and handles the exception. You can have multiple catch blocks for different exception types.
+<pre class="code-block" style="margin-top: 0.5rem;"><span class="keyword">catch</span> (<span class="type">DivideByZeroException</span> ex)
+{
+    <span class="class-name">Console</span>.WriteLine(<span class="string">"Cannot divide by zero!"</span>);
+}</pre>
+              </li>
+              <li>
+                <strong>finally:</strong> A block that always executes regardless of whether an exception was thrown or caught. Used for cleanup (closing files, database connections, etc.).
+<pre class="code-block" style="margin-top: 0.5rem;"><span class="keyword">finally</span>
+{
+    <span class="class-name">Console</span>.WriteLine(<span class="string">"This always runs. Cleanup here."</span>);
+}</pre>
+              </li>
+              <li>
+                <strong>throw:</strong> Used to manually raise an exception when a condition is met.
+<pre class="code-block" style="margin-top: 0.5rem;"><span class="keyword">if</span> (age &lt; <span class="number">18</span>)
+    <span class="keyword">throw new</span> <span class="type">Exception</span>(<span class="string">"Age must be 18+"</span>);</pre>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="section-title">Complete Exception Handling Program</h3>
+            <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="keyword">try</span>
+        {
+            <span class="class-name">Console</span>.Write(<span class="string">"Enter first number: "</span>);
+            <span class="keyword">int</span> a = <span class="number">10</span>;
+            <span class="class-name">Console</span>.Write(<span class="string">"Enter second number: "</span>);
+            <span class="keyword">int</span> b = <span class="number">0</span>;
+
+            <span class="keyword">int</span> result = a / b; <span class="comment">// This will throw DivideByZeroException</span>
+            <span class="class-name">Console</span>.WriteLine(<span class="string">"Result: "</span> + result);
+        }
+        <span class="keyword">catch</span> (<span class="type">DivideByZeroException</span> ex)
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">"Error: Cannot divide by zero!"</span>);
+        }
+        <span class="keyword">catch</span> (<span class="type">Exception</span> ex)
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">"General Error: "</span> + ex.Message);
+        }
+        <span class="keyword">finally</span>
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">"Finally block executed. Program ended."</span>);
+        }
+    }
+}</pre>
+          </div>
+
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">&#9889; Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>try:</strong> Test risky code</li>
+              <li><strong>catch:</strong> Handle the error</li>
+              <li><strong>finally:</strong> Always runs (cleanup)</li>
+              <li><strong>throw:</strong> Manually create an error</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Q7 -->
+      <article class="qa-card" id="qa-7">
+        <div class="question">
+          7. Write a suitable program to demonstrate LINQ query. [5]
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is LINQ?</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>LINQ (Language Integrated Query)</strong> allows you to write SQL-like queries directly in C# code to retrieve data from different sources like arrays, collections, databases, or XML. There are two syntaxes: Query Syntax (like SQL) and Method Syntax (using lambda expressions).
+            </p>
+          </div>
+
+          <div>
+            <h3 class="section-title">Program Demonstrating LINQ Queries</h3>
+            <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Collections.Generic</span>;
+<span class="keyword">using</span> <span class="type">System.Linq</span>;
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="comment">// Create a list of numbers</span>
+        <span class="class-name">List</span>&lt;<span class="keyword">int</span>&gt; numbers = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="keyword">int</span>&gt; { <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span> };
+
+        <span class="comment">// LINQ Query Syntax: select even numbers</span>
+        <span class="keyword">var</span> evenNumbers = <span class="keyword">from</span> num <span class="keyword">in</span> numbers
+                          <span class="keyword">where</span> num % <span class="number">2</span> == <span class="number">0</span>
+                          <span class="keyword">select</span> num;
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Even Numbers (Query Syntax):"</span>);
+        <span class="keyword">foreach</span> (<span class="keyword">int</span> n <span class="keyword">in</span> evenNumbers)
+        {
+            <span class="class-name">Console</span>.Write(n + <span class="string">" "</span>);
+        }
+
+        <span class="comment">// LINQ Method Syntax: select numbers greater than 5, sorted descending</span>
+        <span class="keyword">var</span> bigNumbers = numbers.Where(n =&gt; n &gt; <span class="number">5</span>).OrderByDescending(n =&gt; n);
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\n\nNumbers &gt; 5 (Method Syntax, Descending):"</span>);
+        <span class="keyword">foreach</span> (<span class="keyword">int</span> n <span class="keyword">in</span> bigNumbers)
+        {
+            <span class="class-name">Console</span>.Write(n + <span class="string">" "</span>);
+        }
+
+        <span class="comment">// LINQ with custom objects</span>
+        <span class="class-name">List</span>&lt;<span class="class-name">Student</span>&gt; students = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="class-name">Student</span>&gt;
+        {
+            <span class="keyword">new</span> <span class="class-name">Student</span> { Name = <span class="string">"Ram"</span>, Marks = <span class="number">85</span> },
+            <span class="keyword">new</span> <span class="class-name">Student</span> { Name = <span class="string">"Sita"</span>, Marks = <span class="number">92</span> },
+            <span class="keyword">new</span> <span class="class-name">Student</span> { Name = <span class="string">"Hari"</span>, Marks = <span class="number">70</span> },
+            <span class="keyword">new</span> <span class="class-name">Student</span> { Name = <span class="string">"Gita"</span>, Marks = <span class="number">95</span> }
+        };
+
+        <span class="comment">// Select students with marks >= 80, sorted by marks descending</span>
+        <span class="keyword">var</span> topStudents = <span class="keyword">from</span> s <span class="keyword">in</span> students
+                         <span class="keyword">where</span> s.Marks &gt;= <span class="number">80</span>
+                         <span class="keyword">orderby</span> s.Marks <span class="keyword">descending</span>
+                         <span class="keyword">select</span> s;
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\n\nTop Students (Marks &gt;= 80):"</span>);
+        <span class="keyword">foreach</span> (<span class="class-name">Student</span> s <span class="keyword">in</span> topStudents)
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"{s.Name}: {s.Marks}"</span>);
+        }
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Student</span>
+{
+    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public int</span> Marks { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}</pre>
+          </div>
+
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">&#9889; Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Query Syntax:</strong> <code>from x in list where condition select x</code></li>
+              <li><strong>Method Syntax:</strong> <code>list.Where(x =&gt; condition).OrderBy(x =&gt; x)</code></li>
+              <li><strong>Common Operators:</strong> where, select, orderby, group, join</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <h2 class="group-header">Group C</h2>
+
+      <!-- Q8a -->
+      <article class="qa-card" id="qa-8">
+        <div class="question">
+          8a. What do you mean by lambda expression? Explain its use in C# with example. [5]
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is Lambda Expression?</h3>
+            <p style="margin-bottom: 1rem">
+              A <strong>lambda expression</strong> is a short, concise way to write an anonymous method (a method without a name). It uses the <code>=&gt;</code> operator which is read as "goes to". The left side contains input parameters and the right side contains the expression or statement block.
+            </p>
+            <p style="margin-bottom: 0.75rem"><strong>Syntax:</strong> <code>(input-parameters) =&gt; expression</code></p>
+          </div>
+
+          <div>
+            <h3 class="section-title">Use of Lambda Expressions in C#</h3>
+            <ul class="feature-list">
+              <li><strong>LINQ Queries:</strong> Lambdas are used extensively in LINQ for filtering, sorting, and grouping data. E.g., <code>numbers.Where(x =&gt; x > 10)</code></li>
+              <li><strong>Delegates:</strong> Lambdas provide a clean way to assign code to delegate types like Func, Action, Predicate.</li>
+              <li><strong>Event Handlers:</strong> Can be used inline instead of writing separate event handler methods.</li>
+              <li><strong>Shorter Code:</strong> Replaces verbose anonymous methods with minimal syntax.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="section-title">Examples of Lambda Expressions</h3>
+            <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Collections.Generic</span>;
+<span class="keyword">using</span> <span class="type">System.Linq</span>;
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="comment">// Example 1: Lambda with Func delegate</span>
+        <span class="comment">// Takes int x, returns x * x</span>
+        <span class="type">Func</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; square = x =&gt; x * x;
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Square of 5: "</span> + square(<span class="number">5</span>));
+
+        <span class="comment">// Example 2: Lambda with multiple parameters</span>
+        <span class="type">Func</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>, <span class="keyword">int</span>&gt; add = (a, b) =&gt; a + b;
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Sum of 10 + 20: "</span> + add(<span class="number">10</span>, <span class="number">20</span>));
+
+        <span class="comment">// Example 3: Lambda in LINQ</span>
+        <span class="class-name">List</span>&lt;<span class="keyword">int</span>&gt; numbers = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="keyword">int</span>&gt; { <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> };
+        <span class="keyword">var</span> evenNumbers = numbers.Where(n =&gt; n % <span class="number">2</span> == <span class="number">0</span>);
+        <span class="class-name">Console</span>.Write(<span class="string">"Even numbers: "</span>);
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> n <span class="keyword">in</span> evenNumbers)
+            <span class="class-name">Console</span>.Write(n + <span class="string">" "</span>);
+
+        <span class="comment">// Example 4: Lambda with statement body (multiple lines)</span>
+        <span class="type">Func</span>&lt;<span class="keyword">int</span>, <span class="keyword">string</span>&gt; checkNumber = n =&gt;
+        {
+            <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>)
+                <span class="keyword">return</span> n + <span class="string">" is Even"</span>;
+            <span class="keyword">else</span>
+                <span class="keyword">return</span> n + <span class="string">" is Odd"</span>;
+        };
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\n"</span> + checkNumber(<span class="number">7</span>));
+    }
+}</pre>
+          </div>
+
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">&#9889; Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Lambda:</strong> <code>(params) =&gt; expression</code>. No method name needed.</li>
+              <li><strong>Use:</strong> LINQ, Delegates (Func/Action/Predicate), Event handlers</li>
+              <li><strong>Example:</strong> <code>x =&gt; x * x</code> means "x goes to x squared"</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Q8b -->
+      <article class="qa-card" id="qa-8b">
+        <div class="question">
+          8b. What is ASP.net? Explain different elements of ASP.net with examples. [5]
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is ASP.NET?</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>ASP.NET</strong> is a web application framework developed by Microsoft, built on top of the .NET Framework. It is used to build dynamic websites, web applications, and web services. ASP.NET code runs on the server and generates HTML that is sent to the client browser.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="section-title">Key Elements of ASP.NET</h3>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">1. Web Forms (.aspx)</h4>
+            <p style="margin-bottom: 0.75rem">The traditional way to build ASP.NET pages using a drag-and-drop model with server controls.</p>
+            <pre class="code-block"><span class="comment">&lt;!-- Simple ASP.NET Web Form --&gt;</span>
+&lt;<span class="keyword">html</span>&gt;
+&lt;<span class="keyword">body</span>&gt;
+    &lt;<span class="keyword">form</span> <span class="type">id</span>=<span class="string">"form1"</span> <span class="type">runat</span>=<span class="string">"server"</span>&gt;
+        Name: &lt;<span class="keyword">asp:TextBox</span> <span class="type">ID</span>=<span class="string">"txtName"</span> <span class="type">runat</span>=<span class="string">"server"</span>&gt;&lt;/<span class="keyword">asp:TextBox</span>&gt;
+        &lt;<span class="keyword">asp:Button</span> <span class="type">ID</span>=<span class="string">"btnClick"</span> <span class="type">Text</span>=<span class="string">"Click Me"</span> <span class="type">runat</span>=<span class="string">"server"</span> <span class="type">OnClick</span>=<span class="string">"btnClick_Click"</span> /&gt;
+        &lt;<span class="keyword">asp:Label</span> <span class="type">ID</span>=<span class="string">"lblMsg"</span> <span class="type">runat</span>=<span class="string">"server"</span>&gt;&lt;/<span class="keyword">asp:Label</span>&gt;
+    &lt;/<span class="keyword">form</span>&gt;
+&lt;/<span class="keyword">body</span>&gt;
+&lt;/<span class="keyword">html</span>&gt;</pre>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">2. Server Controls</h4>
+            <p style="margin-bottom: 0.75rem">Reusable UI components that run on the server and render as HTML. Examples:</p>
+            <ul class="feature-list">
+              <li><strong>TextBox:</strong> &lt;asp:TextBox runat="server"&gt; - For user input</li>
+              <li><strong>Button:</strong> &lt;asp:Button runat="server"&gt; - For form submission</li>
+              <li><strong>Label:</strong> &lt;asp:Label runat="server"&gt; - For displaying text</li>
+              <li><strong>GridView:</strong> &lt;asp:GridView runat="server"&gt; - For displaying tabular data</li>
+            </ul>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">3. Master Pages</h4>
+            <p style="margin-bottom: 0.75rem">Create a consistent layout (header, footer, navigation) across all pages of a website. Child pages fill content in ContentPlaceHolder controls.</p>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">4. State Management</h4>
+            <p style="margin-bottom: 0.75rem">Since HTTP is stateless, ASP.NET provides ways to maintain data across requests:</p>
+            <ul class="feature-list">
+              <li><strong>ViewState:</strong> Stores page-level data on the client (hidden field).</li>
+              <li><strong>Session:</strong> Stores user-specific data on the server (e.g., shopping cart).</li>
+              <li><strong>Cookies:</strong> Stores small data on the client's browser.</li>
+            </ul>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">5. Validation Controls</h4>
+            <p style="margin-bottom: 0.75rem">Built-in controls to validate user input without writing JavaScript manually.</p>
+            <pre class="code-block"><span class="comment">&lt;!-- RequiredFieldValidator ensures input is not empty --&gt;</span>
+&lt;<span class="keyword">asp:RequiredFieldValidator</span>
+    <span class="type">ControlToValidate</span>=<span class="string">"txtName"</span>
+    <span class="type">ErrorMessage</span>=<span class="string">"Name is required!"</span>
+    <span class="type">ForeColor</span>=<span class="string">"Red"</span>
+    <span class="type">runat</span>=<span class="string">"server"</span>&gt;
+&lt;/<span class="keyword">asp:RequiredFieldValidator</span>&gt;</pre>
+
+            <h4 style="color: var(--primary-color); margin: 1.25rem 0 0.75rem;">6. ADO.NET (Data Access)</h4>
+            <p style="margin-bottom: 0.75rem">The data access technology used in ASP.NET to connect to databases (SQL Server, Oracle, etc.) using SqlConnection, SqlCommand, and DataSet.</p>
+          </div>
+
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">&#9889; Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>ASP.NET:</strong> Web framework to build dynamic websites</li>
+              <li><strong>Server Controls:</strong> TextBox, Button, Label, GridView</li>
+              <li><strong>State Management:</strong> ViewState (page level), Session (user level)</li>
+              <li><strong>Validation:</strong> RequiredFieldValidator, RangeValidator, etc.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Q9a -->
+      <article class="qa-card" id="qa-9a">
+        <div class="question">
+          9a. How virtual method is used to achieve run time Polymorphism. Explain with suitable Example. [5]
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">Runtime Polymorphism via Virtual Methods</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>Runtime Polymorphism</strong> (also called Dynamic Binding or Late Binding) means that the method to be executed is decided at runtime, not at compile time. In C#, this is achieved using the <code>virtual</code> and <code>override</code> keywords.
+            </p>
+            <ul class="feature-list">
+              <li><strong>virtual:</strong> Declared in the base class. It means this method can be overridden in derived classes.</li>
+              <li><strong>override:</strong> Used in the derived class to provide a new implementation of the virtual method.</li>
+              <li>When a base class reference points to a derived class object, the overridden method in the derived class is called at runtime.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="section-title">Example: Virtual Method for Runtime Polymorphism</h3>
+            <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="comment">// Base class with virtual method</span>
+<span class="keyword">class</span> <span class="class-name">Shape</span>
+{
+    <span class="keyword">public virtual void</span> <span class="method-name">Draw</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Drawing a shape..."</span>);
+    }
+}
+
+<span class="comment">// Derived class 1 - overrides the virtual method</span>
+<span class="keyword">class</span> <span class="class-name">Circle</span> : <span class="class-name">Shape</span>
+{
+    <span class="keyword">public override void</span> <span class="method-name">Draw</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Drawing a Circle"</span>);
+    }
+}
+
+<span class="comment">// Derived class 2 - overrides the virtual method</span>
+<span class="keyword">class</span> <span class="class-name">Rectangle</span> : <span class="class-name">Shape</span>
+{
+    <span class="keyword">public override void</span> <span class="method-name">Draw</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Drawing a Rectangle"</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Shape</span>[] shapes = <span class="keyword">new</span> <span class="class-name">Shape</span>[<span class="number">3</span>];
+        shapes[<span class="number">0</span>] = <span class="keyword">new</span> <span class="class-name">Shape</span>();    <span class="comment">// Base class object</span>
+        shapes[<span class="number">1</span>] = <span class="keyword">new</span> <span class="class-name">Circle</span>();   <span class="comment">// Derived class object</span>
+        shapes[<span class="number">2</span>] = <span class="keyword">new</span> <span class="class-name">Rectangle</span>(); <span class="comment">// Derived class object</span>
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"--- Runtime Polymorphism ---"</span>);
+        
+        <span class="comment">// Same method call but different behavior based on actual object type</span>
+        <span class="keyword">foreach</span> (<span class="class-name">Shape</span> s <span class="keyword">in</span> shapes)
+        {
+            s.Draw(); <span class="comment">// Which Draw() is called? Decided at RUNTIME!</span>
+        }
+        
+        <span class="comment">// Output:</span>
+        <span class="comment">// Drawing a shape...</span>
+        <span class="comment">// Drawing a Circle</span>
+        <span class="comment">// Drawing a Rectangle</span>
+    }
+}</pre>
+          </div>
+
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">&#9889; Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>virtual:</strong> Base class keyword - method can be overridden</li>
+              <li><strong>override:</strong> Derived class keyword - provides new implementation</li>
+              <li><strong>Runtime Polymorphism:</strong> Base reference, derived object. Method call resolved at runtime.</li>
+              <li><strong>Example:</strong> <code>Shape s = new Circle(); s.Draw();</code> calls Circle's Draw().</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Q9b -->
+      <article class="qa-card" id="qa-9b">
+        <div class="question">
+          9b. Define method and operator overloading. Write a program to overload + operator. [5]
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is Method Overloading?</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>Method Overloading</strong> (also called Compile-Time Polymorphism) means having multiple methods with the same name but different parameters (different number of parameters, different types, or different order). The compiler decides which method to call based on the arguments passed.
+            </p>
+            <pre class="code-block"><span class="keyword">class</span> <span class="class-name">Calculator</span>
+{
+    <span class="comment">// Same method name, different parameters</span>
+    <span class="keyword">public int</span> <span class="method-name">Add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b) { <span class="keyword">return</span> a + b; }
+    <span class="keyword">public int</span> <span class="method-name">Add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c) { <span class="keyword">return</span> a + b + c; }
+    <span class="keyword">public double</span> <span class="method-name">Add</span>(<span class="keyword">double</span> a, <span class="keyword">double</span> b) { <span class="keyword">return</span> a + b; }
+}</pre>
+          </div>
+
+          <div>
+            <h3 class="section-title">What is Operator Overloading?</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>Operator Overloading</strong> allows you to redefine the behavior of operators (like +, -, *, /) for your own custom classes. For example, you can define what the <code>+</code> operator means when used with objects of your class. Overloaded operators must be <code>public static</code> methods.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="section-title">Program: Overloading + Operator</h3>
+            <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Box</span>
+{
+    <span class="keyword">public int</span> Length { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public int</span> Width { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+
+    <span class="keyword">public</span> <span class="method-name">Box</span>(<span class="keyword">int</span> l, <span class="keyword">int</span> w)
+    {
+        Length = l;
+        Width = w;
+    }
+
+    <span class="comment">// Overloading the + operator to add two Box objects</span>
+    <span class="keyword">public static</span> <span class="class-name">Box</span> <span class="keyword">operator</span> +(<span class="class-name">Box</span> b1, <span class="class-name">Box</span> b2)
+    {
+        <span class="comment">// Adding lengths and widths of two boxes</span>
+        <span class="keyword">return new</span> <span class="class-name">Box</span>(b1.Length + b2.Length, b1.Width + b2.Width);
+    }
+
+    <span class="keyword">public void</span> <span class="method-name">Display</span>()
+    {
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Length: {Length}, Width: {Width}"</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Box</span> b1 = <span class="keyword">new</span> <span class="class-name">Box</span>(<span class="number">5</span>, <span class="number">3</span>);
+        <span class="class-name">Box</span> b2 = <span class="keyword">new</span> <span class="class-name">Box</span>(<span class="number">2</span>, <span class="number">4</span>);
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Box 1:"</span>);
+        b1.Display();
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Box 2:"</span>);
+        b2.Display();
+
+        <span class="comment">// Using the overloaded + operator</span>
+        <span class="class-name">Box</span> b3 = b1 + b2;
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\nBox 3 (b1 + b2):"</span>);
+        b3.Display();
+    }
+}</pre>
+          </div>
+
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">&#9889; Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>Method Overloading:</strong> Same name, different params. Compile-time.</li>
+              <li><strong>Operator Overloading:</strong> Define behavior of operators for custom classes.</li>
+              <li><strong>Syntax:</strong> <code>public static ClassName operator +(ClassName a, ClassName b)</code></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Q10 -->
+      <article class="qa-card" id="qa-10">
+        <div class="question">
+          10. Write a C# program to demonstrate complete CRUD operation of a student. [10]
+        </div>
+        <div class="answer full-marks-answer">
+          <div>
+            <h3 class="section-title">What is CRUD?</h3>
+            <p style="margin-bottom: 1rem">
+              <strong>CRUD</strong> stands for <strong>C</strong>reate, <strong>R</strong>ead, <strong>U</strong>pdate, and <strong>D</strong>elete. These are the four basic operations performed on data in a database or a collection.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="section-title">Program: Complete CRUD Operations on Student</h3>
+            <p style="margin-bottom: 0.75rem">This program demonstrates CRUD using a List to store Student objects with operations to Add, Display, Update, and Delete students.</p>
+            <pre class="code-block"><span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Collections.Generic</span>;
+<span class="keyword">using</span> <span class="type">System.Linq</span>;
+
+<span class="keyword">class</span> <span class="class-name">Student</span>
+{
+    <span class="keyword">public int</span> Id { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public int</span> Age { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> Course { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+
+    <span class="keyword">public override string</span> <span class="method-name">ToString</span>()
+    {
+        <span class="keyword">return</span> <span class="string">$"ID: {Id}, Name: {Name}, Age: {Age}, Course: {Course}"</span>;
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">StudentCRUD</span>
+{
+    <span class="keyword">private</span> <span class="class-name">List</span>&lt;<span class="class-name">Student</span>&gt; students = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="class-name">Student</span>&gt;();
+    <span class="keyword">private int</span> nextId = <span class="number">1</span>;
+
+    <span class="comment">// CREATE - Add a new student</span>
+    <span class="keyword">public void</span> <span class="method-name">CreateStudent</span>(<span class="keyword">string</span> name, <span class="keyword">int</span> age, <span class="keyword">string</span> course)
+    {
+        <span class="class-name">Student</span> s = <span class="keyword">new</span> <span class="class-name">Student</span>
+        {
+            Id = nextId++,
+            Name = name,
+            Age = age,
+            Course = course
+        };
+        students.Add(s);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Student '{name}' added successfully with ID {s.Id}."</span>);
+    }
+
+    <span class="comment">// READ - Display all students</span>
+    <span class="keyword">public void</span> <span class="method-name">ReadAllStudents</span>()
+    {
+        <span class="keyword">if</span> (students.Count == <span class="number">0</span>)
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">"No students found."</span>);
+            <span class="keyword">return</span>;
+        }
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\n--- All Students ---"</span>);
+        <span class="keyword">foreach</span> (<span class="class-name">Student</span> s <span class="keyword">in</span> students)
+        {
+            <span class="class-name">Console</span>.WriteLine(s);
+        }
+    }
+
+    <span class="comment">// READ - Find a student by ID</span>
+    <span class="keyword">public void</span> <span class="method-name">FindStudentById</span>(<span class="keyword">int</span> id)
+    {
+        <span class="class-name">Student</span> s = students.FirstOrDefault(st =&gt; st.Id == id);
+        <span class="keyword">if</span> (s != <span class="keyword">null</span>)
+            <span class="class-name">Console</span>.WriteLine(<span class="string">"Found: "</span> + s);
+        <span class="keyword">else</span>
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Student with ID {id} not found."</span>);
+    }
+
+    <span class="comment">// UPDATE - Update student details</span>
+    <span class="keyword">public void</span> <span class="method-name">UpdateStudent</span>(<span class="keyword">int</span> id, <span class="keyword">string</span> newName, <span class="keyword">int</span> newAge, <span class="keyword">string</span> newCourse)
+    {
+        <span class="class-name">Student</span> s = students.FirstOrDefault(st =&gt; st.Id == id);
+        <span class="keyword">if</span> (s != <span class="keyword">null</span>)
+        {
+            s.Name = newName;
+            s.Age = newAge;
+            s.Course = newCourse;
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Student ID {id} updated successfully."</span>);
+        }
+        <span class="keyword">else</span>
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Student with ID {id} not found."</span>);
+        }
+    }
+
+    <span class="comment">// DELETE - Remove a student by ID</span>
+    <span class="keyword">public void</span> <span class="method-name">DeleteStudent</span>(<span class="keyword">int</span> id)
+    {
+        <span class="class-name">Student</span> s = students.FirstOrDefault(st =&gt; st.Id == id);
+        <span class="keyword">if</span> (s != <span class="keyword">null</span>)
+        {
+            students.Remove(s);
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Student ID {id} deleted successfully."</span>);
+        }
+        <span class="keyword">else</span>
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Student with ID {id} not found."</span>);
+        }
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">StudentCRUD</span> crud = <span class="keyword">new</span> <span class="class-name">StudentCRUD</span>();
+
+        <span class="comment">// ===== CREATE Operation =====</span>
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"=== CREATE: Adding Students ==="</span>);
+        crud.CreateStudent(<span class="string">"Ram"</span>, <span class="number">20</span>, <span class="string">"BCA"</span>);
+        crud.CreateStudent(<span class="string">"Sita"</span>, <span class="number">21</span>, <span class="string">"BCA"</span>);
+        crud.CreateStudent(<span class="string">"Hari"</span>, <span class="number">22</span>, <span class="string">"BSc.CSIT"</span>);
+
+        <span class="comment">// ===== READ Operation =====</span>
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\n=== READ: Displaying All Students ==="</span>);
+        crud.ReadAllStudents();
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\n=== READ: Finding Student by ID ==="</span>);
+        crud.FindStudentById(<span class="number">2</span>);
+
+        <span class="comment">// ===== UPDATE Operation =====</span>
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\n=== UPDATE: Updating Student ID 1 ==="</span>);
+        crud.UpdateStudent(<span class="number">1</span>, <span class="string">"Ram Shrestha"</span>, <span class="number">21</span>, <span class="string">"BCA (Honors)"</span>);
+        crud.ReadAllStudents();
+
+        <span class="comment">// ===== DELETE Operation =====</span>
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\n=== DELETE: Removing Student ID 3 ==="</span>);
+        crud.DeleteStudent(<span class="number">3</span>);
+        crud.ReadAllStudents();
+
+        <span class="class-name">Console</span>.ReadLine();
+    }
+}</pre>
+          </div>
+
+          <div class="cheat-sheet" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(43, 48, 59, 0.5); border-left: 4px solid #64ffda; border-radius: 8px;">
+            <h3 class="section-title" style="color: #64ffda; margin-bottom: 0.5rem; font-size: 1.1rem;">&#9889; Cheat Sheet</h3>
+            <ul class="feature-list" style="margin: 0; padding-left: 1.5rem;">
+              <li><strong>CREATE:</strong> <code>students.Add(new Student{...})</code></li>
+              <li><strong>READ:</strong> <code>foreach/FirstOrDefault</code> to display/find</li>
+              <li><strong>UPDATE:</strong> Find student, modify its properties</li>
+              <li><strong>DELETE:</strong> <code>students.Remove(student)</code></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </main>
+  </div>
+</body>
+</html>

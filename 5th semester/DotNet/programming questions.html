@@ -1,0 +1,1885 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DotNet Programming Questions</title>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+  <div class="notebook-container">
+    <header class="header">
+      <h1>DotNet Programming Questions</h1>
+      <p>All programming exam questions grouped by topic</p>
+    </header>
+    <main>
+      <div class="toc-card">
+        <h2 class="toc-title">Questions by Topic</h2>
+
+        <h3 class="group-toc-title">A. C# Language Basics</h3>
+        <ul class="toc-list">
+          <li><a href="#a1">A.1. Jagged Array for Student Marks</a></li>
+          <li><a href="#a2">A.2. Enumerations (Department and College)</a></li>
+          <li><a href="#a3">A.3. Array with Sum of Powers</a></li>
+          <li><a href="#a4">A.4. Boxing and Unboxing</a></li>
+          <li><a href="#a5">A.5. Named Argument and Namespace Alias</a></li>
+        </ul>
+
+        <h3 class="group-toc-title">B. Object-Oriented Programming</h3>
+        <ul class="toc-list">
+          <li><a href="#b1">B.1. Multi-level Inheritance with Virtual Method</a></li>
+          <li><a href="#b2">B.2. Abstract Class and Abstract Method</a></li>
+          <li><a href="#b3">B.3. Interface for Multiple Inheritance</a></li>
+          <li><a href="#b4">B.4. Finalizer and base Keyword</a></li>
+          <li><a href="#b5">B.5. Generics and Virtual Method Dynamic Binding</a></li>
+          <li><a href="#b6">B.6. Multilevel and Multiple Inheritance</a></li>
+          <li><a href="#b7">B.7. Virtual Method for Runtime Polymorphism</a></li>
+        </ul>
+
+        <h3 class="group-toc-title">C. Advanced C# Concepts</h3>
+        <ul class="toc-list">
+          <li><a href="#c1">C.1. Binary Operator Overloading (Complex Number)</a></li>
+          <li><a href="#c2">C.2. Unary and Relational Operator Overloading</a></li>
+          <li><a href="#c3">C.3. Generic Class in C#</a></li>
+          <li><a href="#c4">C.4. Time Class with Operator Overloading</a></li>
+          <li><a href="#c5">C.5. Events in C#</a></li>
+          <li><a href="#c6">C.6. Lambda Expression and Generic Delegates</a></li>
+          <li><a href="#c7">C.7. Copy Constructor, Indexer, Lambda (Short Notes)</a></li>
+          <li><a href="#c8">C.8. Method and Operator Overloading (+ Operator)</a></li>
+          <li><a href="#c9">C.9. Complete CRUD Operation on Student</a></li>
+        </ul>
+
+        <h3 class="group-toc-title">D. LINQ</h3>
+        <ul class="toc-list">
+          <li><a href="#d1">D.1. LINQ: Odd and Divisible by 3</a></li>
+          <li><a href="#d2">D.2. LINQ: Select Employees</a></li>
+          <li><a href="#d3">D.3. LINQ: Students from Kirtipur at Patan Campus</a></li>
+          <li><a href="#d4">D.4. LINQ: Aggregate Salary with Descending Order</a></li>
+          <li><a href="#d5">D.5. LINQ Standard Operators</a></li>
+          <li><a href="#d6">D.6. LINQ Query Demo (Query and Method Syntax)</a></li>
+        </ul>
+
+        <h3 class="group-toc-title">E. Exception Handling</h3>
+        <ul class="toc-list">
+          <li><a href="#e1">E.1. Exception Handling (DivideByZero, IndexOutOfRange)</a></li>
+          <li><a href="#e2">E.2. Bank Withdrawal with Custom Exception</a></li>
+          <li><a href="#e3">E.3. Exception: InvalidCastException</a></li>
+          <li><a href="#e4">E.4. Struct vs Enum with Custom Exception</a></li>
+        </ul>
+
+        <h3 class="group-toc-title">F. ADO.NET</h3>
+        <ul class="toc-list">
+          <li><a href="#f1">F.1. ADO.NET: Database Insert and Select</a></li>
+          <li><a href="#f2">F.2. ADO.NET: Customer Records with Balance &gt; 5000</a></li>
+          <li><a href="#f3">F.3. Data Adapter vs Data Reader + ASP.NET Insert</a></li>
+        </ul>
+
+        <h3 class="group-toc-title">G. ASP.NET</h3>
+        <ul class="toc-list">
+          <li><a href="#g1">G.1. ASP.NET: Student Registration across pages</a></li>
+          <li><a href="#g2">G.2. Exception Handling in ASP.NET</a></li>
+          <li><a href="#g3">G.3. ASP.NET Simple Interest Calculator</a></li>
+          <li><a href="#g4">G.4. ASP.NET Validation Controls</a></li>
+        </ul>
+      </div>
+
+      <div class="notes-content">
+
+        <!-- ===== GROUP A: C# LANGUAGE BASICS ===== -->
+
+        <h2 class="group-header">A. C# Language Basics</h2>
+
+        <section id="a1" class="qa-pair">
+          <h3 class="question">A.1. Jagged Array (Variable Size Array) for Student Marks</h3>
+          <p>Write a C# program to create multidimensional array to store the marks of three students in different subjects. First student has marks of 3 subjects, Second student has marks of 4 subjects and Third student has marks of 2 subjects. Display the marks and average for each student.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">What is a Jagged Array?</h3>
+              <p>A <strong>Jagged Array</strong> (also called variable-size array) is an array of arrays where each row can have a different number of elements. Unlike a rectangular 2D array where every row has the same number of columns, a jagged array allows each row to have a different length. This is perfect for storing data like student marks where each student takes a different number of subjects.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="class-name">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Program</span> {
+    <span class="keyword">static void</span> <span class="method-name">Main</span>() {
+        <span class="comment">// Create a jagged array for 3 students</span>
+        <span class="type">int</span>[][] studentMarks = <span class="keyword">new</span> <span class="type">int</span>[<span class="number">3</span>][];
+
+        <span class="comment">// Each student has different number of subjects</span>
+        studentMarks[<span class="number">0</span>] = <span class="keyword">new</span> <span class="type">int</span>[] { <span class="number">80</span>, <span class="number">85</span>, <span class="number">90</span> };       <span class="comment">// Student 1: 3 subjects</span>
+        studentMarks[<span class="number">1</span>] = <span class="keyword">new</span> <span class="type">int</span>[] { <span class="number">75</span>, <span class="number">70</span>, <span class="number">88</span>, <span class="number">92</span> };  <span class="comment">// Student 2: 4 subjects</span>
+        studentMarks[<span class="number">2</span>] = <span class="keyword">new</span> <span class="type">int</span>[] { <span class="number">95</span>, <span class="number">90</span> };             <span class="comment">// Student 3: 2 subjects</span>
+
+        <span class="comment">// Display marks and calculate average for each student</span>
+        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; studentMarks.Length; i++) {
+            <span class="type">int</span> sum = <span class="number">0</span>;
+            <span class="class-name">Console</span>.Write(<span class="string">$"Student {i + 1} Marks: "</span>);
+
+            <span class="keyword">foreach</span> (<span class="type">int</span> mark <span class="keyword">in</span> studentMarks[i]) {
+                <span class="class-name">Console</span>.Write(mark + <span class="string">" "</span>);
+                sum += mark;
+            }
+
+            <span class="type">double</span> avg = (<span class="type">double</span>)sum / studentMarks[i].Length;
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"| Average: {avg:F2}"</span>);
+        }
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              Student 1 Marks: 80 85 90 | Average: 85.00<br/>
+              Student 2 Marks: 75 70 88 92 | Average: 81.25<br/>
+              Student 3 Marks: 95 90 | Average: 92.50</p>
+            </div>
+          </div>
+        </section>
+        <!-- ===== A.2. Enumerations (Department and College) ===== -->
+        <section id="a2" class="qa-pair">
+          <h3 class="question">A.2. Enumerations (Department and College)</h3>
+          <p>Write a C# program which stores values in two enumerations, Department and College. It uses two functions to display the data contained in Department and College enumerations.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">What is an Enumeration?</h3>
+              <p>An <strong>enumeration (enum)</strong> is a special value type in C# that represents a group of named constants. Enums make code more readable and maintainable by using meaningful names instead of numeric literals.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">namespace</span> <span class="class-name">EnumExample</span>
+{
+    <span class="keyword">enum</span> <span class="type">Department</span> { BCA, BScCSIT, BIM, BBA }
+    <span class="keyword">enum</span> <span class="type">College</span> { PatanMultipleCampus, AmritScienceCampus, BhaktapurMultipleCampus }
+
+    <span class="keyword">class</span> <span class="class-name">Program</span>
+    {
+        <span class="keyword">static void</span> <span class="method-name">DisplayDepartment</span>(<span class="type">Department</span> dept = <span class="type">Department</span>.BCA)
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">"Selected Department: "</span> + dept);
+        }
+
+        <span class="keyword">static void</span> <span class="method-name">DisplayCollege</span>(<span class="type">College</span> coll = <span class="type">College</span>.PatanMultipleCampus)
+        {
+            <span class="class-name">Console</span>.WriteLine(<span class="string">"Selected College: "</span> + coll);
+        }
+
+        <span class="keyword">static void</span> <span class="method-name">Main</span>(<span class="type">string</span>[] args)
+        {
+            <span class="method-name">DisplayDepartment</span>();
+            <span class="method-name">DisplayCollege</span>();
+            <span class="class-name">Console</span>.WriteLine();
+            <span class="method-name">DisplayDepartment</span>(<span class="type">Department</span>.BScCSIT);
+            <span class="method-name">DisplayCollege</span>(<span class="type">College</span>.AmritScienceCampus);
+            <span class="class-name">Console</span>.ReadLine();
+        }
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              Selected Department: BCA<br/>
+              Selected College: PatanMultipleCampus<br/>
+              <br/>
+              Selected Department: BScCSIT<br/>
+              Selected College: AmritScienceCampus</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== A.3. Array with Sum of Powers ===== -->
+        <section id="a3" class="qa-pair">
+          <h3 class="question">A.3. Array with Sum of Powers</h3>
+          <p>Write a C# program to initialize and display array element with sum of each power.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Concept</h3>
+              <p>This program creates an array, iterates through elements, calculates the square (power of 2) using <code>Math.Pow()</code>, and computes the total sum of powers.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">public class</span> <span class="class-name">ArrayPowerSum</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>(<span class="type">string</span>[] args)
+    {
+        <span class="keyword">int</span>[] numbers = { <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> };
+        <span class="keyword">double</span> totalSum = <span class="number">0</span>;
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Array Elements and their Squares:"</span>);
+
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.Length; i++)
+        {
+            <span class="keyword">double</span> power = <span class="class-name">Math</span>.Pow(numbers[i], <span class="number">2</span>);
+            totalSum += power;
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Element: {numbers[i]}, Square: {power}"</span>);
+        }
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"\nTotal Sum of powers: {totalSum}"</span>);
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              Array Elements and their Squares:<br/>
+              Element: 1, Square: 1<br/>
+              Element: 2, Square: 4<br/>
+              Element: 3, Square: 9<br/>
+              Element: 4, Square: 16<br/>
+              Total Sum of powers: 30</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== A.4. Boxing and Unboxing ===== -->
+        <section id="a4" class="qa-pair">
+          <h3 class="question">A.4. Boxing and Unboxing</h3>
+          <p>Explain the concept of boxing and unboxing with suitable program.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">What is Boxing and Unboxing?</h3>
+              <p><strong>Boxing</strong> converts a value type (like <code>int</code>) to a reference type (<code>object</code>). The value is moved from Stack to Heap. It happens implicitly.<br/><br/>
+              <strong>Unboxing</strong> converts a reference type back to a value type. It requires explicit casting and moves the value from Heap to Stack.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>(<span class="type">string</span>[] args)
+    {
+        <span class="keyword">int</span> num = <span class="number">100</span>;
+        <span class="type">object</span> obj = num;       <span class="comment">// Boxing</span>
+        num = <span class="number">200</span>;
+        <span class="keyword">int</span> unboxedNum = (<span class="keyword">int</span>)obj; <span class="comment">// Unboxing</span>
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"num = "</span> + num);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"obj = "</span> + obj);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"unboxedNum = "</span> + unboxedNum);
+        <span class="class-name">Console</span>.ReadLine();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              num = 200<br/>
+              obj = 100<br/>
+              unboxedNum = 100</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== A.5. Named Argument and Namespace Alias ===== -->
+        <section id="a5" class="qa-pair">
+          <h3 class="question">A.5. Named Argument and Namespace Alias</h3>
+          <p>What is named argument? Explain with suitable program, how to create alias for namespace in C#?</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Named Arguments</h3>
+              <p><strong>Named arguments</strong> let you pass method parameters by name instead of position, making code more readable and allowing any order.</p>
+            </div>
+            <div>
+              <h3 class="section-title">Namespace Alias</h3>
+              <p>A <strong>namespace alias</strong> creates a short name for a namespace or class using <code>using Alias = Namespace.Class;</code>. It resolves naming conflicts.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">Printer</span> = <span class="type">System.Console</span>;
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">DisplayInfo</span>(<span class="keyword">string</span> name, <span class="keyword">int</span> age, <span class="keyword">string</span> city)
+    {
+        <span class="type">Printer</span>.WriteLine(<span class="string">$"Name: {name}, Age: {age}, City: {city}"</span>);
+    }
+
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="comment">// Named arguments - order independent</span>
+        <span class="method-name">DisplayInfo</span>(city: <span class="string">"Pokhara"</span>, name: <span class="string">"Bob"</span>, age: <span class="number">22</span>);
+        <span class="type">Printer</span>.WriteLine(<span class="string">"Used Printer alias instead of Console!"</span>);
+        <span class="type">Printer</span>.ReadLine();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              Name: Bob, Age: 22, City: Pokhara<br/>
+              Used Printer alias instead of Console!</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== GROUP B: OBJECT-ORIENTED PROGRAMMING ===== -->
+
+        <h2 class="group-header">B. Object-Oriented Programming</h2>
+
+        <!-- ===== B.1. Multi-level Inheritance with Virtual Method ===== -->
+        <section id="b1" class="qa-pair">
+          <h3 class="question">B.1. Multi-level Inheritance with Virtual Method</h3>
+          <p>What is virtual method? Write a program to illustrate multi-level inheritance with virtual method.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Virtual Method</h3>
+              <p>A <strong>virtual method</strong> (declared with <code>virtual</code>) can be overridden in derived classes using <code>override</code>. This enables runtime polymorphism where the correct method is called based on the actual object type.</p>
+            </div>
+            <div>
+              <h3 class="section-title">Multi-level Inheritance Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">public class</span> <span class="class-name">Grandparent</span>
+{
+    <span class="keyword">public virtual void</span> <span class="method-name">Display</span>()
+    { <span class="class-name">Console</span>.WriteLine(<span class="string">"Display from Grandparent"</span>); }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Parent</span> : <span class="class-name">Grandparent</span>
+{
+    <span class="keyword">public override void</span> <span class="method-name">Display</span>()
+    { <span class="class-name">Console</span>.WriteLine(<span class="string">"Display from Parent"</span>); }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Child</span> : <span class="class-name">Parent</span>
+{
+    <span class="keyword">public override void</span> <span class="method-name">Display</span>()
+    { <span class="class-name">Console</span>.WriteLine(<span class="string">"Display from Child"</span>); }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Grandparent</span> gp = <span class="keyword">new</span> <span class="class-name">Grandparent</span>(); gp.Display();
+        <span class="class-name">Grandparent</span> p = <span class="keyword">new</span> <span class="class-name">Parent</span>(); p.Display();
+        <span class="class-name">Grandparent</span> c = <span class="keyword">new</span> <span class="class-name">Child</span>(); c.Display();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              Display from Grandparent<br/>
+              Display from Parent<br/>
+              Display from Child</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== B.2. Abstract Class and Abstract Method ===== -->
+        <section id="b2" class="qa-pair">
+          <h3 class="question">B.2. Abstract Class and Abstract Method</h3>
+          <p>Write a C# program to illustrate the concept of abstract class and abstract method.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Abstract Class and Method</h3>
+              <p>An <strong>abstract class</strong> (declared with <code>abstract</code>) cannot be instantiated. An <strong>abstract method</strong> has no body and must be overridden in derived classes using <code>override</code>. This enforces a contract for subclasses.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">public abstract class</span> <span class="class-name">Shape</span>
+{
+    <span class="keyword">public abstract void</span> <span class="method-name">Draw</span>();
+}
+
+<span class="keyword">public class</span> <span class="class-name">Rectangle</span> : <span class="class-name">Shape</span>
+{
+    <span class="keyword">public override void</span> <span class="method-name">Draw</span>()
+    { <span class="class-name">Console</span>.WriteLine(<span class="string">"Drawing a Rectangle..."</span>); }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Shape</span> s = <span class="keyword">new</span> <span class="class-name">Rectangle</span>();
+        s.Draw();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              Drawing a Rectangle...</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== B.3. Interface for Multiple Inheritance ===== -->
+        <section id="b3" class="qa-pair">
+          <h3 class="question">B.3. Interface for Multiple Inheritance</h3>
+          <p>How interface is used in multiple inheritance? Explain with example.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Interface and Multiple Inheritance</h3>
+              <p>An <strong>interface</strong> is a contract with only member declarations. C# does not support multiple class inheritance but a class can implement <strong>multiple interfaces</strong>, safely achieving multiple inheritance.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">interface</span> <span class="type">IPrinter</span> { <span class="keyword">void</span> <span class="method-name">Print</span>(); }
+<span class="keyword">interface</span> <span class="type">IScanner</span> { <span class="keyword">void</span> <span class="method-name">Scan</span>(); }
+
+<span class="keyword">class</span> <span class="class-name">MultiFunctionPrinter</span> : <span class="type">IPrinter</span>, <span class="type">IScanner</span>
+{
+    <span class="keyword">public void</span> <span class="method-name">Print</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Printing..."</span>); }
+    <span class="keyword">public void</span> <span class="method-name">Scan</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Scanning..."</span>); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">MultiFunctionPrinter</span> mfp = <span class="keyword">new</span> <span class="class-name">MultiFunctionPrinter</span>();
+        mfp.Print(); mfp.Scan();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Printing...<br/>Scanning...</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== B.4. Finalizer and base Keyword ===== -->
+        <section id="b4" class="qa-pair">
+          <h3 class="question">B.4. Finalizer and base Keyword</h3>
+          <p>What are use of finalizer in C#? Explain how base keyword is used to call member function and constructor of parent class.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Finalizer and base Keyword</h3>
+              <p>A <strong>finalizer</strong> (~ClassName) cleans up unmanaged resources before GC destroys the object. The <code>base</code> keyword in a derived class calls parent constructors (<code>base(args)</code>) or parent methods (<code>base.Method()</code>).</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Animal</span>
+{
+    <span class="keyword">public string</span> name;
+    <span class="keyword">public</span> <span class="method-name">Animal</span>(<span class="keyword">string</span> n) { name = n; <span class="class-name">Console</span>.WriteLine(<span class="string">"Parent Constructor"</span>); }
+    <span class="keyword">public virtual void</span> <span class="method-name">Speak</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Animal sound"</span>); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Dog</span> : <span class="type">Animal</span>
+{
+    <span class="keyword">public</span> <span class="method-name">Dog</span>(<span class="keyword">string</span> n) : <span class="keyword">base</span>(n) { <span class="class-name">Console</span>.WriteLine(<span class="string">"Child Constructor"</span>); }
+    <span class="keyword">public override void</span> <span class="method-name">Speak</span>() { <span class="keyword">base</span>.Speak(); <span class="class-name">Console</span>.WriteLine(<span class="string">"Dog barks"</span>); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="type">Dog</span> d = <span class="keyword">new</span> <span class="class-name">Dog</span>(<span class="string">"Buddy"</span>);
+        d.Speak();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              Parent Constructor<br/>
+              Child Constructor<br/>
+              Animal sound<br/>
+              Dog barks</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== B.5. Generics and Virtual Method Dynamic Binding ===== -->
+        <section id="b5" class="qa-pair">
+          <h3 class="question">B.5. Generics and Virtual Method Dynamic Binding</h3>
+          <p>Define generics. Explain with example. How virtual method achieves dynamic binding?</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Generics</h3>
+              <p><strong>Generics</strong> let you define classes/methods with type placeholders (&lt;T&gt;), ensuring type safety and reusability without boxing.</p>
+              <pre class="code-block">
+<span class="keyword">class</span> <span class="class-name">Box</span>&lt;T&gt; { <span class="keyword">private</span> T data; <span class="keyword">public void</span> <span class="method-name">Set</span>(T v) { data = v; } <span class="keyword">public</span> T <span class="method-name">Get</span>() { <span class="keyword">return</span> data; } }
+
+<span class="keyword">class</span> <span class="class-name">Test</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Box</span>&lt;<span class="keyword">int</span>&gt; ib = <span class="keyword">new</span> <span class="class-name">Box</span>&lt;<span class="keyword">int</span>&gt;(); ib.Set(<span class="number">100</span>);
+        <span class="class-name">Box</span>&lt;<span class="keyword">string</span>&gt; sb = <span class="keyword">new</span> <span class="class-name">Box</span>&lt;<span class="keyword">string</span>&gt;(); sb.Set(<span class="string">"Hello"</span>);
+        <span class="class-name">Console</span>.WriteLine(ib.Get() + <span class="string">", "</span> + sb.Get());
+    }
+}
+              </pre>
+            </div>
+            <div>
+              <h3 class="section-title">Dynamic Binding with Virtual Methods</h3>
+              <p><strong>Dynamic binding</strong> resolves method calls at runtime. A base class reference pointing to a derived object calls the overridden method.</p>
+              <pre class="code-block">
+<span class="keyword">class</span> <span class="class-name">Animal</span> { <span class="keyword">public virtual void</span> <span class="method-name">Sound</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"..."</span>); } }
+<span class="keyword">class</span> <span class="class-name">Dog</span> : <span class="class-name">Animal</span> { <span class="keyword">public override void</span> <span class="method-name">Sound</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Woof"</span>); } }
+<span class="keyword">class</span> <span class="class-name">Cat</span> : <span class="class-name">Animal</span> { <span class="keyword">public override void</span> <span class="method-name">Sound</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Meow"</span>); } }
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Animal</span> a1 = <span class="keyword">new</span> <span class="class-name">Dog</span>(); a1.Sound();
+        <span class="class-name">Animal</span> a2 = <span class="keyword">new</span> <span class="class-name">Cat</span>(); a2.Sound();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Woof<br/>Meow</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== B.6. Multilevel and Multiple Inheritance ===== -->
+        <section id="b6" class="qa-pair">
+          <h3 class="question">B.6. Multilevel and Multiple Inheritance</h3>
+          <p>Define inheritance. Write a program to demonstrate Multilevel and Multiple inheritance.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Inheritance</h3>
+              <p><strong>Inheritance</strong> lets a child class reuse members (fields, methods) of a parent class. <strong>Multilevel:</strong> A chain like Grandparent -> Parent -> Child. <strong>Multiple:</strong> C# uses interfaces since a class cannot inherit multiple classes.</p>
+            </div>
+            <div>
+              <h3 class="section-title">Multilevel Inheritance</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Animal</span> { <span class="keyword">public void</span> <span class="method-name">Eat</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Eating..."</span>); } }
+<span class="keyword">class</span> <span class="class-name">Mammal</span> : <span class="class-name">Animal</span> { <span class="keyword">public void</span> <span class="method-name">Breathe</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Breathing..."</span>); } }
+<span class="keyword">class</span> <span class="class-name">Dog</span> : <span class="class-name">Mammal</span> { <span class="keyword">public void</span> <span class="method-name">Bark</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Barking..."</span>); } }
+
+<span class="keyword">class</span> <span class="class-name">Program</span> {
+    <span class="keyword">static void</span> <span class="method-name">Main</span>() {
+        <span class="class-name">Dog</span> d = <span class="keyword">new</span> <span class="class-name">Dog</span>();
+        d.Eat(); d.Breathe(); d.Bark();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Eating...<br/>Breathing...<br/>Barking...</p>
+            </div>
+            <div>
+              <h3 class="section-title">Multiple Inheritance using Interfaces</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">interface</span> <span class="type">IPrinter</span> { <span class="keyword">void</span> <span class="method-name">Print</span>(); }
+<span class="keyword">interface</span> <span class="type">IScanner</span> { <span class="keyword">void</span> <span class="method-name">Scan</span>(); }
+
+<span class="keyword">class</span> <span class="class-name">Machine</span> : <span class="type">IPrinter</span>, <span class="type">IScanner</span> {
+    <span class="keyword">public void</span> <span class="method-name">Print</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Printing..."</span>); }
+    <span class="keyword">public void</span> <span class="method-name">Scan</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Scanning..."</span>); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span> {
+    <span class="keyword">static void</span> <span class="method-name">Main</span>() {
+        <span class="class-name">Machine</span> m = <span class="keyword">new</span> <span class="class-name">Machine</span>();
+        m.Print(); m.Scan();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Printing...<br/>Scanning...</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== B.7. Virtual Method for Runtime Polymorphism ===== -->
+        <section id="b7" class="qa-pair">
+          <h3 class="question">B.7. Virtual Method for Runtime Polymorphism</h3>
+          <p>How virtual method is used to achieve run time Polymorphism. Explain with suitable Example.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Runtime Polymorphism via Virtual Methods</h3>
+              <p><strong>Runtime Polymorphism</strong> resolves method calls at runtime. A base class reference pointing to a derived object calls the overridden method. Uses <code>virtual</code> (base) and <code>override</code> (derived) keywords.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Shape</span> {
+    <span class="keyword">public virtual void</span> <span class="method-name">Draw</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Drawing Shape"</span>); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Circle</span> : <span class="class-name">Shape</span> {
+    <span class="keyword">public override void</span> <span class="method-name">Draw</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Drawing Circle"</span>); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Rectangle</span> : <span class="class-name">Shape</span> {
+    <span class="keyword">public override void</span> <span class="method-name">Draw</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Drawing Rectangle"</span>); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span> {
+    <span class="keyword">static void</span> <span class="method-name">Main</span>() {
+        <span class="class-name">Shape</span>[] shapes = { <span class="keyword">new</span> <span class="class-name">Shape</span>(), <span class="keyword">new</span> <span class="class-name">Circle</span>(), <span class="keyword">new</span> <span class="class-name">Rectangle</span>() };
+        <span class="keyword">foreach</span> (<span class="class-name">Shape</span> s <span class="keyword">in</span> shapes) s.Draw();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Drawing Shape<br/>Drawing Circle<br/>Drawing Rectangle</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== GROUP C: ADVANCED C# CONCEPTS ===== -->
+
+        <h2 class="group-header">C. Advanced C# Concepts</h2>
+
+        <!-- ===== C.1. Binary Operator Overloading (Complex Number) ===== -->
+        <section id="c1" class="qa-pair">
+          <h3 class="question">C.1. Binary Operator Overloading (Complex Number)</h3>
+          <p>Write a C# program to add and subtract two complex numbers using binary operator overloading.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Operator Overloading</h3>
+              <p><strong>Operator overloading</strong> lets you define custom behavior for operators (+, -, etc.) on user-defined types using <code>public static ReturnType operator op(Params)</code>.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Complex</span>
+{
+    <span class="keyword">private double</span> r, i;
+    <span class="keyword">public</span> <span class="method-name">Complex</span>(<span class="keyword">double</span> r, <span class="keyword">double</span> i) { <span class="keyword">this</span>.r = r; <span class="keyword">this</span>.i = i; }
+
+    <span class="keyword">public static</span> <span class="class-name">Complex</span> <span class="keyword">operator</span> +(<span class="class-name">Complex</span> a, <span class="class-name">Complex</span> b)
+    { <span class="keyword">return new</span> <span class="class-name">Complex</span>(a.r + b.r, a.i + b.i); }
+
+    <span class="keyword">public static</span> <span class="class-name">Complex</span> <span class="keyword">operator</span> -(<span class="class-name">Complex</span> a, <span class="class-name">Complex</span> b)
+    { <span class="keyword">return new</span> <span class="class-name">Complex</span>(a.r - b.r, a.i - b.i); }
+
+    <span class="keyword">public void</span> <span class="method-name">Display</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">$"{r} + {i}i"</span>); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Complex</span> c1 = <span class="keyword">new</span> <span class="class-name">Complex</span>(<span class="number">5</span>, <span class="number">3</span>), c2 = <span class="keyword">new</span> <span class="class-name">Complex</span>(<span class="number">2</span>, <span class="number">1</span>);
+        <span class="class-name">Complex</span> sum = c1 + c2, diff = c1 - c2;
+        <span class="class-name">Console</span>.Write(<span class="string">"Sum: "</span>); sum.Display();
+        <span class="class-name">Console</span>.Write(<span class="string">"Diff: "</span>); diff.Display();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Sum: 7 + 4i<br/>Diff: 3 + 2i</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== C.2. Unary and Relational Operator Overloading ===== -->
+        <section id="c2" class="qa-pair">
+          <h3 class="question">C.2. Unary and Relational Operator Overloading</h3>
+          <p>Write C# program to overload unary (++) and relational (==) operator.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Concept</h3>
+              <p><strong>Unary operators</strong> (++, --) work on one operand. <strong>Relational operators</strong> (==, !=) compare two operands and return bool. When overloading ==, you must also overload !=.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Point</span>
+{
+    <span class="keyword">public int</span> X, Y;
+    <span class="keyword">public</span> <span class="method-name">Point</span>(<span class="keyword">int</span> x, <span class="keyword">int</span> y) { X = x; Y = y; }
+
+    <span class="keyword">public static</span> <span class="class-name">Point</span> <span class="keyword">operator</span> ++(<span class="class-name">Point</span> p)
+    { <span class="keyword">return new</span> <span class="class-name">Point</span>(p.X + <span class="number">1</span>, p.Y + <span class="number">1</span>); }
+
+    <span class="keyword">public static bool operator</span> ==(<span class="class-name">Point</span> p1, <span class="class-name">Point</span> p2)
+    { <span class="keyword">return</span> p1.X == p2.X && p1.Y == p2.Y; }
+
+    <span class="keyword">public static bool operator</span> !=(<span class="class-name">Point</span> p1, <span class="class-name">Point</span> p2)
+    { <span class="keyword">return</span> !(p1 == p2); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Point</span> p1 = <span class="keyword">new</span> <span class="class-name">Point</span>(<span class="number">3</span>, <span class="number">4</span>);
+        <span class="class-name">Point</span> p2 = <span class="keyword">new</span> <span class="class-name">Point</span>(<span class="number">3</span>, <span class="number">4</span>);
+        p1++; <span class="class-name">Console</span>.WriteLine(<span class="string">$"p1: {p1.X},{p1.Y}"</span>);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"p1==p2: {p1 == p2}"</span>);
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>p1: 4,5<br/>p1==p2: False</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== C.3. Generic Class in C# ===== -->
+        <section id="c3" class="qa-pair">
+          <h3 class="question">C.3. Generic Class in C#</h3>
+          <p>Explain the concept of generic class in C# with a suitable program.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Generic Class</h3>
+              <p>A <strong>generic class</strong> uses type parameters (&lt;T&gt;) as placeholders. The client specifies the actual type when using the class. This ensures type safety, eliminates boxing, and allows code reuse across data types.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">public class</span> <span class="class-name">GenericBox</span>&lt;T&gt;
+{
+    <span class="keyword">private</span> T item;
+    <span class="keyword">public void</span> <span class="method-name">Add</span>(T newItem) { item = newItem; }
+    <span class="keyword">public</span> T <span class="method-name">GetItem</span>() { <span class="keyword">return</span> item; }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">GenericBox</span>&lt;<span class="keyword">int</span>&gt; intBox = <span class="keyword">new</span> <span class="class-name">GenericBox</span>&lt;<span class="keyword">int</span>&gt;();
+        intBox.Add(<span class="number">100</span>);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Integer: {intBox.GetItem()}"</span>);
+
+        <span class="class-name">GenericBox</span>&lt;<span class="keyword">string</span>&gt; strBox = <span class="keyword">new</span> <span class="class-name">GenericBox</span>&lt;<span class="keyword">string</span>&gt;();
+        strBox.Add(<span class="string">"Hello"</span>);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"String: {strBox.GetItem()}"</span>);
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Integer: 100<br/>String: Hello</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== C.4. Time Class with Operator Overloading ===== -->
+        <section id="c4" class="qa-pair">
+          <h3 class="question">C.4. Time Class with Operator Overloading</h3>
+          <p>Create a 'Time' class with constructor, display method, overload + operator (24-hour clock) and comparison operators.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Concept</h3>
+              <p>The <code>+</code> operator adds hours/minutes/seconds with overflow normalization. Values wrap at 24 hours for the hour component.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">public class</span> <span class="class-name">Time</span>
+{
+    <span class="keyword">public int</span> H, M, S;
+    <span class="keyword">public</span> <span class="method-name">Time</span>(<span class="keyword">int</span> h, <span class="keyword">int</span> m, <span class="keyword">int</span> s) { H = h; M = m; S = s; }
+    <span class="keyword">public void</span> <span class="method-name">Display</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">$"{H:D2}:{M:D2}:{S:D2}"</span>); }
+
+    <span class="keyword">public static</span> <span class="class-name">Time</span> <span class="keyword">operator</span> +(<span class="class-name">Time</span> t1, <span class="class-name">Time</span> t2)
+    {
+        <span class="keyword">int</span> sec = t1.S + t2.S; <span class="keyword">int</span> s = sec % <span class="number">60</span>;
+        <span class="keyword">int</span> min = t1.M + t2.M + sec / <span class="number">60</span>; <span class="keyword">int</span> m = min % <span class="number">60</span>;
+        <span class="keyword">int</span> hr = t1.H + t2.H + min / <span class="number">60</span>; <span class="keyword">int</span> h = hr % <span class="number">24</span>;
+        <span class="keyword">return new</span> <span class="class-name">Time</span>(h, m, s);
+    }
+
+    <span class="keyword">public static bool operator</span> ==(<span class="class-name">Time</span> t1, <span class="class-name">Time</span> t2)
+    { <span class="keyword">return</span> t1.H == t2.H && t1.M == t2.M && t1.S == t2.S; }
+
+    <span class="keyword">public static bool operator</span> !=(<span class="class-name">Time</span> t1, <span class="class-name">Time</span> t2)
+    { <span class="keyword">return</span> !(t1 == t2); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Time</span> t1 = <span class="keyword">new</span> <span class="class-name">Time</span>(<span class="number">10</span>, <span class="number">45</span>, <span class="number">30</span>);
+        <span class="class-name">Time</span> t2 = <span class="keyword">new</span> <span class="class-name">Time</span>(<span class="number">15</span>, <span class="number">20</span>, <span class="number">45</span>);
+        <span class="class-name">Time</span> t3 = t1 + t2;
+        <span class="class-name">Console</span>.Write(<span class="string">"Sum: "</span>); t3.Display();
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Equal? {t1 == t2}"</span>);
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Sum: 02:06:15<br/>Equal? False</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== C.5. Events in C# ===== -->
+        <section id="c5" class="qa-pair">
+          <h3 class="question">C.5. Events in C#</h3>
+          <p>What is an event? Explain with suitable program, how event is handled in C#.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Events in C#</h3>
+              <p>An <strong>event</strong> enables a class (publisher) to notify other classes (subscribers) when something happens. Events are built on delegates. Subscribers attach handlers using <code>+=</code>.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">public delegate void</span> <span class="type">Notify</span>();
+
+<span class="keyword">class</span> <span class="class-name">Process</span>
+{
+    <span class="keyword">public event</span> <span class="type">Notify</span> Completed;
+    <span class="keyword">public void</span> <span class="method-name">Start</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">"Started..."</span>); Completed?.Invoke(); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Process</span> p = <span class="keyword">new</span> <span class="class-name">Process</span>();
+        p.Completed += () =&gt; <span class="class-name">Console</span>.WriteLine(<span class="string">"Completed!"</span>);
+        p.Start();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Started...<br/>Completed!</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== C.6. Lambda Expression and Generic Delegates ===== -->
+        <section id="c6" class="qa-pair">
+          <h3 class="question">C.6. Lambda Expression and Generic Delegates</h3>
+          <p>What is Lambda expression? Explain the concept of generic delegates.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Lambda and Generic Delegates</h3>
+              <p>A <strong>lambda expression</strong> is an anonymous function using <code>=&gt;</code>. <strong>Generic delegates</strong> are built-in: <code>Func&lt;&gt;</code> (returns value), <code>Action&lt;&gt;</code> (void), <code>Predicate&lt;&gt;</code> (returns bool).</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="type">Func</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>, <span class="keyword">int</span>&gt; add = (x, y) =&gt; x + y;
+        <span class="type">Action</span>&lt;<span class="keyword">string</span>&gt; print = msg =&gt; <span class="class-name">Console</span>.WriteLine(msg);
+        <span class="type">Predicate</span>&lt;<span class="keyword">int</span>&gt; isEven = n =&gt; n % <span class="number">2</span> == <span class="number">0</span>;
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Func: {add(5, 10)}"</span>);
+        print(<span class="string">"Action called"</span>);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Predicate: {isEven(4)}"</span>);
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Func: 15<br/>Action called<br/>Predicate: True</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== C.7. Copy Constructor, Indexer, Lambda (Short Notes) ===== -->
+        <section id="c7" class="qa-pair">
+          <h3 class="question">C.7. Copy Constructor, Indexer, Lambda (Short Notes)</h3>
+          <p>Write short notes on: (any two) Copy constructor, Indexer, Lambda Expression.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">a) Copy Constructor</h3>
+              <p>A <strong>copy constructor</strong> creates a new object by copying data from an existing object of the same type. C# does not provide a default one; you must define it manually.</p>
+              <pre class="code-block">
+<span class="keyword">class</span> <span class="class-name">Student</span> { <span class="keyword">public string</span> Name; <span class="keyword">public</span> <span class="method-name">Student</span>(<span class="class-name">Student</span> s) { Name = s.Name; } }
+              </pre>
+            </div>
+            <div>
+              <h3 class="section-title">b) Indexer</h3>
+              <p>An <strong>indexer</strong> lets objects be indexed like arrays using <code>this</code> keyword with <code>get</code>/<code>set</code> accessors.</p>
+              <pre class="code-block">
+<span class="keyword">class</span> <span class="class-name">Collection</span> { <span class="keyword">private string</span>[] d = <span class="keyword">new string</span>[<span class="number">10</span>]; <span class="keyword">public string</span> <span class="keyword">this</span>[<span class="keyword">int</span> i] { <span class="keyword">get</span> { <span class="keyword">return</span> d[i]; } <span class="keyword">set</span> { d[i] = <span class="keyword">value</span>; } } }
+              </pre>
+            </div>
+            <div>
+              <h3 class="section-title">c) Lambda Expression</h3>
+              <p>A <strong>lambda</strong> is an inline anonymous function: <code>(params) =&gt; expression</code>. Used heavily in LINQ.</p>
+              <pre class="code-block">
+<span class="type">Func</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; sq = x =&gt; x * x; <span class="class-name">Console</span>.WriteLine(sq(<span class="number">5</span>));
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== C.8. Method and Operator Overloading (+ Operator) ===== -->
+        <section id="c8" class="qa-pair">
+          <h3 class="question">C.8. Method and Operator Overloading (+ Operator)</h3>
+          <p>Define method and operator overloading. Write a program to overload + operator.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Method Overloading</h3>
+              <p><strong>Method Overloading</strong> means multiple methods with the same name but different parameters. The compiler decides which to call based on arguments.</p>
+              <pre class="code-block">
+<span class="keyword">class</span> <span class="class-name">Calc</span> {
+    <span class="keyword">public int</span> <span class="method-name">Add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b) { <span class="keyword">return</span> a + b; }
+    <span class="keyword">public int</span> <span class="method-name">Add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c) { <span class="keyword">return</span> a + b + c; }
+    <span class="keyword">public double</span> <span class="method-name">Add</span>(<span class="keyword">double</span> a, <span class="keyword">double</span> b) { <span class="keyword">return</span> a + b; }
+}
+              </pre>
+            </div>
+            <div>
+              <h3 class="section-title">Operator Overloading (+)</h3>
+              <p><strong>Operator Overloading</strong> redefines how operators work for custom classes using <code>public static</code> methods.</p>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Box</span> {
+    <span class="keyword">public int</span> L, W;
+    <span class="keyword">public</span> <span class="method-name">Box</span>(<span class="keyword">int</span> l, <span class="keyword">int</span> w) { L = l; W = w; }
+
+    <span class="keyword">public static</span> <span class="class-name">Box</span> <span class="keyword">operator</span> +(<span class="class-name">Box</span> a, <span class="class-name">Box</span> b) {
+        <span class="keyword">return new</span> <span class="class-name">Box</span>(a.L + b.L, a.W + b.W);
+    }
+
+    <span class="keyword">public void</span> <span class="method-name">Display</span>() { <span class="class-name">Console</span>.WriteLine(<span class="string">$"L={L}, W={W}"</span>); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span> {
+    <span class="keyword">static void</span> <span class="method-name">Main</span>() {
+        <span class="class-name">Box</span> b1 = <span class="keyword">new</span> <span class="class-name">Box</span>(<span class="number">5</span>, <span class="number">3</span>), b2 = <span class="keyword">new</span> <span class="class-name">Box</span>(<span class="number">2</span>, <span class="number">4</span>);
+        <span class="class-name">Box</span> b3 = b1 + b2;
+        <span class="class-name">Console</span>.Write(<span class="string">"Result: "</span>); b3.Display();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Result: L=7, W=7</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== C.9. Complete CRUD Operation on Student ===== -->
+        <section id="c9" class="qa-pair">
+          <h3 class="question">C.9. Complete CRUD Operation on Student</h3>
+          <p>Write a C# program to demonstrate complete CRUD operation of a student.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">CRUD Operations</h3>
+              <p><strong>CRUD</strong> = Create, Read, Update, Delete. This program manages students in a List with operations to add, display, update, and remove students by ID.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Collections.Generic</span>;
+<span class="keyword">using</span> <span class="type">System.Linq</span>;
+
+<span class="keyword">class</span> <span class="class-name">Student</span> {
+    <span class="keyword">public int</span> Id { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public int</span> Age { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> Course { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public override string</span> <span class="method-name">ToString</span>() { <span class="keyword">return</span> <span class="string">$"ID:{Id}, {Name}, Age:{Age}, {Course}"</span>; }
+}
+
+<span class="keyword">class</span> <span class="class-name">StudentCRUD</span> {
+    <span class="keyword">private</span> <span class="class-name">List</span>&lt;<span class="class-name">Student</span>&gt; list = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="class-name">Student</span>&gt;();
+    <span class="keyword">private int</span> nextId = <span class="number">1</span>;
+
+    <span class="keyword">public void</span> <span class="method-name">Create</span>(<span class="keyword">string</span> n, <span class="keyword">int</span> a, <span class="keyword">string</span> c) {
+        list.Add(<span class="keyword">new</span> <span class="class-name">Student</span> { Id = nextId++, Name = n, Age = a, Course = c });
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Added: {n}"</span>);
+    }
+
+    <span class="keyword">public void</span> <span class="method-name">ReadAll</span>() {
+        <span class="keyword">if</span> (list.Count == <span class="number">0</span>) { <span class="class-name">Console</span>.WriteLine(<span class="string">"No students."</span>); <span class="keyword">return</span>; }
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> s <span class="keyword">in</span> list) <span class="class-name">Console</span>.WriteLine(s);
+    }
+
+    <span class="keyword">public void</span> <span class="method-name">Update</span>(<span class="keyword">int</span> id, <span class="keyword">string</span> n, <span class="keyword">int</span> a, <span class="keyword">string</span> c) {
+        <span class="keyword">var</span> s = list.FirstOrDefault(x =&gt; x.Id == id);
+        <span class="keyword">if</span> (s != <span class="keyword">null</span>) { s.Name = n; s.Age = a; s.Course = c; <span class="class-name">Console</span>.WriteLine(<span class="string">"Updated."</span>); }
+        <span class="keyword">else</span> <span class="class-name">Console</span>.WriteLine(<span class="string">"Not found."</span>);
+    }
+
+    <span class="keyword">public void</span> <span class="method-name">Delete</span>(<span class="keyword">int</span> id) {
+        <span class="keyword">var</span> s = list.FirstOrDefault(x =&gt; x.Id == id);
+        <span class="keyword">if</span> (s != <span class="keyword">null</span>) { list.Remove(s); <span class="class-name">Console</span>.WriteLine(<span class="string">"Deleted."</span>); }
+        <span class="keyword">else</span> <span class="class-name">Console</span>.WriteLine(<span class="string">"Not found."</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span> {
+    <span class="keyword">static void</span> <span class="method-name">Main</span>() {
+        <span class="class-name">StudentCRUD</span> crud = <span class="keyword">new</span> <span class="class-name">StudentCRUD</span>();
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"--- CREATE ---"</span>);
+        crud.Create(<span class="string">"Ram"</span>, <span class="number">20</span>, <span class="string">"BCA"</span>);
+        crud.Create(<span class="string">"Sita"</span>, <span class="number">21</span>, <span class="string">"BCA"</span>);
+        crud.Create(<span class="string">"Hari"</span>, <span class="number">22</span>, <span class="string">"CSIT"</span>);
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\n--- READ ---"</span>);
+        crud.ReadAll();
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\n--- UPDATE (ID=1) ---"</span>);
+        crud.Update(<span class="number">1</span>, <span class="string">"Ram Sharma"</span>, <span class="number">21</span>, <span class="string">"BCA Honors"</span>);
+        crud.ReadAll();
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\n--- DELETE (ID=3) ---"</span>);
+        crud.Delete(<span class="number">3</span>);
+        crud.ReadAll();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              --- CREATE ---<br/>
+              Added: Ram<br/>
+              Added: Sita<br/>
+              Added: Hari<br/>
+              <br/>
+              --- READ ---<br/>
+              ID:1, Ram, Age:20, BCA<br/>
+              ID:2, Sita, Age:21, BCA<br/>
+              ID:3, Hari, Age:22, CSIT<br/>
+              <br/>
+              --- UPDATE (ID=1) ---<br/>
+              Updated.<br/>
+              ID:1, Ram Sharma, Age:21, BCA Honors<br/>
+              ID:2, Sita, Age:21, BCA<br/>
+              ID:3, Hari, Age:22, CSIT<br/>
+              <br/>
+              --- DELETE (ID=3) ---<br/>
+              Deleted.<br/>
+              ID:1, Ram Sharma, Age:21, BCA Honors<br/>
+              ID:2, Sita, Age:21, BCA</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== GROUP D: LINQ ===== -->
+
+        <h2 class="group-header">D. LINQ</h2>
+
+        <!-- ===== D.1. LINQ: Odd and Divisible by 3 ===== -->
+        <section id="d1" class="qa-pair">
+          <h3 class="question">D.1. LINQ: Odd and Divisible by 3</h3>
+          <p>Write a C# program to select odd and divisible by 3 numbers from 1-30 using LINQ.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Concept</h3>
+              <p>This uses LINQ query syntax with multiple conditions in the <code>where</code> clause: numbers that are odd (num % 2 != 0) AND divisible by 3 (num % 3 == 0).</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Collections.Generic</span>;
+<span class="keyword">using</span> <span class="type">System.Linq</span>;
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">List</span>&lt;<span class="keyword">int</span>&gt; nums = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="keyword">int</span>&gt;();
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">30</span>; i++) nums.Add(i);
+
+        <span class="keyword">var</span> result = <span class="keyword">from</span> n <span class="keyword">in</span> nums
+                     <span class="keyword">where</span> n % <span class="number">2</span> != <span class="number">0</span> && n % <span class="number">3</span> == <span class="number">0</span>
+                     <span class="keyword">select</span> n;
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Odd numbers divisible by 3:"</span>);
+        <span class="keyword">foreach</span> (<span class="keyword">int</span> n <span class="keyword">in</span> result) <span class="class-name">Console</span>.Write(n + <span class="string">" "</span>);
+        <span class="class-name">Console</span>.ReadLine();
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Odd numbers divisible by 3:<br/>3 9 15 21 27</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== D.2. LINQ: Select Employees ===== -->
+        <section id="d2" class="qa-pair">
+          <h3 class="question">D.2. LINQ: Select Employees</h3>
+          <p>Write a program to select employees whose salary &gt; 20000 and address is Kathmandu using LINQ.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Concept</h3>
+              <p>This creates a list of Employee objects and filters them with LINQ based on salary and address conditions.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Collections.Generic</span>;
+<span class="keyword">using</span> <span class="type">System.Linq</span>;
+
+<span class="keyword">class</span> <span class="class-name">Employee</span>
+{
+    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public decimal</span> Salary { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> Address { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">List</span>&lt;<span class="class-name">Employee</span>&gt; emps = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="class-name">Employee</span>&gt;()
+        {
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Ram"</span>, Salary = <span class="number">25000</span>, Address = <span class="string">"Kathmandu"</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Shyam"</span>, Salary = <span class="number">18000</span>, Address = <span class="string">"Pokhara"</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Hari"</span>, Salary = <span class="number">30000</span>, Address = <span class="string">"Kathmandu"</span> }
+        };
+
+        <span class="keyword">var</span> result = <span class="keyword">from</span> e <span class="keyword">in</span> emps
+                     <span class="keyword">where</span> e.Salary &gt; <span class="number">20000</span> && e.Address == <span class="string">"Kathmandu"</span>
+                     <span class="keyword">select</span> e;
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Filtered Employees:"</span>);
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> e <span class="keyword">in</span> result)
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"{e.Name}: {e.Salary}"</span>);
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              Filtered Employees:<br/>
+              Ram: 25000<br/>
+              Hari: 30000</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== D.3. LINQ: Students from Kirtipur at Patan Campus ===== -->
+        <section id="d3" class="qa-pair">
+          <h3 class="question">D.3. LINQ: Students from Kirtipur at Patan Campus</h3>
+          <p>Write a C# program to select Students living in Kirtipur and studying at Patan Multiple Campus using LINQ.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Concept</h3>
+              <p>This demonstrates filtering a custom Student list using LINQ with two conditions: address = "Kirtipur" and campus = "Patan Multiple Campus".</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Collections.Generic</span>;
+<span class="keyword">using</span> <span class="type">System.Linq</span>;
+
+<span class="keyword">class</span> <span class="class-name">Student</span>
+{
+    <span class="keyword">public int</span> Id { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> Address { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> Campus { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">List</span>&lt;<span class="class-name">Student</span>&gt; students = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="class-name">Student</span>&gt;()
+        {
+            <span class="keyword">new</span> <span class="class-name">Student</span> { Id = <span class="number">1</span>, Name = <span class="string">"Ram"</span>, Address = <span class="string">"Kirtipur"</span>, Campus = <span class="string">"Patan Multiple Campus"</span> },
+            <span class="keyword">new</span> <span class="class-name">Student</span> { Id = <span class="number">2</span>, Name = <span class="string">"Sita"</span>, Address = <span class="string">"Baneshwor"</span>, Campus = <span class="string">"Patan Multiple Campus"</span> },
+            <span class="keyword">new</span> <span class="class-name">Student</span> { Id = <span class="number">3</span>, Name = <span class="string">"Gita"</span>, Address = <span class="string">"Kirtipur"</span>, Campus = <span class="string">"Patan Multiple Campus"</span> }
+        };
+
+        <span class="keyword">var</span> result = <span class="keyword">from</span> s <span class="keyword">in</span> students
+                     <span class="keyword">where</span> s.Address == <span class="string">"Kirtipur"</span> && s.Campus == <span class="string">"Patan Multiple Campus"</span>
+                     <span class="keyword">select</span> s;
+
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Students from Kirtipur at Patan Campus:"</span>);
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> s <span class="keyword">in</span> result)
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"{s.Id}. {s.Name}"</span>);
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              Students from Kirtipur at Patan Campus:<br/>
+              1. Ram<br/>
+              3. Gita</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== D.4. LINQ: Aggregate Salary with Descending Order ===== -->
+        <section id="d4" class="qa-pair">
+          <h3 class="question">D.4. LINQ: Aggregate Salary with Descending Order</h3>
+          <p>Compute aggregate salary of 5 employees and display records in descending order using LINQ.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Concept</h3>
+              <p>Uses <code>Sum()</code> for aggregate salary and <code>OrderByDescending()</code> to sort employees by salary from highest to lowest.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Linq</span>;
+<span class="keyword">using</span> <span class="type">System.Collections.Generic</span>;
+
+<span class="keyword">public class</span> <span class="class-name">Employee</span>
+{
+    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public double</span> Salary { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">List</span>&lt;<span class="class-name">Employee</span>&gt; emps = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="class-name">Employee</span>&gt;()
+        {
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Alice"</span>, Salary = <span class="number">45000</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Bob"</span>, Salary = <span class="number">62000</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Charlie"</span>, Salary = <span class="number">38000</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"David"</span>, Salary = <span class="number">75000</span> },
+            <span class="keyword">new</span> <span class="class-name">Employee</span> { Name = <span class="string">"Eve"</span>, Salary = <span class="number">50000</span> }
+        };
+
+        <span class="keyword">double</span> total = emps.Sum(e =&gt; e.Salary);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">$"Total Salary: {total}\n"</span>);
+
+        <span class="keyword">var</span> sorted = emps.OrderByDescending(e =&gt; e.Salary);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Salary (Descending):"</span>);
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> e <span class="keyword">in</span> sorted)
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"{e.Name}: {e.Salary}"</span>);
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              Total Salary: 270000<br/>
+              <br/>
+              Salary (Descending):<br/>
+              David: 75000<br/>
+              Bob: 62000<br/>
+              Eve: 50000<br/>
+              Alice: 45000<br/>
+              Charlie: 38000</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== D.5. LINQ Standard Operators ===== -->
+        <section id="d5" class="qa-pair">
+          <h3 class="question">D.5. LINQ Standard Operators</h3>
+          <p>Explain query syntax in LINQ. Explain select, contains, orderBy and where with examples.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">LINQ Query Syntax</h3>
+              <p><strong>Query syntax</strong> is a SQL-like syntax in C# that starts with <code>from</code> and ends with <code>select</code> or <code>group</code>.</p>
+            </div>
+            <div>
+              <h3 class="section-title">Standard Operators</h3>
+              <p><strong>where:</strong> Filters elements by a condition.</p>
+              <pre class="code-block"><span class="keyword">var</span> even = <span class="keyword">from</span> n <span class="keyword">in</span> nums <span class="keyword">where</span> n % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">select</span> n;</pre>
+              <p><strong>orderBy:</strong> Sorts elements in ascending order.</p>
+              <pre class="code-block"><span class="keyword">var</span> sorted = <span class="keyword">from</span> n <span class="keyword">in</span> names <span class="keyword">orderby</span> n <span class="keyword">select</span> n;</pre>
+              <p><strong>select:</strong> Projects data into the desired shape.</p>
+              <pre class="code-block"><span class="keyword">var</span> names = <span class="keyword">from</span> s <span class="keyword">in</span> students <span class="keyword">select</span> s.Name;</pre>
+              <p><strong>Contains:</strong> Checks if an element/substring exists.</p>
+              <pre class="code-block"><span class="keyword">var</span> hasA = <span class="keyword">from</span> f <span class="keyword">in</span> fruits <span class="keyword">where</span> f.Contains(<span class="string">"a"</span>) <span class="keyword">select</span> f;</pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== D.6. LINQ Query Demo (Query and Method Syntax) ===== -->
+        <section id="d6" class="qa-pair">
+          <h3 class="question">D.6. LINQ Query Demo (Query and Method Syntax)</h3>
+          <p>Write a suitable program to demonstrate LINQ query.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">LINQ Query</h3>
+              <p><strong>LINQ</strong> lets you write SQL-like queries in C# over collections. <strong>Query syntax:</strong> <code>from x in list where cond select x</code>. <strong>Method syntax:</strong> <code>list.Where(x =&gt; cond)</code>.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Collections.Generic</span>;
+<span class="keyword">using</span> <span class="type">System.Linq</span>;
+
+<span class="keyword">class</span> <span class="class-name">Student</span> { <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; } <span class="keyword">public int</span> Marks { <span class="keyword">get</span>; <span class="keyword">set</span>; } }
+
+<span class="keyword">class</span> <span class="class-name">Program</span> {
+    <span class="keyword">static void</span> <span class="method-name">Main</span>() {
+        <span class="class-name">List</span>&lt;<span class="keyword">int</span>&gt; nums = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="keyword">int</span>&gt; { <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span> };
+
+        <span class="comment">// Query Syntax: even numbers</span>
+        <span class="keyword">var</span> even = <span class="keyword">from</span> n <span class="keyword">in</span> nums <span class="keyword">where</span> n % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">select</span> n;
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Even: "</span> + <span class="keyword">string</span>.Join(<span class="string">" "</span>, even));
+
+        <span class="comment">// Method Syntax: numbers &gt; 5 sorted descending</span>
+        <span class="keyword">var</span> big = nums.Where(n =&gt; n &gt; <span class="number">5</span>).OrderByDescending(n =&gt; n);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Big: "</span> + <span class="keyword">string</span>.Join(<span class="string">" "</span>, big));
+
+        <span class="comment">// LINQ with custom objects: students with marks &gt;= 80</span>
+        <span class="class-name">List</span>&lt;<span class="class-name">Student</span>&gt; students = <span class="keyword">new</span> <span class="class-name">List</span>&lt;<span class="class-name">Student</span>&gt; {
+            <span class="keyword">new</span> <span class="class-name">Student</span>{Name=<span class="string">"Ram"</span>,Marks=<span class="number">85</span>},
+            <span class="keyword">new</span> <span class="class-name">Student</span>{Name=<span class="string">"Sita"</span>,Marks=<span class="number">92</span>},
+            <span class="keyword">new</span> <span class="class-name">Student</span>{Name=<span class="string">"Hari"</span>,Marks=<span class="number">70</span>},
+            <span class="keyword">new</span> <span class="class-name">Student</span>{Name=<span class="string">"Gita"</span>,Marks=<span class="number">95</span>}
+        };
+
+        <span class="keyword">var</span> top = <span class="keyword">from</span> s <span class="keyword">in</span> students <span class="keyword">where</span> s.Marks &gt;= <span class="number">80</span> <span class="keyword">orderby</span> s.Marks <span class="keyword">descending</span> <span class="keyword">select</span> s;
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"\nTop Students:"</span>);
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> s <span class="keyword">in</span> top) <span class="class-name">Console</span>.WriteLine(<span class="string">$"{s.Name}: {s.Marks}"</span>);
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>
+              Even: 2 4 6 8 10<br/>
+              Big: 10 9 8 7 6<br/>
+              <br/>
+              Top Students:<br/>
+              Gita: 95<br/>
+              Sita: 92<br/>
+              Ram: 85</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== GROUP E: EXCEPTION HANDLING ===== -->
+
+        <h2 class="group-header">E. Exception Handling</h2>
+
+        <!-- ===== E.1. Exception: DivideByZero, IndexOutOfRange ===== -->
+        <section id="e1" class="qa-pair">
+          <h3 class="question">E.1. Exception Handling (DivideByZero, IndexOutOfRange)</h3>
+          <p>Write a program to generate divide by zero exception and index out of range exception and handle them.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Exception Handling</h3>
+              <p>An <strong>exception</strong> is a runtime error. C# uses <code>try</code>, <code>catch</code>, <code>finally</code> blocks. Multiple catch blocks handle different exception types separately.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">ExceptionDemo</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="keyword">try</span>
+        {
+            <span class="keyword">int</span> a = <span class="number">10</span>, b = <span class="number">0</span>;
+            <span class="keyword">int</span> r = a / b; <span class="comment">// DivideByZeroException</span>
+
+            <span class="keyword">int</span>[] arr = <span class="keyword">new int</span>[<span class="number">3</span>];
+            arr[<span class="number">5</span>] = <span class="number">100</span>; <span class="comment">// IndexOutOfRangeException</span>
+        }
+        <span class="keyword">catch</span> (<span class="class-name">DivideByZeroException</span>)
+        { <span class="class-name">Console</span>.WriteLine(<span class="string">"Cannot divide by zero!"</span>); }
+        <span class="keyword">catch</span> (<span class="class-name">IndexOutOfRangeException</span>)
+        { <span class="class-name">Console</span>.WriteLine(<span class="string">"Array index out of bounds!"</span>); }
+        <span class="keyword">catch</span> (<span class="class-name">Exception</span> ex)
+        { <span class="class-name">Console</span>.WriteLine(<span class="string">"Error: "</span> + ex.Message); }
+        <span class="keyword">finally</span>
+        { <span class="class-name">Console</span>.WriteLine(<span class="string">"Finally executed."</span>); }
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Cannot divide by zero!<br/>Finally executed.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== E.2. Bank Withdrawal with Custom Exception ===== -->
+        <section id="e2" class="qa-pair">
+          <h3 class="question">E.2. Bank Withdrawal with Custom Exception</h3>
+          <p>Read balance and withdrawal amount. If balance > withdrawal, display remaining; otherwise throw ApplicationException.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Custom Exception</h3>
+              <p>This program uses <code>ApplicationException</code> for custom business logic validation. If withdrawal exceeds balance, an exception with a descriptive message is thrown.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">public class</span> <span class="class-name">BankWithdrawal</span>
+{
+    <span class="keyword">public static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="keyword">try</span>
+        {
+            <span class="class-name">Console</span>.Write(<span class="string">"Balance: "</span>);
+            <span class="keyword">double</span> bal = <span class="class-name">Convert</span>.ToDouble(<span class="class-name">Console</span>.ReadLine());
+            <span class="class-name">Console</span>.Write(<span class="string">"Withdraw: "</span>);
+            <span class="keyword">double</span> wd = <span class="class-name">Convert</span>.ToDouble(<span class="class-name">Console</span>.ReadLine());
+
+            <span class="keyword">if</span> (wd &gt; bal)
+                <span class="keyword">throw new</span> <span class="class-name">ApplicationException</span>(<span class="string">"Insufficient balance!"</span>);
+
+            bal -= wd;
+            <span class="class-name">Console</span>.WriteLine(<span class="string">$"Remaining: {bal}"</span>);
+        }
+        <span class="keyword">catch</span> (<span class="class-name">ApplicationException</span> ex)
+        { <span class="class-name">Console</span>.WriteLine(<span class="string">$"Error: {ex.Message}"</span>); }
+        <span class="keyword">catch</span> (<span class="class-name">Exception</span> ex)
+        { <span class="class-name">Console</span>.WriteLine(<span class="string">$"Input Error: {ex.Message}"</span>); }
+    }
+}
+              </pre>
+              <p><strong>Output (balance=5000, withdraw=6000):</strong><br/>Error: Insufficient balance!</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== E.3. Exception: InvalidCastException ===== -->
+        <section id="e3" class="qa-pair">
+          <h3 class="question">E.3. Exception: InvalidCastException</h3>
+          <p>Write a C# program to handle IndexOutOfRangeException and InvalidCastException.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Handling Multiple Exceptions</h3>
+              <p><code>InvalidCastException</code> occurs when an invalid type conversion is attempted (e.g., casting string to int). Multiple catch blocks handle each type separately.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="keyword">try</span>
+        {
+            <span class="keyword">int</span>[] nums = { <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> };
+            <span class="keyword">int</span> v = nums[<span class="number">5</span>]; <span class="comment">// IndexOutOfRangeException</span>
+
+            <span class="type">object</span> o = <span class="string">"Hello"</span>;
+            <span class="keyword">int</span> x = (<span class="keyword">int</span>)o; <span class="comment">// InvalidCastException</span>
+        }
+        <span class="keyword">catch</span> (<span class="class-name">IndexOutOfRangeException</span>)
+        { <span class="class-name">Console</span>.WriteLine(<span class="string">"Index out of bounds!"</span>); }
+        <span class="keyword">catch</span> (<span class="class-name">InvalidCastException</span>)
+        { <span class="class-name">Console</span>.WriteLine(<span class="string">"Invalid cast!"</span>); }
+        <span class="keyword">finally</span>
+        { <span class="class-name">Console</span>.WriteLine(<span class="string">"Done."</span>); }
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Index out of bounds!<br/>Done.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== E.4. Struct vs Enum with Custom Exception ===== -->
+        <section id="e4" class="qa-pair">
+          <h3 class="question">E.4. Struct vs Enum with Custom Exception</h3>
+          <p>Differentiate between struct and enum. Illustrate exception handling with custom exception.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Struct vs Enum</h3>
+              <p><strong>Struct</strong> is a value type grouping related data (fields, methods). <strong>Enum</strong> is a value type of named integer constants. Struct can have methods and constructors; Enum only has constants.</p>
+            </div>
+            <div>
+              <h3 class="section-title">Custom Exception Example</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+
+<span class="keyword">class</span> <span class="class-name">InvalidAgeException</span> : <span class="type">Exception</span>
+{
+    <span class="keyword">public</span> <span class="method-name">InvalidAgeException</span>(<span class="type">string</span> m) : <span class="keyword">base</span>(m) { }
+}
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Check</span>(<span class="keyword">int</span> age)
+    {
+        <span class="keyword">if</span> (age &lt; <span class="number">18</span>)
+            <span class="keyword">throw new</span> <span class="class-name">InvalidAgeException</span>(<span class="string">"Must be 18+"</span>);
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Eligible"</span>);
+    }
+
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="keyword">try</span> { <span class="method-name">Check</span>(<span class="number">16</span>); }
+        <span class="keyword">catch</span> (<span class="class-name">InvalidAgeException</span> ex) { <span class="class-name">Console</span>.WriteLine(ex.Message); }
+        <span class="keyword">finally</span> { <span class="class-name">Console</span>.WriteLine(<span class="string">"Done."</span>); }
+    }
+}
+              </pre>
+              <p><strong>Output:</strong><br/>Must be 18+<br/>Done.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== GROUP F: ADO.NET ===== -->
+
+        <h2 class="group-header">F. ADO.NET</h2>
+
+        <!-- ===== F.1. ADO.NET: Database Insert and Select ===== -->
+        <section id="f1" class="qa-pair">
+          <h3 class="question">F.1. ADO.NET: Database Insert and Select</h3>
+          <p>Write a C# program to show insert and select operation in database.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">ADO.NET Database Operations</h3>
+              <p>ADO.NET uses <code>SqlConnection</code>, <code>SqlCommand</code>, <code>SqlDataAdapter</code>, and <code>DataTable</code> for database operations. <code>ExecuteNonQuery()</code> for INSERT, <code>SqlDataAdapter.Fill()</code> for SELECT.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Data</span>;
+<span class="keyword">using</span> <span class="type">System.Data.SqlClient</span>;
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="type">SqlConnection</span> conn;
+    <span class="type">SqlCommand</span> cmd;
+
+    <span class="keyword">void</span> <span class="method-name">Connect</span>()
+    {
+        conn = <span class="keyword">new</span> <span class="type">SqlConnection</span>(<span class="string">"Data Source=.;Initial Catalog=test;Integrated Security=True"</span>);
+        conn.Open();
+    }
+
+    <span class="keyword">void</span> <span class="method-name">Insert</span>(<span class="keyword">string</span> n, <span class="keyword">string</span> a)
+    {
+        cmd = <span class="keyword">new</span> <span class="type">SqlCommand</span>(<span class="string">"INSERT INTO Student (name,addr) VALUES('"</span>+n+<span class="string">"','"</span>+a+<span class="string">"')"</span>, conn);
+        cmd.ExecuteNonQuery();
+        <span class="class-name">Console</span>.WriteLine(<span class="string">"Inserted!"</span>);
+    }
+
+    <span class="keyword">void</span> <span class="method-name">Select</span>()
+    {
+        cmd = <span class="keyword">new</span> <span class="type">SqlCommand</span>(<span class="string">"SELECT * FROM Student"</span>, conn);
+        <span class="type">SqlDataAdapter</span> da = <span class="keyword">new</span> <span class="type">SqlDataAdapter</span>(cmd);
+        <span class="type">DataTable</span> dt = <span class="keyword">new</span> <span class="type">DataTable</span>(); da.Fill(dt);
+        <span class="keyword">foreach</span> (<span class="type">DataRow</span> r <span class="keyword">in</span> dt.Rows) <span class="class-name">Console</span>.WriteLine(<span class="string">$"{r["id"]} {r["name"]}"</span>);
+    }
+
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="class-name">Program</span> p = <span class="keyword">new</span> <span class="class-name">Program</span>();
+        p.Connect(); p.Insert(<span class="string">"Ram"</span>, <span class="string">"Ktm"</span>); p.Select();
+    }
+}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== F.2. ADO.NET: Customer Records with Balance > 5000 ===== -->
+        <section id="f2" class="qa-pair">
+          <h3 class="question">F.2. ADO.NET: Customer Records with Balance > 5000</h3>
+          <p>Connect to Bank database, insert 5 customer records, display records with balance > 5000.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Concept</h3>
+              <p>Uses parameterized queries for safe INSERT and <code>SqlDataReader</code> (ExecuteReader) to fetch filtered records.</p>
+            </div>
+            <div>
+              <h3 class="section-title">C# Program</h3>
+              <pre class="code-block">
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Data.SqlClient</span>;
+
+<span class="keyword">class</span> <span class="class-name">Program</span>
+{
+    <span class="keyword">static void</span> <span class="method-name">Main</span>()
+    {
+        <span class="keyword">string</span> cs = <span class="string">@"Data Source=.;Initial Catalog=Bank;Integrated Security=True"</span>;
+        <span class="keyword">using</span> (<span class="type">SqlConnection</span> c = <span class="keyword">new</span> <span class="type">SqlConnection</span>(cs))
+        {
+            c.Open();
+            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++)
+            {
+                <span class="keyword">using</span> (<span class="type">SqlCommand</span> cmd = <span class="keyword">new</span> <span class="type">SqlCommand</span>(<span class="string">"INSERT INTO Customer (AccNo,Name,Balance) VALUES(@a,@n,@b)"</span>, c))
+                {
+                    cmd.Parameters.AddWithValue(<span class="string">"@a"</span>, <span class="number">1000</span>+i);
+                    cmd.Parameters.AddWithValue(<span class="string">"@n"</span>, <span class="string">"Cust_"+i</span>);
+                    cmd.Parameters.AddWithValue(<span class="string">"@b"</span>, i*<span class="number">2000</span>);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            <span class="class-name">Console</span>.WriteLine(<span class="string">"5 records inserted!"</span>);
+
+            <span class="keyword">using</span> (<span class="type">SqlCommand</span> cmd = <span class="keyword">new</span> <span class="type">SqlCommand</span>(<span class="string">"SELECT * FROM Customer WHERE Balance &gt; 5000"</span>, c))
+            <span class="keyword">using</span> (<span class="type">SqlDataReader</span> r = cmd.ExecuteReader())
+            {
+                <span class="keyword">while</span> (r.Read()) <span class="class-name">Console</span>.WriteLine(<span class="string">$"{r["AccNo"]}: {r["Name"]} - {r["Balance"]}"</span>);
+            }
+        }
+    }
+}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== F.3. Data Adapter vs Data Reader ===== -->
+        <section id="f3" class="qa-pair">
+          <h3 class="question">F.3. Data Adapter vs Data Reader + ASP.NET Insert</h3>
+          <p>Differentiate between Data Adapter and Data Reader. Write an ASP.NET program to insert data into Employee table.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Data Adapter vs Data Reader</h3>
+              <p><strong>DataReader:</strong> Forward-only, read-only, connected architecture, fast.<br/>
+              <strong>DataAdapter:</strong> Disconnected architecture, read/write, fills DataSet, supports offline updates.</p>
+            </div>
+            <div>
+              <h3 class="section-title">ASP.NET Insert Program</h3>
+              <pre class="code-block">
+<span class="comment">&lt;!-- EmployeeForm.aspx --&gt;</span>
+&lt;<span class="keyword">%@</span> <span class="type">Page</span> <span class="keyword">Language</span>=<span class="string">"C#"</span> %&gt;
+&lt;<span class="type">html</span>&gt;
+&lt;<span class="type">body</span>&gt;
+    &lt;<span class="type">form</span> <span class="keyword">id</span>=<span class="string">"form1"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>&gt;
+        Name: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtName"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;&lt;<span class="type">br</span> /&gt;
+        Email: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtEmail"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;&lt;<span class="type">br</span> /&gt;
+        Salary: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtSalary"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;&lt;<span class="type">br</span> /&gt;
+        &lt;<span class="type">asp:Button</span> <span class="keyword">ID</span>=<span class="string">"btnSave"</span> <span class="keyword">runat</span>=<span class="string">"server"</span> <span class="keyword">Text</span>=<span class="string">"Save"</span> <span class="keyword">OnClick</span>=<span class="string">"btnSave_Click"</span>/&gt;
+        &lt;<span class="type">asp:Label</span> <span class="keyword">ID</span>=<span class="string">"lblMsg"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;
+    &lt;/<span class="type">form</span>&gt;
+&lt;/<span class="type">body</span>&gt;
+&lt;/<span class="type">html</span>&gt;
+
+<span class="comment">&lt;!-- Code-Behind --&gt;</span>
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">using</span> <span class="type">System.Data.SqlClient</span>;
+
+<span class="keyword">public partial class</span> <span class="class-name">_Default</span> : <span class="type">System.Web.UI.Page</span>
+{
+    <span class="keyword">protected void</span> <span class="method-name">btnSave_Click</span>(<span class="keyword">object</span> s, <span class="type">EventArgs</span> e)
+    {
+        <span class="keyword">string</span> cs = <span class="string">"Server=.;Database=EMS;Integrated Security=True"</span>;
+        <span class="keyword">string</span> q = <span class="string">"INSERT INTO Employee(Name,Email,Salary) VALUES(@n,@e,@s)"</span>;
+        <span class="keyword">using</span> (<span class="type">SqlConnection</span> c = <span class="keyword">new</span> <span class="type">SqlConnection</span>(cs))
+        <span class="keyword">using</span> (<span class="type">SqlCommand</span> cmd = <span class="keyword">new</span> <span class="type">SqlCommand</span>(q, c))
+        {
+            cmd.Parameters.AddWithValue(<span class="string">"@n"</span>, txtName.Text);
+            cmd.Parameters.AddWithValue(<span class="string">"@e"</span>, txtEmail.Text);
+            cmd.Parameters.AddWithValue(<span class="string">"@s"</span>, <span class="type">Convert</span>.ToDecimal(txtSalary.Text));
+            c.Open(); cmd.ExecuteNonQuery();
+            lblMsg.Text = <span class="string">"Saved!"</span>;
+        }
+    }
+}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== GROUP G: ASP.NET ===== -->
+
+        <h2 class="group-header">G. ASP.NET</h2>
+
+        <!-- ===== G.1. ASP.NET: Student Registration across pages ===== -->
+        <section id="g1" class="qa-pair">
+          <h3 class="question">G.1. ASP.NET: Student Registration across pages</h3>
+          <p>Write a program to create student registration form in one ASP.NET page and display data in another page.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Concept</h3>
+              <p>Data is passed between ASP.NET pages using <code>Response.Redirect()</code> with query strings (name-value pairs in the URL). The second page reads them with <code>Request.QueryString</code>.</p>
+            </div>
+            <div>
+              <h3 class="section-title">ASP.NET Pages</h3>
+              <pre class="code-block">
+<span class="comment">&lt;!-- Registration.aspx --&gt;</span>
+&lt;<span class="keyword">%@</span> <span class="type">Page</span> <span class="keyword">Language</span>=<span class="string">"C#"</span> <span class="keyword">AutoEventWireup</span>=<span class="string">"true"</span> <span class="keyword">Inherits</span>=<span class="string">"Registration"</span> %&gt;
+&lt;<span class="type">html</span>&gt;
+&lt;<span class="type">body</span>&gt;
+    &lt;<span class="type">form</span> <span class="keyword">id</span>=<span class="string">"form1"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>&gt;
+        Name: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtName"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;&lt;<span class="type">br</span> /&gt;
+        Email: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtEmail"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;&lt;<span class="type">br</span> /&gt;
+        &lt;<span class="type">asp:Button</span> <span class="keyword">ID</span>=<span class="string">"btnSubmit"</span> <span class="keyword">runat</span>=<span class="string">"server"</span> <span class="keyword">Text</span>=<span class="string">"Register"</span> <span class="keyword">OnClick</span>=<span class="string">"btnSubmit_Click"</span>/&gt;
+    &lt;/<span class="type">form</span>&gt;
+&lt;/<span class="type">body</span>&gt;
+&lt;/<span class="type">html</span>&gt;
+
+<span class="comment">// Registration.aspx.cs</span>
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">public partial class</span> <span class="class-name">Registration</span> : <span class="type">System.Web.UI.Page</span>
+{
+    <span class="keyword">protected void</span> <span class="method-name">btnSubmit_Click</span>(<span class="keyword">object</span> s, <span class="type">EventArgs</span> e)
+    {
+        <span class="class-name">Response</span>.Redirect(<span class="string">"Display.aspx?name="</span>+txtName.Text+<span class="string">"&amp;email="</span>+txtEmail.Text);
+    }
+}
+
+<span class="comment">&lt;!-- Display.aspx --&gt;</span>
+&lt;<span class="keyword">%@</span> <span class="type">Page</span> <span class="keyword">Language</span>=<span class="string">"C#"</span> %&gt;
+&lt;<span class="type">html</span>&gt;
+&lt;<span class="type">body</span>&gt;
+    &lt;<span class="type">form</span> <span class="keyword">id</span>=<span class="string">"form2"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>&gt;
+        &lt;<span class="type">h2</span>&gt;Details&lt;/<span class="type">h2</span>&gt;
+        &lt;<span class="keyword">%</span>
+            <span class="keyword">string</span> n = Request.Form[<span class="string">"txtName"</span>];
+            <span class="keyword">string</span> e = Request.Form[<span class="string">"txtEmail"</span>];
+            Response.Write(<span class="string">"Name: "</span>+n+<span class="string">"&lt;br/&gt;Email: "</span>+e);
+        <span class="keyword">%&gt;</span>
+    &lt;/<span class="type">form</span>&gt;
+&lt;/<span class="type">body</span>&gt;
+&lt;/<span class="type">html</span>&gt;
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== G.2. Exception Handling in ASP.NET ===== -->
+        <section id="g2" class="qa-pair">
+          <h3 class="question">G.2. Exception Handling in ASP.NET</h3>
+          <p>Write a program for handling exception in ASP.NET.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Concept</h3>
+              <p>ASP.NET uses standard try-catch in code-behind. Multiple catch blocks handle specific exceptions (DivideByZero, FormatException) separately from general exceptions.</p>
+            </div>
+            <div>
+              <h3 class="section-title">ASP.NET Program</h3>
+              <pre class="code-block">
+<span class="comment">&lt;!-- ExceptionDemo.aspx --&gt;</span>
+&lt;<span class="keyword">%@</span> <span class="type">Page</span> <span class="keyword">Language</span>=<span class="string">"C#"</span> %&gt;
+&lt;<span class="type">html</span>&gt;
+&lt;<span class="type">body</span>&gt;
+    &lt;<span class="type">form</span> <span class="keyword">id</span>=<span class="string">"form1"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>&gt;
+        Num: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtNum"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;&lt;<span class="type">br</span> /&gt;
+        Den: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtDen"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;&lt;<span class="type">br</span> /&gt;
+        &lt;<span class="type">asp:Button</span> <span class="keyword">ID</span>=<span class="string">"btnCalc"</span> <span class="keyword">runat</span>=<span class="string">"server"</span> <span class="keyword">Text</span>=<span class="string">"Divide"</span> <span class="keyword">OnClick</span>=<span class="string">"btnCalc_Click"</span>/&gt;
+        &lt;<span class="type">asp:Label</span> <span class="keyword">ID</span>=<span class="string">"lblRes"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;
+    &lt;/<span class="type">form</span>&gt;
+&lt;/<span class="type">body</span>&gt;
+&lt;/<span class="type">html</span>&gt;
+
+<span class="comment">// Code-Behind</span>
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">public partial class</span> <span class="class-name">_Default</span> : <span class="type">System.Web.UI.Page</span>
+{
+    <span class="keyword">protected void</span> <span class="method-name">btnCalc_Click</span>(<span class="keyword">object</span> s, <span class="type">EventArgs</span> e)
+    {
+        <span class="keyword">try</span>
+        {
+            <span class="keyword">int</span> n = <span class="class-name">Convert</span>.ToInt32(txtNum.Text);
+            <span class="keyword">int</span> d = <span class="class-name">Convert</span>.ToInt32(txtDen.Text);
+            lblRes.Text = <span class="string">"Result: "</span> + (n / d);
+        }
+        <span class="keyword">catch</span> (<span class="class-name">DivideByZeroException</span>) { lblRes.Text = <span class="string">"Cannot divide by zero!"</span>; }
+        <span class="keyword">catch</span> (<span class="class-name">FormatException</span>) { lblRes.Text = <span class="string">"Invalid number!"</span>; }
+        <span class="keyword">catch</span> (<span class="class-name">Exception</span> ex) { lblRes.Text = <span class="string">"Error: "</span> + ex.Message; }
+    }
+}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== G.3. ASP.NET Simple Interest Calculator ===== -->
+        <section id="g3" class="qa-pair">
+          <h3 class="question">G.3. ASP.NET Simple Interest Calculator</h3>
+          <p>Create a form for calculating simple interest in one ASP.NET page and display in another page.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">Concept</h3>
+              <p>First page collects P, T, R. Calculates SI = P*T*R/100. Passes result to second page via <code>Response.Redirect</code> with query string.</p>
+            </div>
+            <div>
+              <h3 class="section-title">ASP.NET Pages</h3>
+              <pre class="code-block">
+<span class="comment">&lt;!-- Default.aspx --&gt;</span>
+&lt;<span class="keyword">%@</span> <span class="type">Page</span> <span class="keyword">Language</span>=<span class="string">"C#"</span> <span class="keyword">AutoEventWireup</span>=<span class="string">"true"</span> <span class="keyword">Inherits</span>=<span class="string">"Default"</span> %&gt;
+&lt;<span class="type">html</span>&gt;
+&lt;<span class="type">body</span>&gt;
+    &lt;<span class="type">form</span> <span class="keyword">id</span>=<span class="string">"form1"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>&gt;
+        P: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtP"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;&lt;<span class="type">br</span> /&gt;
+        T: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtT"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;&lt;<span class="type">br</span> /&gt;
+        R: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtR"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;&lt;<span class="type">br</span> /&gt;
+        &lt;<span class="type">asp:Button</span> <span class="keyword">ID</span>=<span class="string">"btnCalc"</span> <span class="keyword">runat</span>=<span class="string">"server"</span> <span class="keyword">Text</span>=<span class="string">"Calculate"</span> <span class="keyword">OnClick</span>=<span class="string">"btnCalc_Click"</span>/&gt;
+    &lt;/<span class="type">form</span>&gt;
+&lt;/<span class="type">body</span>&gt;
+&lt;/<span class="type">html</span>&gt;
+
+<span class="comment">// Default.aspx.cs</span>
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">public partial class</span> <span class="class-name">Default</span> : <span class="type">System.Web.UI.Page</span>
+{
+    <span class="keyword">protected void</span> <span class="method-name">btnCalc_Click</span>(<span class="keyword">object</span> s, <span class="type">EventArgs</span> e)
+    {
+        <span class="keyword">double</span> p = <span class="class-name">Convert</span>.ToDouble(txtP.Text);
+        <span class="keyword">double</span> t = <span class="class-name">Convert</span>.ToDouble(txtT.Text);
+        <span class="keyword">double</span> r = <span class="class-name">Convert</span>.ToDouble(txtR.Text);
+        <span class="keyword">double</span> si = (p * t * r) / <span class="number">100</span>;
+        Response.Redirect(<span class="string">"Result.aspx?SI="</span> + si);
+    }
+}
+
+<span class="comment">&lt;!-- Result.aspx --&gt;</span>
+&lt;<span class="keyword">%@</span> <span class="type">Page</span> <span class="keyword">Language</span>=<span class="string">"C#"</span> %&gt;
+&lt;<span class="type">html</span>&gt;
+&lt;<span class="type">body</span>&gt;
+    &lt;<span class="type">form</span> <span class="keyword">id</span>=<span class="string">"form2"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>&gt;
+        &lt;<span class="type">asp:Label</span> <span class="keyword">ID</span>=<span class="string">"lblSI"</span> <span class="keyword">runat</span>=<span class="string">"server"</span> <span class="keyword">ForeColor</span>=<span class="string">"Green"</span>/&gt;
+    &lt;/<span class="type">form</span>&gt;
+&lt;/<span class="type">body</span>&gt;
+&lt;/<span class="type">html</span>&gt;
+
+<span class="comment">// Result.aspx.cs</span>
+<span class="keyword">using</span> <span class="type">System</span>;
+<span class="keyword">public partial class</span> <span class="class-name">Result</span> : <span class="type">System.Web.UI.Page</span>
+{
+    <span class="keyword">protected void</span> <span class="method-name">Page_Load</span>(<span class="keyword">object</span> s, <span class="type">EventArgs</span> e)
+    {
+        <span class="keyword">if</span> (Request.QueryString[<span class="string">"SI"</span>] != <span class="keyword">null</span>)
+            lblSI.Text = <span class="string">"Simple Interest: Rs. "</span> + Request.QueryString[<span class="string">"SI"</span>];
+    }
+}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== G.4. ASP.NET Validation Controls ===== -->
+        <section id="g4" class="qa-pair">
+          <h3 class="question">G.4. ASP.NET Validation Controls</h3>
+          <p>Explain various validation server controls in ASP.NET with suitable program.</p>
+          <div class="answer full-marks-answer">
+            <div>
+              <h3 class="section-title">ASP.NET Validation Controls</h3>
+              <p>ASP.NET provides: <strong>RequiredFieldValidator</strong> (non-empty), <strong>RangeValidator</strong> (value range), <strong>RegularExpressionValidator</strong> (pattern), <strong>CompareValidator</strong> (comparison), <strong>ValidationSummary</strong> (all errors).</p>
+            </div>
+            <div>
+              <h3 class="section-title">ASP.NET Program</h3>
+              <pre class="code-block">
+<span class="comment">&lt;!-- Validation.aspx --&gt;</span>
+&lt;<span class="keyword">%@</span> <span class="type">Page</span> <span class="keyword">Language</span>=<span class="string">"C#"</span> %&gt;
+&lt;<span class="type">html</span>&gt;
+&lt;<span class="type">body</span>&gt;
+    &lt;<span class="type">form</span> <span class="keyword">id</span>=<span class="string">"form1"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>&gt;
+        Name: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtName"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;
+        &lt;<span class="type">asp:RequiredFieldValidator</span> <span class="keyword">ID</span>=<span class="string">"rfvName"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>
+            <span class="keyword">ControlToValidate</span>=<span class="string">"txtName"</span> <span class="keyword">ErrorMessage</span>=<span class="string">"Name is required!"</span> <span class="keyword">ForeColor</span>=<span class="string">"Red"</span>/&gt;
+        &lt;<span class="type">br</span> /&gt;
+
+        Age: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtAge"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;
+        &lt;<span class="type">asp:RangeValidator</span> <span class="keyword">ID</span>=<span class="string">"rvAge"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>
+            <span class="keyword">ControlToValidate</span>=<span class="string">"txtAge"</span> <span class="keyword">Type</span>=<span class="string">"Integer"</span> <span class="keyword">MinimumValue</span>=<span class="string">"1"</span> <span class="keyword">MaximumValue</span>=<span class="string">"120"</span>
+            <span class="keyword">ErrorMessage</span>=<span class="string">"Age must be 1-120!"</span> <span class="keyword">ForeColor</span>=<span class="string">"Red"</span>/&gt;
+        &lt;<span class="type">br</span> /&gt;
+
+        Email: &lt;<span class="type">asp:TextBox</span> <span class="keyword">ID</span>=<span class="string">"txtEmail"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>/&gt;
+        &lt;<span class="type">asp:RegularExpressionValidator</span> <span class="keyword">ID</span>=<span class="string">"revEmail"</span> <span class="keyword">runat</span>=<span class="string">"server"</span>
+            <span class="keyword">ControlToValidate</span>=<span class="string">"txtEmail"</span>
+            <span class="keyword">ValidationExpression</span>=<span class="string">"^\w+@\w+\.\w+$"</span>
+            <span class="keyword">ErrorMessage</span>=<span class="string">"Invalid email!"</span> <span class="keyword">ForeColor</span>=<span class="string">"Red"</span>/&gt;
+        &lt;<span class="type">br</span> /&gt;
+
+        &lt;<span class="type">asp:Button</span> <span class="keyword">ID</span>=<span class="string">"btnSubmit"</span> <span class="keyword">runat</span>=<span class="string">"server"</span> <span class="keyword">Text</span>=<span class="string">"Submit"</span>/&gt;
+        &lt;<span class="type">br</span> /&gt;&lt;<span class="type">br</span> /&gt;
+        &lt;<span class="type">asp:ValidationSummary</span> <span class="keyword">ID</span>=<span class="string">"vsSummary"</span> <span class="keyword">runat</span>=<span class="string">"server"</span> <span class="keyword">HeaderText</span>=<span class="string">"Errors:"</span> <span class="keyword">ForeColor</span>=<span class="string">"Red"</span>/&gt;
+    &lt;/<span class="type">form</span>&gt;
+&lt;/<span class="type">body</span>&gt;
+&lt;/<span class="type">html</span>&gt;
+              </pre>
+            </div>
+          </div>
+        </section>
+
+      </div>  <!-- /.notes-content -->
+    </main>
+  </div>  <!-- /.notebook-container -->
+</body>
+</html>
